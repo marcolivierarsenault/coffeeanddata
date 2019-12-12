@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+        <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Lossless Triplet loss | Coffee and Data</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Lossless Triplet loss" />
+<meta name="author" content="Marc-Olivier Arsenault" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A more efficient loss function for Siamese" />
+<meta property="og:description" content="A more efficient loss function for Siamese" />
+<meta property="og:site_name" content="Coffee and Data" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-02-15T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"A more efficient loss function for Siamese","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/square_logo.png"},"name":"Marc-Olivier Arsenault"},"url":"/lossless-triplet-loss","headline":"Lossless Triplet loss","dateModified":"2018-02-15T00:00:00+00:00","datePublished":"2018-02-15T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/lossless-triplet-loss"},"author":{"@type":"Person","name":"Marc-Olivier Arsenault"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+
+    <!-- Site Favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/png" />
+
+    <!-- Font Embed Code -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet" />
+
+    <!-- CSS Styles -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="layout-post">
+    <div id="page" class="site">
+
+        
+        <header id="masthead" class="site-header outer">
+    <div class="site-header-inside">
+        <div class="site-branding">
+            
+                <p class="site-logo"><a href="/" rel="home"><img src="/assets/images/square_logo.png" alt="Coffee and Data" /></a></p>
+                <h1 class="site-title screen-reader-text"><a href="" rel="home"></a></h1>
+            
+        </div><!-- .site-branding -->
+        <nav id="main-navigation" class="site-navigation" aria-label="Primary Navigation">
+            <ul class="menu">
+            
+                <li class="menu-item"><a href="/about/">About</a></li>
+            
+                <li class="menu-item"><a href="/contact/">Contact Me</a></li>
+            
+            </ul>
+        </nav><!-- .site-navigation -->
+    </div><!-- .site-header-inside -->
+</header><!-- .site-header -->
+        
+
+        <div id="content" class="site-content fadeInDown delay_075s">
+    <main id="main" class="site-main outer">
+        <article class="post-full inner">
+            <header class="post-header">
+                <div class="post-meta">
+                    <time class="post-date" datetime="2018-02-15">February 15,
+                        2018</time>
+                </div><!-- .post-meta -->
+                <h1 class="posttitle">Lossless Triplet loss</h1>
+            </header><!-- .post-header -->
+            
+            <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/primate-ape-thinking-mimic.jpg"
+                    alt="Lossless Triplet loss"></div>
+            
+            <div class="post-content">
+                <p>A more efficient loss function for Siamese</p>
+
+<!--more-->
+
+<p>At work, we are working with Siamese Neural Net (NN) for one shot training on telecom data. Our goal is to create a NN that can easily detect failure in Telecom Operators networks. To do so, we are building this N dimension encoding to describe the actual status of the network. With this encoding we can then evaluate what is the status of network and detect faults. This encoding as the same goal as something like word encoding (<a href="https://en.wikipedia.org/wiki/Word2vec">Word2Vec</a> or others). To train this encoding we use a <a href="https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf">Siamese Network</a> [Koch et al.] to create a one shot encoding so it would work on any network. A simplified description of Siamese network is available <a href="https://hackernoon.com/one-shot-learning-with-siamese-networks-in-pytorch-8ddaab10340e">here</a>. For more details about our experiment you can read the <a href="https://thelonenutblog.wordpress.com/2017/12/14/do-telecom-networks-dreams-of-siamese-memories/">blog of my colleague</a> who is the master brain behind this idea.</p>
+
+<p>The current experiment, up to now is working great. This network can split the different traffic scenarios. As you can see on this picture, the good traffic (Green) is easily spitted away from error type 1 (Red) and error type 2 (Orange)</p>
+
+<p><img src="assets/images/posts/triplet_model1.png#center" alt="triplet_model1" /></p>
+
+<h2 id="the-problem">THE PROBLEM</h2>
+
+<p>So what is the problem, it seems to work fine, doesn’t it? After some reflection I realized that there was a big flaw in the loss function.</p>
+
+<p>First here is the code for our model. (Don’t have to read all the code, I will point out the issue.</p>
+
+<pre><code class="language-python">
+def triplet_loss(y_true, y_pred, alpha = 0.4):
+    """
+    Implementation of the triplet loss function
+    Arguments:
+    y_true -- true labels, required when you define a loss in Keras, you don't need it in this function.
+    y_pred -- python list containing three objects:
+            anchor -- the encodings for the anchor data
+            positive -- the encodings for the positive data (similar to anchor)
+            negative -- the encodings for the negative data (different from anchor)
+    Returns:
+    loss -- real number, value of the loss
+    """
+
+    anchor = y_pred[:,0:3]
+    positive = y_pred[:,3:6]
+    negative = y_pred[:,6:9]
+
+    # distance between the anchor and the positive
+    pos_dist = K.sum(K.square(anchor-positive),axis=1)
+
+    # distance between the anchor and the negative
+    neg_dist = K.sum(K.square(anchor-negative),axis=1)
+
+    # compute loss
+    basic_loss = pos_dist-neg_dist+alpha
+    loss = K.maximum(basic_loss,0.0)
+
+    return loss
+  
+def create_base_network(in_dims, out_dims):
+    """
+    Base network to be shared.
+    """
+    model = Sequential()
+    model.add(BatchNormalization(input_shape=in_dims))
+    model.add(LSTM(512, return_sequences=True, dropout=0.2, recurrent_dropout=0.2, implementation=2))
+    model.add(LSTM(512, return_sequences=False, dropout=0.2, recurrent_dropout=0.2, implementation=2))
+    model.add(BatchNormalization())
+    model.add(Dense(512, activation='relu'))
+    model.add(BatchNormalization())
+    model.add(Dense(out_dims, activation='linear'))
+    model.add(BatchNormalization())
+
+    return model
+  
+in_dims = (N_MINS, n_feat)
+out_dims = N_FACTORS
+
+# Network definition
+with tf.device(tf_device):
+
+    # Create the 3 inputs
+    anchor_in = Input(shape=in_dims)
+    pos_in = Input(shape=in_dims)
+    neg_in = Input(shape=in_dims)
+
+    # Share base network with the 3 inputs
+    base_network = create_base_network(in_dims, out_dims)
+    anchor_out = base_network(anchor_in)
+    pos_out = base_network(pos_in)
+    neg_out = base_network(neg_in)
+    merged_vector = concatenate([anchor_out, pos_out, neg_out], axis=-1)
+
+    # Define the trainable model
+    model = Model(inputs=[anchor_in, pos_in, neg_in], outputs=merged_vector)
+    model.compile(optimizer=Adam(),
+                  loss=triplet_loss)
+
+# Training the model
+model.fit(train_data, y_dummie, batch_size=256, epochs=10)
+</code></pre>
+
+<p>My issue is with this line of the loss function.</p>
+
+<blockquote>
+  <p>‘loss = K.maximum(basic_loss,0.0)’</p>
+</blockquote>
+
+<p>There is a major issue here, every time your loss gets below 0, you loose information, a ton of information. First let’s look at this function.</p>
+
+<p>It basically does this:</p>
+
+<figure>
+    <img src="assets/images/posts/schroffetall.png#center" alt="schroffetall" />
+    
+        <figcaption class="caption-text">Schroff et all</figcaption> 
+    
+</figure>
+
+<p>It tries to bring close the Anchor (current record) with the Positive (A record that is in theory similar with the Anchor) as far as possible from the Negative (A record that is different from the Anchor).</p>
+
+<p>The actual formula for this loss is:</p>
+
+<figure>
+    <img src="assets/images/posts/loss_formula.png#center" alt="schroffetall" />
+    
+        <figcaption class="caption-text">Schroff et all</figcaption> 
+    
+</figure>
+
+<p>This process is detailed in the paper <a href="https://arxiv.org/abs/1503.03832">FaceNet: A Unified Embedding for Face Recognition and Clustering</a> by Florian Schroff, Dmitry Kalenichenko and James Philbin.</p>
+
+<p>So as long as the negative value is further than the positive value + alpha there will be no gain for the algorithm to condense the positive and the anchor. Here is what I mean:</p>
+
+<p><img src="assets/images/posts/distance_cost.png#center" alt="distance" /></p>
+
+<p>Let’s pretend that:</p>
+
+<ul>
+  <li>Alpha is 0.2</li>
+  <li>Negative Distance is 2.4</li>
+  <li>Positive Distance is 1.2</li>
+</ul>
+
+<p>The loss function result will be 1.2–2.4+0.2 = -1. Then when we look at Max(-1,0) we end up with 0 as a loss. The Positive Distance could be anywhere above 1 and the loss would be the same. With this reality, it’s going to be very hard for the algorithm to reduce the distance between the Anchor and the Positive value.</p>
+
+<p>As a more visual example, here is 2 scenarios A and B. They both represent what the loss function measure for us.</p>
+
+<p><img src="assets/images/posts/distance2.png#center" alt="distance" />
+<img src="assets/images/posts/formula_distance.png#center" alt="distance" /></p>
+
+<p>After the Max function both A and B now return 0 as their loss, which is a clear lost of information. By looking simply, we can say that B is better than A.</p>
+
+<p>In other words, you cannot trust the loss function result, as an example here is the result around Epoch 50. The loss (train and dev) is 0, but clearly the result is not perfect.</p>
+
+<p><img src="assets/images/posts/epoch.png#center" alt="epoch" /></p>
+
+<h2 id="other-losses">OTHER LOSSES</h2>
+
+<p>Another famous loss function the contrastive loss describe by Yan LeCun and his team in their paper <a href="http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf">Dimensionality Reduction by Learning an Invariant Mapping</a> is also maxing the negative result, which creates the same issue.</p>
+
+<figure>
+    <img src="assets/images/posts/lecunFormula.png#center" alt="The Contrastive Loss Function, (LeCun)" />
+    
+        <figcaption class="caption-text">The Contrastive Loss Function, (LeCun)</figcaption> 
+    
+</figure>
+
+<p>With the title, you can easily guess what is my plan… To make a loss function that will capture the “lost” information below 0. After some basic geometry, I realized that if you contain the N dimension space where the loss is calculated you can more efficiently control this. So the first step was to modify the model. The last layer (Embedding layer) needed to be controlled in size. By using a Sigmoïde activation function instead of a linear we can guarantee that each dimension will be between 0 and 1.</p>
+
+<figure>
+    <img src="assets/images/posts/sigmoid.png#center" alt="Sigmoïde activation" />
+    
+        <figcaption class="caption-text">Sigmoïde activation</figcaption> 
+    
+</figure>
+
+<p>Then we could assume that the max value of a distance would be N. N being the number of dimensions. Example, if my anchor is at 0,0,0 and my negative point is at 1,1,1. The distance based on Schroff formula would be 1²+1²+1² = 3. So if we take into account the number of dimensions, we can deduce the max distance. So here is my proposed formula.</p>
+
+<figure>
+    <img src="assets/images/posts/linear_loss_function.png#center" alt="Linear loss function" />
+    
+        <figcaption class="caption-text">Linear loss function</figcaption> 
+    
+</figure>
+
+<p>Where N is the number of dimensions of the embedding vector. This look very similar, but by having a Sigmoïde and a proper setting for N, we can guarantee that the value will stay above 0.</p>
+
+<h2 id="first-results">FIRST RESULTS</h2>
+
+<p>After some initial test, we ended up with this model.</p>
+
+<p><img src="assets/images/posts/model2.png#center" alt="model2" />
+On the good side we can see that all the points from the same cluster get super tight, even to the point that they become the same. But on the downside it turns out that the two error cases (Orange and Red) got superimposed.</p>
+
+<p>The reason for this is the loss is smaller like this then when the Red and Orange split. So we needed to find a way to break the cost linearity; In other words, make it really costly as more the error grows.</p>
+
+<p>Non-Linearity</p>
+
+<p>Instead of the linear cost we proposed a non-linear cost function:
+<img src="assets/images/posts/graph.png#center" alt="graph" />
+<img src="assets/images/posts/ln_function.png#center" alt="ln_function" />
+Where the curve is represented by this ln function when N = 3</p>
+
+<p>With this new non-linearity, our cost function now looks like:</p>
+
+<p><img src="assets/images/posts/custom_function.png#center" alt="custom_function" />
+Where N is the number of dimensions (Number of output of your network; Number of features for your embedding) and β is a scaling factor. We suggest setting this to N, but other values could be used to modify the non-linearity cost.</p>
+
+<p>As you can see, the result speaks for itself:
+<img src="assets/images/posts/model3.png#center" alt="model3" />
+We now have very condensed cluster of points, way more than the standard triplet function result.</p>
+
+<p>As a reference here is the code for the loss function.</p>
+
+<pre><code class="language-python">
+def lossless_triplet_loss(y_true, y_pred, N = 3, beta=N, epsilon=1e-8):
+    """
+    Implementation of the triplet loss function
+
+    Arguments:
+    y_true -- true labels, required when you define a loss in Keras, you don't need it in this function.
+    y_pred -- python list containing three objects:
+            anchor -- the encodings for the anchor data
+            positive -- the encodings for the positive data (similar to anchor)
+            negative -- the encodings for the negative data (different from anchor)
+    N  --  The number of dimension
+    beta -- The scaling factor, N is recommended
+    epsilon -- The Epsilon value to prevent ln(0)
+
+    Returns:
+    loss -- real number, value of the loss
+    """
+    anchor = tf.convert_to_tensor(y_pred[:,0:N])
+    positive = tf.convert_to_tensor(y_pred[:,N:N*2])
+    negative = tf.convert_to_tensor(y_pred[:,N*2:N*3])
+
+    # distance between the anchor and the positive
+    pos_dist = tf.reduce_sum(tf.square(tf.subtract(anchor,positive)),1)
+    # distance between the anchor and the negative
+    neg_dist = tf.reduce_sum(tf.square(tf.subtract(anchor,negative)),1)
+
+    #Non Linear Values  
+
+    # -ln(-x/N+1)
+    pos_dist = -tf.log(-tf.divide((pos_dist),beta)+1+epsilon)
+    neg_dist = -tf.log(-tf.divide((N-neg_dist),beta)+1+epsilon)
+
+    # compute loss
+    loss = neg_dist + pos_dist
+
+    return loss
+</code></pre>
+
+<p>Keep in mind, for it to work you need your NN last layer to be using a Sigmoïde activation function.</p>
+
+<p><img src="assets/images/posts/new_epoch.png#center" alt="new_epoch" /></p>
+
+<p>Even after 1000 Epoch, the Lossless Triplet Loss does not generate a 0 loss like the standard Triplet Loss.</p>
+
+<h2 id="differences">DIFFERENCES</h2>
+
+<p>Based on the cool animation of his model done by my <a href="https://thelonenutblog.wordpress.com/">colleague</a>, I have decided to do the same but with a live comparison of the two losses function. Here is the live result were you can see the standard Triplet Loss (from Schroff paper) on the left and the Lossless Triplet Loss on the right:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XAH83kCJB3E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h2 id="conclusion">CONCLUSION</h2>
+
+<p>This loss function seems good, now I will need to test it on more data, different use cases to see if it is really a robust loss function. Let me know what you think about this loss function.</p>
+
+<h2 id="references">REFERENCES</h2>
+
+<ul>
+  <li>Koch, Gregory, Richard Zemel, and Ruslan Salakhutdinov. “Siamese neural networks for one-shot image recognition.” ICML Deep Learning Workshop. Vol. 2. 2015.</li>
+  <li>Mikolov, Tomas, et al. “Efficient estimation of word representations in vector space.” arXiv preprint arXiv:1301.3781 (2013).</li>
+  <li>Schroff, Florian, Dmitry Kalenichenko, and James Philbin. “Facenet: A unified embedding for face recognition and clustering.” Proceedings of the IEEE conference on computer vision and pattern recognition. 2015.</li>
+  <li>Hadsell, Raia, Sumit Chopra, and Yann LeCun. “Dimensionality reduction by learning an invariant mapping.” Computer vision and pattern recognition, 2006 IEEE computer society conference on. Vol. 2. IEEE, 2006.</li>
+  <li><a href="https://thelonenutblog.wordpress.com/">https://thelonenutblog.wordpress.com/</a></li>
+  <li><a href="https://hackernoon.com/one-shot-learning-with-siamese-networks-in-pytorch-8ddaab10340e">https://hackernoon.com/one-shot-learning-with-siamese-networks-in-pytorch-8ddaab10340e</a></li>
+</ul>
+
+            </div>
+            <footer class="post-footer">
+                
+                <p class="post-tags">
+                     
+                    <a href='tag/deep_learning/'>Deep_Learning</a>
+                    
+                    
+                </p>
+                
+                <div class="post-share">
+                    <span class="post-share-title">Share:</span>
+                    <a target="_blank" href="https://twitter.com/share?text=Lossless+Triplet%C2%A0loss&amp;url=https://coffeeanddata.ca/lossless-triplet-loss">Twitter</a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://coffeeanddata.ca/lossless-triplet-loss">Facebook</a>
+                </div><!-- .share-post -->
+            </footer>
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/headshot.png" alt="Marc-Olivier Arsenault's Picture"
+                        class="avatar"></div>
+                <div class="author-details">
+                    <h2 class="author-title">About Marc-Olivier Arsenault</h2>
+                    <p class="author-description">Data Science Lead @ Shopify</p>
+                </div>
+            </div>
+            
+<section id="comments-area" class="comments-area">
+    <h2 class="comments-title">Comments</h2>
+    <div class="comments-inside">
+        <div id="disqus_thread"></div>
+    </div><!-- .comments-inside -->
+    <div id="comments-overlay" class="comments-overlay">
+        <a href="#" id="comments-show" class="comments-show">Show comments</a>
+    </div><!-- .comments-overlay -->
+    <script type="text/javascript">
+        var disqus_shortname = 'marcolivierarsenault';
+        var disqus_developer = 0;
+        (function () {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+        </article>
+        
+        <section class="newsletter-box inner-wide">
+    <div class="inner">
+        <h2 class="newsletter-box-title">Subscribe to Coffee and Data newsletter</h2>
+        <p>Get the latest and greatest from Coffee and Data delivered straight to your inbox.</p>
+        <!-- Begin MailChimp Signup Form -->
+        <div id="mc_embed_signup">
+            <form action="//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate gh-subscribe-form" target="_blank" novalidate>
+                <label for="mce-EMAIL" class="screen-reader-text">Email Address</label>
+                <input type="email" value="" name="EMAIL" class="required email subscribe-email" id="mce-EMAIL" placeholder="Your email address">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+            </form>
+        </div>
+        <!--End mc_embed_signup-->
+    </div><!-- .inner -->
+</section><!-- .widget -->
+        
+        <section class="read-next inner">
+            <h2 class="read-next-title">Read Next</h2>
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="February 8, 2018">February 8, 2018</time>
+                    </div>
+                    <h3 class="post-title"><a href="/distributions-5th-symphony">Distribution&#8217;s 5th Symphony</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/machine_learning/'>Machine_learning</a>
+                        
+                        
+                        
+                        <a href='/tag/statistics/'>Statistics</a>
+                        
+                        
+                        
+                        <a href='/tag/visualization/'>Visualization</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/distributions-5th-symphony" class="post-thumbnail">
+                    <img src="assets/images/posts/symphony.jpg" alt="Distribution&#8217;s 5th Symphony" />
+                </a>
+                
+            </article>
+            
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="April 27, 2018">April 27, 2018</time>
+                    </div>
+                    <h3 class="post-title"><a href="/this-is-what-i-really-do-as-a-data-scientist">This is what I really do as a Data Scientist</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/clustering/'>Clustering</a>
+                        
+                        
+                        
+                        <a href='/tag/data_pre-processing/'>Data_pre-processing</a>
+                        
+                        
+                        
+                        <a href='/tag/statistics/'>Statistics</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/this-is-what-i-really-do-as-a-data-scientist" class="post-thumbnail">
+                    <img src="assets/images/posts/cyber-glasses.jpg" alt="This is what I really do as a Data Scientist" />
+                </a>
+                
+            </article>
+            
+        </section><!-- .read-next -->
+    </main><!-- .site-main -->
+</div><!-- .site-content -->
+
+        
+
+        
+
+        <footer id="colophon" class="site-footer outer">
+            <div class="site-footer-inside">
+                <p class="social-links">
+    
+    
+    
+    <a href="https://github.com/marcolivierarsenault" target="_blank">
+        <span class="fa-github fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">GitHub</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://medium.com/@marcolivier.arsenault" target="_blank">
+        <span class="fa-medium fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">medium</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/marcolivierarsenault" target="_blank">
+        <span class="fa-linkedin fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">Linkedin</span>
+    </a>
+    
+    
+</p>
+                <p class="site-info">
+                    <a href="#">Coffee and Data</a> &copy; 2019.
+                    Powered by <a target="_blank" href="https://jekyllrb.com/">Jekyll</a>.
+                </p>
+                <p class="back-to-top">
+                    <a id="top-button" class="top-button" href="#page">
+                        <span class="icon-arrow-up" aria-hidden="true"></span>
+                        <span class="screen-reader-text">Back to top</span>
+                    </a>
+                </p>
+            </div><!-- .site-footer-inside -->
+        </footer><!-- .site-footer -->
+    </div><!-- .site -->
+    <div id="site-overlay" class="site-overlay"></div>
+    
+    <!-- Javascript Assets -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/custom.js"></script>
+
+</body>
+
+</html>

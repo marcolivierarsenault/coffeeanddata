@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+        <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>This is what I really do as a Data Scientist | Coffee and Data</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="This is what I really do as a Data Scientist" />
+<meta name="author" content="Marc-Olivier Arsenault" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Data Science is getting very popular and many people are trying to jump into the bandwagon, and this is GREAT. But many assume that data science, machine learning, plug any other buzzword here, is to plug data to some Sckit-Learn libraries. Here is what the actual job is." />
+<meta property="og:description" content="Data Science is getting very popular and many people are trying to jump into the bandwagon, and this is GREAT. But many assume that data science, machine learning, plug any other buzzword here, is to plug data to some Sckit-Learn libraries. Here is what the actual job is." />
+<meta property="og:site_name" content="Coffee and Data" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-04-27T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"Data Science is getting very popular and many people are trying to jump into the bandwagon, and this is GREAT. But many assume that data science, machine learning, plug any other buzzword here, is to plug data to some Sckit-Learn libraries. Here is what the actual job is.","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/square_logo.png"},"name":"Marc-Olivier Arsenault"},"url":"/this-is-what-i-really-do-as-a-data-scientist","headline":"This is what I really do as a Data Scientist","dateModified":"2018-04-27T00:00:00+00:00","datePublished":"2018-04-27T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/this-is-what-i-really-do-as-a-data-scientist"},"author":{"@type":"Person","name":"Marc-Olivier Arsenault"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+
+    <!-- Site Favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/png" />
+
+    <!-- Font Embed Code -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet" />
+
+    <!-- CSS Styles -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="layout-post">
+    <div id="page" class="site">
+
+        
+        <header id="masthead" class="site-header outer">
+    <div class="site-header-inside">
+        <div class="site-branding">
+            
+                <p class="site-logo"><a href="/" rel="home"><img src="/assets/images/square_logo.png" alt="Coffee and Data" /></a></p>
+                <h1 class="site-title screen-reader-text"><a href="" rel="home"></a></h1>
+            
+        </div><!-- .site-branding -->
+        <nav id="main-navigation" class="site-navigation" aria-label="Primary Navigation">
+            <ul class="menu">
+            
+                <li class="menu-item"><a href="/about/">About</a></li>
+            
+                <li class="menu-item"><a href="/contact/">Contact Me</a></li>
+            
+            </ul>
+        </nav><!-- .site-navigation -->
+    </div><!-- .site-header-inside -->
+</header><!-- .site-header -->
+        
+
+        <div id="content" class="site-content fadeInDown delay_075s">
+    <main id="main" class="site-main outer">
+        <article class="post-full inner">
+            <header class="post-header">
+                <div class="post-meta">
+                    <time class="post-date" datetime="2018-04-27">April 27,
+                        2018</time>
+                </div><!-- .post-meta -->
+                <h1 class="posttitle">This is what I really do as a Data Scientist</h1>
+            </header><!-- .post-header -->
+            
+            <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/cyber-glasses.jpg"
+                    alt="This is what I really do as a Data Scientist"></div>
+            
+            <div class="post-content">
+                <p>Data Science is getting very popular and many people are trying to jump into the bandwagon, and this is GREAT. But many assume that data science, machine learning, plug any other buzzword here, is to plug data to some Sckit-Learn libraries. Here is what the actual job is.</p>
+
+<p>To bring you into context, the following is happening after the data was collected. Don’t get me wrong, I don’t think it should be considered a simple step, but I would like to focus on data pre-processing and normalization.</p>
+
+<!--more-->
+
+<h2 id="the-problem">The Problem</h2>
+
+<p>If you followed my blogs, you probably realized that I work a lot in the Machine 2 Machine field. Recently at work I was trying to cluster machine together based on their behaviour, aka their data consumption.</p>
+
+<p>These features report the usage download and upload of specific categories of services, e.g. Social Media, Audio, etc. For this, let’s assume that we are looking at a counter that looks at how much connection was established to AWS (Amazon Web Services).</p>
+
+<p>If we take the data as is and decide to pull clusters out of it, we get something like this:</p>
+
+<p><img src="assets/images/posts/mixClusters.png#center" alt="mixClusters" /></p>
+
+<p>Note, this an <a href="https://en.wikipedia.org/wiki/Linear_discriminant_analysis">LDA</a> 2 axis representation of the data. The LDA as a ± 90% representation factor. Even if it’s not perfect the clustering is close to useless. At this point, some I suggest using this or that algorithm and to tune the hyper parameters and this is exactly the worst idea.</p>
+
+<p> </p>
+
+<h2 id="the-infamous-data">The Infamous Data</h2>
+
+<p>Now, let’s work a bit. What does the data look like. Advise you should spend a lot of time before typing some <em>from sklearn.cluster import KMeans.</em> We will look at one specific feature for this example but, keep in mind that most of them were similar.</p>
+
+<p>Here is the AWS Counter (Not really but we will pretend).
+<img src="assets/images/posts/distribution.png#center" alt="distribution" />
+All the data seems to be 0, but if you look in detail, there is value going up to 3e+7. How on earth do you expect to create any meaningful distance with this. Even if you scale it between 0 and 1 most of the data will be between 0 and 0.0000005 or something like this, hence the distance won’t get any better.</p>
+
+<p>If we look at all the non-zero data, we have something more interesting:
+<img src="assets/images/posts/not0.png#center" alt="not0" /></p>
+
+<p> </p>
+
+<h2 id="data-processing">Data processing</h2>
+
+<p>This start to look like a <a href="https://en.wikipedia.org/wiki/Log-normal_distribution">LogNormal</a> distribution. Now how can we normalize it. At least a bit. So a colleague of mine, <a href="https://www.linkedin.com/in/tanguy-compagnon-dls/">Tanguy</a> had a very clever idea on how to convert that lognormal Distribution. The <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.boxcox.html">Box Cox transform</a>. This transform tries to “normalize” as much as possible a different distribution including LogNormal.</p>
+
+<p>This transform tries to minimize the lamda value in this formula (Picture from <a href="https://en.wikipedia.org/wiki/Power_transform">Wikipedia</a>) :</p>
+
+<p><img src="assets/images/posts/coxbox.png#center" alt="coxbox" /></p>
+
+<p>In our case, there is so much zeros that lamda would be lower to something like this: (Note: You need to get only positive value so 1 was added to all values)</p>
+
+<p><img src="assets/images/posts/original.png#center" alt="original" /></p>
+
+<p>In this picture you can see the small bump at around 9 and it contains most of the non-zero data. At this point we already have something better, order of magnitude better in terms of distances but still it could be improved.</p>
+
+<p>Let’s bring back the context of this data again. We are trying to categorized machine behaviour. In the world of machine to machine there is a lot of information hidden in this. The machine CAN use AWS. It sounds funny but it’s very important here. These machines are usually programmed to do a very specific task, e.g. Report weather, show adds, etc. Their task is usually hard-coded and they don’t randomly start going on Facebook or something. Just the fact that they can use a service (like AWS) is a lot of information. So my plan was set, I will leave the zeros at zeros and then give the range 0.5 to 1 for the rest of this data. Now how to express the rest of the data… Box Cox transform. I will do the transform on the only non-zero devices.</p>
+
+<p>So here is what it looks. On the left you can see all the data transformed like explained in a 0 – 1 space. On the right, you have a zoomed graphic of the section between 0.5 and 1.</p>
+
+<p><img src="assets/images/posts/coxboxover0.png#center" alt="coxboxover0" />
+Even if the left graph does not seem that better, I can assure you that for the algorithm it’s a world of differences.</p>
+
+<h2 id="result">Result</h2>
+
+<p>So, after pre-processing the data, we ran the clustering algorithm on it, and without any customization we got that results.</p>
+
+<p><img src="assets/images/posts/final-Cluster.png#center" alt="final-Cluster" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I find people are a bit “trigger happy” on the algorithms and jump too quickly to the model building. Some say that you don’t even have to understand the math behind and I disagree, you need to understand at least the fundamental of an algo. At lease enough to understand how to prepare the data for it. As examples in K-Means it’s all about the distance between point, and when you have this type of range (10e7) you cannot expect the algo to find subtitle patterns, it will be blinded by the range.</p>
+
+<p>So please, look at your data again and again. To the point you feel you can separate it by hand, then let fancy algorithms to the rest of the work.</p>
+
+            </div>
+            <footer class="post-footer">
+                
+                <p class="post-tags">
+                     
+                    <a href='tag/clustering/'>clustering</a>
+                    
+                     
+                    <a href='tag/data_pre-processing/'>data_pre-processing</a>
+                    
+                     
+                    <a href='tag/statistics/'>Statistics</a>
+                    
+                    
+                </p>
+                
+                <div class="post-share">
+                    <span class="post-share-title">Share:</span>
+                    <a target="_blank" href="https://twitter.com/share?text=This+is+what+I+really+do+as+a+Data+Scientist&amp;url=https://coffeeanddata.ca/this-is-what-i-really-do-as-a-data-scientist">Twitter</a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://coffeeanddata.ca/this-is-what-i-really-do-as-a-data-scientist">Facebook</a>
+                </div><!-- .share-post -->
+            </footer>
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/headshot.png" alt="Marc-Olivier Arsenault's Picture"
+                        class="avatar"></div>
+                <div class="author-details">
+                    <h2 class="author-title">About Marc-Olivier Arsenault</h2>
+                    <p class="author-description">Data Science Lead @ Shopify</p>
+                </div>
+            </div>
+            
+<section id="comments-area" class="comments-area">
+    <h2 class="comments-title">Comments</h2>
+    <div class="comments-inside">
+        <div id="disqus_thread"></div>
+    </div><!-- .comments-inside -->
+    <div id="comments-overlay" class="comments-overlay">
+        <a href="#" id="comments-show" class="comments-show">Show comments</a>
+    </div><!-- .comments-overlay -->
+    <script type="text/javascript">
+        var disqus_shortname = 'marcolivierarsenault';
+        var disqus_developer = 0;
+        (function () {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+        </article>
+        
+        <section class="newsletter-box inner-wide">
+    <div class="inner">
+        <h2 class="newsletter-box-title">Subscribe to Coffee and Data newsletter</h2>
+        <p>Get the latest and greatest from Coffee and Data delivered straight to your inbox.</p>
+        <!-- Begin MailChimp Signup Form -->
+        <div id="mc_embed_signup">
+            <form action="//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate gh-subscribe-form" target="_blank" novalidate>
+                <label for="mce-EMAIL" class="screen-reader-text">Email Address</label>
+                <input type="email" value="" name="EMAIL" class="required email subscribe-email" id="mce-EMAIL" placeholder="Your email address">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+            </form>
+        </div>
+        <!--End mc_embed_signup-->
+    </div><!-- .inner -->
+</section><!-- .widget -->
+        
+        <section class="read-next inner">
+            <h2 class="read-next-title">Read Next</h2>
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="February 15, 2018">February 15, 2018</time>
+                    </div>
+                    <h3 class="post-title"><a href="/lossless-triplet-loss">Lossless Triplet loss</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/deep_learning/'>Deep_learning</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/lossless-triplet-loss" class="post-thumbnail">
+                    <img src="assets/images/posts/primate-ape-thinking-mimic.jpg" alt="Lossless Triplet loss" />
+                </a>
+                
+            </article>
+            
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="September 26, 2018">September 26, 2018</time>
+                    </div>
+                    <h3 class="post-title"><a href="/the-data-science-pyramid">The data science pyramid</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/data_science/'>Data_science</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/the-data-science-pyramid" class="post-thumbnail">
+                    <img src="assets/images/posts/blue-sky-camels-desert-71241.jpg" alt="The data science pyramid" />
+                </a>
+                
+            </article>
+            
+        </section><!-- .read-next -->
+    </main><!-- .site-main -->
+</div><!-- .site-content -->
+
+        
+
+        
+
+        <footer id="colophon" class="site-footer outer">
+            <div class="site-footer-inside">
+                <p class="social-links">
+    
+    
+    
+    <a href="https://github.com/marcolivierarsenault" target="_blank">
+        <span class="fa-github fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">GitHub</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://medium.com/@marcolivier.arsenault" target="_blank">
+        <span class="fa-medium fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">medium</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/marcolivierarsenault" target="_blank">
+        <span class="fa-linkedin fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">Linkedin</span>
+    </a>
+    
+    
+</p>
+                <p class="site-info">
+                    <a href="#">Coffee and Data</a> &copy; 2019.
+                    Powered by <a target="_blank" href="https://jekyllrb.com/">Jekyll</a>.
+                </p>
+                <p class="back-to-top">
+                    <a id="top-button" class="top-button" href="#page">
+                        <span class="icon-arrow-up" aria-hidden="true"></span>
+                        <span class="screen-reader-text">Back to top</span>
+                    </a>
+                </p>
+            </div><!-- .site-footer-inside -->
+        </footer><!-- .site-footer -->
+    </div><!-- .site -->
+    <div id="site-overlay" class="site-overlay"></div>
+    
+    <!-- Javascript Assets -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/custom.js"></script>
+
+</body>
+
+</html>

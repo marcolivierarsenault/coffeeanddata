@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+        <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Distribution’s 5th Symphony | Coffee and Data</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Distribution’s 5th Symphony" />
+<meta name="author" content="Marc-Olivier Arsenault" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I would like to share with you a small tool I have discovered this year which is very useful; Violin Plot!" />
+<meta property="og:description" content="I would like to share with you a small tool I have discovered this year which is very useful; Violin Plot!" />
+<meta property="og:site_name" content="Coffee and Data" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-02-08T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"I would like to share with you a small tool I have discovered this year which is very useful; Violin Plot!","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/square_logo.png"},"name":"Marc-Olivier Arsenault"},"url":"/distributions-5th-symphony","headline":"Distribution’s 5th Symphony","dateModified":"2018-02-08T00:00:00+00:00","datePublished":"2018-02-08T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/distributions-5th-symphony"},"author":{"@type":"Person","name":"Marc-Olivier Arsenault"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+
+    <!-- Site Favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/png" />
+
+    <!-- Font Embed Code -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet" />
+
+    <!-- CSS Styles -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="layout-post">
+    <div id="page" class="site">
+
+        
+        <header id="masthead" class="site-header outer">
+    <div class="site-header-inside">
+        <div class="site-branding">
+            
+                <p class="site-logo"><a href="/" rel="home"><img src="/assets/images/square_logo.png" alt="Coffee and Data" /></a></p>
+                <h1 class="site-title screen-reader-text"><a href="" rel="home"></a></h1>
+            
+        </div><!-- .site-branding -->
+        <nav id="main-navigation" class="site-navigation" aria-label="Primary Navigation">
+            <ul class="menu">
+            
+                <li class="menu-item"><a href="/about/">About</a></li>
+            
+                <li class="menu-item"><a href="/contact/">Contact Me</a></li>
+            
+            </ul>
+        </nav><!-- .site-navigation -->
+    </div><!-- .site-header-inside -->
+</header><!-- .site-header -->
+        
+
+        <div id="content" class="site-content fadeInDown delay_075s">
+    <main id="main" class="site-main outer">
+        <article class="post-full inner">
+            <header class="post-header">
+                <div class="post-meta">
+                    <time class="post-date" datetime="2018-02-08">February 8,
+                        2018</time>
+                </div><!-- .post-meta -->
+                <h1 class="posttitle">Distribution&#8217;s 5th Symphony</h1>
+            </header><!-- .post-header -->
+            
+            <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/symphony.jpg"
+                    alt="Distribution&#8217;s 5th Symphony"></div>
+            
+            <div class="post-content">
+                <p>I would like to share with you a small tool I have discovered this year which is very useful; Violin Plot!</p>
+
+<!--more-->
+
+<h2 id="the-intro">The Intro</h2>
+
+<h2 id="violin-plot">Violin Plot</h2>
+
+<p>Violin plots are a nice tool that we can find in many different visualisation libraries. What do they do they show and compare distributions. It’s, in my own opinion a better way to compare distributions. Here is a quick example</p>
+
+<figure>
+    <img src="assets/images/posts/seaborn-violinplot-2.png#center" alt="seasboarn" />
+    
+        <figcaption class="caption-text">Seaborn Violin plot (Source: seaborn.pydata.org)</figcaption> 
+    
+</figure>
+
+<p>As you can see here you can easily compare the value from the for categories (Thur, Fri, Sat, Sun).</p>
+
+<p>In a more precise way, the Violin plot is a mix of <a href="https://seaborn.pydata.org/generated/seaborn.boxplot.html#seaborn.boxplot">Box Plot</a> and <a href="https://seaborn.pydata.org/generated/seaborn.kdeplot.html">Kernel density plot</a></p>
+
+<h3 id="the-set-list">The Set list</h3>
+
+<p><img src="assets/images/posts/cutted-1.png#right" alt="cutted" /></p>
+
+<ol>
+  <li>The thin bar represent the 95% confidence interval</li>
+  <li>The thick bar represent the second and third Quartile</li>
+  <li>The white dot represent the Median (The value in the middle)</li>
+  <li>Top and Bottom point represent your min and max</li>
+  <li>The coloured area represent the density or the distribution of the population</li>
+</ol>
+
+<p> </p>
+
+<p> </p>
+
+<h2 id="the-masterpiece">The Masterpiece</h2>
+
+<p>I have used them for hyper-parameter tuning. When you do hyper-parameter tuning using grid <a href="http://scikit-learn.org/stable/modules/grid_search.html">search</a> from scikit-learn you get a array of result. I you look simply at the absolute minimum, you can easily end up with an anomaly or a corner case. But looking at the tendance you can get a way better result.</p>
+
+<ol>
+  <li>Value will tend to be better in general</li>
+  <li>The sparse between good and bad will be smaller.</li>
+</ol>
+
+<p><img src="assets/images/posts/Violon2.png#center" alt="violon2" /></p>
+
+<p>In the above picture it is clear that if you pick a value above 3, you end up with highly variable values. Even if you potentially can get a better result with one of the values &gt; 3, you get no stability and the % chances you get something bad is big.</p>
+
+<p>In this case the value 3 is very good because. First it is a better score than 1 and 2, but it’s also a lot more compact, thus you can expect a small variance in your results.</p>
+
+<p> </p>
+
+<h2 id="where-to-buy-tickets">Where to buy tickets</h2>
+
+<p>You can get violin plot in most of the popular visualization libraries. Here is a short list:</p>
+
+<ul>
+  <li><a href="https://seaborn.pydata.org/generated/seaborn.violinplot.html">Seaborn</a>: The one I have used in this article.</li>
+  <li><a href="https://plot.ly/python/violin-plot/">Plotly</a>: Another very popular lib.</li>
+  <li><a href="https://matplotlib.org/examples/statistics/violinplot_demo.html">Matplotib</a>: I do not like this one, personal taste.</li>
+  <li><a href="http://ggplot2.tidyverse.org/reference/geom_violin.html">GGplot2</a>: For R lovers 😉</li>
+</ul>
+
+<h2 id="the-critics">The critics</h2>
+
+<p>In conclusion, this is a very nice tool when you need to compare distribution. I honestly think this tool is undervalued and underused.</p>
+
+<p>Happy plotting,</p>
+
+            </div>
+            <footer class="post-footer">
+                
+                <p class="post-tags">
+                     
+                    <a href='tag/machine_learning/'>Machine_Learning</a>
+                    
+                     
+                    <a href='tag/statistics/'>Statistics</a>
+                    
+                     
+                    <a href='tag/visualization/'>Visualization</a>
+                    
+                    
+                </p>
+                
+                <div class="post-share">
+                    <span class="post-share-title">Share:</span>
+                    <a target="_blank" href="https://twitter.com/share?text=Distribution%26%238217%3Bs+5th+Symphony&amp;url=https://coffeeanddata.ca/distributions-5th-symphony">Twitter</a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://coffeeanddata.ca/distributions-5th-symphony">Facebook</a>
+                </div><!-- .share-post -->
+            </footer>
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/headshot.png" alt="Marc-Olivier Arsenault's Picture"
+                        class="avatar"></div>
+                <div class="author-details">
+                    <h2 class="author-title">About Marc-Olivier Arsenault</h2>
+                    <p class="author-description">Data Science Lead @ Shopify</p>
+                </div>
+            </div>
+            
+<section id="comments-area" class="comments-area">
+    <h2 class="comments-title">Comments</h2>
+    <div class="comments-inside">
+        <div id="disqus_thread"></div>
+    </div><!-- .comments-inside -->
+    <div id="comments-overlay" class="comments-overlay">
+        <a href="#" id="comments-show" class="comments-show">Show comments</a>
+    </div><!-- .comments-overlay -->
+    <script type="text/javascript">
+        var disqus_shortname = 'marcolivierarsenault';
+        var disqus_developer = 0;
+        (function () {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+        </article>
+        
+        <section class="newsletter-box inner-wide">
+    <div class="inner">
+        <h2 class="newsletter-box-title">Subscribe to Coffee and Data newsletter</h2>
+        <p>Get the latest and greatest from Coffee and Data delivered straight to your inbox.</p>
+        <!-- Begin MailChimp Signup Form -->
+        <div id="mc_embed_signup">
+            <form action="//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate gh-subscribe-form" target="_blank" novalidate>
+                <label for="mce-EMAIL" class="screen-reader-text">Email Address</label>
+                <input type="email" value="" name="EMAIL" class="required email subscribe-email" id="mce-EMAIL" placeholder="Your email address">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+            </form>
+        </div>
+        <!--End mc_embed_signup-->
+    </div><!-- .inner -->
+</section><!-- .widget -->
+        
+        <section class="read-next inner">
+            <h2 class="read-next-title">Read Next</h2>
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="September 29, 2017">September 29, 2017</time>
+                    </div>
+                    <h3 class="post-title"><a href="/machine-vs-human">Machine VS Human</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/iot/'>Iot</a>
+                        
+                        
+                        
+                        <a href='/tag/m2m/'>M2m</a>
+                        
+                        
+                        
+                        <a href='/tag/machine_learning/'>Machine_learning</a>
+                        
+                        
+                        
+                        <a href='/tag/statistics/'>Statistics</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/machine-vs-human" class="post-thumbnail">
+                    <img src="assets/images/posts/teens-robot-future-science-39349-900x515.jpeg" alt="Machine VS Human" />
+                </a>
+                
+            </article>
+            
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="February 15, 2018">February 15, 2018</time>
+                    </div>
+                    <h3 class="post-title"><a href="/lossless-triplet-loss">Lossless Triplet loss</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/deep_learning/'>Deep_learning</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/lossless-triplet-loss" class="post-thumbnail">
+                    <img src="assets/images/posts/primate-ape-thinking-mimic.jpg" alt="Lossless Triplet loss" />
+                </a>
+                
+            </article>
+            
+        </section><!-- .read-next -->
+    </main><!-- .site-main -->
+</div><!-- .site-content -->
+
+        
+
+        
+
+        <footer id="colophon" class="site-footer outer">
+            <div class="site-footer-inside">
+                <p class="social-links">
+    
+    
+    
+    <a href="https://github.com/marcolivierarsenault" target="_blank">
+        <span class="fa-github fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">GitHub</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://medium.com/@marcolivier.arsenault" target="_blank">
+        <span class="fa-medium fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">medium</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/marcolivierarsenault" target="_blank">
+        <span class="fa-linkedin fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">Linkedin</span>
+    </a>
+    
+    
+</p>
+                <p class="site-info">
+                    <a href="#">Coffee and Data</a> &copy; 2019.
+                    Powered by <a target="_blank" href="https://jekyllrb.com/">Jekyll</a>.
+                </p>
+                <p class="back-to-top">
+                    <a id="top-button" class="top-button" href="#page">
+                        <span class="icon-arrow-up" aria-hidden="true"></span>
+                        <span class="screen-reader-text">Back to top</span>
+                    </a>
+                </p>
+            </div><!-- .site-footer-inside -->
+        </footer><!-- .site-footer -->
+    </div><!-- .site -->
+    <div id="site-overlay" class="site-overlay"></div>
+    
+    <!-- Javascript Assets -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/custom.js"></script>
+
+</body>
+
+</html>

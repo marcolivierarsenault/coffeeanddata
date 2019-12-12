@@ -1,30 +1,1241 @@
----
-layout: null
----
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ site.name | xml_escape }}</title>
-    <description>{{ site.description | xml_escape }}</description>
-    <link>{{ site.url }}{{ site.baseurl }}/</link>
-    <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml"/>
-    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
-    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
-    <generator>Jekyll v{{ jekyll.version }}</generator>
-    {% for post in site.posts limit:10 %}
+    <title>Coffee and Data</title>
+    <description>Data Science Blog by Marc-Olivier Arsenault</description>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 12 Dec 2019 16:24:20 +0000</pubDate>
+    <lastBuildDate>Thu, 12 Dec 2019 16:24:20 +0000</lastBuildDate>
+    <generator>Jekyll v4.0.0</generator>
+    
       <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.content | xml_escape }}</description>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
-        <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
-        {% for tag in post.tags %}
-        <category>{{ tag | xml_escape }}</category>
-        {% endfor %}
-        {% for cat in post.categories %}
-        <category>{{ cat | xml_escape }}</category>
-        {% endfor %}
+        <title>Using data science to save money on my next trip to Mexico</title>
+        <description>&lt;p&gt;How am I using basic data work to ensure I am getting a good price on my trip.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;It has been 4 years since my wife and I took some vacation in a sunny place. Last time, for our honeymoon, we spent some quality time in Mexico. We enjoyed 10 days in a very nice all-inclusive resort in Riviera Maya. Since then, a house, two kids, a new job and many other things. After some reflexion we decided that it was time to go back on the beach. So, next December (2019) we (my wife, our 3 years old, our 4 months old and I) will be heading to Riviera Maya once again.&lt;/p&gt;
+
+&lt;p&gt;Don’t worry, I am not turning my Data blog into a travel and lifestyle blog. I want to share with you how I am making sure I am getting the right price for the trip.&lt;/p&gt;
+
+&lt;p&gt;So here is where it is interesting, when we signed the contract this summer (in June) the contract said, if the price go down, I could, once, ask for a price match. Since the trip was +-6 months away, that looked like a very interesting feature. BTW, this is one of the factors that made us pick that travel company. To be upfront with the numbers, we paid &lt;em&gt;4317 CAD$&lt;/em&gt; for the full family.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-no-so-easy-part&quot;&gt;THE NO SO EASY PART&lt;/h2&gt;
+
+&lt;p&gt;After a couple of weeks, I went back to check the price. It was still the same. Then I realize, how can I track the price. There is no way I can take the time to go, click through a series of web interfaces to query the price. That would represent an annoying 2-3 minutes a day and I just don’t have that time.&lt;/p&gt;
+
+&lt;p&gt;Here is what it looks like to get the price update:&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/-P5g_FFkqZQ&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Obviously, the travel company does not feel like it would be a great feature to track the price. After a couple of time searching for it, there is just no way to do this. At least with a tool on the website.&lt;/p&gt;
+
+&lt;p&gt;Then what if it is below my original price, do I take this price or I wait a bit more. Because remember, I can only do a price match once. It would be really useful to have all the historic prices, then if/when it gets below original price, I could look at the trend and take a more informed decision.&lt;/p&gt;
+
+&lt;p&gt;So now I would need to spend couple of minutes daily to fetch the price, and then couple of more to copy the value into some sort of spreadsheet. Anyone that did something like this knows that it works kinda of OK for the first few days, maybe weeks. But at some point you start missing days, do copy paste error, etc.&lt;/p&gt;
+
+&lt;p&gt;Manual process in data is more or less the equivalent of no process.&lt;/p&gt;
+
+&lt;h2 id=&quot;just-script-it&quot;&gt;JUST SCRIPT IT&lt;/h2&gt;
+
+&lt;p&gt;My idea was, I can just get the URL, download the HTML from python or something and do some regex magic to extract the price.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/d8KOpGnzaAEI7JiVUp/source.gif#center&quot; alt=&quot;Dumb&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Of course, it could not be that easy. First thing, the URL does not really change. All of the price things are some sort of modal on top of the other page. So copying the URL basically brings you back to the home page.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/network.gif#right&quot; alt=&quot;Network tool&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now when I started to look at Chrome Developer tools, I assumed I could see somewhere the data coming in. Data has to come in right… right…
+Here is the network view…&lt;/p&gt;
+
+&lt;p&gt;Not as simple as I would have liked.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;After a couple of times digging in each of these files, I found the golden nugget.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/json_file.png#center&quot; alt=&quot;Json-File&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Seems like we are on the right track. We have what seems to be a JSON file and the custom URL to get it. OBVIOUSLY, when I use this URL directly in a new page it is not working. I receive the equivalent of a page unavailable. Really it seems like they don’t want us to do this. They have set many roadblocks to prevent us from doing it. &lt;em&gt;Thanks Obama&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then, I found a very neat option in chrome Dev tools.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/curl.png#center&quot; alt=&quot;Json-File&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Copy as cURL. You end up with a very long command you can paste in your terminal and get the JSON.&lt;/p&gt;
+
+&lt;p&gt;Finally, something is working. I now have a way to extract the price.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;
+import json
+from botocore.vendored import requests
+
+url = 'https://voyagesarabais.com/recherche-sud/getpricedetails?search%5Bgateway%5D=YUL&amp;amp;search%5BdateDep%5D=2019-12-15&amp;amp;search%5Bduration%5D=7day%2C8day&amp;amp;search%5BdestDep%5D=o&amp;amp;search%5BnoHotel%5D=p7&amp;amp;search%5Broom1%5D=a%3A4%3A%7Bi%3A0%3Bs%3A2%3A%2240%22%3Bi%3A1%3Bs%3A2%3A%2240%22%3Bi%3A2%3Bs%3A1%3A%223%22%3Bi%3A3%3Bs%3A1%3A%221%22%3B%7D&amp;amp;search%5Broom2%5D=&amp;amp;search%5Broom3%5D=&amp;amp;search%5Broom4%5D=&amp;amp;search%5Broom5%5D=&amp;amp;search%5Broom6%5D=&amp;amp;search%5Bflex%5D=N&amp;amp;search%5Bflexhigh%5D=3&amp;amp;search%5Bflexlow%5D=3&amp;amp;search%5Broomcallgroup%5D=%5B%7B%22_priority%22%3A9%2C%22nb_rooms%22%3A1%2C%22nb_adults%22%3A2%2C%22non_adults%22%3A%5B%223%22%2C%221%22%5D%7D%5D&amp;amp;search%5Bpricemax%5D=9000&amp;amp;search%5Bpricemin%5D=1&amp;amp;search%5Ballinclusive%5D=Y&amp;amp;search%5Bbeach%5D=&amp;amp;search%5Bcasino%5D=&amp;amp;search%5Bfamily%5D=&amp;amp;search%5Bgolf%5D=&amp;amp;search%5Bkitchenette%5D=&amp;amp;search%5Boceanview%5D=&amp;amp;search%5Bminiclub%5D=&amp;amp;search%5Bspa%5D=&amp;amp;search%5Bwedding%5D=&amp;amp;search%5Badultonly%5D=&amp;amp;search%5Bnoextrasingle%5D=&amp;amp;search%5Bvilla%5D=&amp;amp;search%5Bstar%5D=4.5&amp;amp;search%5Bstarmax%5D=4.5&amp;amp;search%5Bdirectflight%5D=&amp;amp;search%5Btourtodisplay%5D=CAH%2CVAT%2CVAC%2CVAX%2CSGN%2CSQV%2CSWG%2CWJV&amp;amp;search%5Buuid%5D=&amp;amp;search%5BnbRoomsMax%5D=&amp;amp;search%5BhotelDistanceMax%5D='
+
+payload = 'data=QXjaDVS1EqNQAPyXaymCS4l7cL1cAQQn8ILD11%2F6ndlZ%2FfMX%2FufEXTaHeV6sCyracChEFTl8XHzw9NfD8TjxcBJOrgXgabDpEkZOeyGaNsfYlfsXoxaj57LBWgZjpB2mpeDKsJ0iUmI5VVjv9eCeA34db0A8ASRklG9DJjZAVk8j%2BK58ctfscX7FxXppW62OhAMznyYwpeGqU9FoU%2F71SDiO7fk5Dz99S3CAd5RDB9lKTvzmSahBld5gdaz9vfedPConEhM4dpuBiIxpZ6fKZK7O1BDnBvU9Ba%2FHZJXiRNuFCNhRlvZh1lH4WrciCbh5GUW8r4vsjq6xDRJzTvsb3EGJM%2BplJMNkBcma09TrMezjOqFNtOCZ3EHBE8rwpbzA%2Bnp43SKN3No4fVcGdg1hSW1er0e8zHKV7qNEleUPVGcJ4YniN6lPWIA%2BfixcisbTUpO8HgR78ue3i0dZlwJXGyhYhxfWoz5wCrQL5JbnZadk2pILWEdT4RKiXbKcxemTi4mF7paMniWP190lJHXy8eZgV7QqaTnvx%2BwQYGNWsd5jPomwNojiNgn3zh%2B1E2XIxO7ri%2FfN7PXIehG2oplT9oHbTGqkNtPKtiQq9UsjliPEktUIbyc0%2Be8RqapxzPExGO%2BP8Qts0dbCnm7UJ3A15plV51xQq1Y6d07xJjZ4BhGiIHKw9uosLjWpHmidnaEsg%2Fle4JjPGvaZT3tgFAS6cjix2u53EIB4JwwyuGLJSxGCYa8HTz7Tm8WL741X0NfeAcIkpt6ssUJHChKkaf96kAMEG0PDxHs%2B7wDQs%2F2FQgVRsDful59Uhdw7UAWKp4yiQU25FNUlpGoG%2F1nlZGD7lDW2fb7RviM%2FQjpny6Hcxmd6JoeYuHtGOa6VdW3dcMVAxir5FXtwqb2fog0PfNydAw9EuBQwiAbzivCMaLJTr2f%2BXt4SMOadF6fZ29rn66FBIYemXUNzpHDqUoX4FlcaXO9ucgZAisAS66Mbh5xeEK7V0r33Z8oMzAnFHUeen8hoDtq2ahi3JY%2FQC5DqhEiB0eRNkC7bGPaGKXIAoq%2F1ToN4sHN8BpgKd56efidkDlK%2FyJtTid7itoGQUcLMrT0feaY455Znrfb28az3t9C8B9k63ya8BRcaX3QMkDIvsQHxciv33ROC4cA3WhqqcuUkPxRSuz9xACrzlEvXLM4QP0qBFEOvB7qeKyBXqppLE1DFLEPhc0zRyiWY30YwlgSpcQhzmmifBd8wXgLAYpouOFpYn%2BTqDEweseIKO3G2c3gbFJC5yOPGgTVLBsG7KYk%2BkCJpEW984kihzE6lTENZ32CHseFA%2FXCTZUG5FZ3M12VmtH2hKXC1IZ2UAQ4foyB1Qdi35QQJv9Ef235UyPN4c%2FeOeKR9eIlGlL9GiWhogoOEpUnE%2BDdTnKQXFWwgRRHGNXaonLog6ZNhoLCluUWOc8j6a%2BZ793ZojmWm39gkBnx0YWPFstDXoQSkIsIlwr4oN%2F8%2BhfU6N%2F%2Bd0J%2F%2Fb5zoDz0%3D&amp;amp;type=packageplus'
+
+headers = {
+'Cookie': 'Cookie: _gcl_au=1.1.596656575.1560126807; _ga=GA1.2.1347033583.1560126807; _fbp=fb.1.1560126807161.1014257493; _gaexp=GAX1.2.NFE8cllqRy-hy2p_zsZ_9A.18143.0; G_ENABLED_IDPS=google; is_all_inclusive_checked=1; PHPSESSID=0odjk0bsqoalhh20ijg3hgcqs2; _hjid=d29cb0cd-017e-4453-a112-b8ae863dbb89; _gid=GA1.2.1378798265.1565464684; _gac_UA-6397631-1=1.1565464692.CjwKCAjw1rnqBRAAEiwAr29II9bpU1twn6ZPzisvGTap3gofl973SwBnRO6CkYdpJF4F3qEYN9FTDBoCPRwQAvD_BwE; _gat_UA-6397631-1=1',
+'Origin': 'https://voyagesarabais.com',
+'Accept-Encoding': 'gzip, deflate, br' ,
+'Accept-Language': 'en-US,en;q=0.9,fr;q=0.8' ,
+'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36' ,
+'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' ,
+'Accept': '*/*' ,
+'Referer': 'https://voyagesarabais.com/recherche-sud?gateway=YUL&amp;amp;dateDep=2019-12-15&amp;amp;duration=7day,8day&amp;amp;destDep=o&amp;amp;noHotel=p7&amp;amp;allinclusive=Y&amp;amp;beach=&amp;amp;casino=&amp;amp;family=&amp;amp;golf=&amp;amp;kitchenette=&amp;amp;oceanview=&amp;amp;miniclub=&amp;amp;spa=&amp;amp;weeding=&amp;amp;adultonly=&amp;amp;noextrasingle=&amp;amp;villa=&amp;amp;directflight=&amp;amp;tourtodisplay=CAH,VAT,VAC,VAX,SGN,SQV,SWG,WJV&amp;amp;uuid=&amp;amp;nbRoomsMax=&amp;amp;hotelDistanceMax=&amp;amp;star=4.5&amp;amp;starmax=4.5&amp;amp;pricemin=1&amp;amp;pricemax=9000&amp;amp;flex=N&amp;amp;&amp;amp;bedrooms[0][0]=40&amp;amp;bedrooms[0][1]=40&amp;amp;bedrooms[0][2]=3&amp;amp;bedrooms[0][3]=1',
+'X-Requested-With': 'XMLHttpRequest',
+'Connection': 'keep-alive'
+}
+
+r = requests.post(url, data=payload, headers=headers)
+parsed_response = json.loads(r.text)
+
+#### you can now access your value in parsed_response as a dict
+totalPrice = parsed_response['totalprice']
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see the query is pretty nasty. Really, it is like if they do not want us to extract the prices automatically. At least, now, we have a pretty nice dictionary to work with.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-to-do-with-this-value-now&quot;&gt;WHAT TO DO WITH THIS VALUE NOW&lt;/h2&gt;
+
+&lt;p&gt;Now that we can access the value, how do we extract it. I have decided to create a AWS Lambda function that run every 6 hours to extract the price. With this price, 4 times a day, we do 3 things:&lt;/p&gt;
+
+&lt;p&gt;We check if price is good. Since I paid a bit more than 4300, if price would go below 4k$, I send myself an email. To make sure I can act quickly if needed.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;I store the value (with the timestamp) in a database. (DynamoDB)&lt;/li&gt;
+  &lt;li&gt;I store the value (with the timestamp) in AWS S3&lt;/li&gt;
+  &lt;li&gt;Why 2 and 3, I was not sure how I would use it, since AWS have some rules about what can access what and because storage is shockingly cheap, I stored it twice.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;the-price&quot;&gt;THE PRICE&lt;/h2&gt;
+
+&lt;p&gt;So sadly, the price did not go below 4300$ yet, and to be fair I doubt it will. The trip is now priced at 4700/5000 depending on the days.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/prix.png#center&quot; alt=&quot;Json-File&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To build this view, I have used the fantastic tool call &lt;a href=&quot;https://plot.ly/dash/&quot;&gt;Dash&lt;/a&gt; which allows you with fewer than 100 lines of code build this visual. If you are interested, you can go see the app here: &lt;a href=&quot;https://voyage.coffeeanddata.ca&quot;&gt;https://voyage.coffeeanddata.ca&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;discoveries&quot;&gt;DISCOVERIES&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/no_data.png#right&quot; alt=&quot;Network tool&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For a couple of days I did not collect any new data points. In fact the cURL command was getting back a 404 from the server. Took me a while to realize that I had no new data.&lt;/p&gt;
+
+&lt;p&gt;Because I did not implement any validations in my code. The Lambda script would simply silently fail and I would not collect new data points.&lt;/p&gt;
+
+&lt;p&gt;So I added a validation in my code that sends me an email when the cookie needed to be updated. I assume the cookie has some expiration encrypted in it. So simply getting a new token seems enough.&lt;/p&gt;
+
+&lt;h2 id=&quot;pick-wisely&quot;&gt;Pick wisely&lt;/h2&gt;
+
+&lt;p&gt;The other interesting points I got from the data up to now is this part of the curve:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/data_jump.png#center&quot; alt=&quot;Json-File&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For a couple of days in a row, the price surged by 200$ at around 7am in the morning. This is something I will be careful with, next time I look to book a trip.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;CONCLUSION&lt;/h2&gt;
+
+&lt;p&gt;Sadly, I did not save any money…yet. I am flying for Mexico in more than 2 months so I will keep tracking the price on my website. Travel companies seems to be making some effort to prevent us to automatically extracting the price.&lt;/p&gt;
+
+&lt;p&gt;The price looks to be very volatile, I would be curious to understand what influence the price on an hourly basis.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;
+If you are interested all the code is available in my Github repo: &lt;a href=&quot;https://github.com/marcolivierarsenault/triptracker&quot;&gt;https://github.com/marcolivierarsenault/triptracker&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can check my web app here: &lt;a href=&quot;https://voyage.coffeeanddata.ca&quot;&gt;https://voyage.coffeeanddata.ca&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+        <link>/using-data-science-to-save-money-on-my-next-trip-to-mexico</link>
+        <guid isPermaLink="true">/using-data-science-to-save-money-on-my-next-trip-to-mexico</guid>
+        
+        <category>visualisation</category>
+        
+        <category>dataprep</category>
+        
+        
       </item>
-    {% endfor %}
+    
+      <item>
+        <title>Spark &amp;#038; AI Summit 2019</title>
+        <description>&lt;p&gt;My review of the latest Spark and AI Summit hosted in San Francisco on April 24th and 25th 2019.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Last week was hosted the latest edition of the Spark Conference. It was the first time for me attending the conference. Here is a breakdown of the different aspect of the conference.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-big-news&quot;&gt;The big news&lt;/h2&gt;
+
+&lt;p&gt;Databricks, organizer of the conference and the main contributor of Spark announced couple of items:&lt;/p&gt;
+
+&lt;h3 id=&quot;koalas&quot;&gt;Koalas&lt;/h3&gt;
+
+&lt;p&gt;They announced a new project called Koalas, a native “Pandas” interpreter for Spark. You can now automagically port your Pandas code to the distributed world of Spark. This will be a fantastic bridge from people used to the Pandas environment. Many online classes/Universities teach Data Science using Pandas. Now new data scientists will fill a bit less lost.&lt;/p&gt;
+
+&lt;p&gt;I don’t think this will be useful only for new data scientists. As you probably know, data science is a world full of script sparse around your company. People create script to do various tasks, on various environments using various framework. If your main environment is Spark, you will be to align the execution environment of your Pandas and have one less to care about.&lt;/p&gt;
+
+&lt;p&gt;Koalas is available as a free open-source project &lt;a href=&quot;https://github.com/databricks/koalas&quot;&gt;here&lt;/a&gt;. The project is still in pre-release version (0.1)&lt;/p&gt;
+
+&lt;h3 id=&quot;delta-lake&quot;&gt;Delta Lake&lt;/h3&gt;
+
+&lt;figure&gt;
+    &lt;img src=&quot;assets/images/posts/delta.png#center&quot; alt=&quot;delta&quot; /&gt;
+    
+        &lt;figcaption class=&quot;caption-text&quot;&gt;delta.io&lt;/figcaption&gt; 
+    
+&lt;/figure&gt;
+
+&lt;p&gt;Delta, one of the main components of Databricks (the paid version of Spark) just got open-sourced. This is a very good news for people using the standard version of Spark.&lt;/p&gt;
+
+&lt;p&gt;All the details of the product is available on &lt;a href=&quot;https://delta.io/&quot;&gt;https://delta.io/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;mlflow&quot;&gt;MLFlow&lt;/h3&gt;
+
+&lt;figure&gt;
+    &lt;img src=&quot;assets/images/posts/mlflow.jpeg#center&quot; alt=&quot;mlflow&quot; /&gt;
+    
+        &lt;figcaption class=&quot;caption-text&quot;&gt;mlflow.org&lt;/figcaption&gt; 
+    
+&lt;/figure&gt;
+
+&lt;p&gt;MLFlow the end to end lifecycle model management from Databricks will be bumped to version 1.0 in may.&lt;/p&gt;
+
+&lt;p&gt;The following components will be added to the already existing offering:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MLFlow Workflow, allow to package multi step project in one pipeline&lt;/li&gt;
+  &lt;li&gt;MLFlow Model Registery, Registery to publish models, versions, see who is using it&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That seems like an interesting process for anyone that produce model commercially.&lt;/p&gt;
+
+&lt;p&gt;Funny story about that one, a &lt;a href=&quot;https://www.linkedin.com/in/pascalpotvin/&quot;&gt;colleague&lt;/a&gt; worked on a similar, in-house project &amp;gt; 2 years ago. So I could say that, it does fit a real need in the industry.&lt;/p&gt;
+
+&lt;h2 id=&quot;best-talks&quot;&gt;Best talks&lt;/h2&gt;
+
+&lt;p&gt;Here is my personal list of favourite talks I attended to:&lt;/p&gt;
+
+&lt;h3 id=&quot;smart-join-algorithms-for-fighting-skew-at-scale&quot;&gt;Smart Join Algorithms for Fighting Skew at Scale&lt;/h3&gt;
+
+&lt;p&gt;By: Andrew Clegg, Yelp&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://databricks.com/sparkaisummit/north-america/sessions-single-2019?id=30&quot;&gt;This talk&lt;/a&gt; about how to handle skew in large datasets was the talk I was the most looking for, actually one of the reasons I wanted to attend the conference…. and I wasn’t disappointed.&lt;/p&gt;
+
+&lt;p&gt;Andrew proposed a very simple but unbelievably efficient way to handle skew. I can already see where to apply this knowledge in my work. TLDR: he proposed to subdivides your really frequent data into smaller chunks by adding a random integer at the end of the ID, and doing and creating all the possible newID, in the smaller table.&lt;/p&gt;
+
+&lt;p&gt;For more details, you can check their his slide deck &lt;a href=&quot;https://docs.google.com/presentation/d/1AC6yqKjj-hfMYZxGb6mnJ4gn6tv_KscSHG_W7y1Py3A/edit?usp=sharing&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;apache-spark-data-validation&quot;&gt;Apache Spark Data Validation&lt;/h3&gt;
+
+&lt;p&gt;By: Patrick Pisciuneri and Doug Balog (Target)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://databricks.com/sparkaisummit/north-america/sessions-single-2019?id=100&quot;&gt;They shared Target&lt;/a&gt; data validation framework which should be open sourced soon. The framework allows to do data validation after being produced.&lt;/p&gt;
+
+&lt;p&gt;If code has unit tests, data need something like this. We all know that when you process a dataset you have a set of assumptions, they might be true when you create your pipeline, but many months after it is likely the data “truth” may be slightly different and then your pipeline may fail on the data. Even worst it might process it without failing without you being aware of it. Such framework will help keep data sanity.&lt;/p&gt;
+
+&lt;p&gt;Framework is available on &lt;a href=&quot;https://github.com/target/data-validator&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-nice-touch&quot;&gt;The nice touch&lt;/h2&gt;
+
+&lt;p&gt;I really like the spotlight they gave to ML/AI ethics. They allocated a prime spot into Thursday keynote for a talk about ethics. I think this topic is not discussed enough, or at least not with enough priority.&lt;/p&gt;
+
+&lt;p&gt;Kudos to Databricks for that one.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-intangible&quot;&gt;The intangible&lt;/h2&gt;
+
+&lt;p&gt;As you all know, conference is about 2 things, talks and networking. This conference seems to have understood it and made a lot of effort to enable networking. They basically had content/activities from 8 am to 11 pm all day to have people stay on site.&lt;/p&gt;
+
+&lt;p&gt;I had so many interesting discussion with other data scientists from various industries. To me that is the key point of the conference.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I really loved the conference, the sales pitches were balanced. Most of the technical talks were pure Spark talk from the industry without sales intentions. Networking was fantastic. Technical content was high quality. Congrats to the organizer.&lt;/p&gt;
+
+&lt;p&gt;As far as I know they will publish videos from some of the talk on their site: &lt;a href=&quot;https://databricks.com/sparkaisummit/north-america&quot;&gt;https://databricks.com/sparkaisummit/north-america&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
+        <link>/spark-ai-summit-2019</link>
+        <guid isPermaLink="true">/spark-ai-summit-2019</guid>
+        
+        <category>big_data</category>
+        
+        <category>data_science</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Spark JOIN using REGEX</title>
+        <description>&lt;p&gt;A more technical post about how I end up efficiently JOINING 2 datasets with REGEX using a custom UDF in SPARK&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;context&quot;&gt;Context&lt;/h3&gt;
+
+&lt;p&gt;For the past couple of months I have been struggling with this small problem. I have a list of REGEX patterns and I want to know which WIKIPEDIA article contains them.&lt;/p&gt;
+
+&lt;p&gt;What I wanted to end with was a table with the following columns:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Wikipedia Article ID&lt;/li&gt;
+  &lt;li&gt;Wikipedia Article Text&lt;/li&gt;
+  &lt;li&gt;Matching Pattern (or null if no pattern got triggered)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table class=&quot;wp-block-table is-style-regular&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      ID
+    &lt;/td&gt;
+    &lt;td&gt;
+      Text
+    &lt;/td&gt;
+    &lt;td&gt;
+      Pattern
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      1
+    &lt;/td&gt;
+    &lt;td&gt;
+      This Wikipedia:Statistics page measures&amp;#8230;
+    &lt;/td&gt;
+    &lt;td&gt;
+      &amp;#8216;\bbot.*generated\b&amp;#8217;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      1
+    &lt;/td&gt;
+    &lt;td&gt;
+      This Wikipedia:Statistics page measures…
+    &lt;/td&gt;
+    &lt;td&gt;
+      &amp;#8216;\bgompertz\b&amp;#8217;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      2
+    &lt;/td&gt;
+    &lt;td&gt;
+      In the context of network theory,&amp;#8230;
+    &lt;/td&gt;
+    &lt;td&gt;
+      &amp;#8216;\bpower law\b&amp;#8217;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      3
+    &lt;/td&gt;
+    &lt;td&gt;
+      In probability theory and statistics
+    &lt;/td&gt;suce
+    &lt;td&gt;
+      null
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;My list of REGEX was roughly 500 pattern long. Some were simple word search, but others were more complex REGEX. I needed a good way to search for these patterns and find a way to get them in the mentioned format. Some sort of &lt;strong&gt;LEFT OUTER JOIN.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;setup&quot;&gt;Setup&lt;/h3&gt;
+
+&lt;p&gt;Since there are a lot of articles on Wiki. Apparently, &lt;a href=&quot;https://en.wikipedia.org/wiki/Wikipedia:Size_of_Wikipedia&quot;&gt;5.8 millions of them&lt;/a&gt;. I decided to use a tool capable of paralleling the research, I have decided to use &lt;a href=&quot;https://spark.apache.org/&quot;&gt;Spark&lt;/a&gt; from the Apache foundation. Now a days, you can select your favourite cloud provider and there is a high chance you can get a cluster with not much more than 1 click, which I did.&lt;/p&gt;
+
+&lt;p&gt;Now that I had my working setup I started to look online on how to do that.&lt;/p&gt;
+
+&lt;p&gt;The first thing I found online was to do a LEFT OUTER JOIN with &lt;strong&gt;rlike&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;wiki.join(regex, expr(&quot;text rlike pattern&quot;) how='left_outer')&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That looked promising, on a small set it was doing exactly what I wanted.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/success.gif#center&quot; alt=&quot;success&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After I naively just launched the join for all the dataset… and I waited for a long time. Actually as long as it took me to realize my cluster went out of memory. From that point, I looked online for many hours, tried many solutions and I could not find anything relevant on how to solve that problem.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/disapointed.gif#center&quot; alt=&quot;disapointed&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Since that was nothing really important, I did not touch it for a couple of months and one day at work, I was talking about it with one of my colleagues and he figured out the problem.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-issue&quot;&gt;The issue&lt;/h3&gt;
+
+&lt;p&gt;Here is what he said:&lt;/p&gt;
+
+&lt;p&gt;” First, and foremost, non-equijoins perform poorly in Spark because they can only be evaluated using a &lt;strong&gt;broadcast nested loop join&lt;/strong&gt; or a &lt;strong&gt;cross join&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let’s assume that &lt;strong&gt;articles&lt;/strong&gt; contains 1,000,000 rows and &lt;strong&gt;patterns&lt;/strong&gt; contains 500 rows. The smaller dataset (&lt;strong&gt;particle&lt;/strong&gt; in this case) will be broadcast. To evaluate this join, &lt;strong&gt;particle&lt;/strong&gt; will effectively be scanned 1,000,000 times and the join predicate will be evaluated 500,000,000 times. What makes it even worse is that the pattern will be compiled 500,000,000 times.”&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;‘This basically spells disaster.’ &lt;cite&gt;― Michael ―&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;the-solution&quot;&gt;The Solution&lt;/h3&gt;
+
+&lt;p&gt;And then, after finding the issue he came back to me a couple of days later with a custom UDF&lt;/p&gt;
+
+&lt;pre class=&quot;line-numbers&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;def findMatchingPatterns(regexes: ArrayList[String]): UserDefinedFunction = {
+  udf((value: String) =&amp;gt; {
+    for {
+      text &amp;lt;- Option(value)
+      matches = regexes.asScala.filter(r =&amp;gt; Pattern.matches(r, text))
+      if matches.nonEmpty
+    } yield matches
+  }, ArrayType(StringType))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and to use it, simply need to query it like this:&lt;/p&gt;
+
+&lt;pre class=&quot;line-numbers&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;from utils.scala_functions import find_matching_patterns
+from pyspark.sql import functions as F
+
+regexes = regex.agg(F.collect_list(F.col(&quot;pattern&quot;))).collect()[0][0]
+regexes = sc.broadcast(regexes)
+
+articles = articles \
+    .withColumn(&quot;patterns&quot;, find_matching_patterns(F.col(&quot;text&quot;), regexes.value)
+    .withColumn(&quot;patterns&quot;, F.when(F.col(&quot;patterns&quot;).isNull(), F.array(F.lit(None))).otherwise(F.col(&quot;patterns&quot;))) \
+    .withColumn(&quot;pattern&quot;, F.explode(F.col(&quot;patterns&quot;)))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;result&quot;&gt;Result&lt;/h3&gt;
+
+&lt;p&gt;I tried it, and within couple of hours I had exactly what I wanted.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mission_accomplished.gif#center&quot; alt=&quot;mission_accomplished&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I decided to do a small benchmark. After both datasets loaded and cached in Spark, I selected only 20 000 articles to try both methods. By using the same exact samples here are the results:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;First technique, &lt;em&gt;rlike&lt;/em&gt;: 3 articles per seconds&lt;/li&gt;
+  &lt;li&gt;Second technique, &lt;em&gt;UDF&lt;/em&gt;: ~5 000 articles per seconds&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I know most of this delay is due to cache, reading and other memory management, but still what a difference.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;I do not usually write this type of blog post, but since I looked for a solution and could not find anything, I thought it worth sharing back.&lt;/p&gt;
+
+&lt;p&gt;I would like to thank &lt;a href=&quot;https://www.linkedin.com/in/mstyles/&quot;&gt;Michael Styles&lt;/a&gt; for his help on this project.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 17 Apr 2019 00:00:00 +0000</pubDate>
+        <link>/spark-join-using-regex</link>
+        <guid isPermaLink="true">/spark-join-using-regex</guid>
+        
+        <category>big_data</category>
+        
+        <category>data_pre-processing</category>
+        
+        <category>data_science</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>The data science pyramid</title>
+        <description>&lt;p&gt;Let’s not start with data science this time. Let’s start with psychology. I am far from having any competence in this domain, but I remember in high school being presented the &lt;a href=&quot;https://en.wikipedia.org/wiki/Maslow%27s_hierarchy_of_needs&quot;&gt;Maslow’s hierarchy of needs&lt;/a&gt;. The best I can describe it is the different stage humans must go through to &lt;a href=&quot;https://www.imdb.com/title/tt0454921/&quot;&gt;find happiness&lt;/a&gt;. To get better understanding of it, you can look &lt;a href=&quot;https://www.simplypsychology.org/maslow.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Here is the famous pyramid.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/maslow-5.jpg#center&quot; alt=&quot;maslow-5&quot; /&gt;
+&lt;a href=&quot;https://www.simplypsychology.org/maslow.html&quot;&gt;source&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The key thing to get out of this is that you need to go through all steps, you can skip any, never.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;‘Needs lower down in the hierarchy must be satisfied before individuals can attend to needs higher up.’ &lt;cite&gt;― &lt;a href=&quot;https://www.simplypsychology.org/maslow.html&quot;&gt;simplypsychology&lt;/a&gt; ―&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;OK wait a minute, is this supposed to be a blog about technology? Yes, you are right, here it goes.&lt;/p&gt;
+
+&lt;h2 id=&quot;new-job&quot;&gt;New Job&lt;/h2&gt;
+
+&lt;p&gt;As you may know, I recently change career. I move to &lt;a href=&quot;https://www.shopify.ca/&quot;&gt;Shopify&lt;/a&gt; as a Data Scientist. Like any other career changes, by working in a new environment, with new people, new boss, new everything, you discover new way of doing things, new way of seeing the world.&lt;/p&gt;
+
+&lt;p&gt;Like a mentor told me one day, “You will see, by changing job, what looked so hard in your old job will not be tough at all in the new place. What you never knew could be an issue will be rough challenge in the new place.” Like many other times, he was right.&lt;/p&gt;
+
+&lt;p&gt;In a previous role I used to find myself a bit disconnected as a machine learning “expert” or whatever you like to call it. I would be doing very cool things but it was sometime a bit hard to get the full picture.&lt;/p&gt;
+
+&lt;p&gt;When I joined Shopify I was introduced to the &lt;strong&gt;Data Science Hierarchy of&lt;/strong&gt; &lt;strong&gt;Needs&lt;/strong&gt;. You can read the full article &lt;a href=&quot;https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007&quot;&gt;here&lt;/a&gt;, I think it’s really worth it. But &lt;strong&gt;TLDR&lt;/strong&gt; It is useless to hire top data scientists if you don’t have the proper base.&lt;/p&gt;
+
+&lt;p&gt;So to make this more concrete, here is the famous pyramid.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/pyramid_data_science.png#center&quot; alt=&quot;pyramid_data_science&quot; /&gt;
+&lt;a href=&quot;https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007&quot;&gt;source&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It took me a while to really understand it, but as cool as doing crazy multi-level-convolutional-neural-net-deep-random-forest-other-cool-buzzword-maybee-even-microservices, &lt;strong&gt;you cannot jump to this stage before being accomplished in the underlying stage.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Not only in terms of individual skills, I mean, as a Company, even as a project. When you work on a project, the project as to cross these stages. Most likely (Like the Maslow’s pyramid) you will never reach the last step for most of your projects.&lt;/p&gt;
+
+&lt;p&gt;Like explained in the Maslow’s pyramid. There is absolutely no way you can be too far in the steps. If you jump to a late stage too fast, it is not a solid pyramid and has a high chance of failure. Moreover, to properly accomplish each of these step, you must use output from the previous step. At the base of the pyramid, output is data, processes and databases, later in the process it is more around insight, answers, etc.&lt;/p&gt;
+
+&lt;p&gt;Each and every component from the previous step is crucial to the success of the following stage.&lt;/p&gt;
+
+&lt;h2 id=&quot;benefits&quot;&gt;Benefits&lt;/h2&gt;
+
+&lt;p&gt;My new role at Shopify being slightly different then in the past. I am involve in almost all phase of the projects I participate in. I can tell you something crazy, &lt;strong&gt;most of the value ($) comes from a good understanding of the business problem, the product and the data&lt;/strong&gt;. Not from using funky algorithms, not from using super advance tools.&lt;/p&gt;
+
+&lt;p&gt;Don’t get me wrong, these fancy algorithms are useful, the super-expensive tools are useful (depends, but this is another topic) but it should not be the first thing to do. It is never a low hanging fruit, it is rarely the high $ generator.&lt;/p&gt;
+
+&lt;p&gt;Unless you have done the rest you should not lose time with this.&lt;/p&gt;
+
+&lt;h2 id=&quot;all-across-the-pyramid&quot;&gt;All across the pyramid&lt;/h2&gt;
+
+&lt;p&gt;The other thing I have discovered with this is the power of individually owning all the pyramid for a project (or part of a project).&lt;/p&gt;
+
+&lt;p&gt;Because I wrote the ETL for this data, because I was sitting with the Devs, when we decided what data to produce and how to wrap it, because I was with the project manager when we decided key metrics for the project and what we would A/B test. I understand the data, like I never did before, I truly understand where it comes from, how it is transformed and how to use it.&lt;/p&gt;
+
+&lt;p&gt;This makes my life so much easier when it gets the time to derive any insight. I am not dependent on anyone else to take time to explain me. If I find weird behavior. I can either, explain them or have them corrected. I can work with the data.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;When you jump to a higher stage too quickly, you are lying. Lying to yourself, lying to your team and lying to the great discipline of data science.  I know it does not sound cool, but be humble and invest the effort where it should be. But data deserves it.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+        <link>/the-data-science-pyramid</link>
+        <guid isPermaLink="true">/the-data-science-pyramid</guid>
+        
+        <category>data_science</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>This is what I really do as a Data Scientist</title>
+        <description>&lt;p&gt;Data Science is getting very popular and many people are trying to jump into the bandwagon, and this is GREAT. But many assume that data science, machine learning, plug any other buzzword here, is to plug data to some Sckit-Learn libraries. Here is what the actual job is.&lt;/p&gt;
+
+&lt;p&gt;To bring you into context, the following is happening after the data was collected. Don’t get me wrong, I don’t think it should be considered a simple step, but I would like to focus on data pre-processing and normalization.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;the-problem&quot;&gt;The Problem&lt;/h2&gt;
+
+&lt;p&gt;If you followed my blogs, you probably realized that I work a lot in the Machine 2 Machine field. Recently at work I was trying to cluster machine together based on their behaviour, aka their data consumption.&lt;/p&gt;
+
+&lt;p&gt;These features report the usage download and upload of specific categories of services, e.g. Social Media, Audio, etc. For this, let’s assume that we are looking at a counter that looks at how much connection was established to AWS (Amazon Web Services).&lt;/p&gt;
+
+&lt;p&gt;If we take the data as is and decide to pull clusters out of it, we get something like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/mixClusters.png#center&quot; alt=&quot;mixClusters&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Note, this an &lt;a href=&quot;https://en.wikipedia.org/wiki/Linear_discriminant_analysis&quot;&gt;LDA&lt;/a&gt; 2 axis representation of the data. The LDA as a ± 90% representation factor. Even if it’s not perfect the clustering is close to useless. At this point, some I suggest using this or that algorithm and to tune the hyper parameters and this is exactly the worst idea.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h2 id=&quot;the-infamous-data&quot;&gt;The Infamous Data&lt;/h2&gt;
+
+&lt;p&gt;Now, let’s work a bit. What does the data look like. Advise you should spend a lot of time before typing some &lt;em&gt;from sklearn.cluster import KMeans.&lt;/em&gt; We will look at one specific feature for this example but, keep in mind that most of them were similar.&lt;/p&gt;
+
+&lt;p&gt;Here is the AWS Counter (Not really but we will pretend).
+&lt;img src=&quot;assets/images/posts/distribution.png#center&quot; alt=&quot;distribution&quot; /&gt;
+All the data seems to be 0, but if you look in detail, there is value going up to 3e+7. How on earth do you expect to create any meaningful distance with this. Even if you scale it between 0 and 1 most of the data will be between 0 and 0.0000005 or something like this, hence the distance won’t get any better.&lt;/p&gt;
+
+&lt;p&gt;If we look at all the non-zero data, we have something more interesting:
+&lt;img src=&quot;assets/images/posts/not0.png#center&quot; alt=&quot;not0&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h2 id=&quot;data-processing&quot;&gt;Data processing&lt;/h2&gt;
+
+&lt;p&gt;This start to look like a &lt;a href=&quot;https://en.wikipedia.org/wiki/Log-normal_distribution&quot;&gt;LogNormal&lt;/a&gt; distribution. Now how can we normalize it. At least a bit. So a colleague of mine, &lt;a href=&quot;https://www.linkedin.com/in/tanguy-compagnon-dls/&quot;&gt;Tanguy&lt;/a&gt; had a very clever idea on how to convert that lognormal Distribution. The &lt;a href=&quot;https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.boxcox.html&quot;&gt;Box Cox transform&lt;/a&gt;. This transform tries to “normalize” as much as possible a different distribution including LogNormal.&lt;/p&gt;
+
+&lt;p&gt;This transform tries to minimize the lamda value in this formula (Picture from &lt;a href=&quot;https://en.wikipedia.org/wiki/Power_transform&quot;&gt;Wikipedia&lt;/a&gt;) :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/coxbox.png#center&quot; alt=&quot;coxbox&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In our case, there is so much zeros that lamda would be lower to something like this: (Note: You need to get only positive value so 1 was added to all values)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/original.png#center&quot; alt=&quot;original&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this picture you can see the small bump at around 9 and it contains most of the non-zero data. At this point we already have something better, order of magnitude better in terms of distances but still it could be improved.&lt;/p&gt;
+
+&lt;p&gt;Let’s bring back the context of this data again. We are trying to categorized machine behaviour. In the world of machine to machine there is a lot of information hidden in this. The machine CAN use AWS. It sounds funny but it’s very important here. These machines are usually programmed to do a very specific task, e.g. Report weather, show adds, etc. Their task is usually hard-coded and they don’t randomly start going on Facebook or something. Just the fact that they can use a service (like AWS) is a lot of information. So my plan was set, I will leave the zeros at zeros and then give the range 0.5 to 1 for the rest of this data. Now how to express the rest of the data… Box Cox transform. I will do the transform on the only non-zero devices.&lt;/p&gt;
+
+&lt;p&gt;So here is what it looks. On the left you can see all the data transformed like explained in a 0 – 1 space. On the right, you have a zoomed graphic of the section between 0.5 and 1.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/coxboxover0.png#center&quot; alt=&quot;coxboxover0&quot; /&gt;
+Even if the left graph does not seem that better, I can assure you that for the algorithm it’s a world of differences.&lt;/p&gt;
+
+&lt;h2 id=&quot;result&quot;&gt;Result&lt;/h2&gt;
+
+&lt;p&gt;So, after pre-processing the data, we ran the clustering algorithm on it, and without any customization we got that results.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/final-Cluster.png#center&quot; alt=&quot;final-Cluster&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I find people are a bit “trigger happy” on the algorithms and jump too quickly to the model building. Some say that you don’t even have to understand the math behind and I disagree, you need to understand at least the fundamental of an algo. At lease enough to understand how to prepare the data for it. As examples in K-Means it’s all about the distance between point, and when you have this type of range (10e7) you cannot expect the algo to find subtitle patterns, it will be blinded by the range.&lt;/p&gt;
+
+&lt;p&gt;So please, look at your data again and again. To the point you feel you can separate it by hand, then let fancy algorithms to the rest of the work.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+        <link>/this-is-what-i-really-do-as-a-data-scientist</link>
+        <guid isPermaLink="true">/this-is-what-i-really-do-as-a-data-scientist</guid>
+        
+        <category>clustering</category>
+        
+        <category>data_pre-processing</category>
+        
+        <category>Statistics</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Lossless Triplet loss</title>
+        <description>&lt;p&gt;A more efficient loss function for Siamese&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;At work, we are working with Siamese Neural Net (NN) for one shot training on telecom data. Our goal is to create a NN that can easily detect failure in Telecom Operators networks. To do so, we are building this N dimension encoding to describe the actual status of the network. With this encoding we can then evaluate what is the status of network and detect faults. This encoding as the same goal as something like word encoding (&lt;a href=&quot;https://en.wikipedia.org/wiki/Word2vec&quot;&gt;Word2Vec&lt;/a&gt; or others). To train this encoding we use a &lt;a href=&quot;https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf&quot;&gt;Siamese Network&lt;/a&gt; [Koch et al.] to create a one shot encoding so it would work on any network. A simplified description of Siamese network is available &lt;a href=&quot;https://hackernoon.com/one-shot-learning-with-siamese-networks-in-pytorch-8ddaab10340e&quot;&gt;here&lt;/a&gt;. For more details about our experiment you can read the &lt;a href=&quot;https://thelonenutblog.wordpress.com/2017/12/14/do-telecom-networks-dreams-of-siamese-memories/&quot;&gt;blog of my colleague&lt;/a&gt; who is the master brain behind this idea.&lt;/p&gt;
+
+&lt;p&gt;The current experiment, up to now is working great. This network can split the different traffic scenarios. As you can see on this picture, the good traffic (Green) is easily spitted away from error type 1 (Red) and error type 2 (Orange)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/triplet_model1.png#center&quot; alt=&quot;triplet_model1&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-problem&quot;&gt;THE PROBLEM&lt;/h2&gt;
+
+&lt;p&gt;So what is the problem, it seems to work fine, doesn’t it? After some reflection I realized that there was a big flaw in the loss function.&lt;/p&gt;
+
+&lt;p&gt;First here is the code for our model. (Don’t have to read all the code, I will point out the issue.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;
+def triplet_loss(y_true, y_pred, alpha = 0.4):
+    &quot;&quot;&quot;
+    Implementation of the triplet loss function
+    Arguments:
+    y_true -- true labels, required when you define a loss in Keras, you don't need it in this function.
+    y_pred -- python list containing three objects:
+            anchor -- the encodings for the anchor data
+            positive -- the encodings for the positive data (similar to anchor)
+            negative -- the encodings for the negative data (different from anchor)
+    Returns:
+    loss -- real number, value of the loss
+    &quot;&quot;&quot;
+
+    anchor = y_pred[:,0:3]
+    positive = y_pred[:,3:6]
+    negative = y_pred[:,6:9]
+
+    # distance between the anchor and the positive
+    pos_dist = K.sum(K.square(anchor-positive),axis=1)
+
+    # distance between the anchor and the negative
+    neg_dist = K.sum(K.square(anchor-negative),axis=1)
+
+    # compute loss
+    basic_loss = pos_dist-neg_dist+alpha
+    loss = K.maximum(basic_loss,0.0)
+
+    return loss
+  
+def create_base_network(in_dims, out_dims):
+    &quot;&quot;&quot;
+    Base network to be shared.
+    &quot;&quot;&quot;
+    model = Sequential()
+    model.add(BatchNormalization(input_shape=in_dims))
+    model.add(LSTM(512, return_sequences=True, dropout=0.2, recurrent_dropout=0.2, implementation=2))
+    model.add(LSTM(512, return_sequences=False, dropout=0.2, recurrent_dropout=0.2, implementation=2))
+    model.add(BatchNormalization())
+    model.add(Dense(512, activation='relu'))
+    model.add(BatchNormalization())
+    model.add(Dense(out_dims, activation='linear'))
+    model.add(BatchNormalization())
+
+    return model
+  
+in_dims = (N_MINS, n_feat)
+out_dims = N_FACTORS
+
+# Network definition
+with tf.device(tf_device):
+
+    # Create the 3 inputs
+    anchor_in = Input(shape=in_dims)
+    pos_in = Input(shape=in_dims)
+    neg_in = Input(shape=in_dims)
+
+    # Share base network with the 3 inputs
+    base_network = create_base_network(in_dims, out_dims)
+    anchor_out = base_network(anchor_in)
+    pos_out = base_network(pos_in)
+    neg_out = base_network(neg_in)
+    merged_vector = concatenate([anchor_out, pos_out, neg_out], axis=-1)
+
+    # Define the trainable model
+    model = Model(inputs=[anchor_in, pos_in, neg_in], outputs=merged_vector)
+    model.compile(optimizer=Adam(),
+                  loss=triplet_loss)
+
+# Training the model
+model.fit(train_data, y_dummie, batch_size=256, epochs=10)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;My issue is with this line of the loss function.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;‘loss = K.maximum(basic_loss,0.0)’&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;There is a major issue here, every time your loss gets below 0, you loose information, a ton of information. First let’s look at this function.&lt;/p&gt;
+
+&lt;p&gt;It basically does this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&quot;assets/images/posts/schroffetall.png#center&quot; alt=&quot;schroffetall&quot; /&gt;
+    
+        &lt;figcaption class=&quot;caption-text&quot;&gt;Schroff et all&lt;/figcaption&gt; 
+    
+&lt;/figure&gt;
+
+&lt;p&gt;It tries to bring close the Anchor (current record) with the Positive (A record that is in theory similar with the Anchor) as far as possible from the Negative (A record that is different from the Anchor).&lt;/p&gt;
+
+&lt;p&gt;The actual formula for this loss is:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&quot;assets/images/posts/loss_formula.png#center&quot; alt=&quot;schroffetall&quot; /&gt;
+    
+        &lt;figcaption class=&quot;caption-text&quot;&gt;Schroff et all&lt;/figcaption&gt; 
+    
+&lt;/figure&gt;
+
+&lt;p&gt;This process is detailed in the paper &lt;a href=&quot;https://arxiv.org/abs/1503.03832&quot;&gt;FaceNet: A Unified Embedding for Face Recognition and Clustering&lt;/a&gt; by Florian Schroff, Dmitry Kalenichenko and James Philbin.&lt;/p&gt;
+
+&lt;p&gt;So as long as the negative value is further than the positive value + alpha there will be no gain for the algorithm to condense the positive and the anchor. Here is what I mean:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/distance_cost.png#center&quot; alt=&quot;distance&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s pretend that:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Alpha is 0.2&lt;/li&gt;
+  &lt;li&gt;Negative Distance is 2.4&lt;/li&gt;
+  &lt;li&gt;Positive Distance is 1.2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The loss function result will be 1.2–2.4+0.2 = -1. Then when we look at Max(-1,0) we end up with 0 as a loss. The Positive Distance could be anywhere above 1 and the loss would be the same. With this reality, it’s going to be very hard for the algorithm to reduce the distance between the Anchor and the Positive value.&lt;/p&gt;
+
+&lt;p&gt;As a more visual example, here is 2 scenarios A and B. They both represent what the loss function measure for us.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/distance2.png#center&quot; alt=&quot;distance&quot; /&gt;
+&lt;img src=&quot;assets/images/posts/formula_distance.png#center&quot; alt=&quot;distance&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After the Max function both A and B now return 0 as their loss, which is a clear lost of information. By looking simply, we can say that B is better than A.&lt;/p&gt;
+
+&lt;p&gt;In other words, you cannot trust the loss function result, as an example here is the result around Epoch 50. The loss (train and dev) is 0, but clearly the result is not perfect.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/epoch.png#center&quot; alt=&quot;epoch&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;other-losses&quot;&gt;OTHER LOSSES&lt;/h2&gt;
+
+&lt;p&gt;Another famous loss function the contrastive loss describe by Yan LeCun and his team in their paper &lt;a href=&quot;http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf&quot;&gt;Dimensionality Reduction by Learning an Invariant Mapping&lt;/a&gt; is also maxing the negative result, which creates the same issue.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&quot;assets/images/posts/lecunFormula.png#center&quot; alt=&quot;The Contrastive Loss Function, (LeCun)&quot; /&gt;
+    
+        &lt;figcaption class=&quot;caption-text&quot;&gt;The Contrastive Loss Function, (LeCun)&lt;/figcaption&gt; 
+    
+&lt;/figure&gt;
+
+&lt;p&gt;With the title, you can easily guess what is my plan… To make a loss function that will capture the “lost” information below 0. After some basic geometry, I realized that if you contain the N dimension space where the loss is calculated you can more efficiently control this. So the first step was to modify the model. The last layer (Embedding layer) needed to be controlled in size. By using a Sigmoïde activation function instead of a linear we can guarantee that each dimension will be between 0 and 1.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&quot;assets/images/posts/sigmoid.png#center&quot; alt=&quot;Sigmoïde activation&quot; /&gt;
+    
+        &lt;figcaption class=&quot;caption-text&quot;&gt;Sigmoïde activation&lt;/figcaption&gt; 
+    
+&lt;/figure&gt;
+
+&lt;p&gt;Then we could assume that the max value of a distance would be N. N being the number of dimensions. Example, if my anchor is at 0,0,0 and my negative point is at 1,1,1. The distance based on Schroff formula would be 1²+1²+1² = 3. So if we take into account the number of dimensions, we can deduce the max distance. So here is my proposed formula.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&quot;assets/images/posts/linear_loss_function.png#center&quot; alt=&quot;Linear loss function&quot; /&gt;
+    
+        &lt;figcaption class=&quot;caption-text&quot;&gt;Linear loss function&lt;/figcaption&gt; 
+    
+&lt;/figure&gt;
+
+&lt;p&gt;Where N is the number of dimensions of the embedding vector. This look very similar, but by having a Sigmoïde and a proper setting for N, we can guarantee that the value will stay above 0.&lt;/p&gt;
+
+&lt;h2 id=&quot;first-results&quot;&gt;FIRST RESULTS&lt;/h2&gt;
+
+&lt;p&gt;After some initial test, we ended up with this model.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/model2.png#center&quot; alt=&quot;model2&quot; /&gt;
+On the good side we can see that all the points from the same cluster get super tight, even to the point that they become the same. But on the downside it turns out that the two error cases (Orange and Red) got superimposed.&lt;/p&gt;
+
+&lt;p&gt;The reason for this is the loss is smaller like this then when the Red and Orange split. So we needed to find a way to break the cost linearity; In other words, make it really costly as more the error grows.&lt;/p&gt;
+
+&lt;p&gt;Non-Linearity&lt;/p&gt;
+
+&lt;p&gt;Instead of the linear cost we proposed a non-linear cost function:
+&lt;img src=&quot;assets/images/posts/graph.png#center&quot; alt=&quot;graph&quot; /&gt;
+&lt;img src=&quot;assets/images/posts/ln_function.png#center&quot; alt=&quot;ln_function&quot; /&gt;
+Where the curve is represented by this ln function when N = 3&lt;/p&gt;
+
+&lt;p&gt;With this new non-linearity, our cost function now looks like:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/custom_function.png#center&quot; alt=&quot;custom_function&quot; /&gt;
+Where N is the number of dimensions (Number of output of your network; Number of features for your embedding) and β is a scaling factor. We suggest setting this to N, but other values could be used to modify the non-linearity cost.&lt;/p&gt;
+
+&lt;p&gt;As you can see, the result speaks for itself:
+&lt;img src=&quot;assets/images/posts/model3.png#center&quot; alt=&quot;model3&quot; /&gt;
+We now have very condensed cluster of points, way more than the standard triplet function result.&lt;/p&gt;
+
+&lt;p&gt;As a reference here is the code for the loss function.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;
+def lossless_triplet_loss(y_true, y_pred, N = 3, beta=N, epsilon=1e-8):
+    &quot;&quot;&quot;
+    Implementation of the triplet loss function
+
+    Arguments:
+    y_true -- true labels, required when you define a loss in Keras, you don't need it in this function.
+    y_pred -- python list containing three objects:
+            anchor -- the encodings for the anchor data
+            positive -- the encodings for the positive data (similar to anchor)
+            negative -- the encodings for the negative data (different from anchor)
+    N  --  The number of dimension
+    beta -- The scaling factor, N is recommended
+    epsilon -- The Epsilon value to prevent ln(0)
+
+    Returns:
+    loss -- real number, value of the loss
+    &quot;&quot;&quot;
+    anchor = tf.convert_to_tensor(y_pred[:,0:N])
+    positive = tf.convert_to_tensor(y_pred[:,N:N*2])
+    negative = tf.convert_to_tensor(y_pred[:,N*2:N*3])
+
+    # distance between the anchor and the positive
+    pos_dist = tf.reduce_sum(tf.square(tf.subtract(anchor,positive)),1)
+    # distance between the anchor and the negative
+    neg_dist = tf.reduce_sum(tf.square(tf.subtract(anchor,negative)),1)
+
+    #Non Linear Values  
+
+    # -ln(-x/N+1)
+    pos_dist = -tf.log(-tf.divide((pos_dist),beta)+1+epsilon)
+    neg_dist = -tf.log(-tf.divide((N-neg_dist),beta)+1+epsilon)
+
+    # compute loss
+    loss = neg_dist + pos_dist
+
+    return loss
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Keep in mind, for it to work you need your NN last layer to be using a Sigmoïde activation function.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/new_epoch.png#center&quot; alt=&quot;new_epoch&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Even after 1000 Epoch, the Lossless Triplet Loss does not generate a 0 loss like the standard Triplet Loss.&lt;/p&gt;
+
+&lt;h2 id=&quot;differences&quot;&gt;DIFFERENCES&lt;/h2&gt;
+
+&lt;p&gt;Based on the cool animation of his model done by my &lt;a href=&quot;https://thelonenutblog.wordpress.com/&quot;&gt;colleague&lt;/a&gt;, I have decided to do the same but with a live comparison of the two losses function. Here is the live result were you can see the standard Triplet Loss (from Schroff paper) on the left and the Lossless Triplet Loss on the right:&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/XAH83kCJB3E&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;CONCLUSION&lt;/h2&gt;
+
+&lt;p&gt;This loss function seems good, now I will need to test it on more data, different use cases to see if it is really a robust loss function. Let me know what you think about this loss function.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Koch, Gregory, Richard Zemel, and Ruslan Salakhutdinov. “Siamese neural networks for one-shot image recognition.” ICML Deep Learning Workshop. Vol. 2. 2015.&lt;/li&gt;
+  &lt;li&gt;Mikolov, Tomas, et al. “Efficient estimation of word representations in vector space.” arXiv preprint arXiv:1301.3781 (2013).&lt;/li&gt;
+  &lt;li&gt;Schroff, Florian, Dmitry Kalenichenko, and James Philbin. “Facenet: A unified embedding for face recognition and clustering.” Proceedings of the IEEE conference on computer vision and pattern recognition. 2015.&lt;/li&gt;
+  &lt;li&gt;Hadsell, Raia, Sumit Chopra, and Yann LeCun. “Dimensionality reduction by learning an invariant mapping.” Computer vision and pattern recognition, 2006 IEEE computer society conference on. Vol. 2. IEEE, 2006.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://thelonenutblog.wordpress.com/&quot;&gt;https://thelonenutblog.wordpress.com/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hackernoon.com/one-shot-learning-with-siamese-networks-in-pytorch-8ddaab10340e&quot;&gt;https://hackernoon.com/one-shot-learning-with-siamese-networks-in-pytorch-8ddaab10340e&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
+        <link>/lossless-triplet-loss</link>
+        <guid isPermaLink="true">/lossless-triplet-loss</guid>
+        
+        <category>Deep_Learning</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Distribution&amp;#8217;s 5th Symphony</title>
+        <description>&lt;p&gt;I would like to share with you a small tool I have discovered this year which is very useful; Violin Plot!&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;the-intro&quot;&gt;The Intro&lt;/h2&gt;
+
+&lt;h2 id=&quot;violin-plot&quot;&gt;Violin Plot&lt;/h2&gt;
+
+&lt;p&gt;Violin plots are a nice tool that we can find in many different visualisation libraries. What do they do they show and compare distributions. It’s, in my own opinion a better way to compare distributions. Here is a quick example&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&quot;assets/images/posts/seaborn-violinplot-2.png#center&quot; alt=&quot;seasboarn&quot; /&gt;
+    
+        &lt;figcaption class=&quot;caption-text&quot;&gt;Seaborn Violin plot (Source: seaborn.pydata.org)&lt;/figcaption&gt; 
+    
+&lt;/figure&gt;
+
+&lt;p&gt;As you can see here you can easily compare the value from the for categories (Thur, Fri, Sat, Sun).&lt;/p&gt;
+
+&lt;p&gt;In a more precise way, the Violin plot is a mix of &lt;a href=&quot;https://seaborn.pydata.org/generated/seaborn.boxplot.html#seaborn.boxplot&quot;&gt;Box Plot&lt;/a&gt; and &lt;a href=&quot;https://seaborn.pydata.org/generated/seaborn.kdeplot.html&quot;&gt;Kernel density plot&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;the-set-list&quot;&gt;The Set list&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/cutted-1.png#right&quot; alt=&quot;cutted&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The thin bar represent the 95% confidence interval&lt;/li&gt;
+  &lt;li&gt;The thick bar represent the second and third Quartile&lt;/li&gt;
+  &lt;li&gt;The white dot represent the Median (The value in the middle)&lt;/li&gt;
+  &lt;li&gt;Top and Bottom point represent your min and max&lt;/li&gt;
+  &lt;li&gt;The coloured area represent the density or the distribution of the population&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h2 id=&quot;the-masterpiece&quot;&gt;The Masterpiece&lt;/h2&gt;
+
+&lt;p&gt;I have used them for hyper-parameter tuning. When you do hyper-parameter tuning using grid &lt;a href=&quot;http://scikit-learn.org/stable/modules/grid_search.html&quot;&gt;search&lt;/a&gt; from scikit-learn you get a array of result. I you look simply at the absolute minimum, you can easily end up with an anomaly or a corner case. But looking at the tendance you can get a way better result.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Value will tend to be better in general&lt;/li&gt;
+  &lt;li&gt;The sparse between good and bad will be smaller.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/Violon2.png#center&quot; alt=&quot;violon2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the above picture it is clear that if you pick a value above 3, you end up with highly variable values. Even if you potentially can get a better result with one of the values &amp;gt; 3, you get no stability and the % chances you get something bad is big.&lt;/p&gt;
+
+&lt;p&gt;In this case the value 3 is very good because. First it is a better score than 1 and 2, but it’s also a lot more compact, thus you can expect a small variance in your results.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h2 id=&quot;where-to-buy-tickets&quot;&gt;Where to buy tickets&lt;/h2&gt;
+
+&lt;p&gt;You can get violin plot in most of the popular visualization libraries. Here is a short list:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://seaborn.pydata.org/generated/seaborn.violinplot.html&quot;&gt;Seaborn&lt;/a&gt;: The one I have used in this article.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://plot.ly/python/violin-plot/&quot;&gt;Plotly&lt;/a&gt;: Another very popular lib.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://matplotlib.org/examples/statistics/violinplot_demo.html&quot;&gt;Matplotib&lt;/a&gt;: I do not like this one, personal taste.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://ggplot2.tidyverse.org/reference/geom_violin.html&quot;&gt;GGplot2&lt;/a&gt;: For R lovers 😉&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-critics&quot;&gt;The critics&lt;/h2&gt;
+
+&lt;p&gt;In conclusion, this is a very nice tool when you need to compare distribution. I honestly think this tool is undervalued and underused.&lt;/p&gt;
+
+&lt;p&gt;Happy plotting,&lt;/p&gt;
+</description>
+        <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+        <link>/distributions-5th-symphony</link>
+        <guid isPermaLink="true">/distributions-5th-symphony</guid>
+        
+        <category>Machine_Learning</category>
+        
+        <category>Statistics</category>
+        
+        <category>Visualization</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Machine VS Human</title>
+        <description>&lt;p&gt;Lately at work we had the opportunity to propose new Uses Cases to develop around  Ericsson Expert Analytic and data science in the operator’s network. We propose to work on an automated system to detect machines in the subscriber base.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;I know, in a beautiful scenario every operator would have a perfect knowledge of each and every of their subscribers. But the reality is different. Now with the rise of IoT more and more devices require connectivity. LTE and other cellular technologies are perfect because it brings the connectivity and the mobility. But everybody does it their own way. Of course, some people and enterprise, contact an operator to reach an agreement but the vast majority simply figures a way to get it. The only way the operator has to determine what is a machine is by using the machine Type ID but this value has been proven wrong.&lt;/p&gt;
+
+&lt;p&gt;The Use Case (UC) we propose will automatically detect which one is a machine and which is in fact a subscriber. To do so, we will use network metadata which is available to the operator. Thus there is no implication on the user side. The core of this metadata is subscriber communication behaviour e.g. data consumption, SMS, cell towers connections, etc. Obviously I will keep the key features for myself 😛&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/wp-content/uploads/2017/09/Tagging.png#small&quot; alt=&quot;tagging&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Our dataset had a very unbalance number of machine vs humans, which is expected. Only 5% of the subscribers are machines.&lt;/p&gt;
+
+&lt;h2 id=&quot;feature-engineering&quot;&gt;Feature Engineering&lt;/h2&gt;
+
+&lt;p&gt;Luckily for us we had access to an operator’s data to produce a prototype model. The goal of this model is simply to prove that we can achieve good result in machine detection. To build this model I assumed keys of the model was in the stability over days. My intuition is, machine should be consistent in terms of download, movement, etc. In other words, if a machine is fixed (not moving) it should never move. While a human might move some days and stay home some others.&lt;/p&gt;
+
+&lt;p&gt;I did not find efficient way to handle time series in machine learning except deep learning, so I had to engineer my own variation of it by analyzing and categorizing the time series and to express it in terms of features for standard machine learning. To do it we look at all the things that were moving over time and created 2 features average, standard deviation.&lt;/p&gt;
+
+&lt;p&gt;So I build a feature set, per subscriber, that describe the best the metadata and their stability over time.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h2 id=&quot;building-model&quot;&gt;Building Model&lt;/h2&gt;
+
+&lt;p&gt;To classify machine from the dataset I built a Random Forest.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/wp-content/uploads/2017/09/randomForest.png#small&quot; alt=&quot;random_forest&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Random Forest performed really well. After some tweaking I was able to reach 98.9% accuracy. Here is a quick view of the confusion matrix, showing how the machine learning performed in the highly unbalanced set.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/wp-content/uploads/2017/09/confusion.png&quot; alt=&quot;confusion&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The following proves that we can accurately detect machine using only network related data. After looking at our model, we looked at the key features. Out of the top (most impact on the classifier) five features, four are the Meta features we created to evaluate the stability over the days. In conclusion we can confirm that we have a working prototype and it would be very interesting to implement it with live traffic.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h2 id=&quot;another-approach&quot;&gt;Another Approach&lt;/h2&gt;
+
+&lt;p&gt;Two of my colleagues tried to answer the same question using different approach. Steven used manual labelling approach. A more statistical technique requiring very low computing resources and Pascal use a recurrent deep learning network, a technique more effective but way heavier on computing.&lt;/p&gt;
+
+&lt;p&gt;You can read their experience here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://thelonenutblog.wordpress.com/2017/09/29/a-battle-between-man-and-machine/&quot;&gt;Pascal’s Article&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://beyondthetechhype.blog/2017/10/20/data-examination-and-home-made-classifiers/&quot;&gt;Steven’s Article&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 29 Sep 2017 00:00:00 +0000</pubDate>
+        <link>/machine-vs-human</link>
+        <guid isPermaLink="true">/machine-vs-human</guid>
+        
+        <category>iot</category>
+        
+        <category>m2m</category>
+        
+        <category>Machine_Learning</category>
+        
+        <category>Statistics</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Data Science Development Environment (Part 1)</title>
+        <description>&lt;p&gt;Part of my task in the Data Science Team is to participate in the deployment of our development environment. This will be the first, of a series of articles about the environment we use at work.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;requirements&quot;&gt;Requirements&lt;/h2&gt;
+
+&lt;p&gt;Like any other team we have some requirements. It would be super nice to do anything we want but it’s not realistic. We come with an enterprise reality where some requirements are imposed by the company. There is politics involve in terms of which product we can and can’t buy, or with which supplier we can and can’t deal with.&lt;/p&gt;
+
+&lt;p&gt;Here is some of the hard requirements we have to deal with:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Data Sovereignty: Data is either own by us or by our customers. Depending on the project, we have specific requirements on the data. Going from data must stay on our server in this specific country to upload it wherever you like. So our solution must match both reality.&lt;/li&gt;
+  &lt;li&gt;Tool-set: We are a fairly small team, but we do not all uses the same tools, and not even the same languages for our analysis (some uses R and others uses Python).&lt;/li&gt;
+  &lt;li&gt;Collaboration: We want to be able to share code and analysis between team members.&lt;/li&gt;
+  &lt;li&gt;Libraries: We are still finding new libraries. We want a system that allows us to install and update open source libraries.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;After some experiments we have decided to build our own environment platform. We really wanted a platform that we could deploy on demand on anybody’s infrastructure regardless if it’s physical or virtual, public or private. As long as it’s easily deployable on a Linux server.&lt;/p&gt;
+
+&lt;p&gt;Each of us (data scientist) have their own VM. These VM contains the following setup:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Linux OS (Debian or Ubuntu)&lt;/li&gt;
+  &lt;li&gt;Python3&lt;/li&gt;
+  &lt;li&gt;R&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://jupyter.org/&quot;&gt;Jupyter Notebook&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Git custom Add-on&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Open Source Libs&lt;/li&gt;
+  &lt;li&gt;Export script&lt;/li&gt;
+  &lt;li&gt;Data Share Drive&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;setup-details&quot;&gt;Setup details&lt;/h2&gt;
+
+&lt;p&gt;To develop we use Jupyter, a very well-known tool in data science. The best way to describe it would be a Web IDE for interpreted languages. It is currently configured to work with R and Python 3. To work efficiently between data scientist we have developed a Jupyter Extension that allows us to share code between all our VM. I will provide more details about this Extension in another blog entry. This extension save and share our source files (Jupyter file) on a Git repository. The data itself is stored on a shared drive that all VMs have access to.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/eric_archi.png#center&quot; alt=&quot;eric_archi&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I will add the list of used libraries at the end of this article. We also have an export script. This script allows us to export the Jupyter files when we work on customer’s servers. This script makes sure to strip out any data from the source file so we can export them with no problems back to our office.&lt;/p&gt;
+
+&lt;h2 id=&quot;installation-procedure&quot;&gt;Installation Procedure&lt;/h2&gt;
+
+&lt;p&gt;To deploy this environment we have a simple script that takes care of installing all the software, connecting the data share drive, installing the Jupyter extension downloading existing code. There is also an update script that grab and install the latest version of the open source libraries.&lt;/p&gt;
+
+&lt;h2 id=&quot;development-vm-size&quot;&gt;Development VM size&lt;/h2&gt;
+
+&lt;p&gt;Each of our development virtual machines are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CPU: 8 Cores&lt;/li&gt;
+  &lt;li&gt;RAM: 16 GB&lt;/li&gt;
+  &lt;li&gt;HDD: 160 GB&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These VMs run on top of an OpenStack cluster. Because our install script does not communicate with the OpenStack APIs we could easily deploy on any other platform.&lt;/p&gt;
+
+&lt;h2 id=&quot;data-share-server&quot;&gt;Data Share Server&lt;/h2&gt;
+
+&lt;p&gt;To host and exchange data between these VMs we have setup this Data Server. This server is hosting all our data during our project. It is composed of an FTP server, for customers to send or receive data, an &lt;a href=&quot;https://en.wikipedia.org/wiki/Network_File_System&quot;&gt;NFS&lt;/a&gt; drive to do the actual file sharing and a backup solution to make sure we don’t lose precious data.&lt;/p&gt;
+
+&lt;h2 id=&quot;open-source-libraries&quot;&gt;Open Source Libraries&lt;/h2&gt;
+
+&lt;p&gt;Here is the exhaustive list of library we use. Keep in mind these gets updated frequently.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;System Lib (apt-get):&lt;/strong&gt; libperl-dev – python3-cairo – libxml2-dev – libsnappy-dev – aptitude – python3-pip – python3-dev – build-essential – libcurl4-openssl-dev – python3-pandas – libperl-dev – libxml2-dev – libssl-dev – r-base – r-base-dev – git – tmux&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pip 3 (Python3 Libs) :&lt;/strong&gt; GitPython – jupyter – numpy – scipy – pandas – xlrd – scikit-learn – parquet – sklearn – geopy – seaborn – folium – ipython-autotime – beautifulsoup4 – openpyxl – lxml – python-igraph – ipython-autotime – tqdm&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;R:&lt;/strong&gt; repr – IRdisplay – evaluate – crayon – pbdZMQ – devtools – uuid – digest – IRkernel/IRkernel – ggplot2 – plyr – caret – kernlab – MASS – igraph&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;This is a quick overview of the platform we built. This is in constant evolution and because we are using our own solution we can update it with our needs.&lt;/p&gt;
+
+&lt;p&gt;Coming: Part-2 Details around this Jupyter Extension&lt;/p&gt;
+</description>
+        <pubDate>Mon, 31 Jul 2017 00:00:00 +0000</pubDate>
+        <link>/data-science-development-evironement</link>
+        <guid isPermaLink="true">/data-science-development-evironement</guid>
+        
+        <category>cloud</category>
+        
+        <category>Linux</category>
+        
+        <category>Machine_Learning</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Kolmogorov–Smirnov test</title>
+        <description>&lt;p&gt;Lately, at work, we had to do a lot of unsupervised classification. We basically had to distinguish N classes from a sample population. We had a rough idea of how many classes were present but nothing was sure, we discovered the &lt;a href=&quot;https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;Kolmogorov–Smirnov test&lt;/a&gt; a very efficient way to determine if two samples are significantly different from each other.
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;I will give you a bit of context on the Kolmogorov–Smirnov test and walk you though one problem we solved with it.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-bit-of-theory&quot;&gt;A bit of theory&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Rejecting the null hypothesis.&lt;/em&gt; That sounds like a painful memory from university statistic class, but it’s actually exactly what we want to do here. We want to reject the possibility that the two samples are coming from the exact same distribution. Let’s look at a very high level, non-mathematical, overview of some tests available. If you want to get a good understanding of the mathematics behind all these tests, use the Wikipedia link provided in all the sections.&lt;/p&gt;
+
+&lt;h2 id=&quot;students-t-test&quot;&gt;Student’s T-Test&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/Student%27s_t-test&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;Student’s T-Test&lt;/a&gt; is probably the most well know way of rejecting the null hypothesis. This test calculate the P-value of a sample vs a normal population or vs another sample. The result, P-value, tells you how likely these samples comes from the exact same distribution.&lt;/p&gt;
+
+&lt;p&gt;When obtained, the P-Value can be compared with a threshold call statistical significance (e.g. .05), if the P-Value is smaller, we can reject the null hypotheses.&lt;/p&gt;
+
+&lt;p&gt;There is an issue with Student’s T-Test, samples must be normal (shaped in a normal distribution). That is an issue for us because we do work a lot with Poisson distributions.&lt;/p&gt;
+
+&lt;h2 id=&quot;kolmogorovsmirnov-test&quot;&gt;Kolmogorov–Smirnov test&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;Kolmogorov–Smirnov test&lt;/a&gt; (KS Test) is a bit more complex and allows you to detect patterns you can’t detect with a Student’s T-Test.&lt;/p&gt;
+
+&lt;p&gt;From Wikipedia: &lt;em&gt;“The Kolmogorov–Smirnov statistic quantifies a distance between the &lt;/em&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Empirical_distribution_function&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;&lt;em&gt;empirical distribution function&lt;/em&gt;&lt;/a&gt;&lt;em&gt; of the sample and the &lt;/em&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Cumulative_distribution_function&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;&lt;em&gt;cumulative distribution function&lt;/em&gt;&lt;/a&gt;&lt;em&gt; of the reference distribution, or between the empirical distribution functions of two samples.”&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is an example that shows the difference between Student’s T-Test and KS Test taken from stackexchange.com.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/KS_curve.png#center&quot; alt=&quot;ks_curve&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Because the sample mean and standard deviation are highly similar the Student’s T-Test gives a very high p-value. KS Test can detect the variance. In this case the red distribution has a slightly binomial distribution which KS detect. In other words:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Student’s T-Test says that there is &lt;strong&gt;79.3%&lt;/strong&gt; chances the two samples come from the same distribution.&lt;/li&gt;
+  &lt;li&gt;KS Test says that there are &lt;strong&gt;1.6%&lt;/strong&gt; chances the two samples come from the same distribution.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;other-tests&quot;&gt;Other tests&lt;/h2&gt;
+
+&lt;p&gt;There are many other Test and algorithms to do that type of work. The &lt;a href=&quot;https://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;Shapiro–Wilk test&lt;/a&gt; &lt;del&gt;and the &lt;a href=&quot;https://en.wikipedia.org/wiki/Anderson%E2%80%93Darling_test&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;&lt;del&gt;Anderson–Darling tes&lt;/del&gt;t&lt;/a&gt; &lt;/del&gt;are two tests considered more powerful than the KS Test. There is a major downside with these two tests, they don’t allow you to compare two samples, they always compare a sample with a standard distribution.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Edit: A colleague of mine showed me that Anderson-Darling could also be used for two way testing (Comparing Samples).&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;”The two-sample K–S test is one of the most useful and general non-parametric methods for comparing two samples” – Wikipedia.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;detect-device-user&quot;&gt;Detect Device User&lt;/h2&gt;
+
+&lt;p&gt;For this specific assignment we had to detect which user was using a specific device. Each device was used by one or many different users and we had to come up with a technique to identify if there were one or multiple users. In the case of multiple users we wanted to identify which usage was done by which user.&lt;/p&gt;
+
+&lt;h2 id=&quot;our-strategy&quot;&gt;Our Strategy&lt;/h2&gt;
+
+&lt;p&gt;We decided to use a mix of graph network and KS Test to identify potential clusters. The idea behind this demo is to imagine a graph network where every node (sample) was connected to every other node (sample). The vertices or link between these nodes would me &lt;em&gt;KS Test&lt;/em&gt;, in other words, how close are these two nodes. So two nodes with low KS P-Value would be close and two with High P-Value would be far. This hopefully would create distinguishable clusters.&lt;/p&gt;
+
+&lt;h2 id=&quot;data-set&quot;&gt;Data set&lt;/h2&gt;
+
+&lt;p&gt;Here is what our data looks like:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/ks_one_dist.png#center&quot; alt=&quot;ks_dist&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see, all our sample looks like a normal distribution with a very low standard deviation. We have sampled all the 82 different usage sessions of this device.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/ks_all_dist.png#center&quot; alt=&quot;ks_all_dist.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Strait from this picture we can see that there are different patterns. All the sample does not have the same histogram distribution. That is a very good start. After this we looked at the obvious cluster of distribution.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/ks_corr.png#left&quot; alt=&quot;ks_corr&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To do so, we did the KS matrix, which consists of a KS Two way test of every sample distribution vs every other sample.A quick view of the KS Matrix heat map does not reveal obvious results (As you can see on the figure on your right).&lt;/p&gt;
+
+&lt;p&gt;After so hierarchical clustering, we already get some better results.(As you can see on the following figure.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/ks_hir.png#center&quot; alt=&quot;ks_hir&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In these two dendrogram visualization, we can see some potential (3) clusters. After review these clusters came back to be insignificant.&lt;/p&gt;
+
+&lt;h2 id=&quot;network-graph&quot;&gt;Network Graph&lt;/h2&gt;
+
+&lt;p&gt;After the unsuccessful dendrogram clustering, we tried the proposed Graph approach. The goal here, like explained earlier, is to graph all the possible nodes and vertices. The vertices length being the KS Test Value. We had to remove the self-reference (which was always 0 (obviously you are perfectly similar to yourself).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/ks_blob.png#center&quot; alt=&quot;ks_blob&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We then ended up with a network graph where everybody was connected with everybody else which is not particularly useful.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/ks_cluster.png#center&quot; alt=&quot;ks_cluster&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The next step is to only keep the significant link (lower than a certain threshold)&lt;/p&gt;
+
+&lt;p&gt;As we can see on this picture, we got a very exciting result. We can clearly see two distinct clusters and three outliers.&lt;/p&gt;
+
+&lt;p&gt;This would perfectly fit our model, the big cluster must be the main user and the second cluster could be the alternative user.&lt;/p&gt;
+
+&lt;p&gt;After a validity verification, we did find out that the cluster identified some difference between the usage of clusters 1 and 2 but not the one we were looking for. In other words, it did not solve our problem but it proved itself to do find a usage difference, that might be useful in another context.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;After this work, we concluded that KS Test is a very powerful way to automatically differentiate samples from different distribution. It did not exactly solve our problem, but it did show that it can easily be used in a Data Science context.&lt;/p&gt;
+
+&lt;p&gt;Today I presented you one of the problems we solved with KS Test, but we also used it for other problems. KS Test is really becoming a good test in our data science Swiss knife.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 06 Jul 2017 00:00:00 +0000</pubDate>
+        <link>/kolmogorov-smirnov-test</link>
+        <guid isPermaLink="true">/kolmogorov-smirnov-test</guid>
+        
+        <category>Machine_Learning</category>
+        
+        <category>Statistics</category>
+        
+        
+      </item>
+    
   </channel>
 </rss>

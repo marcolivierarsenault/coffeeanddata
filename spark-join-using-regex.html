@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+        <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Spark JOIN using REGEX | Coffee and Data</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Spark JOIN using REGEX" />
+<meta name="author" content="Marc-Olivier Arsenault" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A more technical post about how I end up efficiently JOINING 2 datasets with REGEX using a custom UDF in SPARK" />
+<meta property="og:description" content="A more technical post about how I end up efficiently JOINING 2 datasets with REGEX using a custom UDF in SPARK" />
+<meta property="og:site_name" content="Coffee and Data" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-04-17T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"A more technical post about how I end up efficiently JOINING 2 datasets with REGEX using a custom UDF in SPARK","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/square_logo.png"},"name":"Marc-Olivier Arsenault"},"url":"/spark-join-using-regex","headline":"Spark JOIN using REGEX","dateModified":"2019-04-17T00:00:00+00:00","datePublished":"2019-04-17T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/spark-join-using-regex"},"author":{"@type":"Person","name":"Marc-Olivier Arsenault"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+
+    <!-- Site Favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/png" />
+
+    <!-- Font Embed Code -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet" />
+
+    <!-- CSS Styles -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="layout-post">
+    <div id="page" class="site">
+
+        
+        <header id="masthead" class="site-header outer">
+    <div class="site-header-inside">
+        <div class="site-branding">
+            
+                <p class="site-logo"><a href="/" rel="home"><img src="/assets/images/square_logo.png" alt="Coffee and Data" /></a></p>
+                <h1 class="site-title screen-reader-text"><a href="" rel="home"></a></h1>
+            
+        </div><!-- .site-branding -->
+        <nav id="main-navigation" class="site-navigation" aria-label="Primary Navigation">
+            <ul class="menu">
+            
+                <li class="menu-item"><a href="/about/">About</a></li>
+            
+                <li class="menu-item"><a href="/contact/">Contact Me</a></li>
+            
+            </ul>
+        </nav><!-- .site-navigation -->
+    </div><!-- .site-header-inside -->
+</header><!-- .site-header -->
+        
+
+        <div id="content" class="site-content fadeInDown delay_075s">
+    <main id="main" class="site-main outer">
+        <article class="post-full inner">
+            <header class="post-header">
+                <div class="post-meta">
+                    <time class="post-date" datetime="2019-04-17">April 17,
+                        2019</time>
+                </div><!-- .post-meta -->
+                <h1 class="posttitle">Spark JOIN using REGEX</h1>
+            </header><!-- .post-header -->
+            
+            <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/regex.jpg"
+                    alt="Spark JOIN using REGEX"></div>
+            
+            <div class="post-content">
+                <p>A more technical post about how I end up efficiently JOINING 2 datasets with REGEX using a custom UDF in SPARK</p>
+
+<!--more-->
+
+<h3 id="context">Context</h3>
+
+<p>For the past couple of months I have been struggling with this small problem. I have a list of REGEX patterns and I want to know which WIKIPEDIA article contains them.</p>
+
+<p>What I wanted to end with was a table with the following columns:</p>
+
+<ul>
+  <li>Wikipedia Article ID</li>
+  <li>Wikipedia Article Text</li>
+  <li>Matching Pattern (or null if no pattern got triggered)</li>
+</ul>
+
+<table class="wp-block-table is-style-regular">
+  <tr>
+    <td>
+      ID
+    </td>
+    <td>
+      Text
+    </td>
+    <td>
+      Pattern
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      1
+    </td>
+    <td>
+      This Wikipedia:Statistics page measures&#8230;
+    </td>
+    <td>
+      &#8216;\bbot.*generated\b&#8217;
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      1
+    </td>
+    <td>
+      This Wikipedia:Statistics page measures…
+    </td>
+    <td>
+      &#8216;\bgompertz\b&#8217;
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      2
+    </td>
+    <td>
+      In the context of network theory,&#8230;
+    </td>
+    <td>
+      &#8216;\bpower law\b&#8217;
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      3
+    </td>
+    <td>
+      In probability theory and statistics
+    </td>suce
+    <td>
+      null
+    </td>
+  </tr>
+</table>
+
+<p>My list of REGEX was roughly 500 pattern long. Some were simple word search, but others were more complex REGEX. I needed a good way to search for these patterns and find a way to get them in the mentioned format. Some sort of <strong>LEFT OUTER JOIN.</strong></p>
+
+<h3 id="setup">Setup</h3>
+
+<p>Since there are a lot of articles on Wiki. Apparently, <a href="https://en.wikipedia.org/wiki/Wikipedia:Size_of_Wikipedia">5.8 millions of them</a>. I decided to use a tool capable of paralleling the research, I have decided to use <a href="https://spark.apache.org/">Spark</a> from the Apache foundation. Now a days, you can select your favourite cloud provider and there is a high chance you can get a cluster with not much more than 1 click, which I did.</p>
+
+<p>Now that I had my working setup I started to look online on how to do that.</p>
+
+<p>The first thing I found online was to do a LEFT OUTER JOIN with <strong>rlike</strong>.</p>
+
+<pre><code class="language-python">wiki.join(regex, expr("text rlike pattern") how='left_outer')</code></pre>
+
+<p>That looked promising, on a small set it was doing exactly what I wanted.</p>
+
+<p><img src="assets/images/posts/success.gif#center" alt="success" /></p>
+
+<p>After I naively just launched the join for all the dataset… and I waited for a long time. Actually as long as it took me to realize my cluster went out of memory. From that point, I looked online for many hours, tried many solutions and I could not find anything relevant on how to solve that problem.</p>
+
+<p><img src="assets/images/posts/disapointed.gif#center" alt="disapointed" /></p>
+
+<p>Since that was nothing really important, I did not touch it for a couple of months and one day at work, I was talking about it with one of my colleagues and he figured out the problem.</p>
+
+<h3 id="the-issue">The issue</h3>
+
+<p>Here is what he said:</p>
+
+<p>” First, and foremost, non-equijoins perform poorly in Spark because they can only be evaluated using a <strong>broadcast nested loop join</strong> or a <strong>cross join</strong>.</p>
+
+<p>Let’s assume that <strong>articles</strong> contains 1,000,000 rows and <strong>patterns</strong> contains 500 rows. The smaller dataset (<strong>particle</strong> in this case) will be broadcast. To evaluate this join, <strong>particle</strong> will effectively be scanned 1,000,000 times and the join predicate will be evaluated 500,000,000 times. What makes it even worse is that the pattern will be compiled 500,000,000 times.”</p>
+
+<blockquote>
+  <p>‘This basically spells disaster.’ <cite>― Michael ―</cite></p>
+</blockquote>
+
+<h3 id="the-solution">The Solution</h3>
+
+<p>And then, after finding the issue he came back to me a couple of days later with a custom UDF</p>
+
+<pre class="line-numbers"><code class="language-python">def findMatchingPatterns(regexes: ArrayList[String]): UserDefinedFunction = {
+  udf((value: String) =&gt; {
+    for {
+      text &lt;- Option(value)
+      matches = regexes.asScala.filter(r =&gt; Pattern.matches(r, text))
+      if matches.nonEmpty
+    } yield matches
+  }, ArrayType(StringType))
+}
+</code></pre>
+
+<p>and to use it, simply need to query it like this:</p>
+
+<pre class="line-numbers"><code class="language-python">from utils.scala_functions import find_matching_patterns
+from pyspark.sql import functions as F
+
+regexes = regex.agg(F.collect_list(F.col("pattern"))).collect()[0][0]
+regexes = sc.broadcast(regexes)
+
+articles = articles \
+    .withColumn("patterns", find_matching_patterns(F.col("text"), regexes.value)
+    .withColumn("patterns", F.when(F.col("patterns").isNull(), F.array(F.lit(None))).otherwise(F.col("patterns"))) \
+    .withColumn("pattern", F.explode(F.col("patterns")))
+</code></pre>
+
+<h3 id="result">Result</h3>
+
+<p>I tried it, and within couple of hours I had exactly what I wanted.</p>
+
+<p><img src="assets/images/posts/mission_accomplished.gif#center" alt="mission_accomplished" /></p>
+
+<p>I decided to do a small benchmark. After both datasets loaded and cached in Spark, I selected only 20 000 articles to try both methods. By using the same exact samples here are the results:</p>
+
+<ul>
+  <li>First technique, <em>rlike</em>: 3 articles per seconds</li>
+  <li>Second technique, <em>UDF</em>: ~5 000 articles per seconds</li>
+</ul>
+
+<p>I know most of this delay is due to cache, reading and other memory management, but still what a difference.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>I do not usually write this type of blog post, but since I looked for a solution and could not find anything, I thought it worth sharing back.</p>
+
+<p>I would like to thank <a href="https://www.linkedin.com/in/mstyles/">Michael Styles</a> for his help on this project.</p>
+
+            </div>
+            <footer class="post-footer">
+                
+                <p class="post-tags">
+                     
+                    <a href='tag/big_data/'>big_data</a>
+                    
+                     
+                    <a href='tag/data_pre-processing/'>data_pre-processing</a>
+                    
+                     
+                    <a href='tag/data_science/'>data_science</a>
+                    
+                    
+                </p>
+                
+                <div class="post-share">
+                    <span class="post-share-title">Share:</span>
+                    <a target="_blank" href="https://twitter.com/share?text=Spark+JOIN+using+REGEX&amp;url=https://coffeeanddata.ca/spark-join-using-regex">Twitter</a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://coffeeanddata.ca/spark-join-using-regex">Facebook</a>
+                </div><!-- .share-post -->
+            </footer>
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/headshot.png" alt="Marc-Olivier Arsenault's Picture"
+                        class="avatar"></div>
+                <div class="author-details">
+                    <h2 class="author-title">About Marc-Olivier Arsenault</h2>
+                    <p class="author-description">Data Science Lead @ Shopify</p>
+                </div>
+            </div>
+            
+<section id="comments-area" class="comments-area">
+    <h2 class="comments-title">Comments</h2>
+    <div class="comments-inside">
+        <div id="disqus_thread"></div>
+    </div><!-- .comments-inside -->
+    <div id="comments-overlay" class="comments-overlay">
+        <a href="#" id="comments-show" class="comments-show">Show comments</a>
+    </div><!-- .comments-overlay -->
+    <script type="text/javascript">
+        var disqus_shortname = 'marcolivierarsenault';
+        var disqus_developer = 0;
+        (function () {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+        </article>
+        
+        <section class="newsletter-box inner-wide">
+    <div class="inner">
+        <h2 class="newsletter-box-title">Subscribe to Coffee and Data newsletter</h2>
+        <p>Get the latest and greatest from Coffee and Data delivered straight to your inbox.</p>
+        <!-- Begin MailChimp Signup Form -->
+        <div id="mc_embed_signup">
+            <form action="//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate gh-subscribe-form" target="_blank" novalidate>
+                <label for="mce-EMAIL" class="screen-reader-text">Email Address</label>
+                <input type="email" value="" name="EMAIL" class="required email subscribe-email" id="mce-EMAIL" placeholder="Your email address">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+            </form>
+        </div>
+        <!--End mc_embed_signup-->
+    </div><!-- .inner -->
+</section><!-- .widget -->
+        
+        <section class="read-next inner">
+            <h2 class="read-next-title">Read Next</h2>
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="September 26, 2018">September 26, 2018</time>
+                    </div>
+                    <h3 class="post-title"><a href="/the-data-science-pyramid">The data science pyramid</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/data_science/'>Data_science</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/the-data-science-pyramid" class="post-thumbnail">
+                    <img src="assets/images/posts/blue-sky-camels-desert-71241.jpg" alt="The data science pyramid" />
+                </a>
+                
+            </article>
+            
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="April 29, 2019">April 29, 2019</time>
+                    </div>
+                    <h3 class="post-title"><a href="/spark-ai-summit-2019">Spark &#038; AI Summit 2019</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/big_data/'>Big_data</a>
+                        
+                        
+                        
+                        <a href='/tag/data_science/'>Data_science</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/spark-ai-summit-2019" class="post-thumbnail">
+                    <img src="assets/images/posts/sparksummit.jpg" alt="Spark &#038; AI Summit 2019" />
+                </a>
+                
+            </article>
+            
+        </section><!-- .read-next -->
+    </main><!-- .site-main -->
+</div><!-- .site-content -->
+
+        
+
+        
+
+        <footer id="colophon" class="site-footer outer">
+            <div class="site-footer-inside">
+                <p class="social-links">
+    
+    
+    
+    <a href="https://github.com/marcolivierarsenault" target="_blank">
+        <span class="fa-github fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">GitHub</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://medium.com/@marcolivier.arsenault" target="_blank">
+        <span class="fa-medium fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">medium</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/marcolivierarsenault" target="_blank">
+        <span class="fa-linkedin fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">Linkedin</span>
+    </a>
+    
+    
+</p>
+                <p class="site-info">
+                    <a href="#">Coffee and Data</a> &copy; 2019.
+                    Powered by <a target="_blank" href="https://jekyllrb.com/">Jekyll</a>.
+                </p>
+                <p class="back-to-top">
+                    <a id="top-button" class="top-button" href="#page">
+                        <span class="icon-arrow-up" aria-hidden="true"></span>
+                        <span class="screen-reader-text">Back to top</span>
+                    </a>
+                </p>
+            </div><!-- .site-footer-inside -->
+        </footer><!-- .site-footer -->
+    </div><!-- .site -->
+    <div id="site-overlay" class="site-overlay"></div>
+    
+    <!-- Javascript Assets -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/custom.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+        <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Machine VS Human | Coffee and Data</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Machine VS Human" />
+<meta name="author" content="Marc-Olivier Arsenault" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Lately at work we had the opportunity to propose new Uses Cases to develop around  Ericsson Expert Analytic and data science in the operator’s network. We propose to work on an automated system to detect machines in the subscriber base." />
+<meta property="og:description" content="Lately at work we had the opportunity to propose new Uses Cases to develop around  Ericsson Expert Analytic and data science in the operator’s network. We propose to work on an automated system to detect machines in the subscriber base." />
+<meta property="og:site_name" content="Coffee and Data" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-09-29T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"Lately at work we had the opportunity to propose new Uses Cases to develop around  Ericsson Expert Analytic and data science in the operator’s network. We propose to work on an automated system to detect machines in the subscriber base.","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/square_logo.png"},"name":"Marc-Olivier Arsenault"},"url":"/machine-vs-human","headline":"Machine VS Human","dateModified":"2017-09-29T00:00:00+00:00","datePublished":"2017-09-29T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/machine-vs-human"},"author":{"@type":"Person","name":"Marc-Olivier Arsenault"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+
+    <!-- Site Favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/png" />
+
+    <!-- Font Embed Code -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet" />
+
+    <!-- CSS Styles -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="layout-post">
+    <div id="page" class="site">
+
+        
+        <header id="masthead" class="site-header outer">
+    <div class="site-header-inside">
+        <div class="site-branding">
+            
+                <p class="site-logo"><a href="/" rel="home"><img src="/assets/images/square_logo.png" alt="Coffee and Data" /></a></p>
+                <h1 class="site-title screen-reader-text"><a href="" rel="home"></a></h1>
+            
+        </div><!-- .site-branding -->
+        <nav id="main-navigation" class="site-navigation" aria-label="Primary Navigation">
+            <ul class="menu">
+            
+                <li class="menu-item"><a href="/about/">About</a></li>
+            
+                <li class="menu-item"><a href="/contact/">Contact Me</a></li>
+            
+            </ul>
+        </nav><!-- .site-navigation -->
+    </div><!-- .site-header-inside -->
+</header><!-- .site-header -->
+        
+
+        <div id="content" class="site-content fadeInDown delay_075s">
+    <main id="main" class="site-main outer">
+        <article class="post-full inner">
+            <header class="post-header">
+                <div class="post-meta">
+                    <time class="post-date" datetime="2017-09-29">September 29,
+                        2017</time>
+                </div><!-- .post-meta -->
+                <h1 class="posttitle">Machine VS Human</h1>
+            </header><!-- .post-header -->
+            
+            <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/teens-robot-future-science-39349-900x515.jpeg"
+                    alt="Machine VS Human"></div>
+            
+            <div class="post-content">
+                <p>Lately at work we had the opportunity to propose new Uses Cases to develop around  Ericsson Expert Analytic and data science in the operator’s network. We propose to work on an automated system to detect machines in the subscriber base.</p>
+
+<!--more-->
+
+<p>I know, in a beautiful scenario every operator would have a perfect knowledge of each and every of their subscribers. But the reality is different. Now with the rise of IoT more and more devices require connectivity. LTE and other cellular technologies are perfect because it brings the connectivity and the mobility. But everybody does it their own way. Of course, some people and enterprise, contact an operator to reach an agreement but the vast majority simply figures a way to get it. The only way the operator has to determine what is a machine is by using the machine Type ID but this value has been proven wrong.</p>
+
+<p>The Use Case (UC) we propose will automatically detect which one is a machine and which is in fact a subscriber. To do so, we will use network metadata which is available to the operator. Thus there is no implication on the user side. The core of this metadata is subscriber communication behaviour e.g. data consumption, SMS, cell towers connections, etc. Obviously I will keep the key features for myself 😛</p>
+
+<p><img src="assets/images/wp-content/uploads/2017/09/Tagging.png#small" alt="tagging" /></p>
+
+<p>Our dataset had a very unbalance number of machine vs humans, which is expected. Only 5% of the subscribers are machines.</p>
+
+<h2 id="feature-engineering">Feature Engineering</h2>
+
+<p>Luckily for us we had access to an operator’s data to produce a prototype model. The goal of this model is simply to prove that we can achieve good result in machine detection. To build this model I assumed keys of the model was in the stability over days. My intuition is, machine should be consistent in terms of download, movement, etc. In other words, if a machine is fixed (not moving) it should never move. While a human might move some days and stay home some others.</p>
+
+<p>I did not find efficient way to handle time series in machine learning except deep learning, so I had to engineer my own variation of it by analyzing and categorizing the time series and to express it in terms of features for standard machine learning. To do it we look at all the things that were moving over time and created 2 features average, standard deviation.</p>
+
+<p>So I build a feature set, per subscriber, that describe the best the metadata and their stability over time.</p>
+
+<p> </p>
+
+<h2 id="building-model">Building Model</h2>
+
+<p>To classify machine from the dataset I built a Random Forest.</p>
+
+<p><img src="assets/images/wp-content/uploads/2017/09/randomForest.png#small" alt="random_forest" /></p>
+
+<p>The Random Forest performed really well. After some tweaking I was able to reach 98.9% accuracy. Here is a quick view of the confusion matrix, showing how the machine learning performed in the highly unbalanced set.</p>
+
+<p><img src="assets/images/wp-content/uploads/2017/09/confusion.png" alt="confusion" /></p>
+
+<p>The following proves that we can accurately detect machine using only network related data. After looking at our model, we looked at the key features. Out of the top (most impact on the classifier) five features, four are the Meta features we created to evaluate the stability over the days. In conclusion we can confirm that we have a working prototype and it would be very interesting to implement it with live traffic.</p>
+
+<p> </p>
+
+<h2 id="another-approach">Another Approach</h2>
+
+<p>Two of my colleagues tried to answer the same question using different approach. Steven used manual labelling approach. A more statistical technique requiring very low computing resources and Pascal use a recurrent deep learning network, a technique more effective but way heavier on computing.</p>
+
+<p>You can read their experience here:</p>
+
+<ul>
+  <li><a href="https://thelonenutblog.wordpress.com/2017/09/29/a-battle-between-man-and-machine/">Pascal’s Article</a></li>
+  <li><a href="https://beyondthetechhype.blog/2017/10/20/data-examination-and-home-made-classifiers/">Steven’s Article</a></li>
+</ul>
+
+            </div>
+            <footer class="post-footer">
+                
+                <p class="post-tags">
+                     
+                    <a href='tag/iot/'>iot</a>
+                    
+                     
+                    <a href='tag/m2m/'>m2m</a>
+                    
+                     
+                    <a href='tag/machine_learning/'>Machine_Learning</a>
+                    
+                     
+                    <a href='tag/statistics/'>Statistics</a>
+                    
+                    
+                </p>
+                
+                <div class="post-share">
+                    <span class="post-share-title">Share:</span>
+                    <a target="_blank" href="https://twitter.com/share?text=Machine+VS+Human&amp;url=https://coffeeanddata.ca/machine-vs-human">Twitter</a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://coffeeanddata.ca/machine-vs-human">Facebook</a>
+                </div><!-- .share-post -->
+            </footer>
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/headshot.png" alt="Marc-Olivier Arsenault's Picture"
+                        class="avatar"></div>
+                <div class="author-details">
+                    <h2 class="author-title">About Marc-Olivier Arsenault</h2>
+                    <p class="author-description">Data Science Lead @ Shopify</p>
+                </div>
+            </div>
+            
+<section id="comments-area" class="comments-area">
+    <h2 class="comments-title">Comments</h2>
+    <div class="comments-inside">
+        <div id="disqus_thread"></div>
+    </div><!-- .comments-inside -->
+    <div id="comments-overlay" class="comments-overlay">
+        <a href="#" id="comments-show" class="comments-show">Show comments</a>
+    </div><!-- .comments-overlay -->
+    <script type="text/javascript">
+        var disqus_shortname = 'marcolivierarsenault';
+        var disqus_developer = 0;
+        (function () {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+        </article>
+        
+        <section class="newsletter-box inner-wide">
+    <div class="inner">
+        <h2 class="newsletter-box-title">Subscribe to Coffee and Data newsletter</h2>
+        <p>Get the latest and greatest from Coffee and Data delivered straight to your inbox.</p>
+        <!-- Begin MailChimp Signup Form -->
+        <div id="mc_embed_signup">
+            <form action="//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate gh-subscribe-form" target="_blank" novalidate>
+                <label for="mce-EMAIL" class="screen-reader-text">Email Address</label>
+                <input type="email" value="" name="EMAIL" class="required email subscribe-email" id="mce-EMAIL" placeholder="Your email address">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+            </form>
+        </div>
+        <!--End mc_embed_signup-->
+    </div><!-- .inner -->
+</section><!-- .widget -->
+        
+        <section class="read-next inner">
+            <h2 class="read-next-title">Read Next</h2>
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="July 31, 2017">July 31, 2017</time>
+                    </div>
+                    <h3 class="post-title"><a href="/data-science-development-evironement">Data Science Development Environment (Part 1)</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/cloud/'>Cloud</a>
+                        
+                        
+                        
+                        <a href='/tag/linux/'>Linux</a>
+                        
+                        
+                        
+                        <a href='/tag/machine_learning/'>Machine_learning</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/data-science-development-evironement" class="post-thumbnail">
+                    <img src="assets/images/posts/computer-1245714_1920.jpg" alt="Data Science Development Environment (Part 1)" />
+                </a>
+                
+            </article>
+            
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="February 8, 2018">February 8, 2018</time>
+                    </div>
+                    <h3 class="post-title"><a href="/distributions-5th-symphony">Distribution&#8217;s 5th Symphony</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/machine_learning/'>Machine_learning</a>
+                        
+                        
+                        
+                        <a href='/tag/statistics/'>Statistics</a>
+                        
+                        
+                        
+                        <a href='/tag/visualization/'>Visualization</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/distributions-5th-symphony" class="post-thumbnail">
+                    <img src="assets/images/posts/symphony.jpg" alt="Distribution&#8217;s 5th Symphony" />
+                </a>
+                
+            </article>
+            
+        </section><!-- .read-next -->
+    </main><!-- .site-main -->
+</div><!-- .site-content -->
+
+        
+
+        
+
+        <footer id="colophon" class="site-footer outer">
+            <div class="site-footer-inside">
+                <p class="social-links">
+    
+    
+    
+    <a href="https://github.com/marcolivierarsenault" target="_blank">
+        <span class="fa-github fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">GitHub</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://medium.com/@marcolivier.arsenault" target="_blank">
+        <span class="fa-medium fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">medium</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/marcolivierarsenault" target="_blank">
+        <span class="fa-linkedin fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">Linkedin</span>
+    </a>
+    
+    
+</p>
+                <p class="site-info">
+                    <a href="#">Coffee and Data</a> &copy; 2019.
+                    Powered by <a target="_blank" href="https://jekyllrb.com/">Jekyll</a>.
+                </p>
+                <p class="back-to-top">
+                    <a id="top-button" class="top-button" href="#page">
+                        <span class="icon-arrow-up" aria-hidden="true"></span>
+                        <span class="screen-reader-text">Back to top</span>
+                    </a>
+                </p>
+            </div><!-- .site-footer-inside -->
+        </footer><!-- .site-footer -->
+    </div><!-- .site -->
+    <div id="site-overlay" class="site-overlay"></div>
+    
+    <!-- Javascript Assets -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/custom.js"></script>
+
+</body>
+
+</html>

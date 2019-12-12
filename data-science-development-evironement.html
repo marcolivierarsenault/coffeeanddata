@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+        <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Data Science Development Environment (Part 1) | Coffee and Data</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Data Science Development Environment (Part 1)" />
+<meta name="author" content="Marc-Olivier Arsenault" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Part of my task in the Data Science Team is to participate in the deployment of our development environment. This will be the first, of a series of articles about the environment we use at work." />
+<meta property="og:description" content="Part of my task in the Data Science Team is to participate in the deployment of our development environment. This will be the first, of a series of articles about the environment we use at work." />
+<meta property="og:site_name" content="Coffee and Data" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-07-31T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"Part of my task in the Data Science Team is to participate in the deployment of our development environment. This will be the first, of a series of articles about the environment we use at work.","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/square_logo.png"},"name":"Marc-Olivier Arsenault"},"url":"/data-science-development-evironement","headline":"Data Science Development Environment (Part 1)","dateModified":"2017-07-31T00:00:00+00:00","datePublished":"2017-07-31T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/data-science-development-evironement"},"author":{"@type":"Person","name":"Marc-Olivier Arsenault"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+
+    <!-- Site Favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/png" />
+
+    <!-- Font Embed Code -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet" />
+
+    <!-- CSS Styles -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="layout-post">
+    <div id="page" class="site">
+
+        
+        <header id="masthead" class="site-header outer">
+    <div class="site-header-inside">
+        <div class="site-branding">
+            
+                <p class="site-logo"><a href="/" rel="home"><img src="/assets/images/square_logo.png" alt="Coffee and Data" /></a></p>
+                <h1 class="site-title screen-reader-text"><a href="" rel="home"></a></h1>
+            
+        </div><!-- .site-branding -->
+        <nav id="main-navigation" class="site-navigation" aria-label="Primary Navigation">
+            <ul class="menu">
+            
+                <li class="menu-item"><a href="/about/">About</a></li>
+            
+                <li class="menu-item"><a href="/contact/">Contact Me</a></li>
+            
+            </ul>
+        </nav><!-- .site-navigation -->
+    </div><!-- .site-header-inside -->
+</header><!-- .site-header -->
+        
+
+        <div id="content" class="site-content fadeInDown delay_075s">
+    <main id="main" class="site-main outer">
+        <article class="post-full inner">
+            <header class="post-header">
+                <div class="post-meta">
+                    <time class="post-date" datetime="2017-07-31">July 31,
+                        2017</time>
+                </div><!-- .post-meta -->
+                <h1 class="posttitle">Data Science Development Environment (Part 1)</h1>
+            </header><!-- .post-header -->
+            
+            <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/computer-1245714_1920.jpg"
+                    alt="Data Science Development Environment (Part 1)"></div>
+            
+            <div class="post-content">
+                <p>Part of my task in the Data Science Team is to participate in the deployment of our development environment. This will be the first, of a series of articles about the environment we use at work.</p>
+
+<!--more-->
+
+<h2 id="requirements">Requirements</h2>
+
+<p>Like any other team we have some requirements. It would be super nice to do anything we want but it’s not realistic. We come with an enterprise reality where some requirements are imposed by the company. There is politics involve in terms of which product we can and can’t buy, or with which supplier we can and can’t deal with.</p>
+
+<p>Here is some of the hard requirements we have to deal with:</p>
+
+<ul>
+  <li>Data Sovereignty: Data is either own by us or by our customers. Depending on the project, we have specific requirements on the data. Going from data must stay on our server in this specific country to upload it wherever you like. So our solution must match both reality.</li>
+  <li>Tool-set: We are a fairly small team, but we do not all uses the same tools, and not even the same languages for our analysis (some uses R and others uses Python).</li>
+  <li>Collaboration: We want to be able to share code and analysis between team members.</li>
+  <li>Libraries: We are still finding new libraries. We want a system that allows us to install and update open source libraries.</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>After some experiments we have decided to build our own environment platform. We really wanted a platform that we could deploy on demand on anybody’s infrastructure regardless if it’s physical or virtual, public or private. As long as it’s easily deployable on a Linux server.</p>
+
+<p>Each of us (data scientist) have their own VM. These VM contains the following setup:</p>
+
+<ul>
+  <li>Linux OS (Debian or Ubuntu)</li>
+  <li>Python3</li>
+  <li>R</li>
+  <li><a href="http://jupyter.org/">Jupyter Notebook</a>
+    <ul>
+      <li>Git custom Add-on</li>
+    </ul>
+  </li>
+  <li>Open Source Libs</li>
+  <li>Export script</li>
+  <li>Data Share Drive</li>
+</ul>
+
+<h2 id="setup-details">Setup details</h2>
+
+<p>To develop we use Jupyter, a very well-known tool in data science. The best way to describe it would be a Web IDE for interpreted languages. It is currently configured to work with R and Python 3. To work efficiently between data scientist we have developed a Jupyter Extension that allows us to share code between all our VM. I will provide more details about this Extension in another blog entry. This extension save and share our source files (Jupyter file) on a Git repository. The data itself is stored on a shared drive that all VMs have access to.</p>
+
+<p><img src="assets/images/posts/eric_archi.png#center" alt="eric_archi" /></p>
+
+<p>I will add the list of used libraries at the end of this article. We also have an export script. This script allows us to export the Jupyter files when we work on customer’s servers. This script makes sure to strip out any data from the source file so we can export them with no problems back to our office.</p>
+
+<h2 id="installation-procedure">Installation Procedure</h2>
+
+<p>To deploy this environment we have a simple script that takes care of installing all the software, connecting the data share drive, installing the Jupyter extension downloading existing code. There is also an update script that grab and install the latest version of the open source libraries.</p>
+
+<h2 id="development-vm-size">Development VM size</h2>
+
+<p>Each of our development virtual machines are:</p>
+
+<ul>
+  <li>CPU: 8 Cores</li>
+  <li>RAM: 16 GB</li>
+  <li>HDD: 160 GB</li>
+</ul>
+
+<p>These VMs run on top of an OpenStack cluster. Because our install script does not communicate with the OpenStack APIs we could easily deploy on any other platform.</p>
+
+<h2 id="data-share-server">Data Share Server</h2>
+
+<p>To host and exchange data between these VMs we have setup this Data Server. This server is hosting all our data during our project. It is composed of an FTP server, for customers to send or receive data, an <a href="https://en.wikipedia.org/wiki/Network_File_System">NFS</a> drive to do the actual file sharing and a backup solution to make sure we don’t lose precious data.</p>
+
+<h2 id="open-source-libraries">Open Source Libraries</h2>
+
+<p>Here is the exhaustive list of library we use. Keep in mind these gets updated frequently.</p>
+
+<p><strong>System Lib (apt-get):</strong> libperl-dev – python3-cairo – libxml2-dev – libsnappy-dev – aptitude – python3-pip – python3-dev – build-essential – libcurl4-openssl-dev – python3-pandas – libperl-dev – libxml2-dev – libssl-dev – r-base – r-base-dev – git – tmux</p>
+
+<p><strong>Pip 3 (Python3 Libs) :</strong> GitPython – jupyter – numpy – scipy – pandas – xlrd – scikit-learn – parquet – sklearn – geopy – seaborn – folium – ipython-autotime – beautifulsoup4 – openpyxl – lxml – python-igraph – ipython-autotime – tqdm</p>
+
+<p><strong>R:</strong> repr – IRdisplay – evaluate – crayon – pbdZMQ – devtools – uuid – digest – IRkernel/IRkernel – ggplot2 – plyr – caret – kernlab – MASS – igraph</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This is a quick overview of the platform we built. This is in constant evolution and because we are using our own solution we can update it with our needs.</p>
+
+<p>Coming: Part-2 Details around this Jupyter Extension</p>
+
+            </div>
+            <footer class="post-footer">
+                
+                <p class="post-tags">
+                     
+                    <a href='tag/cloud/'>cloud</a>
+                    
+                     
+                    <a href='tag/linux/'>Linux</a>
+                    
+                     
+                    <a href='tag/machine_learning/'>Machine_Learning</a>
+                    
+                    
+                </p>
+                
+                <div class="post-share">
+                    <span class="post-share-title">Share:</span>
+                    <a target="_blank" href="https://twitter.com/share?text=Data+Science+Development+Environment+%28Part+1%29&amp;url=https://coffeeanddata.ca/data-science-development-evironement">Twitter</a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://coffeeanddata.ca/data-science-development-evironement">Facebook</a>
+                </div><!-- .share-post -->
+            </footer>
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/headshot.png" alt="Marc-Olivier Arsenault's Picture"
+                        class="avatar"></div>
+                <div class="author-details">
+                    <h2 class="author-title">About Marc-Olivier Arsenault</h2>
+                    <p class="author-description">Data Science Lead @ Shopify</p>
+                </div>
+            </div>
+            
+<section id="comments-area" class="comments-area">
+    <h2 class="comments-title">Comments</h2>
+    <div class="comments-inside">
+        <div id="disqus_thread"></div>
+    </div><!-- .comments-inside -->
+    <div id="comments-overlay" class="comments-overlay">
+        <a href="#" id="comments-show" class="comments-show">Show comments</a>
+    </div><!-- .comments-overlay -->
+    <script type="text/javascript">
+        var disqus_shortname = 'marcolivierarsenault';
+        var disqus_developer = 0;
+        (function () {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+        </article>
+        
+        <section class="newsletter-box inner-wide">
+    <div class="inner">
+        <h2 class="newsletter-box-title">Subscribe to Coffee and Data newsletter</h2>
+        <p>Get the latest and greatest from Coffee and Data delivered straight to your inbox.</p>
+        <!-- Begin MailChimp Signup Form -->
+        <div id="mc_embed_signup">
+            <form action="//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate gh-subscribe-form" target="_blank" novalidate>
+                <label for="mce-EMAIL" class="screen-reader-text">Email Address</label>
+                <input type="email" value="" name="EMAIL" class="required email subscribe-email" id="mce-EMAIL" placeholder="Your email address">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+            </form>
+        </div>
+        <!--End mc_embed_signup-->
+    </div><!-- .inner -->
+</section><!-- .widget -->
+        
+        <section class="read-next inner">
+            <h2 class="read-next-title">Read Next</h2>
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="July 6, 2017">July 6, 2017</time>
+                    </div>
+                    <h3 class="post-title"><a href="/kolmogorov-smirnov-test">Kolmogorov–Smirnov test</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/machine_learning/'>Machine_learning</a>
+                        
+                        
+                        
+                        <a href='/tag/statistics/'>Statistics</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/kolmogorov-smirnov-test" class="post-thumbnail">
+                    <img src="assets/images/posts/black_board.jpg" alt="Kolmogorov–Smirnov test" />
+                </a>
+                
+            </article>
+            
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="September 29, 2017">September 29, 2017</time>
+                    </div>
+                    <h3 class="post-title"><a href="/machine-vs-human">Machine VS Human</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/iot/'>Iot</a>
+                        
+                        
+                        
+                        <a href='/tag/m2m/'>M2m</a>
+                        
+                        
+                        
+                        <a href='/tag/machine_learning/'>Machine_learning</a>
+                        
+                        
+                        
+                        <a href='/tag/statistics/'>Statistics</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/machine-vs-human" class="post-thumbnail">
+                    <img src="assets/images/posts/teens-robot-future-science-39349-900x515.jpeg" alt="Machine VS Human" />
+                </a>
+                
+            </article>
+            
+        </section><!-- .read-next -->
+    </main><!-- .site-main -->
+</div><!-- .site-content -->
+
+        
+
+        
+
+        <footer id="colophon" class="site-footer outer">
+            <div class="site-footer-inside">
+                <p class="social-links">
+    
+    
+    
+    <a href="https://github.com/marcolivierarsenault" target="_blank">
+        <span class="fa-github fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">GitHub</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://medium.com/@marcolivier.arsenault" target="_blank">
+        <span class="fa-medium fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">medium</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/marcolivierarsenault" target="_blank">
+        <span class="fa-linkedin fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">Linkedin</span>
+    </a>
+    
+    
+</p>
+                <p class="site-info">
+                    <a href="#">Coffee and Data</a> &copy; 2019.
+                    Powered by <a target="_blank" href="https://jekyllrb.com/">Jekyll</a>.
+                </p>
+                <p class="back-to-top">
+                    <a id="top-button" class="top-button" href="#page">
+                        <span class="icon-arrow-up" aria-hidden="true"></span>
+                        <span class="screen-reader-text">Back to top</span>
+                    </a>
+                </p>
+            </div><!-- .site-footer-inside -->
+        </footer><!-- .site-footer -->
+    </div><!-- .site -->
+    <div id="site-overlay" class="site-overlay"></div>
+    
+    <!-- Javascript Assets -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/custom.js"></script>
+
+</body>
+
+</html>
