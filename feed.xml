@@ -5,8 +5,8 @@
     <description>Data Science Blog by Marc-Olivier Arsenault</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 12 Dec 2019 18:38:44 +0000</pubDate>
-    <lastBuildDate>Thu, 12 Dec 2019 18:38:44 +0000</lastBuildDate>
+    <pubDate>Thu, 12 Dec 2019 20:27:11 +0000</pubDate>
+    <lastBuildDate>Thu, 12 Dec 2019 20:27:11 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -153,7 +153,7 @@ If you are interested all the code is available in my Github repo: &lt;a href=&q
 
 &lt;p&gt;You can check my web app here: &lt;a href=&quot;https://voyage.coffeeanddata.ca&quot;&gt;https://voyage.coffeeanddata.ca&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
         <link>/using-data-science-to-save-money-on-my-next-trip-to-mexico</link>
         <guid isPermaLink="true">/using-data-science-to-save-money-on-my-next-trip-to-mexico</guid>
         
