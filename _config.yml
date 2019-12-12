@@ -1,0 +1,68 @@
+# Site setings
+name: 'Coffee and Data'
+description: 'Data Science Blog by Marc-Olivier Arsenault'
+meta_description: 'Data Science Blog by Marc-Olivier Arsenault'
+logo: 'assets/images/square_logo.png'
+favicon: 'assets/images/favicon.ico'
+baseurl: 
+production_url: https://coffeeanddata.ca/
+disqus: 'marcolivierarsenault'
+mailchimp_url: '//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117'
+cover_image: data-and-coffee.jpg
+# Add your GA Tracking Id
+ga_analytics: 
+
+
+# Author
+author:
+  name: 'Marc-Olivier Arsenault'
+  image: 'headshot.png'
+  greetings: 'Coffee and Data'
+  description: "\" Data analysis is as much art as it is science\" – Jeff Leek"
+  bio: "Data Science Lead @ Shopify"
+
+# Contact form setings
+email: marcolivier.arsenault@gmail.com
+contact_page_description: "If you have any questions or you simply want to talk, feel free to send me a mail."
+thankyou_page_description: "Your message has been successfully sent. Thanks!"
+
+# Social links
+twitter: 
+facebook: 
+github: 'marcolivierarsenault'
+codepen: 
+dribbble: 
+medium: '@marcolivier.arsenault'
+instagram:
+pinterest:
+linkedin: 'marcolivierarsenault'
+producthunt: 
+
+# Navigation
+navigation:
+  - text: About
+    url: /about/
+  - text: Contact Me
+    url: /contact/
+
+# Required Plugins
+plugins_dir:
+  - jekyll-paginate
+  - jekyll-tagsgenerator
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Pagination
+paginate: 5
+paginate_path: /page:num/
+
+# Permalinks
+permalink: /:title
+
+# Other
+markdown: kramdown
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
