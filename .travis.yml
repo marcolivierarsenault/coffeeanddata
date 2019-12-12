@@ -5,6 +5,7 @@ branches:
   - release
 script:
   - JEKYLL_ENV=production bundle exec jekyll build --destination site
+  - echo "coffeeanddata.ca" > ./site/CNAME
 deploy:
   provider: pages
   local-dir: ./site
