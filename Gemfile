@@ -13,5 +13,6 @@ group :jekyll_plugins do
   gem 'jekyll-sitemap'
 end
 
+gem "nokogiri", ">= 1.10.8"
 
 gem "html-proofer"
