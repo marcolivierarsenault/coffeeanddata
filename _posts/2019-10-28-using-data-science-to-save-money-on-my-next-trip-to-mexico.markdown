@@ -2,10 +2,7 @@
 layout: post
 title: 'Using data science to save money on my next trip to Mexico'
 tags: [visualisation, dataprep]
-featured_image_thumbnail: assets/images/posts/mexique-400x200.jpg
 featured_image: assets/images/posts/mexique.jpg
-featured: true
-hidden: true
 ---
 
 How am I using basic data work to ensure I am getting a good price on my trip.
