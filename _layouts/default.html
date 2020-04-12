@@ -78,7 +78,9 @@
     </div><!-- .site -->
     <div id="site-overlay" class="site-overlay"></div>
     {% include sidebar.html %}
+    {% if jekyll.environment == 'production' %}
     {% include analytics.html %}
+    {% endif %}
     <!-- Javascript Assets -->
     <script src="{{ site.baseurl }}/assets/js/jquery-3.3.1.min.js"></script>
     <script src="{{ site.baseurl }}/assets/js/plugins.js"></script>
