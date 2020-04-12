@@ -17,7 +17,6 @@ Over the years I Worked on different technology, I like to work on innovations a
 [The Lone Nut](https://thelonenutblog.wordpress.com/) – Former Colleague doing a very interesting technological blog.
 [Beyond the tech hype](https://beyondthetechhype.blog/)  – Also a colleague, also doing a cool blog.
 
-
 #### Disclaimer
 
 The posting on this site are my own and don’t necessarily represent Shopify's positions, strategies or opinion.
