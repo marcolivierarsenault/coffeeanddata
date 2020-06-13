@@ -13,6 +13,8 @@ Learn how the Data Team has helped Shopify make great decisions during COVID-19.
 
 <!--more-->
 
+----
+
 We currently face a global pandemic. People are in pain around the world. Daily life has been disrupted. Many face monumental financial damage or unemployment. Small businesses are struggling to find creative solutions to adapt and stay afloat — and they need to do so quickly.
 
 At Shopify, we have a mission to make commerce better for everyone, but we did not expect 2020 to start out with a global pandemic. Shopify is a mini-economy — with merchants, partners, buyers, carriers, payment providers all interacting — and planning helps us build products that positively impact the entire system. When COVID-19 happened, those plans went out the window. We had to go back to the drawing board and ask:
@@ -134,3 +136,9 @@ _Key benefits_
 Shopify isn’t perfect. However, our emphasis on foundations and building for the long term is paying off during this period of distress when data is more critical than ever.
 
 When the COVID-19 task force started, no one on the Data Team needed to start from scratch. We leveraged years of data work to uncover valuable insights within days. Some we got from existing dashboards and vetted data points. In other cases, modelled data allowed us to calculate new metrics with fewer than 50 lines of SQL. Shopify’s culture of data sharing, collaboration, and informed decision making ensured these insights turned into action. Foundational work pays off in times of turmoil. I am proud that our investment in foundations is positively impacting the Data Team and our merchants.
+
+----
+
+**NOTE:** This post was originally posted on [Shopify Data blog](https://engineering.shopify.com/pages/data-science-engineering)
+
+I would also like to thanks the team of fantastic folks at Shopify who help with the edditing of this blog post.
