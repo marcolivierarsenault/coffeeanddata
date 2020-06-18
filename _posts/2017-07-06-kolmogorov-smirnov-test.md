@@ -25,7 +25,7 @@ There is an issue with Student’s T-Test, samples must be normal (shaped in a n
 
 The <a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test" target="_blank" rel="nofollow noopener">Kolmogorov–Smirnov test</a> (KS Test) is a bit more complex and allows you to detect patterns you can’t detect with a Student’s T-Test.
 
-From Wikipedia: _“The Kolmogorov–Smirnov statistic quantifies a distance between the _<a href="https://en.wikipedia.org/wiki/Empirical_distribution_function" target="_blank" rel="nofollow noopener"><em>empirical distribution function</em></a>_ of the sample and the _<a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function" target="_blank" rel="nofollow noopener"><em>cumulative distribution function</em></a>_ of the reference distribution, or between the empirical distribution functions of two samples.”_
+From Wikipedia: _“The Kolmogorov–Smirnov statistic quantifies a distance between the_<a href="https://en.wikipedia.org/wiki/Empirical_distribution_function" target="_blank" rel="nofollow noopener"><em> empirical distribution function</em></a>_ of the sample and the _<a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function" target="_blank" rel="nofollow noopener"><em>cumulative distribution function </em></a>_of the reference distribution, or between the empirical distribution functions of two samples.”_
 
 Here is an example that shows the difference between Student’s T-Test and KS Test taken from stackexchange.com.
 
