@@ -139,6 +139,6 @@ When the COVID-19 task force started, no one on the Data Team needed to start fr
 
 ----
 
-**NOTE:** This post was originally posted on [Shopify Data blog](https://engineering.shopify.com/pages/data-science-engineering)
+**NOTE:** This post was originally posted on [Shopify Data blog](https://engineering.shopify.com/blogs/engineering/shopifys-data-science-engineering-foundations)
 
 I would also like to thanks the team of fantastic folks at Shopify who help with the edditing of this blog post.
