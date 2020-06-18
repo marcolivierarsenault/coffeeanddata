@@ -3,10 +3,10 @@
   <channel>
     <title>Coffee and Data</title>
     <description>Data Science Blog by Marc-Olivier Arsenault</description>
-    <link>/</link>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 18 Jun 2020 18:38:00 +0000</pubDate>
-    <lastBuildDate>Thu, 18 Jun 2020 18:38:00 +0000</lastBuildDate>
+    <link>https://coffeeanddata.ca/</link>
+    <atom:link href="https://coffeeanddata.ca/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 18 Jun 2020 23:39:56 +0000</pubDate>
+    <lastBuildDate>Thu, 18 Jun 2020 23:39:56 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -168,8 +168,8 @@ Of course, there is a downside, which I call the specialist gap: sub-teams have 
 &lt;p&gt;I would also like to thanks the team of fantastic folks at Shopify who help with the edditing of this blog post.&lt;/p&gt;
 </description>
         <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
-        <link>/how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team</link>
-        <guid isPermaLink="true">/how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team</guid>
+        <link>https://coffeeanddata.ca/how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team</guid>
         
         <category>data</category>
         
@@ -321,8 +321,8 @@ If you are interested all the code is available in my Github repo: &lt;a href=&q
 &lt;p&gt;You can check my web app here: &lt;a href=&quot;https://voyage.coffeeanddata.ca&quot;&gt;https://voyage.coffeeanddata.ca&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
-        <link>/using-data-science-to-save-money-on-my-next-trip-to-mexico</link>
-        <guid isPermaLink="true">/using-data-science-to-save-money-on-my-next-trip-to-mexico</guid>
+        <link>https://coffeeanddata.ca/using-data-science-to-save-money-on-my-next-trip-to-mexico</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/using-data-science-to-save-money-on-my-next-trip-to-mexico</guid>
         
         <category>visualisation</category>
         
@@ -429,8 +429,8 @@ If you are interested all the code is available in my Github repo: &lt;a href=&q
 &lt;p&gt;As far as I know they will publish videos from some of the talk on their site: &lt;a href=&quot;https://databricks.com/sparkaisummit/north-america&quot;&gt;https://databricks.com/sparkaisummit/north-america&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
-        <link>/spark-ai-summit-2019</link>
-        <guid isPermaLink="true">/spark-ai-summit-2019</guid>
+        <link>https://coffeeanddata.ca/spark-ai-summit-2019</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/spark-ai-summit-2019</guid>
         
         <category>big_data</category>
         
@@ -604,8 +604,8 @@ articles = articles \
 &lt;p&gt;I would like to thank &lt;a href=&quot;https://www.linkedin.com/in/mstyles/&quot;&gt;Michael Styles&lt;/a&gt; for his help on this project.&lt;/p&gt;
 </description>
         <pubDate>Wed, 17 Apr 2019 00:00:00 +0000</pubDate>
-        <link>/spark-join-using-regex</link>
-        <guid isPermaLink="true">/spark-join-using-regex</guid>
+        <link>https://coffeeanddata.ca/spark-join-using-regex</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/spark-join-using-regex</guid>
         
         <category>big_data</category>
         
@@ -679,8 +679,8 @@ articles = articles \
 &lt;p&gt;When you jump to a higher stage too quickly, you are lying. Lying to yourself, lying to your team and lying to the great discipline of data science.  I know it does not sound cool, but be humble and invest the effort where it should be. But data deserves it.&lt;/p&gt;
 </description>
         <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
-        <link>/the-data-science-pyramid</link>
-        <guid isPermaLink="true">/the-data-science-pyramid</guid>
+        <link>https://coffeeanddata.ca/the-data-science-pyramid</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/the-data-science-pyramid</guid>
         
         <category>data_science</category>
         
@@ -756,8 +756,8 @@ Even if the left graph does not seem that better, I can assure you that for the 
 &lt;p&gt;So please, look at your data again and again. To the point you feel you can separate it by hand, then let fancy algorithms to the rest of the work.&lt;/p&gt;
 </description>
         <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
-        <link>/this-is-what-i-really-do-as-a-data-scientist</link>
-        <guid isPermaLink="true">/this-is-what-i-really-do-as-a-data-scientist</guid>
+        <link>https://coffeeanddata.ca/this-is-what-i-really-do-as-a-data-scientist</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/this-is-what-i-really-do-as-a-data-scientist</guid>
         
         <category>clustering</category>
         
@@ -1039,8 +1039,8 @@ def lossless_triplet_loss(y_true, y_pred, N = 3, beta=N, epsilon=1e-8):
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
-        <link>/lossless-triplet-loss</link>
-        <guid isPermaLink="true">/lossless-triplet-loss</guid>
+        <link>https://coffeeanddata.ca/lossless-triplet-loss</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/lossless-triplet-loss</guid>
         
         <category>Deep_Learning</category>
         
@@ -1121,8 +1121,8 @@ def lossless_triplet_loss(y_true, y_pred, N = 3, beta=N, epsilon=1e-8):
 &lt;p&gt;Happy plotting,&lt;/p&gt;
 </description>
         <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
-        <link>/distributions-5th-symphony</link>
-        <guid isPermaLink="true">/distributions-5th-symphony</guid>
+        <link>https://coffeeanddata.ca/distributions-5th-symphony</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/distributions-5th-symphony</guid>
         
         <category>Machine_Learning</category>
         
@@ -1183,8 +1183,8 @@ def lossless_triplet_loss(y_true, y_pred, N = 3, beta=N, epsilon=1e-8):
 &lt;/ul&gt;
 </description>
         <pubDate>Fri, 29 Sep 2017 00:00:00 +0000</pubDate>
-        <link>/machine-vs-human</link>
-        <guid isPermaLink="true">/machine-vs-human</guid>
+        <link>https://coffeeanddata.ca/machine-vs-human</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/machine-vs-human</guid>
         
         <category>iot</category>
         
@@ -1281,8 +1281,8 @@ def lossless_triplet_loss(y_true, y_pred, N = 3, beta=N, epsilon=1e-8):
 &lt;p&gt;Coming: Part-2 Details around this Jupyter Extension&lt;/p&gt;
 </description>
         <pubDate>Mon, 31 Jul 2017 00:00:00 +0000</pubDate>
-        <link>/data-science-development-evironement</link>
-        <guid isPermaLink="true">/data-science-development-evironement</guid>
+        <link>https://coffeeanddata.ca/data-science-development-evironement</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/data-science-development-evironement</guid>
         
         <category>cloud</category>
         
