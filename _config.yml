@@ -6,6 +6,7 @@ logo: 'assets/images/square_logo.png'
 favicon: 'assets/images/favicon.ico'
 baseurl: 
 production_url: https://coffeeanddata.ca/
+feed_url: https://coffeeanddata.ca
 disqus: 'coffeeanddata'
 mailchimp_url: '//coffeeanddata.us18.list-manage.com/subscribe/post?u=0d3439b2865b0b299714d7d5a&amp;id=bed66e1b11'
 cover_image: data-and-coffee.jpg
