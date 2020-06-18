@@ -5,9 +5,176 @@
     <description>Data Science Blog by Marc-Olivier Arsenault</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 14 Jun 2020 01:09:18 +0000</pubDate>
-    <lastBuildDate>Sun, 14 Jun 2020 01:09:18 +0000</lastBuildDate>
+    <pubDate>Thu, 18 Jun 2020 18:38:00 +0000</pubDate>
+    <lastBuildDate>Thu, 18 Jun 2020 18:38:00 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
+    
+      <item>
+        <title>How to thrive in the face of disruption: Tips from Shopify’s Data Team</title>
+        <description>&lt;p&gt;Learn how the Data Team has helped Shopify make great decisions during COVID-19.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;We currently face a global pandemic. People are in pain around the world. Daily life has been disrupted. Many face monumental financial damage or unemployment. Small businesses are struggling to find creative solutions to adapt and stay afloat — and they need to do so quickly.&lt;/p&gt;
+
+&lt;p&gt;At Shopify, we have a mission to make commerce better for everyone, but we did not expect 2020 to start out with a global pandemic. Shopify is a mini-economy — with merchants, partners, buyers, carriers, payment providers all interacting — and planning helps us build products that positively impact the entire system. When COVID-19 happened, those plans went out the window. We had to go back to the drawing board and ask:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;How can we best help our merchants during this crisis?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;With over one million merchants in over 175 countries around the globe, there is no one-size-fits-all answer. They are each being impacted in different ways. Layer on the complexity of the mini-economy and it feels like we were faced with an impossible question. Regardless, within a few days of going into lockdown, Shopify’s Data Team had launched a COVID-19 task force to address that seemingly impossible question.&lt;/p&gt;
+
+&lt;p&gt;Since then, we’ve played a critical role in helping the company make great decisions in support of our merchants during this unprecedented time. While it pales in comparison to work being done to save lives, I am really impressed by the way the entire team has responded. We’ve provided Shopify with high quality, daily insights as things change rapidly. Here are the factors that enabled us to respond so quickly and effectively in support of Shopify and the merchants who use our platform.&lt;/p&gt;
+
+&lt;h3 id=&quot;1---modelled-data&quot;&gt;1 - Modelled Data&lt;/h3&gt;
+
+&lt;p&gt;One of the first things we do when we onboard (at least when I joined) is get a copy of &lt;a href=&quot;https://www.oreilly.com/library/view/the-data-warehouse/9781118530801/&quot;&gt;The Data Warehouse Toolkit&lt;/a&gt; by Ralph Kimball. If you work in Data at Shopify, it’s required reading! Sadly it’s not about fancy deep neural nets (sarcasm) or technologies and infrastructure. Instead it focuses on data schemas and best practices for dimensional modelling. It answers questions like, “How should you design your tables so they can be easily joined together? Which table makes the most sense to house a given column?” In essence, it explains how to take raw data and put it in a format that is queryable by anyone.&lt;/p&gt;
+
+&lt;p&gt;I am not saying that this is the only good way to structure your data. For what it’s worth, it could be the 10th best strategy. That doesn’t matter. What counts is that we agreed, as a Data Team, to use this modelling philosophy to build Shopify’s data warehouse. Because of this agreed upon rule, I can very easily surf through data models produced by another team. I understand when to switch between dimension and fact tables. I know that I can safely join on dimensions because they handle unresolved rows in a standard way — with no sneaky nulls silently destroying rows after joining.
+This approach has a number of key benefits for working faster and more collaboratively. These are crucial as we continue to provide insights into the rapidly changing environment brought on by COVID-19.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;No need to understand raw data’s structure.&lt;/li&gt;
+  &lt;li&gt;Data is compatible between teams.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;2---data-consistency-and-open-access&quot;&gt;2 - Data consistency and open access&lt;/h3&gt;
+
+&lt;p&gt;We have a single data modelling platform. It is built on top of Spark in a single GitHub repo that everyone at Shopify can access, and everyone uses it. There’s no hippie in accounting with their own magical stack that only works when 3 planets are aligned. With everyone using the same tools as me, I can gather context quickly and independently: I know how to browse Ian’s code, I can find where Ben has put the latest model, etc… I simply need to pick a table name and I can see 100% of the code that built that model.
+What is more, all of our modelled data sits on a Presto Cluster that is available to the whole company, and not just data scientists (except PII information). That’s right! Anyone at the company can query our data. We also have internal tools to discover these data sets that we’ll talk about in an upcoming blog post. That openness and consistency makes things scalable.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Data is easily discoverable&lt;/li&gt;
+  &lt;li&gt;Everyone can take advantage of existing data&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;3---rigorous-etl&quot;&gt;3 - Rigorous ETL&lt;/h3&gt;
+
+&lt;p&gt;As a company focused on software, the skills we’ve developed as a Data Team were influenced by our developer friends. All (that’s right all) of our data pipeline jobs are unit tested. We test every situation that we can think of: errors, edge cases, and so on. This may slow down development a bit, but it also prevents many pitfalls. It is easy to lose track of a JOIN that occasionally doubles the number of rows under a specific scenario. Unit testing catches this kind of thing more often than you’d expect.
+We also ensure that the data pipeline does not let jobs fail in silence. While it may be painful to receive a Slack message at 4 pm on Friday about a five-year-old dataset that just failed, the system ensures you can trust the data you play with to be consistently fresh and accurate.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Better data accuracy and quality&lt;/li&gt;
+  &lt;li&gt;Trust in data across the company&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;4---vetted-dashboards&quot;&gt;4 - Vetted dashboards&lt;/h3&gt;
+
+&lt;p&gt;Like our data pipeline, we have one main visualization engine. All finalized reports are centralized on an internal website. Before blindly jumping into the code like a university student three hours before a huge deadline, we can go see what others have already published. In most cases, a significant portion of the metrics you’re looking for are already accessible to everyone. In other cases, an existing dashboard is pretty close to what we’re looking for. Since the base code for every dashboard is centralized, this is a great starting point.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Better discovery speed&lt;/li&gt;
+  &lt;li&gt;Reuse of work&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;5---vetted-data-points&quot;&gt;5 - Vetted data points&lt;/h3&gt;
+
+&lt;p&gt;All data points that form the basis for major decisions or that need to be published externally are what we call vetted data points. They’re stored together with the context we need to understand them. This includes the original question, its answer, and the code that generated the results. One of the fundamentals in producing vetted data points is that the result should not change over time. For example, if I ask how many merchants were on the platform in Q1 2019, the answer should be the same today and in 4 years from now. Sounds trivial — but it’s harder than it looks! By having it all in a single GitHub repo, it’s discoverable, reproducible, and easy to update each year&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Reproducibility of key metrics&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;6---everything-is-peer-reviewed&quot;&gt;6 - Everything is peer reviewed&lt;/h3&gt;
+
+&lt;p&gt;All of our work is peer reviewed, usually by at least two other data scientists. Even my boss and my boss’s boss go through this. This is another practice we gleaned by working closely with developers. Dashboards, vetted data points, dimensional models, unit tests, data extraction, etc… it’s all reviewed. Knowing several people looked at a query invokes a high level of trust in the data across the company. When we do work that touches more than one team, we make sure to involve reviewers from both teams. When we touch raw data, we add developers as reviewers. These tactics really improve the overall quality of data outputs by ensuring pipeline code and analytics meet a high standard that is upheld across the team.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Better data accuracy and quality&lt;/li&gt;
+  &lt;li&gt;Higher trust in data&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;7---deep-product-understanding&quot;&gt;7 - Deep product understanding&lt;/h3&gt;
+
+&lt;p&gt;Now for my favourite part: All analyses require a deep understanding of the product. At Shopify, we strive to fall in love with the problem, not the tools. Excellence doesn’t come from just looking at the data, but from understanding what it means for our merchants.
+One way we do this is to divide the Data Team into smaller sub-teams, each of which is associated with a product (or product area). A clear benefit is that sub-teams become experts about a specific product and its data. We know it inside and out! We truly understand what &lt;code class=&quot;highlighter-rouge&quot;&gt;enable&lt;/code&gt; means in the column &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; of some table.&lt;/p&gt;
+
+&lt;p&gt;Product knowledge allows us to slice and dice quickly at the right angles. During COVID-19, this has allowed us to focus on metrics that are vital for our merchants. Deep product understanding also allows us to guide stakeholders to good questions, identify confounding factors to account for in analyses, and design experiments that will really influence the direction of Shopify’s products.
+Of course, there is a downside, which I call the specialist gap: sub-teams have less visibility into other products and data sources. I’ll explain how we address that soon.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Better quality analysis&lt;/li&gt;
+  &lt;li&gt;Emphasis on substantial problems&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;8---communication&quot;&gt;8 - Communication&lt;/h3&gt;
+
+&lt;p&gt;What is the point of insights if you don’t share them? Our philosophy is that discovering an insight is only half the work. The other half is communicating the result to the right people in a way they can understand.&lt;/p&gt;
+
+&lt;p&gt;We try to avoid throwing a solitary graph or a statistic at anyone. Instead, we write down the findings &lt;strong&gt;along with our opinions and recommendations&lt;/strong&gt;. Many people are uncomfortable with this, but it’s crucial if you want a result to be interpreted correctly and spur the right actions. We can’t expect non-experts to focus on a survival analysis. This may be the data scientist’s tool to understand the data, but don’t mistake it for the result.&lt;/p&gt;
+
+&lt;p&gt;On my team, every time anyone wants to communicate something, the message is peer reviewed — preferably by someone without much background knowledge of the problem. If they cannot understand your message, it’s probably not ready yet. Intuitively, it might seem best to review the work with someone who understands the importance of the message. However, assumptions about the message become clear when you engage someone with limited visibility. We often forget how much context we have on a problem when we’ve just finished working on it, so what we think is obvious might not be so obvious for others.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Stakeholder engagement&lt;/li&gt;
+  &lt;li&gt;Positive influence on decision making&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;9---collaboration-across-data-teams&quot;&gt;9 - Collaboration across data teams&lt;/h3&gt;
+
+&lt;p&gt;For the COVID-19 task force, we created a fully cross-functional team with one champion per data sub-team to close the specialist gap I mentioned. We meet to share findings on a daily basis and collaborate on deep dives that may require or affect multiple products. Over the past weeks, I have worked with many people I’ve never met, and they’ve all been incredible! Because we share the same assumptions about the data and underlying frameworks, we understand each other. Within hours this team was running at full speed. Everyone has been successfully working together towards one goal — making things better for our merchants — without being constrained to their specific product area.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Business-wide impact&lt;/li&gt;
+  &lt;li&gt;Team spirit&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;10---positive-philosophy-about-data&quot;&gt;10 - Positive philosophy about data&lt;/h3&gt;
+
+&lt;p&gt;If you share some game-changing insights with a big decision maker at your company, do they listen? At Shopify, leaders might not action every single recommendation from Data because there are other considerations to weigh, but they definitely listen. They’re keen to consider anything that could help our merchants.&lt;/p&gt;
+
+&lt;p&gt;Shopify has &lt;a href=&quot;https://www.shopify.ca/blog/shopify-reunite-2020&quot;&gt;announced several features&lt;/a&gt; (&lt;a href=&quot;https://www.shopify.ca/covid19&quot;&gt;plus these&lt;/a&gt;) to help merchants during lockdowns like &lt;a href=&quot;https://www.shopify.ca/blog/gift-cards-all-plans&quot;&gt;gift card&lt;/a&gt; features for all merchants and the &lt;a href=&quot;https://www.shopify.ca/blog/local-delivery&quot;&gt;launch of local deliveries&lt;/a&gt;
+. The Data Team provided many insights that influenced these decisions.&lt;/p&gt;
+
+&lt;p&gt;At the end of the day, it is the data scientists job to make sure insights are understood by the key people. That being said, having leaders that listen help a lot. Our company’s attitude towards data transforms our work from interesting to impactful.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Impactful data science&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Shopify isn’t perfect. However, our emphasis on foundations and building for the long term is paying off during this period of distress when data is more critical than ever.&lt;/p&gt;
+
+&lt;p&gt;When the COVID-19 task force started, no one on the Data Team needed to start from scratch. We leveraged years of data work to uncover valuable insights within days. Some we got from existing dashboards and vetted data points. In other cases, modelled data allowed us to calculate new metrics with fewer than 50 lines of SQL. Shopify’s culture of data sharing, collaboration, and informed decision making ensured these insights turned into action. Foundational work pays off in times of turmoil. I am proud that our investment in foundations is positively impacting the Data Team and our merchants.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; This post was originally posted on &lt;a href=&quot;https://engineering.shopify.com/blogs/engineering/shopifys-data-science-engineering-foundations&quot;&gt;Shopify Data blog&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I would also like to thanks the team of fantastic folks at Shopify who help with the edditing of this blog post.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+        <link>/how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team</link>
+        <guid isPermaLink="true">/how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team</guid>
+        
+        <category>data</category>
+        
+        
+      </item>
     
       <item>
         <title>Using data science to save money on my next trip to Mexico</title>
@@ -1122,117 +1289,6 @@ def lossless_triplet_loss(y_true, y_pred, N = 3, beta=N, epsilon=1e-8):
         <category>Linux</category>
         
         <category>Machine_Learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Kolmogorov–Smirnov test</title>
-        <description>&lt;p&gt;Lately, at work, we had to do a lot of unsupervised classification. We basically had to distinguish N classes from a sample population. We had a rough idea of how many classes were present but nothing was sure, we discovered the &lt;a href=&quot;https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;Kolmogorov–Smirnov test&lt;/a&gt; a very efficient way to determine if two samples are significantly different from each other.
-&lt;!--more--&gt;&lt;/p&gt;
-
-&lt;p&gt;I will give you a bit of context on the Kolmogorov–Smirnov test and walk you though one problem we solved with it.&lt;/p&gt;
-
-&lt;h2 id=&quot;a-bit-of-theory&quot;&gt;A bit of theory&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;Rejecting the null hypothesis.&lt;/em&gt; That sounds like a painful memory from university statistic class, but it’s actually exactly what we want to do here. We want to reject the possibility that the two samples are coming from the exact same distribution. Let’s look at a very high level, non-mathematical, overview of some tests available. If you want to get a good understanding of the mathematics behind all these tests, use the Wikipedia link provided in all the sections.&lt;/p&gt;
-
-&lt;h2 id=&quot;students-t-test&quot;&gt;Student’s T-Test&lt;/h2&gt;
-
-&lt;p&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/Student%27s_t-test&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;Student’s T-Test&lt;/a&gt; is probably the most well know way of rejecting the null hypothesis. This test calculate the P-value of a sample vs a normal population or vs another sample. The result, P-value, tells you how likely these samples comes from the exact same distribution.&lt;/p&gt;
-
-&lt;p&gt;When obtained, the P-Value can be compared with a threshold call statistical significance (e.g. .05), if the P-Value is smaller, we can reject the null hypotheses.&lt;/p&gt;
-
-&lt;p&gt;There is an issue with Student’s T-Test, samples must be normal (shaped in a normal distribution). That is an issue for us because we do work a lot with Poisson distributions.&lt;/p&gt;
-
-&lt;h2 id=&quot;kolmogorovsmirnov-test&quot;&gt;Kolmogorov–Smirnov test&lt;/h2&gt;
-
-&lt;p&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;Kolmogorov–Smirnov test&lt;/a&gt; (KS Test) is a bit more complex and allows you to detect patterns you can’t detect with a Student’s T-Test.&lt;/p&gt;
-
-&lt;p&gt;From Wikipedia: &lt;em&gt;“The Kolmogorov–Smirnov statistic quantifies a distance between the &lt;/em&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Empirical_distribution_function&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;&lt;em&gt;empirical distribution function&lt;/em&gt;&lt;/a&gt;&lt;em&gt; of the sample and the &lt;/em&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Cumulative_distribution_function&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;&lt;em&gt;cumulative distribution function&lt;/em&gt;&lt;/a&gt;&lt;em&gt; of the reference distribution, or between the empirical distribution functions of two samples.”&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Here is an example that shows the difference between Student’s T-Test and KS Test taken from stackexchange.com.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/KS_curve.png#center&quot; alt=&quot;ks_curve&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Because the sample mean and standard deviation are highly similar the Student’s T-Test gives a very high p-value. KS Test can detect the variance. In this case the red distribution has a slightly binomial distribution which KS detect. In other words:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Student’s T-Test says that there is &lt;strong&gt;79.3%&lt;/strong&gt; chances the two samples come from the same distribution.&lt;/li&gt;
-  &lt;li&gt;KS Test says that there are &lt;strong&gt;1.6%&lt;/strong&gt; chances the two samples come from the same distribution.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;other-tests&quot;&gt;Other tests&lt;/h2&gt;
-
-&lt;p&gt;There are many other Test and algorithms to do that type of work. The &lt;a href=&quot;https://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;Shapiro–Wilk test&lt;/a&gt; &lt;del&gt;and the &lt;a href=&quot;https://en.wikipedia.org/wiki/Anderson%E2%80%93Darling_test&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;&lt;del&gt;Anderson–Darling tes&lt;/del&gt;t&lt;/a&gt; &lt;/del&gt;are two tests considered more powerful than the KS Test. There is a major downside with these two tests, they don’t allow you to compare two samples, they always compare a sample with a standard distribution.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Edit: A colleague of mine showed me that Anderson-Darling could also be used for two way testing (Comparing Samples).&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;”The two-sample K–S test is one of the most useful and general non-parametric methods for comparing two samples” – Wikipedia.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;detect-device-user&quot;&gt;Detect Device User&lt;/h2&gt;
-
-&lt;p&gt;For this specific assignment we had to detect which user was using a specific device. Each device was used by one or many different users and we had to come up with a technique to identify if there were one or multiple users. In the case of multiple users we wanted to identify which usage was done by which user.&lt;/p&gt;
-
-&lt;h2 id=&quot;our-strategy&quot;&gt;Our Strategy&lt;/h2&gt;
-
-&lt;p&gt;We decided to use a mix of graph network and KS Test to identify potential clusters. The idea behind this demo is to imagine a graph network where every node (sample) was connected to every other node (sample). The vertices or link between these nodes would me &lt;em&gt;KS Test&lt;/em&gt;, in other words, how close are these two nodes. So two nodes with low KS P-Value would be close and two with High P-Value would be far. This hopefully would create distinguishable clusters.&lt;/p&gt;
-
-&lt;h2 id=&quot;data-set&quot;&gt;Data set&lt;/h2&gt;
-
-&lt;p&gt;Here is what our data looks like:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/ks_one_dist.png#center&quot; alt=&quot;ks_dist&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;As you can see, all our sample looks like a normal distribution with a very low standard deviation. We have sampled all the 82 different usage sessions of this device.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/ks_all_dist.png#center&quot; alt=&quot;ks_all_dist.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Strait from this picture we can see that there are different patterns. All the sample does not have the same histogram distribution. That is a very good start. After this we looked at the obvious cluster of distribution.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/ks_corr.png#left&quot; alt=&quot;ks_corr&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;To do so, we did the KS matrix, which consists of a KS Two way test of every sample distribution vs every other sample.A quick view of the KS Matrix heat map does not reveal obvious results (As you can see on the figure on your right).&lt;/p&gt;
-
-&lt;p&gt;After so hierarchical clustering, we already get some better results.(As you can see on the following figure.)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/ks_hir.png#center&quot; alt=&quot;ks_hir&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In these two dendrogram visualization, we can see some potential (3) clusters. After review these clusters came back to be insignificant.&lt;/p&gt;
-
-&lt;h2 id=&quot;network-graph&quot;&gt;Network Graph&lt;/h2&gt;
-
-&lt;p&gt;After the unsuccessful dendrogram clustering, we tried the proposed Graph approach. The goal here, like explained earlier, is to graph all the possible nodes and vertices. The vertices length being the KS Test Value. We had to remove the self-reference (which was always 0 (obviously you are perfectly similar to yourself).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/ks_blob.png#center&quot; alt=&quot;ks_blob&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We then ended up with a network graph where everybody was connected with everybody else which is not particularly useful.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/ks_cluster.png#center&quot; alt=&quot;ks_cluster&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The next step is to only keep the significant link (lower than a certain threshold)&lt;/p&gt;
-
-&lt;p&gt;As we can see on this picture, we got a very exciting result. We can clearly see two distinct clusters and three outliers.&lt;/p&gt;
-
-&lt;p&gt;This would perfectly fit our model, the big cluster must be the main user and the second cluster could be the alternative user.&lt;/p&gt;
-
-&lt;p&gt;After a validity verification, we did find out that the cluster identified some difference between the usage of clusters 1 and 2 but not the one we were looking for. In other words, it did not solve our problem but it proved itself to do find a usage difference, that might be useful in another context.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;After this work, we concluded that KS Test is a very powerful way to automatically differentiate samples from different distribution. It did not exactly solve our problem, but it did show that it can easily be used in a Data Science context.&lt;/p&gt;
-
-&lt;p&gt;Today I presented you one of the problems we solved with KS Test, but we also used it for other problems. KS Test is really becoming a good test in our data science Swiss knife.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 06 Jul 2017 00:00:00 +0000</pubDate>
-        <link>/kolmogorov-smirnov-test</link>
-        <guid isPermaLink="true">/kolmogorov-smirnov-test</guid>
-        
-        <category>Machine_Learning</category>
-        
-        <category>Statistics</category>
         
         
       </item>
