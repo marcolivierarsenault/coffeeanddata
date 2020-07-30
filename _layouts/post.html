@@ -14,15 +14,12 @@ post_class: post-template
                 </div><!-- .post-meta -->
                 <h1 class="posttitle">{{ page.title }}</h1>
             </header><!-- .post-header -->
-            <div class="excerpt">
-                {{page.excerpt}}
-            </div>
             {% if page.featured_image %}
             <div class="post-thumbnail"><img class="featured-image img-fluid" src="{{ site.baseurl }}{{ page.featured_image }}"
                     alt="{{ page.title }}"></div>
             {% endif %}
             <div class="post-content">
-                {{ content | remove: page.excerpt }}
+                {{content}}
             </div>
             <footer class="post-footer">
                 {% if page.tags.size > 0 %}
