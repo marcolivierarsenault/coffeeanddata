@@ -19,7 +19,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-02-15T00:00:00+00:00" />
 <script type="application/ld+json">
-{"description":"A more efficient loss function for Siamese","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/square_logo.png"},"name":"Marc-Olivier Arsenault"},"url":"/lossless-triplet-loss","headline":"Lossless Triplet loss","dateModified":"2018-02-15T00:00:00+00:00","datePublished":"2018-02-15T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/lossless-triplet-loss"},"author":{"@type":"Person","name":"Marc-Olivier Arsenault"},"@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/square_logo.png"},"name":"Marc-Olivier Arsenault"},"headline":"Lossless Triplet loss","dateModified":"2018-02-15T00:00:00+00:00","url":"/lossless-triplet-loss","datePublished":"2018-02-15T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/lossless-triplet-loss"},"author":{"@type":"Person","name":"Marc-Olivier Arsenault"},"description":"A more efficient loss function for Siamese","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -73,13 +73,16 @@
                 </div><!-- .post-meta -->
                 <h1 class="posttitle">Lossless Triplet loss</h1>
             </header><!-- .post-header -->
+            <div class="excerpt">
+                <p>A more efficient loss function for Siamese</p>
+
+            </div>
             
             <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/primate-ape-thinking-mimic.jpg"
                     alt="Lossless Triplet loss"></div>
             
             <div class="post-content">
-                <p>A more efficient loss function for Siamese</p>
-
+                
 <!--more-->
 
 <p>At work, we are working with Siamese Neural Net (NN) for one shot training on telecom data. Our goal is to create a NN that can easily detect failure in Telecom Operators networks. To do so, we are building this N dimension encoding to describe the actual status of the network. With this encoding we can then evaluate what is the status of network and detect faults. This encoding as the same goal as something like word encoding (<a href="https://en.wikipedia.org/wiki/Word2vec">Word2Vec</a> or others). To train this encoding we use a <a href="https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf">Siamese Network</a> [Koch et al.] to create a one shot encoding so it would work on any network. A simplified description of Siamese network is available <a href="https://hackernoon.com/one-shot-learning-with-siamese-networks-in-pytorch-8ddaab10340e">here</a>. For more details about our experiment you can read the <a href="https://thelonenutblog.wordpress.com/2017/12/14/do-telecom-networks-dreams-of-siamese-memories/">blog of my colleague</a> who is the master brain behind this idea.</p>
