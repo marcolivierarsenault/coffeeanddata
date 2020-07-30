@@ -63,6 +63,10 @@
   max-width: 1080px;
 }
 
+.post-content {
+  margin-top: -10px;
+}
+
 /**
  * 4. Site Header
  * ----------------------------------------------------------------------------
@@ -158,7 +162,7 @@
  * ----------------------------------------------------------------------------
  */
 .post {
-  margin-bottom: 1.66667em;
+  margin-bottom: 2.5em;
 }
 
 .post-header {
@@ -308,7 +312,7 @@
 
 .post-feed .post-title {
   font-size: 1.55556rem;
-  margin-bottom: 0.53571em;
+  margin-bottom: 0em;
 }
 
 .post-feed .post-meta {
