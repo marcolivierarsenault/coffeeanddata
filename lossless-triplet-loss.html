@@ -73,16 +73,13 @@
                 </div><!-- .post-meta -->
                 <h1 class="posttitle">Lossless Triplet loss</h1>
             </header><!-- .post-header -->
-            <div class="excerpt">
-                <p>A more efficient loss function for Siamese</p>
-
-            </div>
             
             <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/primate-ape-thinking-mimic.jpg"
                     alt="Lossless Triplet loss"></div>
             
             <div class="post-content">
-                
+                <p>A more efficient loss function for Siamese</p>
+
 <!--more-->
 
 <p>At work, we are working with Siamese Neural Net (NN) for one shot training on telecom data. Our goal is to create a NN that can easily detect failure in Telecom Operators networks. To do so, we are building this N dimension encoding to describe the actual status of the network. With this encoding we can then evaluate what is the status of network and detect faults. This encoding as the same goal as something like word encoding (<a href="https://en.wikipedia.org/wiki/Word2vec">Word2Vec</a> or others). To train this encoding we use a <a href="https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf">Siamese Network</a> [Koch et al.] to create a one shot encoding so it would work on any network. A simplified description of Siamese network is available <a href="https://hackernoon.com/one-shot-learning-with-siamese-networks-in-pytorch-8ddaab10340e">here</a>. For more details about our experiment you can read the <a href="https://thelonenutblog.wordpress.com/2017/12/14/do-telecom-networks-dreams-of-siamese-memories/">blog of my colleague</a> who is the master brain behind this idea.</p>
