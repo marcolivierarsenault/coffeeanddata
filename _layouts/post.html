@@ -9,15 +9,17 @@ post_class: post-template
         <article class="post-full inner">
             <header class="post-header">
                 <div class="post-meta">
-                    <time class="post-date" datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%B %-d,
-                        %Y" }}</time>
+                    
                 </div><!-- .post-meta -->
-                <h1 class="posttitle">{{ page.title }}</h1>
-            </header><!-- .post-header -->
-            {% if page.featured_image %}
-            <div class="post-thumbnail"><img class="featured-image img-fluid" src="{{ site.baseurl }}{{ page.featured_image }}"
+                {% if page.featured_image %}
+                    <div class="post-thumbnail"><img class="featured-image img-fluid" src="{{ site.baseurl }}{{ page.featured_image }}"
                     alt="{{ page.title }}"></div>
             {% endif %}
+            <time class="post-date" datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%B %-d,
+                %Y" }}</time>
+                <h1 class="posttitle">{{ page.title }}</h1>
+            </header><!-- .post-header -->
+            
             <div class="post-content">
                 {{content}}
             </div>
