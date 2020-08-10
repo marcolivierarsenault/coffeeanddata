@@ -5,9 +5,9 @@
     <description>Data Science Blog by Marc-Olivier Arsenault</description>
     <link>https://coffeeanddata.ca/</link>
     <atom:link href="https://coffeeanddata.ca/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 10 Aug 2020 01:48:19 +0000</pubDate>
-    <lastBuildDate>Mon, 10 Aug 2020 01:48:19 +0000</lastBuildDate>
-    <generator>Jekyll v4.0.0</generator>
+    <pubDate>Mon, 10 Aug 2020 02:24:23 +0000</pubDate>
+    <lastBuildDate>Mon, 10 Aug 2020 02:24:23 +0000</lastBuildDate>
+    <generator>Jekyll v4.1.1</generator>
     
       <item>
         <title>How to thrive in the face of disruption: Tips from Shopify’s Data Team</title>
@@ -102,7 +102,7 @@ We also ensure that the data pipeline does not let jobs fail in silence. While i
 &lt;h3 id=&quot;7---deep-product-understanding&quot;&gt;7 - Deep product understanding&lt;/h3&gt;
 
 &lt;p&gt;Now for my favourite part: All analyses require a deep understanding of the product. At Shopify, we strive to fall in love with the problem, not the tools. Excellence doesn’t come from just looking at the data, but from understanding what it means for our merchants.
-One way we do this is to divide the Data Team into smaller sub-teams, each of which is associated with a product (or product area). A clear benefit is that sub-teams become experts about a specific product and its data. We know it inside and out! We truly understand what &lt;code class=&quot;highlighter-rouge&quot;&gt;enable&lt;/code&gt; means in the column &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; of some table.&lt;/p&gt;
+One way we do this is to divide the Data Team into smaller sub-teams, each of which is associated with a product (or product area). A clear benefit is that sub-teams become experts about a specific product and its data. We know it inside and out! We truly understand what &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;enable&lt;/code&gt; means in the column &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;status&lt;/code&gt; of some table.&lt;/p&gt;
 
 &lt;p&gt;Product knowledge allows us to slice and dice quickly at the right angles. During COVID-19, this has allowed us to focus on metrics that are vital for our merchants. Deep product understanding also allows us to guide stakeholders to good questions, identify confounding factors to account for in analyses, and design experiments that will really influence the direction of Shopify’s products.
 Of course, there is a downside, which I call the specialist gap: sub-teams have less visibility into other products and data sources. I’ll explain how we address that soon.&lt;/p&gt;
