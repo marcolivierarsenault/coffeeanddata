@@ -5,8 +5,8 @@
     <description>Data Science Blog by Marc-Olivier Arsenault</description>
     <link>https://coffeeanddata.ca/</link>
     <atom:link href="https://coffeeanddata.ca/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 31 Jul 2020 00:57:20 +0000</pubDate>
-    <lastBuildDate>Fri, 31 Jul 2020 00:57:20 +0000</lastBuildDate>
+    <pubDate>Mon, 10 Aug 2020 01:43:58 +0000</pubDate>
+    <lastBuildDate>Mon, 10 Aug 2020 01:43:58 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -1143,7 +1143,7 @@ def lossless_triplet_loss(y_true, y_pred, N = 3, beta=N, epsilon=1e-8):
 
 &lt;p&gt;The Use Case (UC) we propose will automatically detect which one is a machine and which is in fact a subscriber. To do so, we will use network metadata which is available to the operator. Thus there is no implication on the user side. The core of this metadata is subscriber communication behaviour e.g. data consumption, SMS, cell towers connections, etc. Obviously I will keep the key features for myself 😛&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;assets/images/wp-content/uploads/2017/09/Tagging.png#small&quot; alt=&quot;tagging&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/Tagging.png#center&quot; alt=&quot;tagging&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Our dataset had a very unbalance number of machine vs humans, which is expected. Only 5% of the subscribers are machines.&lt;/p&gt;
 
@@ -1161,11 +1161,11 @@ def lossless_triplet_loss(y_true, y_pred, N = 3, beta=N, epsilon=1e-8):
 
 &lt;p&gt;To classify machine from the dataset I built a Random Forest.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;assets/images/wp-content/uploads/2017/09/randomForest.png#small&quot; alt=&quot;random_forest&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/randomForest.png#center&quot; alt=&quot;random_forest&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The Random Forest performed really well. After some tweaking I was able to reach 98.9% accuracy. Here is a quick view of the confusion matrix, showing how the machine learning performed in the highly unbalanced set.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;assets/images/wp-content/uploads/2017/09/confusion.png&quot; alt=&quot;confusion&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/confusion.png&quot; alt=&quot;confusion&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The following proves that we can accurately detect machine using only network related data. After looking at our model, we looked at the key features. Out of the top (most impact on the classifier) five features, four are the Meta features we created to evaluate the stability over the days. In conclusion we can confirm that we have a working prototype and it would be very interesting to implement it with live traffic.&lt;/p&gt;
 
