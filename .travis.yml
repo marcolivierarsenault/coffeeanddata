@@ -6,6 +6,7 @@ branches:
 script:
   - JEKYLL_ENV=production bundle exec jekyll build --destination site
   - echo "coffeeanddata.ca" > ./site/CNAME
+  - bundle exec htmlproofer --assume-extension --allow-hash-href --http-status-ignore 999,403 ./site
 deploy:
   provider: pages
   local-dir: ./site
