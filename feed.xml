@@ -5,9 +5,112 @@
     <description>Data Science Blog by Marc-Olivier Arsenault</description>
     <link>https://coffeeanddata.ca/</link>
     <atom:link href="https://coffeeanddata.ca/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 09 Jan 2021 02:51:10 +0000</pubDate>
-    <lastBuildDate>Sat, 09 Jan 2021 02:51:10 +0000</lastBuildDate>
+    <pubDate>Fri, 29 Jan 2021 21:17:52 +0000</pubDate>
+    <lastBuildDate>Fri, 29 Jan 2021 21:17:52 +0000</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>Warning systems on data warehouse</title>
+        <description>&lt;p&gt;The story of how and why I built Whistleblower, a system that allows us to set warnings on any table in our environment.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;For the past couple of years, myself and a bunch of others at Shopify were looking for a smart way to set warnings on specific tables. Why warnings? The reason is quite simple, we spend a lot of time building quality front room datasets, as I explain in this &lt;a href=&quot;how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team&quot;&gt;previous blog&lt;/a&gt;. That being said, those datasets, for many reasons, can start to degrade over time. Let me walk you through the problem, what we tried before and how we solved it.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-problem&quot;&gt;The problem&lt;/h2&gt;
+
+&lt;p&gt;Yes at Shopify we care a lot about data set quality, we do peer review of all of them, we document them as much as possible. When we release a dataset, they are perfect. That being said we work in an environment that changes all the time. Then, at some point, the dataset quality will drop. Here are a couple of examples:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Some data is not available anymore&lt;/strong&gt;: Looks easy when you look at it on its own but when it is part of a larger dataset, hidden under 6 JOINs it is not that trivial to identify and fix.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Change in raw data&lt;/strong&gt;: The assumptions you had when you built your dataset may change. It is possible that data points start returning a new type of value, or outside a pre-established range (from 0 to 1, as an example), maybe something that could not be null before, can be null now.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Change in business rules&lt;/strong&gt;: Some of our dataset does model or replicate business logic, commercial contracts, SLAs, etc. When those contracts change, we need to modify the dataset to include the new reality.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When those 3 things happen, there are two major steps. First we need to realize and identify the change, second we have to fix or deprecate the dataset. As the first one deserves a lot of attention, and Shopify as great tools to find, I don’t want to talk about it too much. I really want to focus on the second one here, because as simple as it sounds, it is another story in real life.&lt;/p&gt;
+
+&lt;p&gt;Every single time we had this situation hit the team we had to ask ourselves, “OK we need to fix XYZ, but we don’t have time. Option A) we delete the dataset, Option B) we fix it”. After a rapid brainstorm session, we can’t go with A because it powers some other asset and we can’t go with B because we don’t have time to do it. So we end up leaving the dataset as is, even if we know that it is broken. We cannot prioritize other works and the impact of the error is not huge (for now).&lt;/p&gt;
+
+&lt;p&gt;Conclusion: Let’s warn user of the dataset so they are aware of the mistake and we add the issue in the backlog&lt;/p&gt;
+
+&lt;h2 id=&quot;the-real-problem&quot;&gt;The real problem&lt;/h2&gt;
+&lt;p&gt;The real problem is that one day, someone will query your dataset. This person will not be aware of the issue and will draw the wrong conclusions. When they contact you because they ,and half their boss, are freaking out with the result, you tell them the worst possible answer, ooo yes sorry, we knew it is a bug.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-we-tried-up-to-now&quot;&gt;What we tried up to now&lt;/h2&gt;
+&lt;p&gt;As we said, we faced those issue couples of times, here are a couple of things we tried already:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Broadcast the bug&lt;/strong&gt;: Send a nasty &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@here&lt;/code&gt; on Slack or a widespread email to let everyone know your dataset has a bug. That is great if someone was about to use it. Because other than that, there are very little chances someone will remember in 6 weeks from now and you just annoyed a ton of people with your broadcast.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt;: Like most other places, we have our own documentation repository. You can go there and add a note on this particular dataset, but unless someone goes to read it, nobody will see. Also, all existing dashboards or data scientists that frequently use your dataset won’t go read the doc every time they run a query/report.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Figure out who uses it&lt;/strong&gt;: This is essential to understand how bad the bug is. It will help you understand how much priority you need to give the repair, but first, in the meantime, it does not fix anything, second even if there are not many dependencies, it does not mean anybody will use it in the future.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;So I was looking for a way to solve this problem, especially after a nasty situation like explained above where some people really stressed over the result of a totally valid query. We needed a way to warn the users that this dataset had a specific problem.&lt;/p&gt;
+
+&lt;p&gt;After some digging I realized that some smart data engineers had set the &lt;a href=&quot;https://prestodb.io/&quot;&gt;Presto&lt;/a&gt; &lt;a href=&quot;https://prestodb.io/docs/current/develop/event-listener.html&quot;&gt;event listener&lt;/a&gt; to be sent on a specific kafka topic. In other words, every query on our Presto cluster was generating a Kafka event.&lt;/p&gt;
+
+&lt;p&gt;Note: Presto is the default engine to query our datasets at Shopify.&lt;/p&gt;
+
+&lt;p&gt;“I realized I could build a software that would monitor this Kafka Topic, do some REGEX to identify if the query was about the table would be a bug I could send a Slack message to the user.“&lt;/p&gt;
+
+&lt;p&gt;Why Slack, Slack is the main communication tool at Shopify, people monitor this way more than their email box. So a Slack message would be the best way to warn them. I had a plan&lt;/p&gt;
+
+&lt;h2 id=&quot;implementation&quot;&gt;Implementation&lt;/h2&gt;
+&lt;p&gt;At Shopify we have something called Hackday. 3 days in a row where we stop “normal” work and we work on special projects. Everybody chose its own project. I decided to give it a try. It has been a couple of years since I did professional software development, but I was sure I could hack something up.&lt;/p&gt;
+
+&lt;p&gt;My application was basically those 4 steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Listen the Kafka topic&lt;/li&gt;
+  &lt;li&gt;Do some Smart Regex to figure out if it was my table&lt;/li&gt;
+  &lt;li&gt;Find the Slack handle and send a Slack message to the user.&lt;/li&gt;
+  &lt;li&gt;Have all of this run somewhere.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So 1 was solved by this Presto-Kafka topic, I could simply listen to it. 2 could be solved with a basic webpage where data scientists could add warnings on specific tables and use Regex. For #3 and #4 I was really impressed by the dev culture and environment at Shopify. There was already a web service available to turn a user’s email (which I was getting from the Kafka message) to a Slack handle. I could also easily connect to Slack via their API. For the latest part, it was easier than I could even think of. Basically if I could find a way to do this in Ruby on Rails, I could deploy my application with basically 1 click.&lt;/p&gt;
+
+&lt;h2 id=&quot;result&quot;&gt;Result&lt;/h2&gt;
+&lt;p&gt;To this day, I am still impressed by the result. If you query any dataset with a warning within 3 seconds of the query being completed, you receive a Slack message like this one.
+&lt;img src=&quot;assets/images/posts/whistleblower.png#center&quot; alt=&quot;whistleblower&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Data scientists can now easily add a warning message on any table:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/new_rule.png#center&quot; alt=&quot;new rule&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;features&quot;&gt;Features&lt;/h3&gt;
+&lt;p&gt;I kept developing features on the tool. I added:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Snooze option: So your users don’t get worn every time they query the table.&lt;/li&gt;
+  &lt;li&gt;Specific column filtering: If all your dataset is ok, except 1 column, you can only warn users that use this column.&lt;/li&gt;
+  &lt;li&gt;Regex in the table name, maybe there is more than one table affected. You can set a regex-style table name.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;stats&quot;&gt;Stats&lt;/h2&gt;
+&lt;p&gt;After roughly 3 months, Whistleblower has&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Sent over 1300 warnings sent to 148 unique users.&lt;/li&gt;
+  &lt;li&gt;Scanned roughly 43 000 Presto Query/day.&lt;/li&gt;
+  &lt;li&gt;300 warnings sent &lt;strong&gt;Afterhour&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I am super happy about those, especially the 300 warnings afterhour. That means 300 times, someone received a warning with indication when most likely he could not get support because other team members were not there to help.&lt;/p&gt;
+
+&lt;p&gt;That tool is great, I can now sleep better at night knowing if ever someone queries those tables they will get warned and not take any bad decisions with the result.&lt;/p&gt;
+
+&lt;p&gt;Sidenote: It is really impressive how many people contact you when you call an internal project Whistleblower :P&lt;/p&gt;
+</description>
+        <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+        <link>https://coffeeanddata.ca/warning-systems-on-data-warehouse</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/warning-systems-on-data-warehouse</guid>
+        
+        <category>data</category>
+        
+        
+      </item>
     
       <item>
         <title>How to thrive in the face of disruption: Tips from Shopify’s Data Team</title>
@@ -1193,102 +1296,6 @@ def lossless_triplet_loss(y_true, y_pred, N = 3, beta=N, epsilon=1e-8):
         <category>Machine_Learning</category>
         
         <category>Statistics</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Data Science Development Environment (Part 1)</title>
-        <description>&lt;p&gt;Part of my task in the Data Science Team is to participate in the deployment of our development environment. This will be the first, of a series of articles about the environment we use at work.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;requirements&quot;&gt;Requirements&lt;/h2&gt;
-
-&lt;p&gt;Like any other team we have some requirements. It would be super nice to do anything we want but it’s not realistic. We come with an enterprise reality where some requirements are imposed by the company. There is politics involve in terms of which product we can and can’t buy, or with which supplier we can and can’t deal with.&lt;/p&gt;
-
-&lt;p&gt;Here is some of the hard requirements we have to deal with:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Data Sovereignty: Data is either own by us or by our customers. Depending on the project, we have specific requirements on the data. Going from data must stay on our server in this specific country to upload it wherever you like. So our solution must match both reality.&lt;/li&gt;
-  &lt;li&gt;Tool-set: We are a fairly small team, but we do not all uses the same tools, and not even the same languages for our analysis (some uses R and others uses Python).&lt;/li&gt;
-  &lt;li&gt;Collaboration: We want to be able to share code and analysis between team members.&lt;/li&gt;
-  &lt;li&gt;Libraries: We are still finding new libraries. We want a system that allows us to install and update open source libraries.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
-
-&lt;p&gt;After some experiments we have decided to build our own environment platform. We really wanted a platform that we could deploy on demand on anybody’s infrastructure regardless if it’s physical or virtual, public or private. As long as it’s easily deployable on a Linux server.&lt;/p&gt;
-
-&lt;p&gt;Each of us (data scientist) have their own VM. These VM contains the following setup:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Linux OS (Debian or Ubuntu)&lt;/li&gt;
-  &lt;li&gt;Python3&lt;/li&gt;
-  &lt;li&gt;R&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://jupyter.org/&quot;&gt;Jupyter Notebook&lt;/a&gt;
-    &lt;ul&gt;
-      &lt;li&gt;Git custom Add-on&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Open Source Libs&lt;/li&gt;
-  &lt;li&gt;Export script&lt;/li&gt;
-  &lt;li&gt;Data Share Drive&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;setup-details&quot;&gt;Setup details&lt;/h2&gt;
-
-&lt;p&gt;To develop we use Jupyter, a very well-known tool in data science. The best way to describe it would be a Web IDE for interpreted languages. It is currently configured to work with R and Python 3. To work efficiently between data scientist we have developed a Jupyter Extension that allows us to share code between all our VM. I will provide more details about this Extension in another blog entry. This extension save and share our source files (Jupyter file) on a Git repository. The data itself is stored on a shared drive that all VMs have access to.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/eric_archi.png#center&quot; alt=&quot;eric_archi&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I will add the list of used libraries at the end of this article. We also have an export script. This script allows us to export the Jupyter files when we work on customer’s servers. This script makes sure to strip out any data from the source file so we can export them with no problems back to our office.&lt;/p&gt;
-
-&lt;h2 id=&quot;installation-procedure&quot;&gt;Installation Procedure&lt;/h2&gt;
-
-&lt;p&gt;To deploy this environment we have a simple script that takes care of installing all the software, connecting the data share drive, installing the Jupyter extension downloading existing code. There is also an update script that grab and install the latest version of the open source libraries.&lt;/p&gt;
-
-&lt;h2 id=&quot;development-vm-size&quot;&gt;Development VM size&lt;/h2&gt;
-
-&lt;p&gt;Each of our development virtual machines are:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;CPU: 8 Cores&lt;/li&gt;
-  &lt;li&gt;RAM: 16 GB&lt;/li&gt;
-  &lt;li&gt;HDD: 160 GB&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;These VMs run on top of an OpenStack cluster. Because our install script does not communicate with the OpenStack APIs we could easily deploy on any other platform.&lt;/p&gt;
-
-&lt;h2 id=&quot;data-share-server&quot;&gt;Data Share Server&lt;/h2&gt;
-
-&lt;p&gt;To host and exchange data between these VMs we have setup this Data Server. This server is hosting all our data during our project. It is composed of an FTP server, for customers to send or receive data, an &lt;a href=&quot;https://en.wikipedia.org/wiki/Network_File_System&quot;&gt;NFS&lt;/a&gt; drive to do the actual file sharing and a backup solution to make sure we don’t lose precious data.&lt;/p&gt;
-
-&lt;h2 id=&quot;open-source-libraries&quot;&gt;Open Source Libraries&lt;/h2&gt;
-
-&lt;p&gt;Here is the exhaustive list of library we use. Keep in mind these gets updated frequently.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;System Lib (apt-get):&lt;/strong&gt; libperl-dev – python3-cairo – libxml2-dev – libsnappy-dev – aptitude – python3-pip – python3-dev – build-essential – libcurl4-openssl-dev – python3-pandas – libperl-dev – libxml2-dev – libssl-dev – r-base – r-base-dev – git – tmux&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Pip 3 (Python3 Libs) :&lt;/strong&gt; GitPython – jupyter – numpy – scipy – pandas – xlrd – scikit-learn – parquet – sklearn – geopy – seaborn – folium – ipython-autotime – beautifulsoup4 – openpyxl – lxml – python-igraph – ipython-autotime – tqdm&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;R:&lt;/strong&gt; repr – IRdisplay – evaluate – crayon – pbdZMQ – devtools – uuid – digest – IRkernel/IRkernel – ggplot2 – plyr – caret – kernlab – MASS – igraph&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;This is a quick overview of the platform we built. This is in constant evolution and because we are using our own solution we can update it with our needs.&lt;/p&gt;
-
-&lt;p&gt;Coming: Part-2 Details around this Jupyter Extension&lt;/p&gt;
-</description>
-        <pubDate>Mon, 31 Jul 2017 00:00:00 +0000</pubDate>
-        <link>https://coffeeanddata.ca/data-science-development-evironement</link>
-        <guid isPermaLink="true">https://coffeeanddata.ca/data-science-development-evironement</guid>
-        
-        <category>cloud</category>
-        
-        <category>Linux</category>
-        
-        <category>Machine_Learning</category>
         
         
       </item>

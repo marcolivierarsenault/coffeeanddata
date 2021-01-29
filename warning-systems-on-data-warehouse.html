@@ -8,20 +8,20 @@
 
     
         <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Data Science Development Environment (Part 1) | Coffee and Data</title>
+<title>Warning systems on data warehouse | Coffee and Data</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Data Science Development Environment (Part 1)" />
+<meta property="og:title" content="Warning systems on data warehouse" />
 <meta name="author" content="Marc-Olivier Arsenault" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Part of my task in the Data Science Team is to participate in the deployment of our development environment. This will be the first, of a series of articles about the environment we use at work." />
-<meta property="og:description" content="Part of my task in the Data Science Team is to participate in the deployment of our development environment. This will be the first, of a series of articles about the environment we use at work." />
+<meta name="description" content="The story of how and why I built Whistleblower, a system that allows us to set warnings on any table in our environment." />
+<meta property="og:description" content="The story of how and why I built Whistleblower, a system that allows us to set warnings on any table in our environment." />
 <meta property="og:site_name" content="Coffee and Data" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-07-31T00:00:00+00:00" />
+<meta property="article:published_time" content="2021-01-29T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Data Science Development Environment (Part 1)" />
+<meta property="twitter:title" content="Warning systems on data warehouse" />
 <script type="application/ld+json">
-{"description":"Part of my task in the Data Science Team is to participate in the deployment of our development environment. This will be the first, of a series of articles about the environment we use at work.","mainEntityOfPage":{"@type":"WebPage","@id":"/data-science-development-evironement"},"@type":"BlogPosting","url":"/data-science-development-evironement","headline":"Data Science Development Environment (Part 1)","dateModified":"2017-07-31T00:00:00+00:00","datePublished":"2017-07-31T00:00:00+00:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/square_logo.png"},"name":"Marc-Olivier Arsenault"},"author":{"@type":"Person","name":"Marc-Olivier Arsenault"},"@context":"https://schema.org"}</script>
+{"description":"The story of how and why I built Whistleblower, a system that allows us to set warnings on any table in our environment.","mainEntityOfPage":{"@type":"WebPage","@id":"/warning-systems-on-data-warehouse"},"@type":"BlogPosting","url":"/warning-systems-on-data-warehouse","headline":"Warning systems on data warehouse","dateModified":"2021-01-29T00:00:00+00:00","datePublished":"2021-01-29T00:00:00+00:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/square_logo.png"},"name":"Marc-Olivier Arsenault"},"author":{"@type":"Person","name":"Marc-Olivier Arsenault"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -73,116 +73,121 @@
                     
                 </div><!-- .post-meta -->
                 
-                    <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/computer-1245714_1920.jpg"
-                    alt="Data Science Development Environment (Part 1)"></div>
+                    <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/warning.jpeg"
+                    alt="Warning systems on data warehouse"></div>
             
-            <time class="post-date" datetime="2017-07-31">July 31,
-                2017</time>
-                <h1 class="posttitle">Data Science Development Environment (Part 1)</h1>
+            <time class="post-date" datetime="2021-01-29">January 29,
+                2021</time>
+                <h1 class="posttitle">Warning systems on data warehouse</h1>
             </header><!-- .post-header -->
             
             <div class="post-content">
-                <p>Part of my task in the Data Science Team is to participate in the deployment of our development environment. This will be the first, of a series of articles about the environment we use at work.</p>
+                <p>The story of how and why I built Whistleblower, a system that allows us to set warnings on any table in our environment.</p>
 
 <!--more-->
 
-<h2 id="requirements">Requirements</h2>
+<hr />
 
-<p>Like any other team we have some requirements. It would be super nice to do anything we want but it’s not realistic. We come with an enterprise reality where some requirements are imposed by the company. There is politics involve in terms of which product we can and can’t buy, or with which supplier we can and can’t deal with.</p>
+<p>For the past couple of years, myself and a bunch of others at Shopify were looking for a smart way to set warnings on specific tables. Why warnings? The reason is quite simple, we spend a lot of time building quality front room datasets, as I explain in this <a href="how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team">previous blog</a>. That being said, those datasets, for many reasons, can start to degrade over time. Let me walk you through the problem, what we tried before and how we solved it.</p>
 
-<p>Here is some of the hard requirements we have to deal with:</p>
+<h2 id="the-problem">The problem</h2>
+
+<p>Yes at Shopify we care a lot about data set quality, we do peer review of all of them, we document them as much as possible. When we release a dataset, they are perfect. That being said we work in an environment that changes all the time. Then, at some point, the dataset quality will drop. Here are a couple of examples:</p>
 
 <ul>
-  <li>Data Sovereignty: Data is either own by us or by our customers. Depending on the project, we have specific requirements on the data. Going from data must stay on our server in this specific country to upload it wherever you like. So our solution must match both reality.</li>
-  <li>Tool-set: We are a fairly small team, but we do not all uses the same tools, and not even the same languages for our analysis (some uses R and others uses Python).</li>
-  <li>Collaboration: We want to be able to share code and analysis between team members.</li>
-  <li>Libraries: We are still finding new libraries. We want a system that allows us to install and update open source libraries.</li>
+  <li><strong>Some data is not available anymore</strong>: Looks easy when you look at it on its own but when it is part of a larger dataset, hidden under 6 JOINs it is not that trivial to identify and fix.</li>
+  <li><strong>Change in raw data</strong>: The assumptions you had when you built your dataset may change. It is possible that data points start returning a new type of value, or outside a pre-established range (from 0 to 1, as an example), maybe something that could not be null before, can be null now.</li>
+  <li><strong>Change in business rules</strong>: Some of our dataset does model or replicate business logic, commercial contracts, SLAs, etc. When those contracts change, we need to modify the dataset to include the new reality.</li>
+</ul>
+
+<p>When those 3 things happen, there are two major steps. First we need to realize and identify the change, second we have to fix or deprecate the dataset. As the first one deserves a lot of attention, and Shopify as great tools to find, I don’t want to talk about it too much. I really want to focus on the second one here, because as simple as it sounds, it is another story in real life.</p>
+
+<p>Every single time we had this situation hit the team we had to ask ourselves, “OK we need to fix XYZ, but we don’t have time. Option A) we delete the dataset, Option B) we fix it”. After a rapid brainstorm session, we can’t go with A because it powers some other asset and we can’t go with B because we don’t have time to do it. So we end up leaving the dataset as is, even if we know that it is broken. We cannot prioritize other works and the impact of the error is not huge (for now).</p>
+
+<p>Conclusion: Let’s warn user of the dataset so they are aware of the mistake and we add the issue in the backlog</p>
+
+<h2 id="the-real-problem">The real problem</h2>
+<p>The real problem is that one day, someone will query your dataset. This person will not be aware of the issue and will draw the wrong conclusions. When they contact you because they ,and half their boss, are freaking out with the result, you tell them the worst possible answer, ooo yes sorry, we knew it is a bug.</p>
+
+<h2 id="what-we-tried-up-to-now">What we tried up to now</h2>
+<p>As we said, we faced those issue couples of times, here are a couple of things we tried already:</p>
+
+<ul>
+  <li><strong>Broadcast the bug</strong>: Send a nasty <code class="language-plaintext highlighter-rouge">@here</code> on Slack or a widespread email to let everyone know your dataset has a bug. That is great if someone was about to use it. Because other than that, there are very little chances someone will remember in 6 weeks from now and you just annoyed a ton of people with your broadcast.</li>
+  <li><strong>Documentation</strong>: Like most other places, we have our own documentation repository. You can go there and add a note on this particular dataset, but unless someone goes to read it, nobody will see. Also, all existing dashboards or data scientists that frequently use your dataset won’t go read the doc every time they run a query/report.</li>
+  <li><strong>Figure out who uses it</strong>: This is essential to understand how bad the bug is. It will help you understand how much priority you need to give the repair, but first, in the meantime, it does not fix anything, second even if there are not many dependencies, it does not mean anybody will use it in the future.</li>
 </ul>
 
 <h2 id="solution">Solution</h2>
 
-<p>After some experiments we have decided to build our own environment platform. We really wanted a platform that we could deploy on demand on anybody’s infrastructure regardless if it’s physical or virtual, public or private. As long as it’s easily deployable on a Linux server.</p>
+<p>So I was looking for a way to solve this problem, especially after a nasty situation like explained above where some people really stressed over the result of a totally valid query. We needed a way to warn the users that this dataset had a specific problem.</p>
 
-<p>Each of us (data scientist) have their own VM. These VM contains the following setup:</p>
+<p>After some digging I realized that some smart data engineers had set the <a href="https://prestodb.io/">Presto</a> <a href="https://prestodb.io/docs/current/develop/event-listener.html">event listener</a> to be sent on a specific kafka topic. In other words, every query on our Presto cluster was generating a Kafka event.</p>
 
+<p>Note: Presto is the default engine to query our datasets at Shopify.</p>
+
+<p>“I realized I could build a software that would monitor this Kafka Topic, do some REGEX to identify if the query was about the table would be a bug I could send a Slack message to the user.“</p>
+
+<p>Why Slack, Slack is the main communication tool at Shopify, people monitor this way more than their email box. So a Slack message would be the best way to warn them. I had a plan</p>
+
+<h2 id="implementation">Implementation</h2>
+<p>At Shopify we have something called Hackday. 3 days in a row where we stop “normal” work and we work on special projects. Everybody chose its own project. I decided to give it a try. It has been a couple of years since I did professional software development, but I was sure I could hack something up.</p>
+
+<p>My application was basically those 4 steps:</p>
+
+<ol>
+  <li>Listen the Kafka topic</li>
+  <li>Do some Smart Regex to figure out if it was my table</li>
+  <li>Find the Slack handle and send a Slack message to the user.</li>
+  <li>Have all of this run somewhere.</li>
+</ol>
+
+<p>So 1 was solved by this Presto-Kafka topic, I could simply listen to it. 2 could be solved with a basic webpage where data scientists could add warnings on specific tables and use Regex. For #3 and #4 I was really impressed by the dev culture and environment at Shopify. There was already a web service available to turn a user’s email (which I was getting from the Kafka message) to a Slack handle. I could also easily connect to Slack via their API. For the latest part, it was easier than I could even think of. Basically if I could find a way to do this in Ruby on Rails, I could deploy my application with basically 1 click.</p>
+
+<h2 id="result">Result</h2>
+<p>To this day, I am still impressed by the result. If you query any dataset with a warning within 3 seconds of the query being completed, you receive a Slack message like this one.
+<img src="assets/images/posts/whistleblower.png#center" alt="whistleblower" /></p>
+
+<p>Data scientists can now easily add a warning message on any table:</p>
+
+<p><img src="assets/images/posts/new_rule.png#center" alt="new rule" /></p>
+
+<h3 id="features">Features</h3>
+<p>I kept developing features on the tool. I added:</p>
 <ul>
-  <li>Linux OS (Debian or Ubuntu)</li>
-  <li>Python3</li>
-  <li>R</li>
-  <li><a href="http://jupyter.org/">Jupyter Notebook</a>
-    <ul>
-      <li>Git custom Add-on</li>
-    </ul>
-  </li>
-  <li>Open Source Libs</li>
-  <li>Export script</li>
-  <li>Data Share Drive</li>
+  <li>Snooze option: So your users don’t get worn every time they query the table.</li>
+  <li>Specific column filtering: If all your dataset is ok, except 1 column, you can only warn users that use this column.</li>
+  <li>Regex in the table name, maybe there is more than one table affected. You can set a regex-style table name.</li>
 </ul>
 
-<h2 id="setup-details">Setup details</h2>
-
-<p>To develop we use Jupyter, a very well-known tool in data science. The best way to describe it would be a Web IDE for interpreted languages. It is currently configured to work with R and Python 3. To work efficiently between data scientist we have developed a Jupyter Extension that allows us to share code between all our VM. I will provide more details about this Extension in another blog entry. This extension save and share our source files (Jupyter file) on a Git repository. The data itself is stored on a shared drive that all VMs have access to.</p>
-
-<p><img src="assets/images/posts/eric_archi.png#center" alt="eric_archi" /></p>
-
-<p>I will add the list of used libraries at the end of this article. We also have an export script. This script allows us to export the Jupyter files when we work on customer’s servers. This script makes sure to strip out any data from the source file so we can export them with no problems back to our office.</p>
-
-<h2 id="installation-procedure">Installation Procedure</h2>
-
-<p>To deploy this environment we have a simple script that takes care of installing all the software, connecting the data share drive, installing the Jupyter extension downloading existing code. There is also an update script that grab and install the latest version of the open source libraries.</p>
-
-<h2 id="development-vm-size">Development VM size</h2>
-
-<p>Each of our development virtual machines are:</p>
-
+<h2 id="stats">Stats</h2>
+<p>After roughly 3 months, Whistleblower has</p>
 <ul>
-  <li>CPU: 8 Cores</li>
-  <li>RAM: 16 GB</li>
-  <li>HDD: 160 GB</li>
+  <li>Sent over 1300 warnings sent to 148 unique users.</li>
+  <li>Scanned roughly 43 000 Presto Query/day.</li>
+  <li>300 warnings sent <strong>Afterhour</strong>.</li>
 </ul>
 
-<p>These VMs run on top of an OpenStack cluster. Because our install script does not communicate with the OpenStack APIs we could easily deploy on any other platform.</p>
+<p>I am super happy about those, especially the 300 warnings afterhour. That means 300 times, someone received a warning with indication when most likely he could not get support because other team members were not there to help.</p>
 
-<h2 id="data-share-server">Data Share Server</h2>
+<p>That tool is great, I can now sleep better at night knowing if ever someone queries those tables they will get warned and not take any bad decisions with the result.</p>
 
-<p>To host and exchange data between these VMs we have setup this Data Server. This server is hosting all our data during our project. It is composed of an FTP server, for customers to send or receive data, an <a href="https://en.wikipedia.org/wiki/Network_File_System">NFS</a> drive to do the actual file sharing and a backup solution to make sure we don’t lose precious data.</p>
-
-<h2 id="open-source-libraries">Open Source Libraries</h2>
-
-<p>Here is the exhaustive list of library we use. Keep in mind these gets updated frequently.</p>
-
-<p><strong>System Lib (apt-get):</strong> libperl-dev – python3-cairo – libxml2-dev – libsnappy-dev – aptitude – python3-pip – python3-dev – build-essential – libcurl4-openssl-dev – python3-pandas – libperl-dev – libxml2-dev – libssl-dev – r-base – r-base-dev – git – tmux</p>
-
-<p><strong>Pip 3 (Python3 Libs) :</strong> GitPython – jupyter – numpy – scipy – pandas – xlrd – scikit-learn – parquet – sklearn – geopy – seaborn – folium – ipython-autotime – beautifulsoup4 – openpyxl – lxml – python-igraph – ipython-autotime – tqdm</p>
-
-<p><strong>R:</strong> repr – IRdisplay – evaluate – crayon – pbdZMQ – devtools – uuid – digest – IRkernel/IRkernel – ggplot2 – plyr – caret – kernlab – MASS – igraph</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>This is a quick overview of the platform we built. This is in constant evolution and because we are using our own solution we can update it with our needs.</p>
-
-<p>Coming: Part-2 Details around this Jupyter Extension</p>
+<p>Sidenote: It is really impressive how many people contact you when you call an internal project Whistleblower :P</p>
 
             </div>
             <footer class="post-footer">
                 
                 <p class="post-tags">
                      
-                    <a href='tag/cloud/'>cloud</a>
-                    
-                     
-                    <a href='tag/linux/'>Linux</a>
-                    
-                     
-                    <a href='tag/machine_learning/'>Machine_Learning</a>
+                    <a href='tag/data/'>data</a>
                     
                     
                 </p>
                 
                 <div class="post-share">
                     <span class="post-share-title">Share:</span>
-                    <a target="_blank" href="https://twitter.com/share?text=Data+Science+Development+Environment+%28Part+1%29&amp;url=https://coffeeanddata.ca/data-science-development-evironement">Twitter</a>
-                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://coffeeanddata.ca/data-science-development-evironement">Facebook</a>
+                    <a target="_blank" href="https://twitter.com/share?text=Warning+systems+on+data+warehouse&amp;url=https://coffeeanddata.ca/warning-systems-on-data-warehouse">Twitter</a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://coffeeanddata.ca/warning-systems-on-data-warehouse">Facebook</a>
                 </div><!-- .share-post -->
             </footer>
             <div class="author-box">
@@ -219,65 +224,26 @@
             <article class="post">
                 <header class="post-header">
                     <div class="post-meta">
-                        <time class="published" datetime="July 6, 2017">July 6, 2017</time>
+                        <time class="published" datetime="June 18, 2020">June 18, 2020</time>
                     </div>
-                    <h3 class="post-title"><a href="/kolmogorov-smirnov-test">Kolmogorov–Smirnov test</a></h3>
+                    <h3 class="post-title"><a href="/how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team">How to thrive in the face of disruption: Tips from Shopify’s Data Team</a></h3>
                     <p class="post-tags">
                         
                         
                         
-                        <a href='/tag/machine_learning/'>Machine_learning</a>
-                        
-                        
-                        
-                        <a href='/tag/statistics/'>Statistics</a>
+                        <a href='/tag/data/'>Data</a>
                         
                         
                         
                     </p>
                 </header>
                 
-                <a href="/kolmogorov-smirnov-test" class="post-thumbnail">
-                    <img src="assets/images/posts/black_board.jpg" alt="Kolmogorov–Smirnov test" />
+                <a href="/how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team" class="post-thumbnail">
+                    <img src="assets/images/posts/computer.jpg" alt="How to thrive in the face of disruption: Tips from Shopify’s Data Team" />
                 </a>
                 
             </article>
             
-            
-            <article class="post">
-                <header class="post-header">
-                    <div class="post-meta">
-                        <time class="published" datetime="September 29, 2017">September 29, 2017</time>
-                    </div>
-                    <h3 class="post-title"><a href="/machine-vs-human">Machine VS Human</a></h3>
-                    <p class="post-tags">
-                        
-                        
-                        
-                        <a href='/tag/iot/'>Iot</a>
-                        
-                        
-                        
-                        <a href='/tag/m2m/'>M2m</a>
-                        
-                        
-                        
-                        <a href='/tag/machine_learning/'>Machine_learning</a>
-                        
-                        
-                        
-                        <a href='/tag/statistics/'>Statistics</a>
-                        
-                        
-                        
-                    </p>
-                </header>
-                
-                <a href="/machine-vs-human" class="post-thumbnail">
-                    <img src="assets/images/posts/teens-robot-future-science-39349-900x515.jpeg" alt="Machine VS Human" />
-                </a>
-                
-            </article>
             
         </section><!-- .read-next -->
     </main><!-- .site-main -->
