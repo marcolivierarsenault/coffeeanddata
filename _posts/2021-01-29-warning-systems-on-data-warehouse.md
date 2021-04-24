@@ -2,10 +2,7 @@
 layout: post
 title: 'Warning systems on data warehouse'
 tags: [data]
-featured_image_thumbnail: assets/images/posts/warning.jpeg
 featured_image: assets/images/posts/warning.jpeg
-featured: true
-hidden: true
 ---
 
 
