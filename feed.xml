@@ -5,9 +5,160 @@
     <description>Data Science Blog by Marc-Olivier Arsenault</description>
     <link>https://coffeeanddata.ca/</link>
     <atom:link href="https://coffeeanddata.ca/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 24 Apr 2021 01:14:41 +0000</pubDate>
-    <lastBuildDate>Sat, 24 Apr 2021 01:14:41 +0000</lastBuildDate>
+    <pubDate>Sat, 24 Apr 2021 01:19:37 +0000</pubDate>
+    <lastBuildDate>Sat, 24 Apr 2021 01:19:37 +0000</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>PR Reviews for SQL code</title>
+        <description>&lt;p&gt;This is my personal guide on how I review my peer SQL code.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;As I mentioned before, &lt;a href=&quot;https://coffeeanddata.ca/how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team&quot;&gt;at Shopify, all our work is peer reviewed&lt;/a&gt;. This includes dashboards and SQL code. One of the most used tools for data scientists at Shopify is &lt;a href=&quot;https://modeanalytics.com&quot;&gt;Mode&lt;/a&gt;. If you never worked with it, Mode is a simple dashboarding tool where you write SQL to get your dataset and then you can use some drag and drop charts to build the dashboard.&lt;/p&gt;
+
+&lt;p&gt;Someone at Shopify figured out a way to connect Mode with Github, so now when a Data scientist creates or modifies a Mode dashboard we can review it, as we would review any piece of code. Now having the ability to review code is one thing, doing it efficiently to catch mistakes is another one.&lt;/p&gt;
+
+&lt;p&gt;If I simply open the PR and start reading the query, I end up reading it like I read a story. By the end of the query, I usually understand what they wanted to do but I haven’t caught anything incorrect in the process. &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;state-of-the-art&quot;&gt;State of the art&lt;/h2&gt;
+
+&lt;p&gt;There are tons of guides online on how to review code, but most if not all of it is for more traditional languages and “normal” software development. I could not find anything related to SQL and data sciences, at least not the way I needed it.&lt;/p&gt;
+
+&lt;p&gt;What is so different about SQL? Why can’t other guides/resources do the trick? I think it is not current practice to review SQL queries, at least not so thoroughly. First, the mindset is completely different. In SQL, you are either doing an analysis and you are trying to tell a story, convey in English what the data is telling you. Or you are building a self-serve dashboard, a one-page view that will help anyone understand the health of your product/project, etc.&lt;/p&gt;
+
+&lt;p&gt;So, over the last years I have built my checklist on what I am looking for when I review my peer’s work. Keep in mind that I did not find all of these, some comes from colleagues, others from professional experiences.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;pr-review-list&quot;&gt;PR Review list&lt;/h2&gt;
+
+&lt;p&gt;My list is divided in two main categories. First &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;the result&lt;/code&gt;, this is where I review the analysis itself, I care about the problem and the result, not what is in between. Then there is the actual code &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;the SQL&lt;/code&gt; where I go in depth of the SQL itself.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-result&quot;&gt;The result&lt;/h3&gt;
+
+&lt;p&gt;This category is more subjective and I also feel it is the most undervalued. This is where you can make the difference between average work and impactful work.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;The problem&lt;/strong&gt;: This sounds overly simple but trust me, this might be the most ignored aspect, especially for more junior data scientists. Did you really understand the problem? The way we work at Shopify is stakeholders open Github issues. Most data scientists simply read it and start implementing it, as is, assuming whatever is in there, comes from God itself. The truth is, the person that opened that issue most likely tried to explain the best they could what they were looking for, but they are not the data scientist, you are. Stop for a minute, try to understand the real problem behind the issue, then ask yourself what you can do, as a data scientist, to solve the problem and discuss it with the original stakeholders. &lt;strong&gt;Most of the time you will come up with a different angle on the problem that might be really beneficial.&lt;/strong&gt; &lt;br /&gt;&lt;br /&gt;IMO, this is the item you need to work on if you want to move from being a SQL query shop, to a real business partner. &lt;br /&gt;&lt;br /&gt;To review this, I read the original issue and discuss with the data scientist to see if they understand the problem deeply. For areas I have deep knowledge, this is a bit easier, for areas I don’t, I usually look around for a Product Manager to see if we can chat about the problem.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Does the result answer the problem&lt;/strong&gt;: We talked about the problem a lot, does this artifact help understand the problem and the solution. Here, I am usually try to first look if this makes me understand what is going on, then I put myself in the shoes of a developer/PM/Fiance/GM etc. and try to determine if they have the components needed, is there too little or too much information on this report? &lt;br /&gt;&lt;br /&gt;One antipattern I am looking for is the, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;I am going to show you everything I have done&lt;/code&gt;. Instead of focusing on the result or interesting elements, some people want to prove they have worked hard and try to show everything, even charts that show nothing. (ex: a chart that shows that Merchant Country has no impact.)  Unless the point was to prove that, this should not be there.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;No pie chart&lt;/strong&gt;: I am not even going to explain this point.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Graph selections&lt;/strong&gt;: This one is hard to explain and highly subjective, but are those the right graphs? Could the number/insights be clearer if shown differently? There are a lot of good books around this. Charts need to tell a story, the insight should be obvious, if you need to know where to look, it is probably not the proper visualization.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;For Dashboard&lt;/strong&gt;: When I talk about a dashboard I refer to reusable/self-serve dashboard. Usually used to track KPI, product health, products early and late metrics, etc.&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;&lt;strong&gt;Is it reusable&lt;/strong&gt;: That might sound a bit funny, but I make sure they are reusable? If we can find a good way to generalize the dashboard, we will probably save a lot of work/request in the future. If the dashboard simply does that one thing the stakeholder asked for, the dashboard will most likely never be used again. &lt;br /&gt;&lt;br /&gt;When a stakeholder comes with a request for a very precise dashboard, I first look if the data already exists, if it does I send them to the existing dashboard. If it does not, I reverse engineer the question and ask myself, what generic dashboard would have answered that question. That second dashboard is what I need to build.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;For Static analysis&lt;/strong&gt;: Those are also called deep dive, one off, etc. Those are to answer a specific question that should not come back in the future. Example questions: can we prove the value of product A on our customer? or Does product A increase LifeTime Value (LTV) of our customer, etc.&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Is the result clear for non data scientists?&lt;/strong&gt; This part is so important, you need to remove your data mindset and put your average person mindset. You are so close to your analysis at this point you forget all the context you have. Anyone in the company should be able to read this and they would all come to the same conclusion. You should avoid any data/statistical terms as much as possible. If you want to also describe the analysis for some more data nerdy persons, add it in annex. But the bulk of the report should be to tell the story.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Does it have strong conclusions?&lt;/strong&gt; My least favourite report (and also the one I see the most) is the long bullet point style list of data facts. Something like &lt;em&gt;Product A as a penetration of 5% in country A&lt;/em&gt; or &lt;em&gt;The average buyer spends $3 more on their orders&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;I want to read why those numbers matter. Is 5% high or low. What are other similar products doing in this market, or compare it with other countries? You need to put a mental model in the reader’s mind, because if you don’t they will and there is a lot of chance they will do it wrong. It is your analysis, you should be the one imposing the reference points, the why it matters and the why I should care.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Does it have a recommendation?&lt;/strong&gt; This is your best, most likely only chance to really be impactful. &lt;strong&gt;You need a bold recommendation.&lt;/strong&gt; It does not need to be shocking or unexpected, but you should start and finish your analysis with the recommendation of data. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;I recommend that we kill product A because XYZ.&lt;/code&gt; A lot of data scientists are very uncomfortable with this, but if you don’t do it one of the 2 things will occur. Either they will undervalue the result and go against what data says, because it was not clear enough in your analysis, or they will agree with you and they will make the call and nobody will realize the work you did on this. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;If you want to be an impactful partner with your stakeholders, you must provide clear recommendations.&lt;/strong&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;the-sql&quot;&gt;The SQL&lt;/h3&gt;
+
+&lt;p&gt;This section is in no particular order, I just make sure all of those are verified. 
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Join order&lt;/strong&gt;: Some DB have great optimizers, but nothing beats taking care of the JOIN order manually. So, your biggest dataset should always be on the left (or above in the FROM, JOIN order) example:
+    &lt;pre&gt;&lt;code class=&quot;language-SQL&quot;&gt;SELECT *
+FROM big_table
+JOIN medium_table USING (_key1)
+JOIN small_table USING (_key2)
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;p&gt;There is no point in measuring this exactly to the row or the real size of the table. That being said, if there are significant differences in the table sizes, it is really worth ordering for performance reasons. One easy way to look at this in a world of facts and dimensions is to make sure the fact tables are first, then the dimensions. 
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Exploding JOINs&lt;/strong&gt;: Exploding joins are when you think you have a 1:1 relationship between 2 tables. You join them, then suddenly you have some duplications. This type of error is really hard because most of the time it is completely silent. The other tricky aspect of this is when the error is off only by a couple of percent. Because for most of the table you do have this 1:1 relationship, but there is a corner case that you did not think of, then suddenly your result is higher by a couple of percent, which makes it very hard to detect. &lt;br /&gt;&lt;br /&gt;I make sure every table grain is what’s expected. In other words, I read the query and don’t assume the grain of the table in the joins. If I am lucky, the dataset has a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unique keyset&lt;/code&gt;, this is an internal mechanism at Shopify, when we build a dataset that ensures the grain is respected. If I have this, and it is aligned with the JOIN, then I am good to go. &lt;br /&gt;&lt;br /&gt;If I don’t have this, I usually query it like this:
+    &lt;pre&gt;&lt;code class=&quot;language-SQL&quot;&gt;SELECT grain, count (*)
+FROM table
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 10
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;p&gt;If the first row has &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt; in the second column, we are good to go, the grain is respected. 
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Imploding JOINs&lt;/strong&gt; : What we just talked about, can be reversed for INNER JOINs. If you JOIN table_a and table_b make sure you are not losing rows when you thought you had a 1:1 relationship. Example table_a has 100 rows with unique id, table_b has the same unique id but only 99 rows. You will silently lose 1 row. &lt;br /&gt;&lt;br /&gt;I usually test that with this simple check:
+    &lt;pre&gt;&lt;code class=&quot;language-SQL&quot;&gt;SELECT count (*)
+FROM table_a
+JOIN table_b
+ ON table_a.id = table_b.id
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;p&gt;Should give the same result as:&lt;/p&gt;
+    &lt;pre&gt;&lt;code class=&quot;language-SQL&quot;&gt;SELECT count (*)
+FROM table_a
+FULL OUTER JOIN  table_b
+ ON table_a.id = table_b.id
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;p&gt;If you end up with the same count on both of those queries, you are most likely OK. 
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Input data&lt;/strong&gt;: Are they using the right input data, does modeled data already exist? Usually we try to go too fast with a dataset we already know. We don’t look around for existing modelled data that would help answer the question. When I review queries that use JOIN too much or when they use unmodeled data. I spend a couple of minutes searching existing datasets. If something already exists, you need a very good reason not to use it. Likely, someone with more business knowledge built it and all this context is probably included in the modelled dataset. Using it will prevent you from omitting small details that will make a difference at the end. 
+&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Clear and logical CTE&lt;/strong&gt;: The CTEs in the query should tell a story. They should be logical and ordered properly. When possible they should be sequential, you should not need to scroll up and down all the time to understand what is going on. &lt;br /&gt;&lt;br /&gt;I also make sure the grain of each CTE makes sense that they are clear. CTEs should also have clear and self-explanatory names. Just by reading the name I should be able to guess what it does and what grain I get out of this CTE.&lt;br /&gt;&lt;br /&gt;When CTE are more convoluted, I frequently copy all the CTE in a fresh query file, and I display the output of the one I am not sure of the result. So I do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SELECT * FROM CTE_1&lt;/code&gt; just to fully understand what gets out of some of those CTE. 
+&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Where clause on LEFT JOIN&lt;/strong&gt;: When there is LEFT JOINs I make sure there is no WHERE clause on the right table. Because if there is one, you basically reverted it back to an INNER JOIN. Example:
+    &lt;pre&gt;&lt;code class=&quot;language-SQL&quot;&gt;SELECT *
+FROM table_a
+LEFT JOIN table_b USING (_key1)
+WHERE table_b.country = ‘US’
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;p&gt;This is the equivalent of&lt;/p&gt;
+    &lt;pre&gt;&lt;code class=&quot;language-SQL&quot;&gt;SELECT *
+FROM table_a
+JOIN table_b USING (_key1)
+WHERE table_b.country = ‘US’
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;p&gt;Since any NULL from table_b gets deleted by the WHERE. 
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Read documentation&lt;/strong&gt;: For tables I am not familiar with I take 3 minutes and I read the documentation, which first helps me to review the query, but also provide me with better context in the future. 
+&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Known gotchas&lt;/strong&gt;: All tables have their own small gotchas. Typical Shopify example, make sure you filter on shops that are currently customers. You probably don’t care about a shop that left Shopify 10 years ago in your analysis. 
+&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;the-secret-trick&quot;&gt;The secret trick&lt;/h3&gt;
+
+&lt;p&gt;This is what I have learned and that saves me the most time. I do not start reviewing the code until I am 100% aligned with the result. &lt;strong&gt;Too many times, I have invested 1 or 2 hours in the SQL first, to only realize I did not agree with the analysis itself&lt;/strong&gt;, or I thought the way they presented the result was not clear. With the way Mode works, changing the way you want to show the results may require serious redesign of your query. So now, I never review the code unless I am happy with the final result. 
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;All of this is in no way an exhaustive list, but I try to keep those points in mind when I go through some of my colleagues’ work. Over the past years, that helped me to stay consistent with PR reviews and usually when I am OK with most of this list,I have caught most of the serious issues with the query.&lt;/p&gt;
+
+&lt;p&gt;Special thanks to &lt;a href=&quot;https://www.linkedin.com/in/tristanboudreault/&quot;&gt;Tristan Boudreault&lt;/a&gt; for some of the suggestions.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate>
+        <link>https://coffeeanddata.ca/PR-reviews-for-SQL-code</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/PR-reviews-for-SQL-code</guid>
+        
+        <category>data</category>
+        
+        <category>data_science</category>
+        
+        
+      </item>
     
       <item>
         <title>Warning systems on data warehouse</title>
@@ -1232,70 +1383,6 @@ def lossless_triplet_loss(y_true, y_pred, N = 3, beta=N, epsilon=1e-8):
         <category>Statistics</category>
         
         <category>Visualization</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Machine VS Human</title>
-        <description>&lt;p&gt;Lately at work we had the opportunity to propose new Uses Cases to develop around  Ericsson Expert Analytic and data science in the operator’s network. We propose to work on an automated system to detect machines in the subscriber base.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;I know, in a beautiful scenario every operator would have a perfect knowledge of each and every of their subscribers. But the reality is different. Now with the rise of IoT more and more devices require connectivity. LTE and other cellular technologies are perfect because it brings the connectivity and the mobility. But everybody does it their own way. Of course, some people and enterprise, contact an operator to reach an agreement but the vast majority simply figures a way to get it. The only way the operator has to determine what is a machine is by using the machine Type ID but this value has been proven wrong.&lt;/p&gt;
-
-&lt;p&gt;The Use Case (UC) we propose will automatically detect which one is a machine and which is in fact a subscriber. To do so, we will use network metadata which is available to the operator. Thus there is no implication on the user side. The core of this metadata is subscriber communication behaviour e.g. data consumption, SMS, cell towers connections, etc. Obviously I will keep the key features for myself 😛&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/Tagging.png#center&quot; alt=&quot;tagging&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Our dataset had a very unbalance number of machine vs humans, which is expected. Only 5% of the subscribers are machines.&lt;/p&gt;
-
-&lt;h2 id=&quot;feature-engineering&quot;&gt;Feature Engineering&lt;/h2&gt;
-
-&lt;p&gt;Luckily for us we had access to an operator’s data to produce a prototype model. The goal of this model is simply to prove that we can achieve good result in machine detection. To build this model I assumed keys of the model was in the stability over days. My intuition is, machine should be consistent in terms of download, movement, etc. In other words, if a machine is fixed (not moving) it should never move. While a human might move some days and stay home some others.&lt;/p&gt;
-
-&lt;p&gt;I did not find efficient way to handle time series in machine learning except deep learning, so I had to engineer my own variation of it by analyzing and categorizing the time series and to express it in terms of features for standard machine learning. To do it we look at all the things that were moving over time and created 2 features average, standard deviation.&lt;/p&gt;
-
-&lt;p&gt;So I build a feature set, per subscriber, that describe the best the metadata and their stability over time.&lt;/p&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;h2 id=&quot;building-model&quot;&gt;Building Model&lt;/h2&gt;
-
-&lt;p&gt;To classify machine from the dataset I built a Random Forest.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/randomForest.png#center&quot; alt=&quot;random_forest&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The Random Forest performed really well. After some tweaking I was able to reach 98.9% accuracy. Here is a quick view of the confusion matrix, showing how the machine learning performed in the highly unbalanced set.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/posts/confusion.png&quot; alt=&quot;confusion&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The following proves that we can accurately detect machine using only network related data. After looking at our model, we looked at the key features. Out of the top (most impact on the classifier) five features, four are the Meta features we created to evaluate the stability over the days. In conclusion we can confirm that we have a working prototype and it would be very interesting to implement it with live traffic.&lt;/p&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;h2 id=&quot;another-approach&quot;&gt;Another Approach&lt;/h2&gt;
-
-&lt;p&gt;Two of my colleagues tried to answer the same question using different approach. Steven used manual labelling approach. A more statistical technique requiring very low computing resources and Pascal use a recurrent deep learning network, a technique more effective but way heavier on computing.&lt;/p&gt;
-
-&lt;p&gt;You can read their experience here:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://thelonenutblog.wordpress.com/2017/09/29/a-battle-between-man-and-machine/&quot;&gt;Pascal’s Article&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://beyondthetechhype.blog/2017/10/20/data-examination-and-home-made-classifiers/&quot;&gt;Steven’s Article&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Fri, 29 Sep 2017 00:00:00 +0000</pubDate>
-        <link>https://coffeeanddata.ca/machine-vs-human</link>
-        <guid isPermaLink="true">https://coffeeanddata.ca/machine-vs-human</guid>
-        
-        <category>iot</category>
-        
-        <category>m2m</category>
-        
-        <category>Machine_Learning</category>
-        
-        <category>Statistics</category>
         
         
       </item>
