@@ -16,7 +16,7 @@ post_class: post-template
                     alt="{{ page.title }}"></div>
             {% endif %}
             <time class="post-date" datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%B %-d,
-                %Y" }}</time>
+                %Y" }}</time>  <div class="readtime">{% include reading-time.html %}</div>
                 <h1 class="posttitle">{{ page.title }}</h1>
             </header><!-- .post-header -->
             
