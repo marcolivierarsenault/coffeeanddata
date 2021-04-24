@@ -14,7 +14,7 @@ Over the years I Worked on different technology, I like to work on innovations a
 
 ### Other interesting blogs
 
-[The Lone Nut](https://thelonenutblog.wordpress.com/) – Former Colleague doing a very interesting technological blog.
+[The Lone Nut](https://thelonenutblog.wordpress.com/) – Former Colleague doing a very interesting technological blog.  
 [Beyond the tech hype](https://beyondthetechhype.blog/)  – Also a colleague, also doing a cool blog.
 
 #### Disclaimer
