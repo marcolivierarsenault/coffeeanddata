@@ -6,6 +6,7 @@ cache:
   - $TRAVIS_BUILD_DIR/tmp/.htmlproofer #https://github.com/gjtorikian/html-proofer/issues/381  
 before_install:
  - export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+ - sudo apt-get update
 addons:
   apt:
     packages:
