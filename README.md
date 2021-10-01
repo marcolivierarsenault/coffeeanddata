@@ -1,4 +1,4 @@
-[![travisci](https://travis-ci.org/marcolivierarsenault/coffeeanddata.svg?branch=release)](https://travis-ci.org/github/marcolivierarsenault/coffeeanddata)
+[![Build Status](https://app.travis-ci.com/marcolivierarsenault/coffeeanddata.svg?branch=release)](https://app.travis-ci.com/marcolivierarsenault/coffeeanddata)
 # coffeeanddata
 [My personal blog](https://coffeeanddata.ca/)
 
