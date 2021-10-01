@@ -1,6 +1,9 @@
 language: ruby
 rvm:
   - 2.6
+cache:
+  directories:
+  - $TRAVIS_BUILD_DIR/tmp/.htmlproofer #https://github.com/gjtorikian/html-proofer/issues/381  
 before_install:
  - export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 addons:
