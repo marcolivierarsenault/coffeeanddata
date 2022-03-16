@@ -211,6 +211,14 @@
   margin: auto;
 }
 
+.post-thumbnail.featured img {
+  width: 80%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+  margin: auto;
+}
+
 .readtime {
   display: block;
   float: right;
