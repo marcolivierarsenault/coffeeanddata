@@ -3,7 +3,7 @@
 ---
 
 /**
- * Horace 1.2.0
+ * Horace 1.2.1
  * By Just Good Themes
  */
 /**
@@ -24,12 +24,20 @@
  * 9. Media Queries
 */
 
-@import
-"variables", 
-"icons",
-"reset",
-"general"
-;
+// Import variables
+@import "variables";
+@import "reset";
+@import "general";
+@import "structure";
+@import "header";
+@import "posts-pages";
+@import "comments";
+@import "pagination";
+@import "sidebar";
+@import "widgets";
+@import "footer";
+@import "media-queries";
+
 
 /**
  * 3. Structure
@@ -199,6 +207,14 @@
 
 .post-thumbnail img {
   width: 70%;
+  display: block;
+  margin: auto;
+}
+
+.post-thumbnail.featured img {
+  width: 80%;
+  height: 300px;
+  object-fit: cover;
   display: block;
   margin: auto;
 }
@@ -451,7 +467,7 @@
 }
 
 .hero {
-  padding-bottom: 1.66667em;
+  // padding-bottom: 1.66667em;
   /*padding-top: 3.33333em;*/
   position: relative;
   text-align: center;
@@ -682,7 +698,7 @@
 }
 
 .sidebar .site-navigation {
-  display: none;
+  //display: none;
 }
 
 /**
@@ -972,7 +988,7 @@
   }
 
   .sidebar-toggle {
-    visibility: hidden;
+    //visibility: hidden;
 }
 }
 @media only screen and (min-width: 1141px) {

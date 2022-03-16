@@ -73,7 +73,7 @@ What I wanted to end with was a table with the following columns:
     </td>
     <td>
       In probability theory and statistics
-    </td>suce
+    </td>
     <td>
       null
     </td>
