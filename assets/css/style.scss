@@ -3,7 +3,7 @@
 ---
 
 /**
- * Horace 1.2.0
+ * Horace 1.2.1
  * By Just Good Themes
  */
 /**
@@ -24,12 +24,20 @@
  * 9. Media Queries
 */
 
-@import
-"variables", 
-"icons",
-"reset",
-"general"
-;
+// Import variables
+@import "variables";
+@import "reset";
+@import "general";
+@import "structure";
+@import "header";
+@import "posts-pages";
+@import "comments";
+@import "pagination";
+@import "sidebar";
+@import "widgets";
+@import "footer";
+@import "media-queries";
+
 
 /**
  * 3. Structure
