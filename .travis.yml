@@ -20,7 +20,7 @@ branches:
 script:
   - JEKYLL_ENV=production bundle exec jekyll build --destination site
   - echo "coffeeanddata.ca" > ./site/CNAME
-  - travis_retry bundle exec htmlproofer --assume-extension --allow-hash-href --http-status-ignore 999,403 --url-ignore "/twitter*/" ./site
+  - travis_retry bundle exec htmlproofer --assume-extension --allow-hash-href --http-status-ignore 999,403 --url-ignore "/twitter*/,/gstatic*/,/google*/" ./site
 deploy:
   provider: pages
   local-dir: ./site
