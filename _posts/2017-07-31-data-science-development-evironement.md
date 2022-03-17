@@ -2,7 +2,7 @@
 title: Data Science Development Environment (Part 1)
 layout: post
 featured_image: assets/images/posts/computer-1245714_1920.jpg
-tags: [cloud, Linux, Machine_Learning]
+tags: [data, misc]
 ---
 Part of my task in the Data Science Team is to participate in the deployment of our development environment. This will be the first, of a series of articles about the environment we use at work.
 

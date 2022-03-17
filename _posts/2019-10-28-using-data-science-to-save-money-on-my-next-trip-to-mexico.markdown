@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Using data science to save money on my next trip to Mexico'
-tags: [visualisation, dataprep]
+tags: [data, perso]
 featured_image: assets/images/posts/mexique.jpg
 ---
 

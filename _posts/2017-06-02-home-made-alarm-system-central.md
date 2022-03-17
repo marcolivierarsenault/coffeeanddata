@@ -2,7 +2,7 @@
 title: Home made alarm system central
 layout: post
 featured_image: assets/images/posts/alarm.jpg
-tags: [cloud, security]
+tags: [misc, perso, iot]
 ---
 Last year, my wife and I purchased our first house. The house came with a very standard alarm system installed by one of the main distributors in Montreal. As soon as I moved in, they made sure to call me and to offer me a monitoring services for something like 12$ / months. Not that I am cheap, but I don’t feel like paying this, especially that my home insurance company said that I would save only 3$/month if I have it monitored.
 

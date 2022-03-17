@@ -2,7 +2,7 @@
 title: 'Distribution&#8217;s 5th Symphony'
 layout: post
 featured_image: assets/images/posts/symphony.jpg
-tags: [Machine_Learning, Statistics, Visualization]
+tags: [data]
 ---
 I would like to share with you a small tool I have discovered this year which is very useful; Violin Plot!
 
