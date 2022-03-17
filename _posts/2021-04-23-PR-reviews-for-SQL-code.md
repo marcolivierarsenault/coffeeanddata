@@ -2,10 +2,7 @@
 layout: post
 title: 'PR Reviews for SQL code'
 tags: [data, data_science]
-featured_image_thumbnail: assets/images/posts/review.jpg
 featured_image: assets/images/posts/review.jpg
-featured: true
-hidden: true
 ---
 
 This is my personal guide on how I review my peer SQL code.  
