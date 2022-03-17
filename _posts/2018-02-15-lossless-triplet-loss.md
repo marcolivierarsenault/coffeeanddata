@@ -2,7 +2,7 @@
 title: Lossless Triplet loss
 layout: post
 featured_image: assets/images/posts/primate-ape-thinking-mimic.jpg
-tags: [Deep_Learning]
+tags: [data]
 ---
 
 A more efficient loss function for Siamese

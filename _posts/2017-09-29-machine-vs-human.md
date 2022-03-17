@@ -2,7 +2,7 @@
 title: 'Machine VS Human'
 layout: post
 featured_image: assets/images/posts/teens-robot-future-science-39349-900x515.jpeg
-tags: [iot, m2m, Machine_Learning, Statistics]
+tags: [ericsson, iot]
 ---
 Lately at work we had the opportunity to propose new Uses Cases to develop around  Ericsson Expert Analytic and data science in the operator's network. We propose to work on an automated system to detect machines in the subscriber base.
 

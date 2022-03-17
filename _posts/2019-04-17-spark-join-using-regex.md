@@ -2,7 +2,7 @@
 title: Spark JOIN using REGEX
 layout: post
 featured_image: assets/images/posts/regex.jpg
-tags: [big_data, data_pre-processing, data_science]
+tags: [data, shopify]
 ---
 A more technical post about how I end up efficiently JOINING 2 datasets with REGEX using a custom UDF in SPARK
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'PR Reviews for SQL code'
-tags: [data, data_science]
+tags: [data, shopify]
 featured_image: assets/images/posts/review.jpg
 ---
 

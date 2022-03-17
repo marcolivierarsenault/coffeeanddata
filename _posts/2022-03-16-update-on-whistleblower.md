@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Update on Whistleblower'
-tags: [data, data_science]
+tags: [data, shopify]
 featured_image_thumbnail: assets/images/posts/update.jpg
 featured_image: assets/images/posts/update.jpg
 featured: true

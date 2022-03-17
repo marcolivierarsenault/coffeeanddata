@@ -2,7 +2,7 @@
 title: This is what I really do as a Data Scientist
 layout: post
 featured_image: assets/images/posts/cyber-glasses.jpg
-tags: [clustering, data_pre-processing, Statistics]
+tags: [data, ericsson]
 ---
 Data Science is getting very popular and many people are trying to jump into the bandwagon, and this is GREAT. But many assume that data science, machine learning, plug any other buzzword here, is to plug data to some Sckit-Learn libraries. Here is what the actual job is.
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Warning systems on data warehouse'
-tags: [data]
+tags: [data, shopify]
 featured_image: assets/images/posts/warning.jpeg
 ---
 

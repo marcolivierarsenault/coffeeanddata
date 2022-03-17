@@ -2,7 +2,7 @@
 title: Memories should stay forever
 layout: post
 featured_image: assets/images/posts/hard_drive.jpg
-tags: [cloud, storage]
+tags: [misc, perso]
 ---
 Not so long ago, I had the chance to become a father. And one of the … "privilege" of having a baby is the time you have to think during all these nights when he won’t let us sleep.
 

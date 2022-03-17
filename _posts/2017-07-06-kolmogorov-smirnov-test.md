@@ -2,7 +2,7 @@
 title: Kolmogorov–Smirnov test
 layout: post
 featured_image: assets/images/posts/black_board.jpg
-tags: [Machine_Learning, Statistics]
+tags: [data]
 ---
 Lately, at work, we had to do a lot of unsupervised classification. We basically had to distinguish N classes from a sample population. We had a rough idea of how many classes were present but nothing was sure, we discovered the <a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test" target="_blank" rel="nofollow noopener">Kolmogorov–Smirnov test</a> a very efficient way to determine if two samples are significantly different from each other.
 <!--more-->

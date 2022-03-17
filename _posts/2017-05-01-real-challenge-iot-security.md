@@ -2,7 +2,7 @@
 title: The real challenge in IoT security
 layout: post
 featured_image: assets/images/posts/iot_cmcs.png
-tags: [cmcs, m2m, iot, security]
+tags: [misc, ericsson, iot]
 ---
 ## About Me
 

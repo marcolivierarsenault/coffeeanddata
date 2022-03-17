@@ -2,7 +2,7 @@
 title: 'Spark &#038; AI Summit 2019'
 layout: post
 featured_image: assets/images/posts/sparksummit.jpg
-tags: [big_data, data_science]
+tags: [data]
 ---
 My review of the latest Spark and AI Summit hosted in San Francisco on April 24th and 25th 2019.
 
