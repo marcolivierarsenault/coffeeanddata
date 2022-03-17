@@ -22,11 +22,15 @@ In retrospect, in almost 18 months, the tool has sent more than **30 THOUSAND wa
 To me this is an amazing achievement, I managed to support this software over some personal time, evening etc. 
 
 **A few lesson learned during that journey**:
-- Don’t name something Whistleblower because you think it is funny. Over 18 months, I received countless messages from people completely scared, who thought they were breaking the law. I renamed the tool to avoid all that useless stress on the team. 
-- My empathy level for developers is way higher. I never imagined how much was required “just to keep the lights on”. Updating libraries because there is a security update or simply to keep up with the stack. Breaking changes, etc. So much more respect for the developers after going through this. 
-- Tooling for developers at Shopify is amazing. The amount of stuff that was just automagic for me as an app owner was very impressive, I understand why there are so many developers excited to join Shopify. 
-- The knowledge I got from this experience is actually useful. Basic Ruby and Rails turn out to be very useful when I need to understand how data is generated in our app (Shopify) given that most of it are in Ruby. 
+- Don’t name something Whistleblower because you think it is funny. Over 18 months, I received countless messages from people completely scared, who thought they were breaking the law. I renamed the tool to avoid all that useless stress on the team.  
+
+- My empathy level for developers is way higher. I never imagined how much was required “just to keep the lights on”. Updating libraries because there is a security update or simply to keep up with the stack. Breaking changes, etc. So much more respect for the developers after going through this.  
+
+- Tooling for developers at Shopify is amazing. The amount of stuff that was just automagic for me as an app owner was very impressive, I understand why there are so many developers excited to join Shopify.  
+
+- The knowledge I got from this experience is actually useful. Basic Ruby and Rails turn out to be very useful when I need to understand how data is generated in our app (Shopify) given that most of it are in Ruby.  
+
 
 **Conclusion after this**, don’t limit yourself, you don’t need to be a X to do Y. Of course a dev would have done a better job, faster, fewer bugs and everything. But, I did it, I managed to build a tool that turned out to be useful for enough people so Shopify would adopt it. 
 
-__Thank you data infrastructure team__, you can now take care of it for me. 
+_Thank you data infrastructure team_, you can now take care of it for me. <br/><br/>
