@@ -4,9 +4,9 @@ title: About
 featured_image: /assets/images/pages/headshot.png
 ---
 
-I am a Data Scientist, technology enthusiast, software programmer, Inventor and good-looking (according to my wife). I blog around different discoveries, professional project and personal interest.
+I am a Data Science leader @ Shopify. I build data teams to assist multi-disciplinary teams in their mission to build the best product. I value high quality insights that can help us build better products and really understand the reality of the problems we are trying to address, or when we use all the data we can to build first class ethic data products that give our customer an unfair advantage.
 
-Over the years I Worked on different technology, I like to work on innovations and insights that can have a real impact on people. I focus in making a bridge between real customer needs and technical aspect of my projects.
+At the end of the day, nothing we build is about data and/or technology. It is about real world problems and real world humains.
 
 *Thank You for reading!*
 
