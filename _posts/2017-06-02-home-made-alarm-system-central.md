@@ -1,7 +1,7 @@
 ---
 title: Home made alarm system central
 layout: post
-featured_image: assets/images/posts/alarm.jpg
+featured_image: assets/images/posts/20170602/alarm.jpg
 tags: [misc, perso, iot]
 ---
 Last year, my wife and I purchased our first house. The house came with a very standard alarm system installed by one of the main distributors in Montreal. As soon as I moved in, they made sure to call me and to offer me a monitoring services for something like 12$ / months. Not that I am cheap, but I don’t feel like paying this, especially that my home insurance company said that I would save only 3$/month if I have it monitored.
@@ -26,7 +26,7 @@ Now that this part was done, I can at least have an annoying alarm bell that wil
 
 ### Now the fun begins
 
-![board](assets/images/posts/board.jpg#right)
+![board](assets/images/posts/20170602/board.jpg#right)
 
 After some research, I found on the main circuit (the one hidden in the basement, not the front panel) there is a 4-pin connector labelled SERIAL. I then use a multimeter, some logic and some help from friends to deduce the protocol used. The pinout of the port looked like this, from top to bottom: 12V - GND - 5V - 5V.
 
@@ -38,7 +38,7 @@ _On this picture, which is actually a picture of my system, you can see the port
 
 Now I could see the packets getting pushed by the system board I did lots of tests and I found this reference sheet online. It took a lot of time to get that, looks like engineering at Paradox don’t feel like sharing their protocol.
 
-![protocol](assets/images/posts/protocol.png)
+![protocol](assets/images/posts/20170602/protocol.png)
 
 This was actually very useful. It happens to be 95% valid on my system. So after some more test I could really establish the protocol that was working for me.
 
@@ -54,7 +54,7 @@ The code is pretty simple, it looks the packets in a basic state machine engine 
 
 Now that I have the brain (Electron) and the cable, I made a small circuit board to be able to connect everything together.
 
-![board](assets/images/posts/custom_board.jpg)
+![board](assets/images/posts/20170602/custom_board.jpg)
 
 On this board you can see:
 
@@ -75,7 +75,7 @@ So now I needed something to monitor the web hook
 
 I have developed a very simple containerized application that would query the Particle cloud and tell me if the system was armed. Second aspect was an API callback waiting for the alarm from the Particle cloud. When it would receive the alarm it sends me an email.
 
-![protocol](assets/images/posts/particle_logs.png#left)
+![protocol](assets/images/posts/20170602/particle_logs.png#left)
 
 That worked for a while, but because I do lots of stuff with my home server I sometimes forget to restart the container on docker update.
 
@@ -93,7 +93,7 @@ After all these failed attempts, I decided to change my strategy for the alarm p
 
 Where is what it looks now:
 
-![architecture](assets/images/posts/architecture.png)
+![architecture](assets/images/posts/20170602/architecture.png)
 
 Adding AWS was easy, almost too easy. I have configured an entry point on AWS API Gateway that listens for the alarm from the Particle Cloud. When it receives it, it calls a lambda function (small piece of code) that calls the AWS notification service, where I configured my email and phone number.
 

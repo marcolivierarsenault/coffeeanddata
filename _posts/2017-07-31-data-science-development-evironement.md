@@ -1,7 +1,7 @@
 ---
 title: Data Science Development Environment (Part 1)
 layout: post
-featured_image: assets/images/posts/computer-1245714_1920.jpg
+featured_image: assets/images/posts/20170731/computer-1245714_1920.jpg
 tags: [data, misc]
 ---
 Part of my task in the Data Science Team is to participate in the deployment of our development environment. This will be the first, of a series of articles about the environment we use at work.
@@ -38,7 +38,7 @@ Each of us (data scientist) have their own VM. These VM contains the following s
 
 To develop we use Jupyter, a very well-known tool in data science. The best way to describe it would be a Web IDE for interpreted languages. It is currently configured to work with R and Python 3. To work efficiently between data scientist we have developed a Jupyter Extension that allows us to share code between all our VM. I will provide more details about this Extension in another blog entry. This extension save and share our source files (Jupyter file) on a Git repository. The data itself is stored on a shared drive that all VMs have access to.
 
-![eric_archi](assets/images/posts/eric_archi.png#center)
+![eric_archi](assets/images/posts/20170731/eric_archi.png#center)
 
 I will add the list of used libraries at the end of this article. We also have an export script. This script allows us to export the Jupyter files when we work on customer&#8217;s servers. This script makes sure to strip out any data from the source file so we can export them with no problems back to our office.
 

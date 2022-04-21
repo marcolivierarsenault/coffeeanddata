@@ -1,7 +1,7 @@
 ---
 title: Kolmogorov–Smirnov test
 layout: post
-featured_image: assets/images/posts/black_board.jpg
+featured_image: assets/images/posts/20170706/black_board.jpg
 tags: [data]
 ---
 Lately, at work, we had to do a lot of unsupervised classification. We basically had to distinguish N classes from a sample population. We had a rough idea of how many classes were present but nothing was sure, we discovered the <a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test" target="_blank" rel="nofollow noopener">Kolmogorov–Smirnov test</a> a very efficient way to determine if two samples are significantly different from each other.
@@ -29,7 +29,7 @@ From Wikipedia: _“The Kolmogorov–Smirnov statistic quantifies a distance 
 
 Here is an example that shows the difference between Student’s T-Test and KS Test taken from stackexchange.com.
 
-![ks_curve](assets/images/posts/KS_curve.png#center)
+![ks_curve](assets/images/posts/20170706/KS_curve.png#center)
 
 Because the sample mean and standard deviation are highly similar the Student’s T-Test gives a very high p-value. KS Test can detect the variance. In this case the red distribution has a slightly binomial distribution which KS detect. In other words:
 
@@ -56,21 +56,21 @@ We decided to use a mix of graph network and KS Test to identify potential clust
 
 Here is what our data looks like:
 
-![ks_dist](assets/images/posts/ks_one_dist.png#center)
+![ks_dist](assets/images/posts/20170706/ks_one_dist.png#center)
 
 As you can see, all our sample looks like a normal distribution with a very low standard deviation. We have sampled all the 82 different usage sessions of this device.
 
-![ks_all_dist.png](assets/images/posts/ks_all_dist.png#center)
+![ks_all_dist.png](assets/images/posts/20170706/ks_all_dist.png#center)
 
 Strait from this picture we can see that there are different patterns. All the sample does not have the same histogram distribution. That is a very good start. After this we looked at the obvious cluster of distribution.
 
-![ks_corr](assets/images/posts/ks_corr.png#left)
+![ks_corr](assets/images/posts/20170706/ks_corr.png#left)
 
 To do so, we did the KS matrix, which consists of a KS Two way test of every sample distribution vs every other sample.A quick view of the KS Matrix heat map does not reveal obvious results (As you can see on the figure on your right).
 
 After so hierarchical clustering, we already get some better results.(As you can see on the following figure.)
 
-![ks_hir](assets/images/posts/ks_hir.png#center)
+![ks_hir](assets/images/posts/20170706/ks_hir.png#center)
 
 In these two dendrogram visualization, we can see some potential (3) clusters. After review these clusters came back to be insignificant.
 
@@ -78,11 +78,11 @@ In these two dendrogram visualization, we can see some potential (3) clusters. A
 
 After the unsuccessful dendrogram clustering, we tried the proposed Graph approach. The goal here, like explained earlier, is to graph all the possible nodes and vertices. The vertices length being the KS Test Value. We had to remove the self-reference (which was always 0 (obviously you are perfectly similar to yourself).
 
-![ks_blob](assets/images/posts/ks_blob.png#center)
+![ks_blob](assets/images/posts/20170706/ks_blob.png#center)
 
 We then ended up with a network graph where everybody was connected with everybody else which is not particularly useful.
 
-![ks_cluster](assets/images/posts/ks_cluster.png#center)
+![ks_cluster](assets/images/posts/20170706/ks_cluster.png#center)
 
 The next step is to only keep the significant link (lower than a certain threshold)
 
