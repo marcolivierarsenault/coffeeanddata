@@ -1,7 +1,7 @@
 ---
 title: Lossless Triplet loss
 layout: post
-featured_image: assets/images/posts/primate-ape-thinking-mimic.jpg
+featured_image: assets/images/posts/20180215/primate-ape-thinking-mimic.jpg
 tags: [data]
 ---
 
@@ -13,7 +13,7 @@ At work, we are working with Siamese Neural Net (NN) for one shot training on te
 
 The current experiment, up to now is working great. This network can split the different traffic scenarios. As you can see on this picture, the good traffic (Green) is easily spitted away from error type 1 (Red) and error type 2 (Orange)
 
-![triplet_model1](assets/images/posts/triplet_model1.png#center)
+![triplet_model1](assets/images/posts/20180215/triplet_model1.png#center)
 
 ## THE PROBLEM
 
@@ -102,21 +102,21 @@ There is a major issue here, every time your loss gets below 0, you loose inform
 
 It basically does this:
 
-{% include image-caption.html imageurl="assets/images/posts/schroffetall.png#center"
+{% include image-caption.html imageurl="assets/images/posts/20180215/schroffetall.png#center"
 title="schroffetall" caption="Schroff et all" %}
 
 It tries to bring close the Anchor (current record) with the Positive (A record that is in theory similar with the Anchor) as far as possible from the Negative (A record that is different from the Anchor).
 
 The actual formula for this loss is:
 
-{% include image-caption.html imageurl="assets/images/posts/loss_formula.png#center"
+{% include image-caption.html imageurl="assets/images/posts/20180215/loss_formula.png#center"
 title="schroffetall" caption="Schroff et all" %}
 
 This process is detailed in the paper [FaceNet: A Unified Embedding for Face Recognition and Clustering](https://arxiv.org/abs/1503.03832) by Florian Schroff, Dmitry Kalenichenko and James Philbin.
 
 So as long as the negative value is further than the positive value + alpha there will be no gain for the algorithm to condense the positive and the anchor. Here is what I mean:
 
-![distance](assets/images/posts/distance_cost.png#center)
+![distance](assets/images/posts/20180215/distance_cost.png#center)
 
 Let’s pretend that:
 
@@ -128,30 +128,30 @@ The loss function result will be 1.2–2.4+0.2 = -1. Then when we look at Max(-1
 
 As a more visual example, here is 2 scenarios A and B. They both represent what the loss function measure for us.
 
-![distance](assets/images/posts/distance2.png#center)
-![distance](assets/images/posts/formula_distance.png#center)
+![distance](assets/images/posts/20180215/distance2.png#center)
+![distance](assets/images/posts/20180215/formula_distance.png#center)
 
 After the Max function both A and B now return 0 as their loss, which is a clear lost of information. By looking simply, we can say that B is better than A.
 
 In other words, you cannot trust the loss function result, as an example here is the result around Epoch 50. The loss (train and dev) is 0, but clearly the result is not perfect.
 
-![epoch](assets/images/posts/epoch.png#center)
+![epoch](assets/images/posts/20180215/epoch.png#center)
 
 ## OTHER LOSSES
 
 Another famous loss function the contrastive loss describe by Yan LeCun and his team in their paper [Dimensionality Reduction by Learning an Invariant Mapping](http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf) is also maxing the negative result, which creates the same issue.
 
-{% include image-caption.html imageurl="assets/images/posts/lecunFormula.png#center"
+{% include image-caption.html imageurl="assets/images/posts/20180215/lecunFormula.png#center"
 title="The Contrastive Loss Function, (LeCun)" caption="The Contrastive Loss Function, (LeCun)" %}
 
 With the title, you can easily guess what is my plan… To make a loss function that will capture the “lost” information below 0. After some basic geometry, I realized that if you contain the N dimension space where the loss is calculated you can more efficiently control this. So the first step was to modify the model. The last layer (Embedding layer) needed to be controlled in size. By using a Sigmoïde activation function instead of a linear we can guarantee that each dimension will be between 0 and 1.
 
-{% include image-caption.html imageurl="assets/images/posts/sigmoid.png#center"
+{% include image-caption.html imageurl="assets/images/posts/20180215/sigmoid.png#center"
 title="Sigmoïde activation" caption="Sigmoïde activation" %}
 
 Then we could assume that the max value of a distance would be N. N being the number of dimensions. Example, if my anchor is at 0,0,0 and my negative point is at 1,1,1. The distance based on Schroff formula would be 1²+1²+1² = 3. So if we take into account the number of dimensions, we can deduce the max distance. So here is my proposed formula.
 
-{% include image-caption.html imageurl="assets/images/posts/linear_loss_function.png#center"
+{% include image-caption.html imageurl="assets/images/posts/20180215/linear_loss_function.png#center"
 title="Linear loss function" caption="Linear loss function" %}
 
 Where N is the number of dimensions of the embedding vector. This look very similar, but by having a Sigmoïde and a proper setting for N, we can guarantee that the value will stay above 0.
@@ -160,7 +160,7 @@ Where N is the number of dimensions of the embedding vector. This look very simi
 
 After some initial test, we ended up with this model.
 
-![model2](assets/images/posts/model2.png#center)
+![model2](assets/images/posts/20180215/model2.png#center)
 On the good side we can see that all the points from the same cluster get super tight, even to the point that they become the same. But on the downside it turns out that the two error cases (Orange and Red) got superimposed.
 
 The reason for this is the loss is smaller like this then when the Red and Orange split. So we needed to find a way to break the cost linearity; In other words, make it really costly as more the error grows.
@@ -168,17 +168,17 @@ The reason for this is the loss is smaller like this then when the Red and Orang
 Non-Linearity
 
 Instead of the linear cost we proposed a non-linear cost function:
-![graph](assets/images/posts/graph.png#center)
-![ln_function](assets/images/posts/ln_function.png#center)
+![graph](assets/images/posts/20180215/graph.png#center)
+![ln_function](assets/images/posts/20180215/ln_function.png#center)
 Where the curve is represented by this ln function when N = 3
 
 With this new non-linearity, our cost function now looks like:
 
-![custom_function](assets/images/posts/custom_function.png#center)
+![custom_function](assets/images/posts/20180215/custom_function.png#center)
 Where N is the number of dimensions (Number of output of your network; Number of features for your embedding) and β is a scaling factor. We suggest setting this to N, but other values could be used to modify the non-linearity cost.
 
 As you can see, the result speaks for itself:
-![model3](assets/images/posts/model3.png#center)
+![model3](assets/images/posts/20180215/model3.png#center)
 We now have very condensed cluster of points, way more than the standard triplet function result.
 
 As a reference here is the code for the loss function.
@@ -224,7 +224,7 @@ def lossless_triplet_loss(y_true, y_pred, N = 3, beta=N, epsilon=1e-8):
 
 Keep in mind, for it to work you need your NN last layer to be using a Sigmoïde activation function.
 
-![new_epoch](assets/images/posts/new_epoch.png#center)
+![new_epoch](assets/images/posts/20180215/new_epoch.png#center)
 
 Even after 1000 Epoch, the Lossless Triplet Loss does not generate a 0 loss like the standard Triplet Loss.
 

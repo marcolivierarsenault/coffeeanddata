@@ -2,7 +2,7 @@
 layout: post
 title: 'PR Reviews for SQL code'
 tags: [data, shopify]
-featured_image: assets/images/posts/review.jpg
+featured_image: assets/images/posts/20210423/review.jpg
 ---
 
 This is my personal guide on how I review my peer SQL code.  

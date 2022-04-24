@@ -2,7 +2,7 @@
 title: The data science pyramid
 layout: post
 tags: [data]
-featured_image: assets/images/posts/blue-sky-camels-desert-71241.jpg
+featured_image: assets/images/posts/20180926/blue-sky-camels-desert-71241.jpg
 ---
 
 Let&#8217;s not start with data science this time. Let&#8217;s start with psychology. I am far from having any competence in this domain, but I remember in high school being presented the [Maslow&#8217;s hierarchy of needs](https://en.wikipedia.org/wiki/Maslow%27s_hierarchy_of_needs). The best I can describe it is the different stage humans must go through to [find happiness](https://www.imdb.com/title/tt0454921/). To get better understanding of it, you can look [here](https://www.simplypsychology.org/maslow.html).
@@ -11,7 +11,7 @@ Let&#8217;s not start with data science this time. Let&#8217;s start with psycho
 
 Here is the famous pyramid.
 
-![maslow-5](assets/images/posts/maslow-5.jpg#center)
+![maslow-5](assets/images/posts/20180926/maslow-5.jpg#center)
 [source](https://www.simplypsychology.org/maslow.html)
 
 The key thing to get out of this is that you need to go through all steps, you can skip any, never.
@@ -32,7 +32,7 @@ When I joined Shopify I was introduced to the **Data Science Hierarchy of** **N
 
 So to make this more concrete, here is the famous pyramid.
 
-![pyramid_data_science](assets/images/posts/pyramid_data_science.png#center)
+![pyramid_data_science](assets/images/posts/20180926/pyramid_data_science.png#center)
 [source](https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007)
 
 It took me a while to really understand it, but as cool as doing crazy multi-level-convolutional-neural-net-deep-random-forest-other-cool-buzzword-maybee-even-microservices, **you cannot jump to this stage before being accomplished in the underlying stage.**
