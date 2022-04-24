@@ -1,7 +1,7 @@
 ---
 title: 'Machine VS Human'
 layout: post
-featured_image: assets/images/posts/teens-robot-future-science-39349-900x515.jpeg
+featured_image: assets/images/posts/20170929/teens-robot-future-science-39349-900x515.jpeg
 tags: [ericsson, iot]
 ---
 Lately at work we had the opportunity to propose new Uses Cases to develop around  Ericsson Expert Analytic and data science in the operator's network. We propose to work on an automated system to detect machines in the subscriber base.
@@ -12,7 +12,7 @@ I know, in a beautiful scenario every operator would have a perfect knowledge of
 
 The Use Case (UC) we propose will automatically detect which one is a machine and which is in fact a subscriber. To do so, we will use network metadata which is available to the operator. Thus there is no implication on the user side. The core of this metadata is subscriber communication behaviour e.g. data consumption, SMS, cell towers connections, etc. Obviously I will keep the key features for myself 😛
 
-![tagging](assets/images/posts/Tagging.png#center)
+![tagging](assets/images/posts/20170929/Tagging.png#center)
 
 Our dataset had a very unbalance number of machine vs humans, which is expected. Only 5% of the subscribers are machines.
 
@@ -30,11 +30,11 @@ So I build a feature set, per subscriber, that describe the best the metadata an
 
 To classify machine from the dataset I built a Random Forest.
 
-![random_forest](assets/images/posts/randomForest.png#center)
+![random_forest](assets/images/posts/20170929/randomForest.png#center)
 
 The Random Forest performed really well. After some tweaking I was able to reach 98.9% accuracy. Here is a quick view of the confusion matrix, showing how the machine learning performed in the highly unbalanced set.
 
-![confusion](assets/images/posts/confusion.png)
+![confusion](assets/images/posts/20170929/confusion.png)
 
 The following proves that we can accurately detect machine using only network related data. After looking at our model, we looked at the key features. Out of the top (most impact on the classifier) five features, four are the Meta features we created to evaluate the stability over the days. In conclusion we can confirm that we have a working prototype and it would be very interesting to implement it with live traffic.
 

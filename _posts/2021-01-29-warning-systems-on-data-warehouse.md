@@ -2,7 +2,7 @@
 layout: post
 title: 'Warning systems on data warehouse'
 tags: [data, shopify]
-featured_image: assets/images/posts/warning.jpeg
+featured_image: assets/images/posts/20210129/warning.jpeg
 ---
 
 
@@ -65,11 +65,11 @@ So 1 was solved by this Presto-Kafka topic, I could simply listen to it. 2 could
 
 ## Result
 To this day, I am still impressed by the result. If you query any dataset with a warning within 3 seconds of the query being completed, you receive a Slack message like this one.
-![whistleblower](assets/images/posts/whistleblower.png#center)
+![whistleblower](assets/images/posts/20210129/whistleblower.png#center)
 
 Data scientists can now easily add a warning message on any table:
 
-![new rule](assets/images/posts/new_rule.png#center)
+![new rule](assets/images/posts/20210129/new_rule.png#center)
 
 ### Features
 I kept developing features on the tool. I added:

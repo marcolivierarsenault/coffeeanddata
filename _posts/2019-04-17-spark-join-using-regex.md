@@ -1,7 +1,7 @@
 ---
 title: Spark JOIN using REGEX
 layout: post
-featured_image: assets/images/posts/regex.jpg
+featured_image: assets/images/posts/20190417/regex.jpg
 tags: [data, shopify]
 ---
 A more technical post about how I end up efficiently JOINING 2 datasets with REGEX using a custom UDF in SPARK
@@ -94,11 +94,11 @@ The first thing I found online was to do a LEFT OUTER JOIN with **rlike**.
 
 That looked promising, on a small set it was doing exactly what I wanted.
 
-![success](assets/images/posts/success.gif#center)
+![success](assets/images/posts/20190417/success.gif#center)
 
 After I naively just launched the join for all the dataset&#8230; and I waited for a long time. Actually as long as it took me to realize my cluster went out of memory. From that point, I looked online for many hours, tried many solutions and I could not find anything relevant on how to solve that problem.
 
-![disapointed](assets/images/posts/disapointed.gif#center)
+![disapointed](assets/images/posts/20190417/disapointed.gif#center)
 
 Since that was nothing really important, I did not touch it for a couple of months and one day at work, I was talking about it with one of my colleagues and he figured out the problem.
 
@@ -145,7 +145,7 @@ articles = articles \
 
 I tried it, and within couple of hours I had exactly what I wanted.
 
-![mission_accomplished](assets/images/posts/mission_accomplished.gif#center)
+![mission_accomplished](assets/images/posts/20190417/mission_accomplished.gif#center)
 
 I decided to do a small benchmark. After both datasets loaded and cached in Spark, I selected only 20 000 articles to try both methods. By using the same exact samples here are the results:
 

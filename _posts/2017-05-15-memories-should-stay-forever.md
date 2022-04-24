@@ -1,7 +1,7 @@
 ---
 title: Memories should stay forever
 layout: post
-featured_image: assets/images/posts/hard_drive.jpg
+featured_image: assets/images/posts/20170515/hard_drive.jpg
 tags: [misc, perso]
 ---
 Not so long ago, I had the chance to become a father. And one of the … "privilege" of having a baby is the time you have to think during all these nights when he won’t let us sleep.
@@ -34,7 +34,7 @@ Mechanical Hard Drive is not known to be super reliable for this type of cold st
 
 Let’s say that I am a bit lazy and there is no way I will do this every year. So, once again, thanks but not thanks.
 
-![usb](assets/images/posts/usb.jpg#left)
+![usb](assets/images/posts/20170515/usb.jpg#left)
 
 ### Flash Drive (SSD, USB Key)
 
@@ -42,7 +42,7 @@ Let’s say that I am a bit lazy and there is no way I will do this every year. 
 
 ### M-DISC
 
-![usb](assets/images/posts/cd.jpg#right)
+![usb](assets/images/posts/20170515/cd.jpg#right)
 
 After some research I came across the “<a href="https://en.wikipedia.org/wiki/M-DISC" target="_blank" rel="noopener nofollow">M-DISC</a>”, a new type of CD/DVD with no organic layer. Who knew there was an organic layer in normal CD/DVD. This M-DISC pretend they can store your data up to a thousand years.
 
@@ -50,7 +50,7 @@ Obviously nobody tested them for that long but it seems to be the best way up to
 
 ### Cloud
 
-![cloud](assets/images/posts/cloud.jpg)
+![cloud](assets/images/posts/20170515/cloud.jpg)
 
 Cloud is right now a very popular way to store data for a long time. You usually pay couple of dollars per month, and they take care of your data. Microsoft Azure, Amazon Glacier or Google Cloud Coldline offers that type of service.
 

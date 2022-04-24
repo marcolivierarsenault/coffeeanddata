@@ -1,7 +1,7 @@
 ---
 title: 'Distribution&#8217;s 5th Symphony'
 layout: post
-featured_image: assets/images/posts/symphony.jpg
+featured_image: assets/images/posts/20180208/symphony.jpg
 tags: [data]
 ---
 I would like to share with you a small tool I have discovered this year which is very useful; Violin Plot!
@@ -14,7 +14,7 @@ I would like to share with you a small tool I have discovered this year which is
 
 Violin plots are a nice tool that we can find in many different visualisation libraries. What do they do they show and compare distributions. It&#8217;s, in my own opinion a better way to compare distributions. Here is a quick example
 
-{% include image-caption.html imageurl="assets/images/posts/seaborn-violinplot-2.png#center"
+{% include image-caption.html imageurl="assets/images/posts/20180208/seaborn-violinplot-2.png#center"
 title="seasboarn" caption="Seaborn Violin plot (Source: seaborn.pydata.org)" %}
 
 As you can see here you can easily compare the value from the for categories (Thur, Fri, Sat, Sun).
@@ -23,7 +23,7 @@ In a more precise way, the Violin plot is a mix of [Box Plot](https://seaborn.py
 
 ### The Set list
 
-![cutted](assets/images/posts/cutted-1.png#right)
+![cutted](assets/images/posts/20180208/cutted-1.png#right)
 
 1. The thin bar represent the 95% confidence interval
 2. The thick bar represent the second and third Quartile
@@ -42,7 +42,7 @@ I have used them for hyper-parameter tuning. When you do hyper-parameter tuning 
   1. Value will tend to be better in general
   2. The sparse between good and bad will be smaller.
 
-![violon2](assets/images/posts/Violon2.png#center)
+![violon2](assets/images/posts/20180208/Violon2.png#center)
 
 In the above picture it is clear that if you pick a value above 3, you end up with highly variable values. Even if you potentially can get a better result with one of the values > 3, you get no stability and the % chances you get something bad is big.
 

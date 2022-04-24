@@ -1,7 +1,7 @@
 ---
 title: 'Spark &#038; AI Summit 2019'
 layout: post
-featured_image: assets/images/posts/sparksummit.jpg
+featured_image: assets/images/posts/20190429/sparksummit.jpg
 tags: [data]
 ---
 My review of the latest Spark and AI Summit hosted in San Francisco on April 24th and 25th 2019.
@@ -24,7 +24,7 @@ Koalas is available as a free open-source project [here](https://github.com/data
 
 ### Delta Lake
 
-{% include image-caption.html imageurl="assets/images/posts/delta.png#center"
+{% include image-caption.html imageurl="assets/images/posts/20190429/delta.png#center"
 title="delta" caption="delta.io" %}
 
 Delta, one of the main components of Databricks (the paid version of Spark) just got open-sourced. This is a very good news for people using the standard version of Spark.
@@ -33,7 +33,7 @@ All the details of the product is available on <https://delta.io/>
 
 ### MLFlow
 
-{% include image-caption.html imageurl="assets/images/posts/mlflow.jpeg#center"
+{% include image-caption.html imageurl="assets/images/posts/20190429/mlflow.jpeg#center"
 title="mlflow" caption="mlflow.org" %}
 
 MLFlow the end to end lifecycle model management from Databricks will be bumped to version 1.0 in may.

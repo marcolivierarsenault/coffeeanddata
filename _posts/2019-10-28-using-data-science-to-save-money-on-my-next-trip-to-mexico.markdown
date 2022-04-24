@@ -2,7 +2,7 @@
 layout: post
 title: 'Using data science to save money on my next trip to Mexico'
 tags: [data, perso]
-featured_image: assets/images/posts/mexique.jpg
+featured_image: assets/images/posts/20191028/mexique.jpg
 ---
 
 How am I using basic data work to ensure I am getting a good price on my trip.
@@ -41,7 +41,7 @@ My idea was, I can just get the URL, download the HTML from python or something 
 
 Of course, it could not be that easy. First thing, the URL does not really change. All of the price things are some sort of modal on top of the other page. So copying the URL basically brings you back to the home page.
 
-![Network tool](assets/images/posts/network.gif#right)
+![Network tool](assets/images/posts/20191028/network.gif#right)
 
 Now when I started to look at Chrome Developer tools, I assumed I could see somewhere the data coming in. Data has to come in right... right...
 Here is the network view...  
@@ -54,13 +54,13 @@ Not as simple as I would have liked.
 
 After a couple of times digging in each of these files, I found the golden nugget.  
 
-![Json-File](assets/images/posts/json_file.png#center)
+![Json-File](assets/images/posts/20191028/json_file.png#center)
 
 Seems like we are on the right track. We have what seems to be a JSON file and the custom URL to get it. OBVIOUSLY, when I use this URL directly in a new page it is not working. I receive the equivalent of a page unavailable. Really it seems like they don’t want us to do this. They have set many roadblocks to prevent us from doing it. *Thanks Obama*.
 
 Then, I found a very neat option in chrome Dev tools.
 
-![Json-File](assets/images/posts/curl.png#center)
+![Json-File](assets/images/posts/20191028/curl.png#center)
 
 Copy as cURL. You end up with a very long command you can paste in your terminal and get the JSON.
 
@@ -110,13 +110,13 @@ We check if price is good. Since I paid a bit more than 4300, if price would go 
 
 So sadly, the price did not go below 4300$ yet, and to be fair I doubt it will. The trip is now priced at 4700/5000 depending on the days.
 
-![Json-File](assets/images/posts/prix.png#center)
+![Json-File](assets/images/posts/20191028/prix.png#center)
 
 To build this view, I have used the fantastic tool call [Dash](https://plot.ly/dash/) which allows you with fewer than 100 lines of code build this visual. If you are interested, you can go see the app here: [https://voyage.coffeeanddata.ca](https://voyage.coffeeanddata.ca).
 
 ## DISCOVERIES
 
-![Network tool](assets/images/posts/no_data.png#right)
+![Network tool](assets/images/posts/20191028/no_data.png#right)
 
 For a couple of days I did not collect any new data points. In fact the cURL command was getting back a 404 from the server. Took me a while to realize that I had no new data.
 
@@ -128,7 +128,7 @@ So I added a validation in my code that sends me an email when the cookie needed
 
 The other interesting points I got from the data up to now is this part of the curve:
 
-![Json-File](assets/images/posts/data_jump.png#center)
+![Json-File](assets/images/posts/20191028/data_jump.png#center)
 
 For a couple of days in a row, the price surged by 200$ at around 7am in the morning. This is something I will be careful with, next time I look to book a trip.
 
