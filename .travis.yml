@@ -18,7 +18,7 @@ branches:
   only:
   - release
 script:
-  - JEKYLL_ENV=production bundle exec jekyll build --destination site
+  - JEKYLL_ENV=production bundle exec jekyll build --verbose --destination site
   - echo "coffeeanddata.ca" > ./site/CNAME
   - travis_retry bundle exec htmlproofer --assume-extension --allow-hash-href --http-status-ignore 999,403,500 --url-ignore "/twitter*/,/gstatic*/,/google*/,/tag*/" ./site
 deploy:
