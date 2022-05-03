@@ -3,6 +3,7 @@ layout: post
 title: 'Update on Whistleblower'
 tags: [data, shopify]
 featured_image: assets/images/posts/20220316/update.jpg
+image: assets/images/posts/20220316/update.jpg
 ---
 
 Update on [“Warning systems on data warehouse”](warning-systems-on-data-warehouse)
