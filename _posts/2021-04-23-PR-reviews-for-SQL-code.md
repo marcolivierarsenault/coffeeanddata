@@ -2,6 +2,7 @@
 layout: post
 title: 'PR Reviews for SQL code'
 tags: [data, shopify]
+image: assets/images/posts/20210423/review.jpg
 featured_image: assets/images/posts/20210423/review.jpg
 ---
 
