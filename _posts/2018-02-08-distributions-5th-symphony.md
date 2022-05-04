@@ -1,6 +1,7 @@
 ---
 title: 'Distribution&#8217;s 5th Symphony'
 layout: post
+image: assets/images/posts/20180208/symphony.jpg
 featured_image: assets/images/posts/20180208/symphony.jpg
 tags: [data]
 ---

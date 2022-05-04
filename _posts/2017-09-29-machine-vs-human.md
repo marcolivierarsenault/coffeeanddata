@@ -1,6 +1,7 @@
 ---
 title: 'Machine VS Human'
 layout: post
+image: assets/images/posts/20170929/teens-robot-future-science-39349-900x515.jpeg
 featured_image: assets/images/posts/20170929/teens-robot-future-science-39349-900x515.jpeg
 tags: [ericsson, iot]
 ---

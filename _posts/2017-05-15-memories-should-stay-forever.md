@@ -1,6 +1,7 @@
 ---
 title: Memories should stay forever
 layout: post
+image: assets/images/posts/20170515/hard_drive.jpg
 featured_image: assets/images/posts/20170515/hard_drive.jpg
 tags: [misc, perso]
 ---

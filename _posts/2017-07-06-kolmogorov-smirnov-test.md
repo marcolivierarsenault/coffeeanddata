@@ -1,6 +1,7 @@
 ---
 title: Kolmogorov–Smirnov test
 layout: post
+image: assets/images/posts/20170706/black_board.jpg
 featured_image: assets/images/posts/20170706/black_board.jpg
 tags: [data]
 ---

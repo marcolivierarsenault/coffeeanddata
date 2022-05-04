@@ -1,6 +1,7 @@
 ---
 title: Lossless Triplet loss
 layout: post
+image: assets/images/posts/20180215/primate-ape-thinking-mimic.jpg
 featured_image: assets/images/posts/20180215/primate-ape-thinking-mimic.jpg
 tags: [data]
 ---

@@ -1,6 +1,7 @@
 ---
 title: 'Spark &#038; AI Summit 2019'
 layout: post
+image: assets/images/posts/20190429/sparksummit.jpg
 featured_image: assets/images/posts/20190429/sparksummit.jpg
 tags: [data]
 ---

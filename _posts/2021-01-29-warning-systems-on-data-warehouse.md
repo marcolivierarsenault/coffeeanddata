@@ -2,6 +2,7 @@
 layout: post
 title: 'Warning systems on data warehouse'
 tags: [data, shopify]
+image: assets/images/posts/20210129/warning.jpeg
 featured_image: assets/images/posts/20210129/warning.jpeg
 ---
 

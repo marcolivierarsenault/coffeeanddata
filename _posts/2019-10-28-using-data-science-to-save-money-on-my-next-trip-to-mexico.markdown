@@ -2,6 +2,7 @@
 layout: post
 title: 'Using data science to save money on my next trip to Mexico'
 tags: [data, perso]
+image: assets/images/posts/20191028/mexique.jpg
 featured_image: assets/images/posts/20191028/mexique.jpg
 ---
 

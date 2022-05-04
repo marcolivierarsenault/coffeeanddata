@@ -1,6 +1,7 @@
 ---
 title: Home made alarm system central
 layout: post
+image: assets/images/posts/20170602/alarm.jpg
 featured_image: assets/images/posts/20170602/alarm.jpg
 tags: [misc, perso, iot]
 ---

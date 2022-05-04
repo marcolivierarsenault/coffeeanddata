@@ -2,6 +2,7 @@
 layout: post
 title: 'How to thrive in the face of disruption: Tips from Shopify’s Data Team'
 tags: [data, shopify]
+image: assets/images/posts/20200618/computer.jpg
 featured_image: assets/images/posts/20200618/computer.jpg
 ---
 

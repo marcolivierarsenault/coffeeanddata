@@ -1,6 +1,7 @@
 ---
 title: The real challenge in IoT security
 layout: post
+image: assets/images/posts/20170501/iot_cmcs.png
 featured_image: assets/images/posts/20170501/iot_cmcs.png
 tags: [misc, ericsson, iot]
 ---

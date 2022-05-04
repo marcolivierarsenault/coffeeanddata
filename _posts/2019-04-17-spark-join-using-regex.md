@@ -1,6 +1,7 @@
 ---
 title: Spark JOIN using REGEX
 layout: post
+image: assets/images/posts/20190417/regex.jpg
 featured_image: assets/images/posts/20190417/regex.jpg
 tags: [data, shopify]
 ---

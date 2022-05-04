@@ -1,6 +1,7 @@
 ---
 title: This is what I really do as a Data Scientist
 layout: post
+image: assets/images/posts/20180427/cyber-glasses.jpg
 featured_image: assets/images/posts/20180427/cyber-glasses.jpg
 tags: [data, ericsson]
 ---

@@ -2,6 +2,7 @@
 title: The data science pyramid
 layout: post
 tags: [data]
+image: assets/images/posts/20180926/blue-sky-camels-desert-71241.jpg
 featured_image: assets/images/posts/20180926/blue-sky-camels-desert-71241.jpg
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Data Science Development Environment (Part 1)
 layout: post
+image: assets/images/posts/20170731/computer-1245714_1920.jpg
 featured_image: assets/images/posts/20170731/computer-1245714_1920.jpg
 tags: [data, misc]
 ---
