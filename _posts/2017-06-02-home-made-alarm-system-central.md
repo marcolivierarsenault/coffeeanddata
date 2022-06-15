@@ -21,7 +21,7 @@ What I **don’t want**, to be able to remotely arm or disarm the system. I don
 
 ## Start Point
 
-To start, I did not have what-so-ever manual to configure or understand the system. I first needed to reinitiate the alarm panel and reconfigure it with my own NIP. Not that I don’t trust the previous owner but I feel better with a fresh system. After couple hours on google, I found some install/configuration guide for the system. Just so you know, the system is a <a href="http://www.paradox.com/Products/default.asp?PID=6" target="_blank" rel="nofollow noopener">Paradox MG5000</a>.
+To start, I did not have what-so-ever manual to configure or understand the system. I first needed to reinitiate the alarm panel and reconfigure it with my own NIP. Not that I don’t trust the previous owner but I feel better with a fresh system. After couple hours on google, I found some install/configuration guide for the system. Just so you know, the system is a Paradox MG5000.
 
 Now that this part was done, I can at least have an annoying alarm bell that will go on if the intruder gets in.
 
