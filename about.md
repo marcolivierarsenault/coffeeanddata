@@ -4,7 +4,9 @@ title: About
 featured_image: /assets/images/pages/headshot.png
 ---
 
-I am a Data Science leader @ Shopify. I build data teams to assist multi-disciplinary teams in their mission to build the best product. I value high quality insights that can help us build better products and really understand the reality of the problems we are trying to address, or when we use all the data we can to build first class ethic data products that give our customer an unfair advantage.
+_TLDR:_ I build data teams.  
+
+I am a Data Developement leader @ Shopify. I lead a team of Analytic Engineers that are building the best possible data warehouse for Shopify's data scientist. After multiple year as a Data Scientist. I have pivoted to the data engineer side of things. Where I can build great assets that scale with the company business needs and data needs. 
 
 At the end of the day, nothing we build is about data and/or technology. It is about real world problems and real world humains.
 
@@ -20,4 +22,4 @@ At the end of the day, nothing we build is about data and/or technology. It is a
 
 #### Disclaimer
 
-The posting on this site are my own and don’t necessarily represent Shopify's positions, strategies or opinion.
+The posting on this site are my own and don’t necessarily represent Shopify's positions, strategies or opinions.

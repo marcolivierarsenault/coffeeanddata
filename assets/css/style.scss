@@ -39,6 +39,12 @@
 @import "media-queries";
 
 
+p.hero-description {
+  margin-block-end: 10px;
+}
+
+
+
 /**
  * 3. Structure
  * ----------------------------------------------------------------------------
@@ -226,6 +232,7 @@
 
 .post-footer {
   margin-bottom: 1.66667em;
+  margin-top: 1.66667em;
 }
 
 .post-tags,
