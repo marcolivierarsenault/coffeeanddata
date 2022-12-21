@@ -1,9 +1,9 @@
 # Site setings
 name: 'Coffee and Data'
 title: 'Coffee and Data'
-description: 'Data Science Blog by Marc-Olivier Arsenault'
-tagline: 'Data Science Blog by Marc-Olivier Arsenault'
-meta_description: 'Data Science Blog by Marc-Olivier Arsenault'
+description: 'Data Blog by Marc-Olivier Arsenault'
+tagline: 'Data Blog by Marc-Olivier Arsenault'
+meta_description: 'Data Blog by Marc-Olivier Arsenault'
 logo: 'assets/images/square_logo.png'
 favicon: 'assets/images/favicon.ico'
 baseurl: 
@@ -22,9 +22,9 @@ author:
   name: 'Marc-Olivier Arsenault'
   image: 'headshot.png'
   greetings: 'Coffee and Data'
-  description: "Data Science Blog by Marc-Olivier Arsenault"
-  quote: "\" Data analysis is as much art as it is science\" – Jeff Leek"
-  bio: "Data Science Lead @ Shopify"
+  description: "Data Blog by Marc-Olivier Arsenault"
+  quote: "Data Blog by Marc-Olivier Arsenault"
+  bio: "Senior Data Development Manager @ Shopify"
 
 # Contact form setings
 email: marcolivier.arsenault@gmail.com
