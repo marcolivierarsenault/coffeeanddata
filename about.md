@@ -6,7 +6,7 @@ featured_image: /assets/images/pages/headshot.png
 
 _TLDR:_ I build data teams.  
 
-I am a Data Developement leader @ Shopify. I lead a team of Analytic Engineers that are building the best possible data warehouse for Shopify's data scientist. After multiple year as a Data Scientist. I have pivoted to the data engineer side of things. Where I can build great assets that scale with the company business needs and data needs. 
+I am a Data Developement leader @ Shopify. I lead a team of Analytic Engineers that are building the best possible data warehouse for Shopify's Data Scientists. After multiple year as a Data Scientist. I have pivoted to the data engineer side of things. Where I can build great assets that scale with the company business needs and data needs. 
 
 At the end of the day, nothing we build is about data and/or technology. It is about real world problems and real world humains.
 
