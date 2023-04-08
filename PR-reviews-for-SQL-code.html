@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+        <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>PR Reviews for SQL code | Coffee and Data</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="PR Reviews for SQL code" />
+<meta name="author" content="Marc-Olivier Arsenault" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is my personal guide on how I review my peer SQL code." />
+<meta property="og:description" content="This is my personal guide on how I review my peer SQL code." />
+<link rel="canonical" href="https://coffeeanddata.ca/PR-reviews-for-SQL-code" />
+<meta property="og:url" content="https://coffeeanddata.ca/PR-reviews-for-SQL-code" />
+<meta property="og:site_name" content="Coffee and Data" />
+<meta property="og:image" content="https://coffeeanddata.ca/assets/images/posts/20210423/review.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-23T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://coffeeanddata.ca/assets/images/posts/20210423/review.jpg" />
+<meta property="twitter:title" content="PR Reviews for SQL code" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@Marc-Olivier Arsenault" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Marc-Olivier Arsenault"},"dateModified":"2021-04-23T00:00:00+00:00","datePublished":"2021-04-23T00:00:00+00:00","description":"This is my personal guide on how I review my peer SQL code.","headline":"PR Reviews for SQL code","image":"https://coffeeanddata.ca/assets/images/posts/20210423/review.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://coffeeanddata.ca/PR-reviews-for-SQL-code"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://coffeeanddata.ca/assets/images/square_logo.png"},"name":"Marc-Olivier Arsenault"},"url":"https://coffeeanddata.ca/PR-reviews-for-SQL-code"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+
+    <!-- Site Favicon -->
+    <link rel="shortcut icon" href="https://coffeeanddata.ca/assets/images/favicon.ico" type="image/png" />
+
+    <!-- Font Embed Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap" rel="stylesheet">
+
+    <!-- CSS Styles -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="layout-post">
+    <div id="page" class="site">
+
+        
+        <header id="masthead" class="site-header outer">
+    <div class="site-header-inside">
+        <div class="site-branding">
+            
+                <p class="site-logo"><a href="/" rel="home"><img src="/assets/images/square_logo.png" alt="Coffee and Data" /></a></p>
+                <h1 class="site-title screen-reader-text"><a href="" rel="home">Coffee and Data</a></h1>
+            
+        </div><!-- .site-branding -->
+        <nav id="main-navigation" class="site-navigation" aria-label="Primary Navigation">
+            <ul class="menu">
+            
+                <li class="menu-item"><a href="/about">About</a></li>
+            
+                <li class="menu-item"><a href="/contact">Contact Me</a></li>
+            
+            </ul>
+            <button id="sidebar-show" class="sidebar-toggle btn-icon"><span class="screen-reader-text">Open Sidebar</span><span class="icon-more" aria-hidden="true"></span></button>
+        </nav><!-- .site-navigation -->
+    </div><!-- .site-header-inside -->
+</header><!-- .site-header -->
+        
+
+        <div id="content" class="site-content fadeInDown delay_075s">
+    <main id="main" class="site-main outer">
+        <article class="post-full inner">
+            <header class="post-header">
+                <div class="post-meta">
+                    
+                </div><!-- .post-meta -->
+                
+                    <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/20210423/review.jpg"
+                    alt="PR Reviews for SQL code"></div>
+            
+            <time class="post-date" datetime="2021-04-23">April 23,
+                2021</time>  <div class="readtime">
+
+14 minutes to read
+</div>
+                <h1 class="posttitle">PR Reviews for SQL code</h1>
+            </header><!-- .post-header -->
+            
+            <div class="post-content">
+                <p>This is my personal guide on how I review my peer SQL code.</p>
+
+<!--more-->
+
+<p>As I mentioned before, <a href="https://coffeeanddata.ca/how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team">at Shopify, all our work is peer reviewed</a>. This includes dashboards and SQL code. One of the most used tools for data scientists at Shopify is <a href="https://modeanalytics.com">Mode</a>. If you never worked with it, Mode is a simple dashboarding tool where you write SQL to get your dataset and then you can use some drag and drop charts to build the dashboard.</p>
+
+<p>Someone at Shopify figured out a way to connect Mode with Github, so now when a Data scientist creates or modifies a Mode dashboard we can review it, as we would review any piece of code. Now having the ability to review code is one thing, doing it efficiently to catch mistakes is another one.</p>
+
+<p>If I simply open the PR and start reading the query, I end up reading it like I read a story. By the end of the query, I usually understand what they wanted to do but I haven’t caught anything incorrect in the process. <br /><br /></p>
+
+<h2 id="state-of-the-art">State of the art</h2>
+
+<p>There are tons of guides online on how to review code, but most if not all of it is for more traditional languages and “normal” software development. I could not find anything related to SQL and data sciences, at least not the way I needed it.</p>
+
+<p>What is so different about SQL? Why can’t other guides/resources do the trick? I think it is not current practice to review SQL queries, at least not so thoroughly. First, the mindset is completely different. In SQL, you are either doing an analysis and you are trying to tell a story, convey in English what the data is telling you. Or you are building a self-serve dashboard, a one-page view that will help anyone understand the health of your product/project, etc.</p>
+
+<p>So, over the last years I have built my checklist on what I am looking for when I review my peer’s work. Keep in mind that I did not find all of these, some comes from colleagues, others from professional experiences.<br /><br /></p>
+
+<h2 id="pr-review-list">PR Review list</h2>
+
+<p>My list is divided in two main categories. First <code class="language-plaintext highlighter-rouge">the result</code>, this is where I review the analysis itself, I care about the problem and the result, not what is in between. Then there is the actual code <code class="language-plaintext highlighter-rouge">the SQL</code> where I go in depth of the SQL itself.</p>
+
+<h3 id="the-result">The result</h3>
+
+<p>This category is more subjective and I also feel it is the most undervalued. This is where you can make the difference between average work and impactful work.</p>
+
+<ol>
+  <li>
+    <p><strong>The problem</strong>: This sounds overly simple but trust me, this might be the most ignored aspect, especially for more junior data scientists. Did you really understand the problem? The way we work at Shopify is stakeholders open Github issues. Most data scientists simply read it and start implementing it, as is, assuming whatever is in there, comes from God itself. The truth is, the person that opened that issue most likely tried to explain the best they could what they were looking for, but they are not the data scientist, you are. Stop for a minute, try to understand the real problem behind the issue, then ask yourself what you can do, as a data scientist, to solve the problem and discuss it with the original stakeholders. <strong>Most of the time you will come up with a different angle on the problem that might be really beneficial.</strong> <br /><br />IMO, this is the item you need to work on if you want to move from being a SQL query shop, to a real business partner. <br /><br />To review this, I read the original issue and discuss with the data scientist to see if they understand the problem deeply. For areas I have deep knowledge, this is a bit easier, for areas I don’t, I usually look around for a Product Manager to see if we can chat about the problem.</p>
+  </li>
+  <li>
+    <p><strong>Does the result answer the problem</strong>: We talked about the problem a lot, does this artifact help understand the problem and the solution. Here, I am usually try to first look if this makes me understand what is going on, then I put myself in the shoes of a developer/PM/Fiance/GM etc. and try to determine if they have the components needed, is there too little or too much information on this report? <br /><br />One antipattern I am looking for is the, <code class="language-plaintext highlighter-rouge">I am going to show you everything I have done</code>. Instead of focusing on the result or interesting elements, some people want to prove they have worked hard and try to show everything, even charts that show nothing. (ex: a chart that shows that Merchant Country has no impact.)  Unless the point was to prove that, this should not be there.</p>
+  </li>
+  <li>
+    <p><strong>No pie chart</strong>: I am not even going to explain this point.</p>
+  </li>
+  <li>
+    <p><strong>Graph selections</strong>: This one is hard to explain and highly subjective, but are those the right graphs? Could the number/insights be clearer if shown differently? There are a lot of good books around this. Charts need to tell a story, the insight should be obvious, if you need to know where to look, it is probably not the proper visualization.</p>
+  </li>
+  <li>
+    <p><strong>For Dashboard</strong>: When I talk about a dashboard I refer to reusable/self-serve dashboard. Usually used to track KPI, product health, products early and late metrics, etc.</p>
+
+    <ol>
+      <li><strong>Is it reusable</strong>: That might sound a bit funny, but I make sure they are reusable? If we can find a good way to generalize the dashboard, we will probably save a lot of work/request in the future. If the dashboard simply does that one thing the stakeholder asked for, the dashboard will most likely never be used again. <br /><br />When a stakeholder comes with a request for a very precise dashboard, I first look if the data already exists, if it does I send them to the existing dashboard. If it does not, I reverse engineer the question and ask myself, what generic dashboard would have answered that question. That second dashboard is what I need to build.</li>
+    </ol>
+  </li>
+  <li>
+    <p><strong>For Static analysis</strong>: Those are also called deep dive, one off, etc. Those are to answer a specific question that should not come back in the future. Example questions: can we prove the value of product A on our customer? or Does product A increase LifeTime Value (LTV) of our customer, etc.</p>
+
+    <ol>
+      <li>
+        <p><strong>Is the result clear for non data scientists?</strong> This part is so important, you need to remove your data mindset and put your average person mindset. You are so close to your analysis at this point you forget all the context you have. Anyone in the company should be able to read this and they would all come to the same conclusion. You should avoid any data/statistical terms as much as possible. If you want to also describe the analysis for some more data nerdy persons, add it in annex. But the bulk of the report should be to tell the story.</p>
+      </li>
+      <li>
+        <p><strong>Does it have strong conclusions?</strong> My least favourite report (and also the one I see the most) is the long bullet point style list of data facts. Something like <em>Product A as a penetration of 5% in country A</em> or <em>The average buyer spends $3 more on their orders</em><br /><br />I want to read why those numbers matter. Is 5% high or low. What are other similar products doing in this market, or compare it with other countries? You need to put a mental model in the reader’s mind, because if you don’t they will and there is a lot of chance they will do it wrong. It is your analysis, you should be the one imposing the reference points, the why it matters and the why I should care.</p>
+      </li>
+      <li>
+        <p><strong>Does it have a recommendation?</strong> This is your best, most likely only chance to really be impactful. <strong>You need a bold recommendation.</strong> It does not need to be shocking or unexpected, but you should start and finish your analysis with the recommendation of data. <code class="language-plaintext highlighter-rouge">I recommend that we kill product A because XYZ.</code> A lot of data scientists are very uncomfortable with this, but if you don’t do it one of the 2 things will occur. Either they will undervalue the result and go against what data says, because it was not clear enough in your analysis, or they will agree with you and they will make the call and nobody will realize the work you did on this. <br /><br /><strong>If you want to be an impactful partner with your stakeholders, you must provide clear recommendations.</strong></p>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="the-sql">The SQL</h3>
+
+<p>This section is in no particular order, I just make sure all of those are verified. 
+<br /><br /></p>
+<ul>
+  <li><strong>Join order</strong>: Some DB have great optimizers, but nothing beats taking care of the JOIN order manually. So, your biggest dataset should always be on the left (or above in the FROM, JOIN order) example:
+    <pre><code class="language-SQL">SELECT *
+FROM big_table
+JOIN medium_table USING (_key1)
+JOIN small_table USING (_key2)
+</code></pre>
+    <p>There is no point in measuring this exactly to the row or the real size of the table. That being said, if there are significant differences in the table sizes, it is really worth ordering for performance reasons. One easy way to look at this in a world of facts and dimensions is to make sure the fact tables are first, then the dimensions. 
+<br /><br /></p>
+  </li>
+  <li><strong>Exploding JOINs</strong>: Exploding joins are when you think you have a 1:1 relationship between 2 tables. You join them, then suddenly you have some duplications. This type of error is really hard because most of the time it is completely silent. The other tricky aspect of this is when the error is off only by a couple of percent. Because for most of the table you do have this 1:1 relationship, but there is a corner case that you did not think of, then suddenly your result is higher by a couple of percent, which makes it very hard to detect. <br /><br />I make sure every table grain is what’s expected. In other words, I read the query and don’t assume the grain of the table in the joins. If I am lucky, the dataset has a <code class="language-plaintext highlighter-rouge">unique keyset</code>, this is an internal mechanism at Shopify, when we build a dataset that ensures the grain is respected. If I have this, and it is aligned with the JOIN, then I am good to go. <br /><br />If I don’t have this, I usually query it like this:
+    <pre><code class="language-SQL">SELECT grain, count (*)
+FROM table
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 10
+</code></pre>
+    <p>If the first row has <code class="language-plaintext highlighter-rouge">1</code> in the second column, we are good to go, the grain is respected. 
+<br /><br /></p>
+  </li>
+  <li><strong>Imploding JOINs</strong> : What we just talked about, can be reversed for INNER JOINs. If you JOIN table_a and table_b make sure you are not losing rows when you thought you had a 1:1 relationship. Example table_a has 100 rows with unique id, table_b has the same unique id but only 99 rows. You will silently lose 1 row. <br /><br />I usually test that with this simple check:
+    <pre><code class="language-SQL">SELECT count (*)
+FROM table_a
+JOIN table_b
+ ON table_a.id = table_b.id
+</code></pre>
+    <p>Should give the same result as:</p>
+    <pre><code class="language-SQL">SELECT count (*)
+FROM table_a
+FULL OUTER JOIN  table_b
+ ON table_a.id = table_b.id
+</code></pre>
+    <p>If you end up with the same count on both of those queries, you are most likely OK. 
+<br /><br /></p>
+  </li>
+  <li><strong>Input data</strong>: Are they using the right input data, does modeled data already exist? Usually we try to go too fast with a dataset we already know. We don’t look around for existing modelled data that would help answer the question. When I review queries that use JOIN too much or when they use unmodeled data. I spend a couple of minutes searching existing datasets. If something already exists, you need a very good reason not to use it. Likely, someone with more business knowledge built it and all this context is probably included in the modelled dataset. Using it will prevent you from omitting small details that will make a difference at the end. 
+<br /><br /></li>
+  <li><strong>Clear and logical CTE</strong>: The CTEs in the query should tell a story. They should be logical and ordered properly. When possible they should be sequential, you should not need to scroll up and down all the time to understand what is going on. <br /><br />I also make sure the grain of each CTE makes sense that they are clear. CTEs should also have clear and self-explanatory names. Just by reading the name I should be able to guess what it does and what grain I get out of this CTE.<br /><br />When CTE are more convoluted, I frequently copy all the CTE in a fresh query file, and I display the output of the one I am not sure of the result. So I do <code class="language-plaintext highlighter-rouge">SELECT * FROM CTE_1</code> just to fully understand what gets out of some of those CTE. 
+<br /><br /></li>
+  <li><strong>Where clause on LEFT JOIN</strong>: When there is LEFT JOINs I make sure there is no WHERE clause on the right table. Because if there is one, you basically reverted it back to an INNER JOIN. Example:
+    <pre><code class="language-SQL">SELECT *
+FROM table_a
+LEFT JOIN table_b USING (_key1)
+WHERE table_b.country = ‘US’
+</code></pre>
+    <p>This is the equivalent of</p>
+    <pre><code class="language-SQL">SELECT *
+FROM table_a
+JOIN table_b USING (_key1)
+WHERE table_b.country = ‘US’
+</code></pre>
+    <p>Since any NULL from table_b gets deleted by the WHERE. 
+<br /><br /></p>
+  </li>
+  <li><strong>Read documentation</strong>: For tables I am not familiar with I take 3 minutes and I read the documentation, which first helps me to review the query, but also provide me with better context in the future. 
+<br /><br /></li>
+  <li><strong>Known gotchas</strong>: All tables have their own small gotchas. Typical Shopify example, make sure you filter on shops that are currently customers. You probably don’t care about a shop that left Shopify 10 years ago in your analysis. 
+<br /><br /></li>
+</ul>
+
+<h3 id="the-secret-trick">The secret trick</h3>
+
+<p>This is what I have learned and that saves me the most time. I do not start reviewing the code until I am 100% aligned with the result. <strong>Too many times, I have invested 1 or 2 hours in the SQL first, to only realize I did not agree with the analysis itself</strong>, or I thought the way they presented the result was not clear. With the way Mode works, changing the way you want to show the results may require serious redesign of your query. So now, I never review the code unless I am happy with the final result. 
+<br /><br /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>All of this is in no way an exhaustive list, but I try to keep those points in mind when I go through some of my colleagues’ work. Over the past years, that helped me to stay consistent with PR reviews and usually when I am OK with most of this list,I have caught most of the serious issues with the query.</p>
+
+<p>Special thanks to <a href="https://www.linkedin.com/in/tristanboudreault/">Tristan Boudreault</a> for some of the suggestions.</p>
+
+            </div>
+            <footer class="post-footer">
+                
+                <p class="post-tags">
+                     
+                    <a href='tag/data/'>data</a>
+                    
+                     
+                    <a href='tag/shopify/'>shopify</a>
+                    
+                    
+                </p>
+                
+                <div class="post-share">
+                    <span class="post-share-title">Share:</span>
+                    <a target="_blank" href="https://twitter.com/share?text=PR+Reviews+for+SQL+code&amp;url=https://coffeeanddata.caPR-reviews-for-SQL-code">Twitter</a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://coffeeanddata.caPR-reviews-for-SQL-code">Facebook</a>
+                </div><!-- .share-post -->
+            </footer>
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/headshot.png" alt="Marc-Olivier Arsenault's Picture"
+                        class="avatar"></div>
+                <div class="author-details">
+                    <h2 class="author-title">About Marc-Olivier Arsenault</h2>
+                    <p class="author-description">Senior Data Development Manager @ Shopify</p>
+                </div>
+            </div>
+            
+
+        </article>
+        
+        <section class="newsletter-box inner-wide">
+    <div class="inner">
+        <h2 class="newsletter-box-title">Subscribe to Coffee and Data newsletter</h2>
+        <p>Get the latest and greatest from Coffee and Data delivered straight to your inbox.</p>
+        <!-- Begin MailChimp Signup Form -->
+        <div id="mc_embed_signup">
+            <form action="//coffeeanddata.us18.list-manage.com/subscribe/post?u=0d3439b2865b0b299714d7d5a&amp;id=bed66e1b11" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate gh-subscribe-form" target="_blank" novalidate>
+                <label for="mce-EMAIL" class="screen-reader-text">Email Address</label>
+                <input type="email" value="" name="EMAIL" class="required email subscribe-email" id="mce-EMAIL" placeholder="Your email address">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+            </form>
+        </div>
+        <!--End mc_embed_signup-->
+    </div><!-- .inner -->
+</section><!-- .widget -->
+        
+        <section class="read-next inner">
+            <h2 class="read-next-title">Read Next</h2>
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="January 29, 2021">January 29, 2021</time>
+                    </div>
+                    <h3 class="post-title"><a href="/warning-systems-on-data-warehouse">Warning systems on data warehouse</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/data/'>Data</a>
+                        
+                        
+                        
+                        <a href='/tag/shopify/'>Shopify</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/warning-systems-on-data-warehouse" class="post-thumbnail">
+                    <img src="assets/images/posts/20210129/warning.jpeg" alt="Warning systems on data warehouse" />
+                </a>
+                
+            </article>
+            
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="March 16, 2022">March 16, 2022</time>
+                    </div>
+                    <h3 class="post-title"><a href="/update-on-whistleblower">Update on Whistleblower</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/data/'>Data</a>
+                        
+                        
+                        
+                        <a href='/tag/shopify/'>Shopify</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/update-on-whistleblower" class="post-thumbnail">
+                    <img src="assets/images/posts/20220316/update.jpg" alt="Update on Whistleblower" />
+                </a>
+                
+            </article>
+            
+        </section><!-- .read-next -->
+    </main><!-- .site-main -->
+</div><!-- .site-content -->
+
+        
+
+        
+
+        <footer id="colophon" class="site-footer outer">
+            <div class="site-footer-inside">
+                <p class="social-links">
+    
+    <a href="https://twitter.com/MarcOlivierA" class="btn btn-icon btn-secondary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter icon</title><path d="M23.954 4.569a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.691 8.094 4.066 6.13 1.64 3.161a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.061a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z"/></svg>
+        <span class="screen-reader-text">Twitter</span>
+    </a>
+    
+    
+    
+    <a href="https://github.com/marcolivierarsenault" class="btn btn-icon btn-secondary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub icon</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        <span class="screen-reader-text">GitHub</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://medium.com/@marcolivier.arsenault" class="btn btn-icon btn-secondary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Medium icon</title><path d="M0 0v24h24V0H0zm19.938 5.686L18.651 6.92a.376.376 0 00-.143.362v9.067a.376.376 0 00.143.361l1.257 1.234v.271h-6.322v-.27l1.302-1.265c.128-.128.128-.165.128-.36V8.99l-3.62 9.195h-.49L6.69 8.99v6.163a.85.85 0 00.233.707l1.694 2.054v.271H3.815v-.27L5.51 15.86a.82.82 0 00.218-.707V8.027a.624.624 0 00-.203-.527L4.019 5.686v-.27h4.674l3.613 7.923 3.176-7.924h4.456v.271z"/></svg>
+        <span class="screen-reader-text">medium</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/marcolivierarsenault" class="btn btn-icon btn-secondary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn icon</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <span class="screen-reader-text">Linkedin</span>
+    </a>
+    
+    
+    
+    <a rel="me" href="https://mstdn.social/@marcolivier" class="btn btn-icon btn-secondary" target="_blank" rel="noopener">
+        <?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg width="1034px" height="1034px" viewBox="-10 -5 1034 1034" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+   <path fill="currentColor"
+d="M499 112q-93 1 -166 11q-81 11 -128 33l-14 8q-16 10 -32 25q-22 21 -38 47q-21 33 -32 73q-14 47 -14 103v37q0 77 1 119q3 113 18 188q19 95 62 154q50 67 134 89q109 29 210 24q46 -3 88 -12q30 -7 55 -17l19 -8l-4 -75l-22 6q-28 6 -57 10q-41 6 -78 4q-53 -1 -80 -7
+q-43 -8 -67 -30q-29 -25 -35 -72q-2 -14 -2 -29l25 6q31 6 65 10q48 7 93 9q42 2 92 -2q32 -2 88 -9t107 -30q49 -23 81.5 -54.5t38.5 -63.5q9 -45 13 -109q4 -46 5 -97v-41q0 -56 -14 -103q-11 -40 -32 -73q-16 -26 -38 -47q-15 -15 -32 -25q-12 -8 -14 -8
+q-46 -22 -127 -33q-74 -10 -166 -11h-3zM367 267q73 0 109 56l24 39l24 -39q36 -56 109 -56q63 0 101 43t38 117v239h-95v-232q0 -74 -61 -74q-69 0 -69 88v127h-94v-127q0 -88 -69 -88q-61 0 -61 74v232h-95v-239q0 -74 38 -117t101 -43z" />
+</svg>
+
+        <span class="screen-reader-text">mastodon</span>
+    </a>
+    
+</p>
+                <p class="site-info">
+                    <a href="#">Coffee and Data</a> &copy; 2023.
+                    Powered by <a target="_blank" href="https://jekyllrb.com/">Jekyll</a>.
+                </p>
+                <p class="back-to-top">
+                    <a id="top-button" class="top-button" href="#page">
+                        <span class="icon-arrow-up" aria-hidden="true"></span>
+                        <span class="screen-reader-text">Back to top</span>
+                    </a>
+                </p>
+            </div><!-- .site-footer-inside -->
+        </footer><!-- .site-footer -->
+    </div><!-- .site -->
+    <div id="site-overlay" class="site-overlay"></div>
+    <aside id="sidebar" class="sidebar">
+	<div class="sidebar-scrollable">
+		<div class="sidebar-inside">
+			<button id="sidebar-hide" class="sidebar-toggle btn-icon"><span class="screen-reader-text">Close Sidebar</span><span
+				    aria-hidden="true" class="icon-close"></span></button>
+			<nav id="sidebar-navigation" class="widget site-navigation">
+				<h2 class="widget-title">Explore Site</h2>
+				<ul class="menu">
+					
+						<li class="menu-item"><a href="/about">About</a></li>
+					
+						<li class="menu-item"><a href="/contact">Contact Me</a></li>
+					
+				</ul>
+			</nav>
+			<section class="widget widget-recent-posts">
+    <h2 class="widget-title">Recent Articles</h2>
+    <ul>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">December 20, 2022</time>
+                </div>
+                <div class="post-title">
+                    <a href="https://coffeeanddata.ca/no-longer-ds">I am no longer a Data Scientist</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/no-longer-ds">
+                <img src="https://coffeeanddata.ca/assets/images/posts/20221220/dashboard_laptop.jpg"
+                    alt="I am no longer a Data Scientist">
+            </a>
+            
+        </li>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">June 14, 2022</time>
+                </div>
+                <div class="post-title">
+                    <a href="https://coffeeanddata.ca/impact">Be Impactful</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/impact">
+                <img src="https://coffeeanddata.ca/assets/images/posts/20220614/impact.png"
+                    alt="Be Impactful">
+            </a>
+            
+        </li>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">April 30, 2022</time>
+                </div>
+                <div class="post-title">
+                    <a href="https://coffeeanddata.ca/dear-dm">Dear DM</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/dear-dm">
+                <img src="https://coffeeanddata.ca/assets/images/posts/20220430/graph2.png"
+                    alt="Dear DM">
+            </a>
+            
+        </li>
+        
+    </ul>
+</section>
+
+<!-- Create a sorted array of tags -->
+ 
+<section class="widget widget-tagcloud">
+    <h2 class="widget-title">Tags</h2>
+    <div class="tagcloud">
+        
+        <a href='https://coffeeanddata.ca/tag/data/'>data</a>
+        
+        <a href='https://coffeeanddata.ca/tag/data_eng/'>data_eng</a>
+        
+        <a href='https://coffeeanddata.ca/tag/ericsson/'>ericsson</a>
+        
+        <a href='https://coffeeanddata.ca/tag/iot/'>iot</a>
+        
+        <a href='https://coffeeanddata.ca/tag/misc/'>misc</a>
+        
+        <a href='https://coffeeanddata.ca/tag/perso/'>perso</a>
+        
+        <a href='https://coffeeanddata.ca/tag/shopify/'>shopify</a>
+        
+        <a href='https://coffeeanddata.ca/tag/talk/'>talk</a>
+        
+    </div>
+</section>
+
+
+<section class="widget widget-newsletter">
+    <div class="inner">
+        <h2 class="widget-title">Subscribe to Coffee and Data</h2>
+        <p>Get the latest and greatest from Coffee and Data delivered straight to your inbox every week.</p>
+        <!-- Begin MailChimp Signup Form -->
+        <div id="mc_embed_signup">
+            <form action="//coffeeanddata.us18.list-manage.com/subscribe/post?u=0d3439b2865b0b299714d7d5a&amp;id=bed66e1b11" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                class="validate gh-subscribe-form" target="_blank" novalidate>
+                <label for="mce-EMAIL" class="screen-reader-text">Email Address</label>
+                <input type="email" value="" name="EMAIL" class="required email subscribe-email" id="mce-EMAIL"
+                    placeholder="Your email address">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+            </form>
+        </div>
+    </div>
+</section>
+
+		</div><!-- .sidebar-inside -->
+	</div><!-- .sidebar-scrollable -->
+</aside><!-- .sidebar -->
+    
+    
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PZTRVPSWT5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PZTRVPSWT5', { 'anonymize_ip': true });
+  </script>
+
+    
+    <!-- Javascript Assets -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/custom.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+        <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Using data science to save money on my next trip to Mexico | Coffee and Data</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="Using data science to save money on my next trip to Mexico" />
+<meta name="author" content="Marc-Olivier Arsenault" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="How am I using basic data work to ensure I am getting a good price on my trip." />
+<meta property="og:description" content="How am I using basic data work to ensure I am getting a good price on my trip." />
+<link rel="canonical" href="https://coffeeanddata.ca/using-data-science-to-save-money-on-my-next-trip-to-mexico" />
+<meta property="og:url" content="https://coffeeanddata.ca/using-data-science-to-save-money-on-my-next-trip-to-mexico" />
+<meta property="og:site_name" content="Coffee and Data" />
+<meta property="og:image" content="https://coffeeanddata.ca/assets/images/posts/20191028/mexique.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-10-28T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://coffeeanddata.ca/assets/images/posts/20191028/mexique.jpg" />
+<meta property="twitter:title" content="Using data science to save money on my next trip to Mexico" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@Marc-Olivier Arsenault" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Marc-Olivier Arsenault"},"dateModified":"2019-10-28T00:00:00+00:00","datePublished":"2019-10-28T00:00:00+00:00","description":"How am I using basic data work to ensure I am getting a good price on my trip.","headline":"Using data science to save money on my next trip to Mexico","image":"https://coffeeanddata.ca/assets/images/posts/20191028/mexique.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://coffeeanddata.ca/using-data-science-to-save-money-on-my-next-trip-to-mexico"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://coffeeanddata.ca/assets/images/square_logo.png"},"name":"Marc-Olivier Arsenault"},"url":"https://coffeeanddata.ca/using-data-science-to-save-money-on-my-next-trip-to-mexico"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+
+    <!-- Site Favicon -->
+    <link rel="shortcut icon" href="https://coffeeanddata.ca/assets/images/favicon.ico" type="image/png" />
+
+    <!-- Font Embed Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap" rel="stylesheet">
+
+    <!-- CSS Styles -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="layout-post">
+    <div id="page" class="site">
+
+        
+        <header id="masthead" class="site-header outer">
+    <div class="site-header-inside">
+        <div class="site-branding">
+            
+                <p class="site-logo"><a href="/" rel="home"><img src="/assets/images/square_logo.png" alt="Coffee and Data" /></a></p>
+                <h1 class="site-title screen-reader-text"><a href="" rel="home">Coffee and Data</a></h1>
+            
+        </div><!-- .site-branding -->
+        <nav id="main-navigation" class="site-navigation" aria-label="Primary Navigation">
+            <ul class="menu">
+            
+                <li class="menu-item"><a href="/about">About</a></li>
+            
+                <li class="menu-item"><a href="/contact">Contact Me</a></li>
+            
+            </ul>
+            <button id="sidebar-show" class="sidebar-toggle btn-icon"><span class="screen-reader-text">Open Sidebar</span><span class="icon-more" aria-hidden="true"></span></button>
+        </nav><!-- .site-navigation -->
+    </div><!-- .site-header-inside -->
+</header><!-- .site-header -->
+        
+
+        <div id="content" class="site-content fadeInDown delay_075s">
+    <main id="main" class="site-main outer">
+        <article class="post-full inner">
+            <header class="post-header">
+                <div class="post-meta">
+                    
+                </div><!-- .post-meta -->
+                
+                    <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/20191028/mexique.jpg"
+                    alt="Using data science to save money on my next trip to Mexico"></div>
+            
+            <time class="post-date" datetime="2019-10-28">October 28,
+                2019</time>  <div class="readtime">
+
+7 minutes to read
+</div>
+                <h1 class="posttitle">Using data science to save money on my next trip to Mexico</h1>
+            </header><!-- .post-header -->
+            
+            <div class="post-content">
+                <p>How am I using basic data work to ensure I am getting a good price on my trip.</p>
+
+<!--more-->
+
+<p>It has been 4 years since my wife and I took some vacation in a sunny place. Last time, for our honeymoon, we spent some quality time in Mexico. We enjoyed 10 days in a very nice all-inclusive resort in Riviera Maya. Since then, a house, two kids, a new job and many other things. After some reflexion we decided that it was time to go back on the beach. So, next December (2019) we (my wife, our 3 years old, our 4 months old and I) will be heading to Riviera Maya once again.</p>
+
+<p>Don’t worry, I am not turning my Data blog into a travel and lifestyle blog. I want to share with you how I am making sure I am getting the right price for the trip.</p>
+
+<p>So here is where it is interesting, when we signed the contract this summer (in June) the contract said, if the price go down, I could, once, ask for a price match. Since the trip was +-6 months away, that looked like a very interesting feature. BTW, this is one of the factors that made us pick that travel company. To be upfront with the numbers, we paid <em>4317 CAD$</em> for the full family.</p>
+
+<h2 id="the-no-so-easy-part">THE NO SO EASY PART</h2>
+
+<p>After a couple of weeks, I went back to check the price. It was still the same. Then I realize, how can I track the price. There is no way I can take the time to go, click through a series of web interfaces to query the price. That would represent an annoying 2-3 minutes a day and I just don’t have that time.</p>
+
+<p>Here is what it looks like to get the price update:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-P5g_FFkqZQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+
+<p><br /></p>
+
+<p>Obviously, the travel company does not feel like it would be a great feature to track the price. After a couple of time searching for it, there is just no way to do this. At least with a tool on the website.</p>
+
+<p>Then what if it is below my original price, do I take this price or I wait a bit more. Because remember, I can only do a price match once. It would be really useful to have all the historic prices, then if/when it gets below original price, I could look at the trend and take a more informed decision.</p>
+
+<p>So now I would need to spend couple of minutes daily to fetch the price, and then couple of more to copy the value into some sort of spreadsheet. Anyone that did something like this knows that it works kinda of OK for the first few days, maybe weeks. But at some point you start missing days, do copy paste error, etc.</p>
+
+<p>Manual process in data is more or less the equivalent of no process.</p>
+
+<h2 id="just-script-it">JUST SCRIPT IT</h2>
+
+<p>My idea was, I can just get the URL, download the HTML from python or something and do some regex magic to extract the price.</p>
+
+<p><img src="https://media.giphy.com/media/d8KOpGnzaAEI7JiVUp/source.gif#center" alt="Dumb" /></p>
+
+<p>Of course, it could not be that easy. First thing, the URL does not really change. All of the price things are some sort of modal on top of the other page. So copying the URL basically brings you back to the home page.</p>
+
+<p><img src="assets/images/posts/20191028/network.gif#right" alt="Network tool" /></p>
+
+<p>Now when I started to look at Chrome Developer tools, I assumed I could see somewhere the data coming in. Data has to come in right… right…
+Here is the network view…</p>
+
+<p>Not as simple as I would have liked.</p>
+
+<p><br /><br />
+<br /><br />
+<br /></p>
+
+<p>After a couple of times digging in each of these files, I found the golden nugget.</p>
+
+<p><img src="assets/images/posts/20191028/json_file.png#center" alt="Json-File" /></p>
+
+<p>Seems like we are on the right track. We have what seems to be a JSON file and the custom URL to get it. OBVIOUSLY, when I use this URL directly in a new page it is not working. I receive the equivalent of a page unavailable. Really it seems like they don’t want us to do this. They have set many roadblocks to prevent us from doing it. <em>Thanks Obama</em>.</p>
+
+<p>Then, I found a very neat option in chrome Dev tools.</p>
+
+<p><img src="assets/images/posts/20191028/curl.png#center" alt="Json-File" /></p>
+
+<p>Copy as cURL. You end up with a very long command you can paste in your terminal and get the JSON.</p>
+
+<p>Finally, something is working. I now have a way to extract the price.</p>
+
+<pre><code class="language-python">
+import json
+from botocore.vendored import requests
+
+url = 'https://voyagesarabais.com/recherche-sud/getpricedetails?search%5Bgateway%5D=YUL&amp;search%5BdateDep%5D=2019-12-15&amp;search%5Bduration%5D=7day%2C8day&amp;search%5BdestDep%5D=o&amp;search%5BnoHotel%5D=p7&amp;search%5Broom1%5D=a%3A4%3A%7Bi%3A0%3Bs%3A2%3A%2240%22%3Bi%3A1%3Bs%3A2%3A%2240%22%3Bi%3A2%3Bs%3A1%3A%223%22%3Bi%3A3%3Bs%3A1%3A%221%22%3B%7D&amp;search%5Broom2%5D=&amp;search%5Broom3%5D=&amp;search%5Broom4%5D=&amp;search%5Broom5%5D=&amp;search%5Broom6%5D=&amp;search%5Bflex%5D=N&amp;search%5Bflexhigh%5D=3&amp;search%5Bflexlow%5D=3&amp;search%5Broomcallgroup%5D=%5B%7B%22_priority%22%3A9%2C%22nb_rooms%22%3A1%2C%22nb_adults%22%3A2%2C%22non_adults%22%3A%5B%223%22%2C%221%22%5D%7D%5D&amp;search%5Bpricemax%5D=9000&amp;search%5Bpricemin%5D=1&amp;search%5Ballinclusive%5D=Y&amp;search%5Bbeach%5D=&amp;search%5Bcasino%5D=&amp;search%5Bfamily%5D=&amp;search%5Bgolf%5D=&amp;search%5Bkitchenette%5D=&amp;search%5Boceanview%5D=&amp;search%5Bminiclub%5D=&amp;search%5Bspa%5D=&amp;search%5Bwedding%5D=&amp;search%5Badultonly%5D=&amp;search%5Bnoextrasingle%5D=&amp;search%5Bvilla%5D=&amp;search%5Bstar%5D=4.5&amp;search%5Bstarmax%5D=4.5&amp;search%5Bdirectflight%5D=&amp;search%5Btourtodisplay%5D=CAH%2CVAT%2CVAC%2CVAX%2CSGN%2CSQV%2CSWG%2CWJV&amp;search%5Buuid%5D=&amp;search%5BnbRoomsMax%5D=&amp;search%5BhotelDistanceMax%5D='
+
+payload = 'data=QXjaDVS1EqNQAPyXaymCS4l7cL1cAQQn8ILD11%2F6ndlZ%2FfMX%2FufEXTaHeV6sCyracChEFTl8XHzw9NfD8TjxcBJOrgXgabDpEkZOeyGaNsfYlfsXoxaj57LBWgZjpB2mpeDKsJ0iUmI5VVjv9eCeA34db0A8ASRklG9DJjZAVk8j%2BK58ctfscX7FxXppW62OhAMznyYwpeGqU9FoU%2F71SDiO7fk5Dz99S3CAd5RDB9lKTvzmSahBld5gdaz9vfedPConEhM4dpuBiIxpZ6fKZK7O1BDnBvU9Ba%2FHZJXiRNuFCNhRlvZh1lH4WrciCbh5GUW8r4vsjq6xDRJzTvsb3EGJM%2BplJMNkBcma09TrMezjOqFNtOCZ3EHBE8rwpbzA%2Bnp43SKN3No4fVcGdg1hSW1er0e8zHKV7qNEleUPVGcJ4YniN6lPWIA%2BfixcisbTUpO8HgR78ue3i0dZlwJXGyhYhxfWoz5wCrQL5JbnZadk2pILWEdT4RKiXbKcxemTi4mF7paMniWP190lJHXy8eZgV7QqaTnvx%2BwQYGNWsd5jPomwNojiNgn3zh%2B1E2XIxO7ri%2FfN7PXIehG2oplT9oHbTGqkNtPKtiQq9UsjliPEktUIbyc0%2Be8RqapxzPExGO%2BP8Qts0dbCnm7UJ3A15plV51xQq1Y6d07xJjZ4BhGiIHKw9uosLjWpHmidnaEsg%2Fle4JjPGvaZT3tgFAS6cjix2u53EIB4JwwyuGLJSxGCYa8HTz7Tm8WL741X0NfeAcIkpt6ssUJHChKkaf96kAMEG0PDxHs%2B7wDQs%2F2FQgVRsDful59Uhdw7UAWKp4yiQU25FNUlpGoG%2F1nlZGD7lDW2fb7RviM%2FQjpny6Hcxmd6JoeYuHtGOa6VdW3dcMVAxir5FXtwqb2fog0PfNydAw9EuBQwiAbzivCMaLJTr2f%2BXt4SMOadF6fZ29rn66FBIYemXUNzpHDqUoX4FlcaXO9ucgZAisAS66Mbh5xeEK7V0r33Z8oMzAnFHUeen8hoDtq2ahi3JY%2FQC5DqhEiB0eRNkC7bGPaGKXIAoq%2F1ToN4sHN8BpgKd56efidkDlK%2FyJtTid7itoGQUcLMrT0feaY455Znrfb28az3t9C8B9k63ya8BRcaX3QMkDIvsQHxciv33ROC4cA3WhqqcuUkPxRSuz9xACrzlEvXLM4QP0qBFEOvB7qeKyBXqppLE1DFLEPhc0zRyiWY30YwlgSpcQhzmmifBd8wXgLAYpouOFpYn%2BTqDEweseIKO3G2c3gbFJC5yOPGgTVLBsG7KYk%2BkCJpEW984kihzE6lTENZ32CHseFA%2FXCTZUG5FZ3M12VmtH2hKXC1IZ2UAQ4foyB1Qdi35QQJv9Ef235UyPN4c%2FeOeKR9eIlGlL9GiWhogoOEpUnE%2BDdTnKQXFWwgRRHGNXaonLog6ZNhoLCluUWOc8j6a%2BZ793ZojmWm39gkBnx0YWPFstDXoQSkIsIlwr4oN%2F8%2BhfU6N%2F%2Bd0J%2F%2Fb5zoDz0%3D&amp;type=packageplus'
+
+headers = {
+'Cookie': 'Cookie: _gcl_au=1.1.596656575.1560126807; _ga=GA1.2.1347033583.1560126807; _fbp=fb.1.1560126807161.1014257493; _gaexp=GAX1.2.NFE8cllqRy-hy2p_zsZ_9A.18143.0; G_ENABLED_IDPS=google; is_all_inclusive_checked=1; PHPSESSID=0odjk0bsqoalhh20ijg3hgcqs2; _hjid=d29cb0cd-017e-4453-a112-b8ae863dbb89; _gid=GA1.2.1378798265.1565464684; _gac_UA-6397631-1=1.1565464692.CjwKCAjw1rnqBRAAEiwAr29II9bpU1twn6ZPzisvGTap3gofl973SwBnRO6CkYdpJF4F3qEYN9FTDBoCPRwQAvD_BwE; _gat_UA-6397631-1=1',
+'Origin': 'https://voyagesarabais.com',
+'Accept-Encoding': 'gzip, deflate, br' ,
+'Accept-Language': 'en-US,en;q=0.9,fr;q=0.8' ,
+'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36' ,
+'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' ,
+'Accept': '*/*' ,
+'Referer': 'https://voyagesarabais.com/recherche-sud?gateway=YUL&amp;dateDep=2019-12-15&amp;duration=7day,8day&amp;destDep=o&amp;noHotel=p7&amp;allinclusive=Y&amp;beach=&amp;casino=&amp;family=&amp;golf=&amp;kitchenette=&amp;oceanview=&amp;miniclub=&amp;spa=&amp;weeding=&amp;adultonly=&amp;noextrasingle=&amp;villa=&amp;directflight=&amp;tourtodisplay=CAH,VAT,VAC,VAX,SGN,SQV,SWG,WJV&amp;uuid=&amp;nbRoomsMax=&amp;hotelDistanceMax=&amp;star=4.5&amp;starmax=4.5&amp;pricemin=1&amp;pricemax=9000&amp;flex=N&amp;&amp;bedrooms[0][0]=40&amp;bedrooms[0][1]=40&amp;bedrooms[0][2]=3&amp;bedrooms[0][3]=1',
+'X-Requested-With': 'XMLHttpRequest',
+'Connection': 'keep-alive'
+}
+
+r = requests.post(url, data=payload, headers=headers)
+parsed_response = json.loads(r.text)
+
+#### you can now access your value in parsed_response as a dict
+totalPrice = parsed_response['totalprice']
+</code></pre>
+
+<p>As you can see the query is pretty nasty. Really, it is like if they do not want us to extract the prices automatically. At least, now, we have a pretty nice dictionary to work with.</p>
+
+<h2 id="what-to-do-with-this-value-now">WHAT TO DO WITH THIS VALUE NOW</h2>
+
+<p>Now that we can access the value, how do we extract it. I have decided to create a AWS Lambda function that run every 6 hours to extract the price. With this price, 4 times a day, we do 3 things:</p>
+
+<p>We check if price is good. Since I paid a bit more than 4300, if price would go below 4k$, I send myself an email. To make sure I can act quickly if needed.</p>
+
+<ol>
+  <li>I store the value (with the timestamp) in a database. (DynamoDB)</li>
+  <li>I store the value (with the timestamp) in AWS S3</li>
+  <li>Why 2 and 3, I was not sure how I would use it, since AWS have some rules about what can access what and because storage is shockingly cheap, I stored it twice.</li>
+</ol>
+
+<h2 id="the-price">THE PRICE</h2>
+
+<p>So sadly, the price did not go below 4300$ yet, and to be fair I doubt it will. The trip is now priced at 4700/5000 depending on the days.</p>
+
+<p><img src="assets/images/posts/20191028/prix.png#center" alt="Json-File" /></p>
+
+<p>To build this view, I have used the fantastic tool call <a href="https://plot.ly/dash/">Dash</a> which allows you with fewer than 100 lines of code build this visual. If you are interested, you can go see the app here: <a href="https://voyage.coffeeanddata.ca">https://voyage.coffeeanddata.ca</a>.</p>
+
+<h2 id="discoveries">DISCOVERIES</h2>
+
+<p><img src="assets/images/posts/20191028/no_data.png#right" alt="Network tool" /></p>
+
+<p>For a couple of days I did not collect any new data points. In fact the cURL command was getting back a 404 from the server. Took me a while to realize that I had no new data.</p>
+
+<p>Because I did not implement any validations in my code. The Lambda script would simply silently fail and I would not collect new data points.</p>
+
+<p>So I added a validation in my code that sends me an email when the cookie needed to be updated. I assume the cookie has some expiration encrypted in it. So simply getting a new token seems enough.</p>
+
+<h2 id="pick-wisely">Pick wisely</h2>
+
+<p>The other interesting points I got from the data up to now is this part of the curve:</p>
+
+<p><img src="assets/images/posts/20191028/data_jump.png#center" alt="Json-File" /></p>
+
+<p>For a couple of days in a row, the price surged by 200$ at around 7am in the morning. This is something I will be careful with, next time I look to book a trip.</p>
+
+<h2 id="conclusion">CONCLUSION</h2>
+
+<p>Sadly, I did not save any money…yet. I am flying for Mexico in more than 2 months so I will keep tracking the price on my website. Travel companies seems to be making some effort to prevent us to automatically extracting the price.</p>
+
+<p>The price looks to be very volatile, I would be curious to understand what influence the price on an hourly basis.</p>
+
+<hr />
+
+<p><br />
+If you are interested all the code is available in my Github repo: <a href="https://github.com/marcolivierarsenault/triptracker">https://github.com/marcolivierarsenault/triptracker</a></p>
+
+<p>You can check my web app here: <a href="https://voyage.coffeeanddata.ca">https://voyage.coffeeanddata.ca</a></p>
+
+            </div>
+            <footer class="post-footer">
+                
+                <p class="post-tags">
+                     
+                    <a href='tag/data/'>data</a>
+                    
+                     
+                    <a href='tag/perso/'>perso</a>
+                    
+                    
+                </p>
+                
+                <div class="post-share">
+                    <span class="post-share-title">Share:</span>
+                    <a target="_blank" href="https://twitter.com/share?text=Using+data+science+to+save+money+on+my+next+trip+to+Mexico&amp;url=https://coffeeanddata.causing-data-science-to-save-money-on-my-next-trip-to-mexico">Twitter</a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://coffeeanddata.causing-data-science-to-save-money-on-my-next-trip-to-mexico">Facebook</a>
+                </div><!-- .share-post -->
+            </footer>
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/headshot.png" alt="Marc-Olivier Arsenault's Picture"
+                        class="avatar"></div>
+                <div class="author-details">
+                    <h2 class="author-title">About Marc-Olivier Arsenault</h2>
+                    <p class="author-description">Senior Data Development Manager @ Shopify</p>
+                </div>
+            </div>
+            
+
+        </article>
+        
+        <section class="newsletter-box inner-wide">
+    <div class="inner">
+        <h2 class="newsletter-box-title">Subscribe to Coffee and Data newsletter</h2>
+        <p>Get the latest and greatest from Coffee and Data delivered straight to your inbox.</p>
+        <!-- Begin MailChimp Signup Form -->
+        <div id="mc_embed_signup">
+            <form action="//coffeeanddata.us18.list-manage.com/subscribe/post?u=0d3439b2865b0b299714d7d5a&amp;id=bed66e1b11" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate gh-subscribe-form" target="_blank" novalidate>
+                <label for="mce-EMAIL" class="screen-reader-text">Email Address</label>
+                <input type="email" value="" name="EMAIL" class="required email subscribe-email" id="mce-EMAIL" placeholder="Your email address">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+            </form>
+        </div>
+        <!--End mc_embed_signup-->
+    </div><!-- .inner -->
+</section><!-- .widget -->
+        
+        <section class="read-next inner">
+            <h2 class="read-next-title">Read Next</h2>
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="April 29, 2019">April 29, 2019</time>
+                    </div>
+                    <h3 class="post-title"><a href="/spark-ai-summit-2019">Spark &#038; AI Summit 2019</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/data/'>Data</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/spark-ai-summit-2019" class="post-thumbnail">
+                    <img src="assets/images/posts/20190429/sparksummit.jpg" alt="Spark &#038; AI Summit 2019" />
+                </a>
+                
+            </article>
+            
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="June 18, 2020">June 18, 2020</time>
+                    </div>
+                    <h3 class="post-title"><a href="/how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team">How to thrive in the face of disruption: Tips from Shopify’s Data Team</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/data/'>Data</a>
+                        
+                        
+                        
+                        <a href='/tag/shopify/'>Shopify</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team" class="post-thumbnail">
+                    <img src="assets/images/posts/20200618/computer.jpg" alt="How to thrive in the face of disruption: Tips from Shopify’s Data Team" />
+                </a>
+                
+            </article>
+            
+        </section><!-- .read-next -->
+    </main><!-- .site-main -->
+</div><!-- .site-content -->
+
+        
+
+        
+
+        <footer id="colophon" class="site-footer outer">
+            <div class="site-footer-inside">
+                <p class="social-links">
+    
+    <a href="https://twitter.com/MarcOlivierA" class="btn btn-icon btn-secondary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter icon</title><path d="M23.954 4.569a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.691 8.094 4.066 6.13 1.64 3.161a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.061a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z"/></svg>
+        <span class="screen-reader-text">Twitter</span>
+    </a>
+    
+    
+    
+    <a href="https://github.com/marcolivierarsenault" class="btn btn-icon btn-secondary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub icon</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        <span class="screen-reader-text">GitHub</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://medium.com/@marcolivier.arsenault" class="btn btn-icon btn-secondary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Medium icon</title><path d="M0 0v24h24V0H0zm19.938 5.686L18.651 6.92a.376.376 0 00-.143.362v9.067a.376.376 0 00.143.361l1.257 1.234v.271h-6.322v-.27l1.302-1.265c.128-.128.128-.165.128-.36V8.99l-3.62 9.195h-.49L6.69 8.99v6.163a.85.85 0 00.233.707l1.694 2.054v.271H3.815v-.27L5.51 15.86a.82.82 0 00.218-.707V8.027a.624.624 0 00-.203-.527L4.019 5.686v-.27h4.674l3.613 7.923 3.176-7.924h4.456v.271z"/></svg>
+        <span class="screen-reader-text">medium</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/marcolivierarsenault" class="btn btn-icon btn-secondary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn icon</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <span class="screen-reader-text">Linkedin</span>
+    </a>
+    
+    
+    
+    <a rel="me" href="https://mstdn.social/@marcolivier" class="btn btn-icon btn-secondary" target="_blank" rel="noopener">
+        <?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg width="1034px" height="1034px" viewBox="-10 -5 1034 1034" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+   <path fill="currentColor"
+d="M499 112q-93 1 -166 11q-81 11 -128 33l-14 8q-16 10 -32 25q-22 21 -38 47q-21 33 -32 73q-14 47 -14 103v37q0 77 1 119q3 113 18 188q19 95 62 154q50 67 134 89q109 29 210 24q46 -3 88 -12q30 -7 55 -17l19 -8l-4 -75l-22 6q-28 6 -57 10q-41 6 -78 4q-53 -1 -80 -7
+q-43 -8 -67 -30q-29 -25 -35 -72q-2 -14 -2 -29l25 6q31 6 65 10q48 7 93 9q42 2 92 -2q32 -2 88 -9t107 -30q49 -23 81.5 -54.5t38.5 -63.5q9 -45 13 -109q4 -46 5 -97v-41q0 -56 -14 -103q-11 -40 -32 -73q-16 -26 -38 -47q-15 -15 -32 -25q-12 -8 -14 -8
+q-46 -22 -127 -33q-74 -10 -166 -11h-3zM367 267q73 0 109 56l24 39l24 -39q36 -56 109 -56q63 0 101 43t38 117v239h-95v-232q0 -74 -61 -74q-69 0 -69 88v127h-94v-127q0 -88 -69 -88q-61 0 -61 74v232h-95v-239q0 -74 38 -117t101 -43z" />
+</svg>
+
+        <span class="screen-reader-text">mastodon</span>
+    </a>
+    
+</p>
+                <p class="site-info">
+                    <a href="#">Coffee and Data</a> &copy; 2023.
+                    Powered by <a target="_blank" href="https://jekyllrb.com/">Jekyll</a>.
+                </p>
+                <p class="back-to-top">
+                    <a id="top-button" class="top-button" href="#page">
+                        <span class="icon-arrow-up" aria-hidden="true"></span>
+                        <span class="screen-reader-text">Back to top</span>
+                    </a>
+                </p>
+            </div><!-- .site-footer-inside -->
+        </footer><!-- .site-footer -->
+    </div><!-- .site -->
+    <div id="site-overlay" class="site-overlay"></div>
+    <aside id="sidebar" class="sidebar">
+	<div class="sidebar-scrollable">
+		<div class="sidebar-inside">
+			<button id="sidebar-hide" class="sidebar-toggle btn-icon"><span class="screen-reader-text">Close Sidebar</span><span
+				    aria-hidden="true" class="icon-close"></span></button>
+			<nav id="sidebar-navigation" class="widget site-navigation">
+				<h2 class="widget-title">Explore Site</h2>
+				<ul class="menu">
+					
+						<li class="menu-item"><a href="/about">About</a></li>
+					
+						<li class="menu-item"><a href="/contact">Contact Me</a></li>
+					
+				</ul>
+			</nav>
+			<section class="widget widget-recent-posts">
+    <h2 class="widget-title">Recent Articles</h2>
+    <ul>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">December 20, 2022</time>
+                </div>
+                <div class="post-title">
+                    <a href="https://coffeeanddata.ca/no-longer-ds">I am no longer a Data Scientist</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/no-longer-ds">
+                <img src="https://coffeeanddata.ca/assets/images/posts/20221220/dashboard_laptop.jpg"
+                    alt="I am no longer a Data Scientist">
+            </a>
+            
+        </li>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">June 14, 2022</time>
+                </div>
+                <div class="post-title">
+                    <a href="https://coffeeanddata.ca/impact">Be Impactful</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/impact">
+                <img src="https://coffeeanddata.ca/assets/images/posts/20220614/impact.png"
+                    alt="Be Impactful">
+            </a>
+            
+        </li>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">April 30, 2022</time>
+                </div>
+                <div class="post-title">
+                    <a href="https://coffeeanddata.ca/dear-dm">Dear DM</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/dear-dm">
+                <img src="https://coffeeanddata.ca/assets/images/posts/20220430/graph2.png"
+                    alt="Dear DM">
+            </a>
+            
+        </li>
+        
+    </ul>
+</section>
+
+<!-- Create a sorted array of tags -->
+ 
+<section class="widget widget-tagcloud">
+    <h2 class="widget-title">Tags</h2>
+    <div class="tagcloud">
+        
+        <a href='https://coffeeanddata.ca/tag/data/'>data</a>
+        
+        <a href='https://coffeeanddata.ca/tag/data_eng/'>data_eng</a>
+        
+        <a href='https://coffeeanddata.ca/tag/ericsson/'>ericsson</a>
+        
+        <a href='https://coffeeanddata.ca/tag/iot/'>iot</a>
+        
+        <a href='https://coffeeanddata.ca/tag/misc/'>misc</a>
+        
+        <a href='https://coffeeanddata.ca/tag/perso/'>perso</a>
+        
+        <a href='https://coffeeanddata.ca/tag/shopify/'>shopify</a>
+        
+        <a href='https://coffeeanddata.ca/tag/talk/'>talk</a>
+        
+    </div>
+</section>
+
+
+<section class="widget widget-newsletter">
+    <div class="inner">
+        <h2 class="widget-title">Subscribe to Coffee and Data</h2>
+        <p>Get the latest and greatest from Coffee and Data delivered straight to your inbox every week.</p>
+        <!-- Begin MailChimp Signup Form -->
+        <div id="mc_embed_signup">
+            <form action="//coffeeanddata.us18.list-manage.com/subscribe/post?u=0d3439b2865b0b299714d7d5a&amp;id=bed66e1b11" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                class="validate gh-subscribe-form" target="_blank" novalidate>
+                <label for="mce-EMAIL" class="screen-reader-text">Email Address</label>
+                <input type="email" value="" name="EMAIL" class="required email subscribe-email" id="mce-EMAIL"
+                    placeholder="Your email address">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+            </form>
+        </div>
+    </div>
+</section>
+
+		</div><!-- .sidebar-inside -->
+	</div><!-- .sidebar-scrollable -->
+</aside><!-- .sidebar -->
+    
+    
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PZTRVPSWT5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PZTRVPSWT5', { 'anonymize_ip': true });
+  </script>
+
+    
+    <!-- Javascript Assets -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/custom.js"></script>
+
+</body>
+
+</html>

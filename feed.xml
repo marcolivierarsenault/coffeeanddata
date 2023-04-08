@@ -1,0 +1,1099 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coffee and Data</title>
+    <description>Data Blog by Marc-Olivier Arsenault</description>
+    <link>https://coffeeanddata.ca/</link>
+    <atom:link href="https://coffeeanddata.ca/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 08 Apr 2023 03:57:25 +0000</pubDate>
+    <lastBuildDate>Sat, 08 Apr 2023 03:57:25 +0000</lastBuildDate>
+    <generator>Jekyll v4.3.2</generator>
+    
+      <item>
+        <title>I am no longer a Data Scientist</title>
+        <description>&lt;p&gt;For the past 4.5 years I have been somewhat a data scientist at Shopify. From IC roles to different management roles, the bulk of the work was in data science. Prior to this, at Ericsson, I was also doing data science. Not anymore.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;I am embarking on a new role on our Analytics Engineering team here at Shopify. What do we do? Glad you asked.&lt;/p&gt;
+
+&lt;p&gt;Shopify’s new team, Analytic Engineering, is going to build a strong data foundation for our Data Scientist. Our goal is to build the best data warehouse so DS folks can be as fast and efficient as possible. This role is also called Data Engineering in other companies.&lt;/p&gt;
+
+&lt;h1 id=&quot;wait-why&quot;&gt;Wait why&lt;/h1&gt;
+
+&lt;p&gt;Is data science the sexiest job of the 21 century? Yeah maybe, but turns out I am a lot more passionate about the eng side of data science. Building data models is simple in appearance, but a real interesting challenge.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;You need to align with the business on entity and business process definition, which is a lot more complex than it looks. Sitting 7 different people, with 7 different skills, point of views and objectives and driving to a common agreement is a hard challenge. That being said, it is extremely important. As a company you will get a lot further if everybody works with the same primitive, even if they are not, over-optimized for every scenario.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Building data models at scale is an interesting challenge. You can’t build data models at the Shopify scale without being extremely thoughtful about scale, PII, data size, cost, etc.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Especially #2 makes me feel comfortable in my old shoes of software development.&lt;/p&gt;
+
+&lt;h1 id=&quot;2023&quot;&gt;2023&lt;/h1&gt;
+
+&lt;p&gt;So for the next little while, I will be focusing my work and my post towards Data Engineering.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 20 Dec 2022 00:00:00 +0000</pubDate>
+        <link>https://coffeeanddata.ca/no-longer-ds</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/no-longer-ds</guid>
+        
+        <category>data_eng</category>
+        
+        <category>shopify</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Be Impactful</title>
+        <description>&lt;p&gt;When and How to say no&lt;br /&gt;
+Internal presentation I made at Shopify earlier this year.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Earlier this year, I remade a presentation that I did in 2019 at the RnD Summit in Ottawa. RnD Summit is an internal event where all RnD meet have we present content to each other. Something like a technical conference, internal to Shopify.&lt;/p&gt;
+
+&lt;p&gt;I wanted to share this publicly because I think that, while this was targeted at data scientists at Shopify, it is pretty accurate for a lot of data scientists out there. So without too much bell and whistle, here it is.&lt;/p&gt;
+
+&lt;p&gt;Before… Here is a little Shopify dictionary for some of the terms.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Merchants&lt;/strong&gt;: Shopify main customers, Those are the merchants that use Shopify to do business.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Fecta&lt;/strong&gt;: Group of key craft that steer and build a product. Usually includes a mix of Product, Engineering, UX, Data, Marketing and support.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;GSD&lt;/strong&gt;: &lt;a href=&quot;https://shopify.engineering/running-engineering-program-guide&quot;&gt;GSD&lt;/a&gt; (or Get Shit Done) is the internal framework on how we do and ship project&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Vault&lt;/strong&gt;  Internal tool/intranet where all the GSD project lives&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Burst&lt;/strong&gt; in person events (since we are all remote) where we meet to deliver projects and build human connections.
+PM Product Manager&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Also, small disclaimer, Given I wanted to share this video publicly, I made sure to build a completely fake example in the communication section of the video. The numbers and chronology are completely random.&lt;/p&gt;
+
+&lt;p&gt;Here you go:&lt;/p&gt;
+
+&lt;div class=&quot;embed-container&quot;&gt;
+    &lt;iframe src=&quot;https://player.vimeo.com/video/718913702&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;
+    &lt;/iframe&gt;
+  &lt;/div&gt;
+
+&lt;p&gt;I am more than happy to receive your comments, feel free to reach out to let me know if you see the same thing at your workplace.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 14 Jun 2022 00:00:00 +0000</pubDate>
+        <link>https://coffeeanddata.ca/impact</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/impact</guid>
+        
+        <category>talk</category>
+        
+        <category>shopify</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Dear DM</title>
+        <description>&lt;p&gt;A message for all the Decision Makers (DM) using data to make decisions.&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;dear-decision-maker-this-is-why-you-dont-just-want-quick-numbers&quot;&gt;Dear Decision Maker, this is why you don’t just want quick numbers…&lt;/h3&gt;
+
+&lt;p&gt;I am dedicating this post to all my Decision Maker friends.  I wanted to share with you, why you see your data counterpart so uncomfortable when they have to produce data with low confidence aka, “just a quick number please, no need to be precise”.&lt;/p&gt;
+
+&lt;p&gt;Over the past years, I have seen this trend where a DM, short for Decision Maker (or any stakeholder: UX, Fiance, Legal, Product, Eng, Marketing, Partnership, etc. etc.) will come to a data team and ask for a few numbers. After a quick chat, the data scientist realizes X number of hours/days will be required to properly calculate the number in question. Right after the DM will say.. Ooo no I just need quick numbers, does not need to be precise just an estimate is good enough. 80% confidence is good enough.&lt;/p&gt;
+
+&lt;p&gt;Frequently, even if the data scientist disagrees with this, they do not have the political capital to push back against the DM and agree to do it. But this is wrong, it causes more damage, especially for the DM that is about to make a wrong decision.&lt;/p&gt;
+
+&lt;p&gt;This following article is not 100% statistically accurate, but given the target audience are DMs, I want to make it more understandable than accurate. &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;heres-a-different-way-to-think-about-confidence&quot;&gt;Here’s a different way to think about confidence&lt;/h3&gt;
+
+&lt;p&gt;I have realized that there is a lot of misunderstanding of what a 90% confidence (or 80 or 95 or whatever) means. 
+Example : How many customers have X enabled? If the real answer is 30%, and they expect a rough answer + or - 10%, they expect that you will give them something between 27% and 33%. 
+If that was true, I would actually agree with them, because to make most business decisions 27%, 30% or 33% all tell the same story. If that was the case, I there would be no point to this article.&lt;/p&gt;
+
+&lt;p&gt;But what a (+-90% confidence) rough number really means is, there are 9 chances out of 10 that I tell you more or less 30% and 1 chance out of 10 that I tell you 86% (or some other completely random value). Something extremely wrong that will lead you to make the wrong business call.&lt;/p&gt;
+
+&lt;p&gt;To make the example even more visual:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/20220430/blacksheep.jpeg&quot; alt=&quot;black sheep&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s take this picture. 
+There are roughly 15 Sheep, 14 White and 1 Black.&lt;/p&gt;
+
+&lt;p&gt;Those Sheep are white. Like 14 out 15, or 93% are white. That being said, statistically, if you pick 1 random sheep you still have 7% chances of getting the black one. 
+And this is exactly what happens with rough numbers. There is still a significant chance (7%) that if you ask me what colour the sheep are, I will answer black. 
+​​
+That might look like a silly example, but this is not really far from what the reality of our data work is. There is no obvious answer and most of the time we spend is used to make sure we understand what the data we have actually means, and what should be included or not in the analysis/result.&lt;/p&gt;
+
+&lt;p&gt;You have to understand what actually happens when a data scientist looks for a number. They spend 95% of their time trying to figure out what data to use, what to exclude, how to connect what in theory is completely unrelated data together. They make sure to exclude some exceptions, legacy stuff etc. They need to understand how the data is produced and how exactly it will answer what we want. Then they spend 5% of their time building the graph you asked for. So it is really hard to randomly cut in the 95%, or to fly with only intuition. &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;how-should-you-think-about-it&quot;&gt;How should you think about it&lt;/h3&gt;
+
+&lt;p&gt;I also understand, we don’t want to answer every single thing perfectly, time is key. But what you have to ask yourself as a DM when I request a data point with 90 or 80% confidence is, Am I ok making a decision if there is a 10% risk that my data insight is COMPLETELY off, like saying the total opposite.  &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;so-how-does-time-help-to-make-a-decision&quot;&gt;So how does time help to make a decision&lt;/h3&gt;
+
+&lt;p&gt;Let’s compare those 2 scenarios, 1 how I think most DMs see the relation between time and answer confidence, and how is really the relation between time and answer confidence.  &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;how-non-data-people-see-time-to-precision-ratio&quot;&gt;How non data people see Time to Precision Ratio&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/20220430/graph1.png&quot; alt=&quot;graph1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;My impression (and please correct me if I am wrong) is that the longer a data scientist works on a problem, the closer they get from the answer, basically the range is just getting smaller.&lt;br /&gt;
+Something like:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;1 Hour of work, possible answers: Between 20% and 40%&lt;/li&gt;
+  &lt;li&gt;2 Hours of work, possible answers: Between 23% and 37%&lt;/li&gt;
+  &lt;li&gt;3 Hours of work, possible answers: Between 25% and 35%&lt;/li&gt;
+  &lt;li&gt;4 Hours of work, possible answers: Between 27% and 32%&lt;/li&gt;
+  &lt;li&gt;5 Hours of work, the valid answer: 30%&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So basically the answer just becomes more precise but it is always decently good.&lt;/p&gt;
+
+&lt;p&gt;But the reality is more like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/20220430/graph2.png&quot; alt=&quot;graph2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;(where the valid answer is that the red dot and the black dot are completely wrong numbers.) 
+So the time to ratio looks more like:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;1 Hour of work, 1/22 to get the right answer (30%), and 21/22 to get any answers (between -100% and 100%)&lt;/li&gt;
+  &lt;li&gt;2 Hours of work, 1/11 to get the right answer (30%), and 10/11  to get any answers (between -100% and 100%)&lt;/li&gt;
+  &lt;li&gt;3 Hours of work, 1/3 to get the right answer (30%), and 2/3 to get any answers (between -100% and 100%)&lt;/li&gt;
+  &lt;li&gt;4 Hours of work, 100% chances to get the right answer (30%)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Of course, we never reach 100% of confidence, but this is only to visualize what the reality of data investigation is like.  &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;some-nuance&quot;&gt;Some nuance&lt;/h3&gt;
+
+&lt;p&gt;Over the years, I have worked with a really, really good DM, and &lt;strong&gt;I learned to work with a lower level of confidence based on the impact of the decision we want to make with it&lt;/strong&gt;. In other words, for some decision we can afford to be wrong, it is even better to be wrong 1 times out of 20 but to do everything 2 times faster, than being correct all the time but to take more time, as long as you know that 1 of those 20 decisions will be wrong and you are comfortable with it.&lt;/p&gt;
+
+&lt;p&gt;Of course, this is where you see the best data scientist. They have the ability to invest the right amount of time to make sure they don’t give complete outliers and that their answer fit in a comfortable range. &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;What I am trying to say here is not that we should always reach 100% confidence in our usage of data to make any decision. It is rather that you have to be comfortable with the risk of being completely wrong with a specific data point if you want to use “just a quick number”. There is a reason why your favourite data scientist might be nervous when you ask for a quick number.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 30 Apr 2022 00:00:00 +0000</pubDate>
+        <link>https://coffeeanddata.ca/dear-dm</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/dear-dm</guid>
+        
+        <category>data</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Update on Whistleblower</title>
+        <description>&lt;p&gt;Update on &lt;a href=&quot;warning-systems-on-data-warehouse&quot;&gt;“Warning systems on data warehouse”&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Very short post today, I just wanted to share a personal update.&lt;/p&gt;
+
+&lt;p&gt;After I created Whistleblower in 2020 as a Warning system on data warehouse. I officially have managed to handover the project to our data infrastructure team. The Data Eng team is way more qualified than me to manage a software like this. That being said, I am very happy to see that this personal project was useful enough to be an integral part of Shopify Data tooling.&lt;/p&gt;
+
+&lt;p&gt;In retrospect, in almost 18 months, the tool has sent more than &lt;strong&gt;30 THOUSAND warnings&lt;/strong&gt; to Shopify staff. There were around 200 rules created in the system.&lt;/p&gt;
+
+&lt;p&gt;To me this is an amazing achievement, I managed to support this software over some personal time, evening etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A few lesson learned during that journey&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Don’t name something Whistleblower because you think it is funny. Over 18 months, I received countless messages from people completely scared, who thought they were breaking the law. I renamed the tool to avoid all that useless stress on the team.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;My empathy level for developers is way higher. I never imagined how much was required “just to keep the lights on”. Updating libraries because there is a security update or simply to keep up with the stack. Breaking changes, etc. So much more respect for the developers after going through this.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tooling for developers at Shopify is amazing. The amount of stuff that was just automagic for me as an app owner was very impressive, I understand why there are so many developers excited to join Shopify.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The knowledge I got from this experience is actually useful. Basic Ruby and Rails turn out to be very useful when I need to understand how data is generated in our app (Shopify) given that most of it are in Ruby.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusion after this&lt;/strong&gt;, don’t limit yourself, you don’t need to be a X to do Y. Of course a dev would have done a better job, faster, fewer bugs and everything. But, I did it, I managed to build a tool that turned out to be useful for enough people so Shopify would adopt it.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you data infrastructure team&lt;/em&gt;, you can now take care of it for me. &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 16 Mar 2022 00:00:00 +0000</pubDate>
+        <link>https://coffeeanddata.ca/update-on-whistleblower</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/update-on-whistleblower</guid>
+        
+        <category>data</category>
+        
+        <category>shopify</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>PR Reviews for SQL code</title>
+        <description>&lt;p&gt;This is my personal guide on how I review my peer SQL code.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;As I mentioned before, &lt;a href=&quot;https://coffeeanddata.ca/how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team&quot;&gt;at Shopify, all our work is peer reviewed&lt;/a&gt;. This includes dashboards and SQL code. One of the most used tools for data scientists at Shopify is &lt;a href=&quot;https://modeanalytics.com&quot;&gt;Mode&lt;/a&gt;. If you never worked with it, Mode is a simple dashboarding tool where you write SQL to get your dataset and then you can use some drag and drop charts to build the dashboard.&lt;/p&gt;
+
+&lt;p&gt;Someone at Shopify figured out a way to connect Mode with Github, so now when a Data scientist creates or modifies a Mode dashboard we can review it, as we would review any piece of code. Now having the ability to review code is one thing, doing it efficiently to catch mistakes is another one.&lt;/p&gt;
+
+&lt;p&gt;If I simply open the PR and start reading the query, I end up reading it like I read a story. By the end of the query, I usually understand what they wanted to do but I haven’t caught anything incorrect in the process. &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;state-of-the-art&quot;&gt;State of the art&lt;/h2&gt;
+
+&lt;p&gt;There are tons of guides online on how to review code, but most if not all of it is for more traditional languages and “normal” software development. I could not find anything related to SQL and data sciences, at least not the way I needed it.&lt;/p&gt;
+
+&lt;p&gt;What is so different about SQL? Why can’t other guides/resources do the trick? I think it is not current practice to review SQL queries, at least not so thoroughly. First, the mindset is completely different. In SQL, you are either doing an analysis and you are trying to tell a story, convey in English what the data is telling you. Or you are building a self-serve dashboard, a one-page view that will help anyone understand the health of your product/project, etc.&lt;/p&gt;
+
+&lt;p&gt;So, over the last years I have built my checklist on what I am looking for when I review my peer’s work. Keep in mind that I did not find all of these, some comes from colleagues, others from professional experiences.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;pr-review-list&quot;&gt;PR Review list&lt;/h2&gt;
+
+&lt;p&gt;My list is divided in two main categories. First &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;the result&lt;/code&gt;, this is where I review the analysis itself, I care about the problem and the result, not what is in between. Then there is the actual code &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;the SQL&lt;/code&gt; where I go in depth of the SQL itself.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-result&quot;&gt;The result&lt;/h3&gt;
+
+&lt;p&gt;This category is more subjective and I also feel it is the most undervalued. This is where you can make the difference between average work and impactful work.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;The problem&lt;/strong&gt;: This sounds overly simple but trust me, this might be the most ignored aspect, especially for more junior data scientists. Did you really understand the problem? The way we work at Shopify is stakeholders open Github issues. Most data scientists simply read it and start implementing it, as is, assuming whatever is in there, comes from God itself. The truth is, the person that opened that issue most likely tried to explain the best they could what they were looking for, but they are not the data scientist, you are. Stop for a minute, try to understand the real problem behind the issue, then ask yourself what you can do, as a data scientist, to solve the problem and discuss it with the original stakeholders. &lt;strong&gt;Most of the time you will come up with a different angle on the problem that might be really beneficial.&lt;/strong&gt; &lt;br /&gt;&lt;br /&gt;IMO, this is the item you need to work on if you want to move from being a SQL query shop, to a real business partner. &lt;br /&gt;&lt;br /&gt;To review this, I read the original issue and discuss with the data scientist to see if they understand the problem deeply. For areas I have deep knowledge, this is a bit easier, for areas I don’t, I usually look around for a Product Manager to see if we can chat about the problem.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Does the result answer the problem&lt;/strong&gt;: We talked about the problem a lot, does this artifact help understand the problem and the solution. Here, I am usually try to first look if this makes me understand what is going on, then I put myself in the shoes of a developer/PM/Fiance/GM etc. and try to determine if they have the components needed, is there too little or too much information on this report? &lt;br /&gt;&lt;br /&gt;One antipattern I am looking for is the, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;I am going to show you everything I have done&lt;/code&gt;. Instead of focusing on the result or interesting elements, some people want to prove they have worked hard and try to show everything, even charts that show nothing. (ex: a chart that shows that Merchant Country has no impact.)  Unless the point was to prove that, this should not be there.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;No pie chart&lt;/strong&gt;: I am not even going to explain this point.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Graph selections&lt;/strong&gt;: This one is hard to explain and highly subjective, but are those the right graphs? Could the number/insights be clearer if shown differently? There are a lot of good books around this. Charts need to tell a story, the insight should be obvious, if you need to know where to look, it is probably not the proper visualization.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;For Dashboard&lt;/strong&gt;: When I talk about a dashboard I refer to reusable/self-serve dashboard. Usually used to track KPI, product health, products early and late metrics, etc.&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;&lt;strong&gt;Is it reusable&lt;/strong&gt;: That might sound a bit funny, but I make sure they are reusable? If we can find a good way to generalize the dashboard, we will probably save a lot of work/request in the future. If the dashboard simply does that one thing the stakeholder asked for, the dashboard will most likely never be used again. &lt;br /&gt;&lt;br /&gt;When a stakeholder comes with a request for a very precise dashboard, I first look if the data already exists, if it does I send them to the existing dashboard. If it does not, I reverse engineer the question and ask myself, what generic dashboard would have answered that question. That second dashboard is what I need to build.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;For Static analysis&lt;/strong&gt;: Those are also called deep dive, one off, etc. Those are to answer a specific question that should not come back in the future. Example questions: can we prove the value of product A on our customer? or Does product A increase LifeTime Value (LTV) of our customer, etc.&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Is the result clear for non data scientists?&lt;/strong&gt; This part is so important, you need to remove your data mindset and put your average person mindset. You are so close to your analysis at this point you forget all the context you have. Anyone in the company should be able to read this and they would all come to the same conclusion. You should avoid any data/statistical terms as much as possible. If you want to also describe the analysis for some more data nerdy persons, add it in annex. But the bulk of the report should be to tell the story.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Does it have strong conclusions?&lt;/strong&gt; My least favourite report (and also the one I see the most) is the long bullet point style list of data facts. Something like &lt;em&gt;Product A as a penetration of 5% in country A&lt;/em&gt; or &lt;em&gt;The average buyer spends $3 more on their orders&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;I want to read why those numbers matter. Is 5% high or low. What are other similar products doing in this market, or compare it with other countries? You need to put a mental model in the reader’s mind, because if you don’t they will and there is a lot of chance they will do it wrong. It is your analysis, you should be the one imposing the reference points, the why it matters and the why I should care.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Does it have a recommendation?&lt;/strong&gt; This is your best, most likely only chance to really be impactful. &lt;strong&gt;You need a bold recommendation.&lt;/strong&gt; It does not need to be shocking or unexpected, but you should start and finish your analysis with the recommendation of data. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;I recommend that we kill product A because XYZ.&lt;/code&gt; A lot of data scientists are very uncomfortable with this, but if you don’t do it one of the 2 things will occur. Either they will undervalue the result and go against what data says, because it was not clear enough in your analysis, or they will agree with you and they will make the call and nobody will realize the work you did on this. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;If you want to be an impactful partner with your stakeholders, you must provide clear recommendations.&lt;/strong&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;the-sql&quot;&gt;The SQL&lt;/h3&gt;
+
+&lt;p&gt;This section is in no particular order, I just make sure all of those are verified. 
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Join order&lt;/strong&gt;: Some DB have great optimizers, but nothing beats taking care of the JOIN order manually. So, your biggest dataset should always be on the left (or above in the FROM, JOIN order) example:
+    &lt;pre&gt;&lt;code class=&quot;language-SQL&quot;&gt;SELECT *
+FROM big_table
+JOIN medium_table USING (_key1)
+JOIN small_table USING (_key2)
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;p&gt;There is no point in measuring this exactly to the row or the real size of the table. That being said, if there are significant differences in the table sizes, it is really worth ordering for performance reasons. One easy way to look at this in a world of facts and dimensions is to make sure the fact tables are first, then the dimensions. 
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Exploding JOINs&lt;/strong&gt;: Exploding joins are when you think you have a 1:1 relationship between 2 tables. You join them, then suddenly you have some duplications. This type of error is really hard because most of the time it is completely silent. The other tricky aspect of this is when the error is off only by a couple of percent. Because for most of the table you do have this 1:1 relationship, but there is a corner case that you did not think of, then suddenly your result is higher by a couple of percent, which makes it very hard to detect. &lt;br /&gt;&lt;br /&gt;I make sure every table grain is what’s expected. In other words, I read the query and don’t assume the grain of the table in the joins. If I am lucky, the dataset has a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unique keyset&lt;/code&gt;, this is an internal mechanism at Shopify, when we build a dataset that ensures the grain is respected. If I have this, and it is aligned with the JOIN, then I am good to go. &lt;br /&gt;&lt;br /&gt;If I don’t have this, I usually query it like this:
+    &lt;pre&gt;&lt;code class=&quot;language-SQL&quot;&gt;SELECT grain, count (*)
+FROM table
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 10
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;p&gt;If the first row has &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt; in the second column, we are good to go, the grain is respected. 
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Imploding JOINs&lt;/strong&gt; : What we just talked about, can be reversed for INNER JOINs. If you JOIN table_a and table_b make sure you are not losing rows when you thought you had a 1:1 relationship. Example table_a has 100 rows with unique id, table_b has the same unique id but only 99 rows. You will silently lose 1 row. &lt;br /&gt;&lt;br /&gt;I usually test that with this simple check:
+    &lt;pre&gt;&lt;code class=&quot;language-SQL&quot;&gt;SELECT count (*)
+FROM table_a
+JOIN table_b
+ ON table_a.id = table_b.id
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;p&gt;Should give the same result as:&lt;/p&gt;
+    &lt;pre&gt;&lt;code class=&quot;language-SQL&quot;&gt;SELECT count (*)
+FROM table_a
+FULL OUTER JOIN  table_b
+ ON table_a.id = table_b.id
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;p&gt;If you end up with the same count on both of those queries, you are most likely OK. 
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Input data&lt;/strong&gt;: Are they using the right input data, does modeled data already exist? Usually we try to go too fast with a dataset we already know. We don’t look around for existing modelled data that would help answer the question. When I review queries that use JOIN too much or when they use unmodeled data. I spend a couple of minutes searching existing datasets. If something already exists, you need a very good reason not to use it. Likely, someone with more business knowledge built it and all this context is probably included in the modelled dataset. Using it will prevent you from omitting small details that will make a difference at the end. 
+&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Clear and logical CTE&lt;/strong&gt;: The CTEs in the query should tell a story. They should be logical and ordered properly. When possible they should be sequential, you should not need to scroll up and down all the time to understand what is going on. &lt;br /&gt;&lt;br /&gt;I also make sure the grain of each CTE makes sense that they are clear. CTEs should also have clear and self-explanatory names. Just by reading the name I should be able to guess what it does and what grain I get out of this CTE.&lt;br /&gt;&lt;br /&gt;When CTE are more convoluted, I frequently copy all the CTE in a fresh query file, and I display the output of the one I am not sure of the result. So I do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SELECT * FROM CTE_1&lt;/code&gt; just to fully understand what gets out of some of those CTE. 
+&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Where clause on LEFT JOIN&lt;/strong&gt;: When there is LEFT JOINs I make sure there is no WHERE clause on the right table. Because if there is one, you basically reverted it back to an INNER JOIN. Example:
+    &lt;pre&gt;&lt;code class=&quot;language-SQL&quot;&gt;SELECT *
+FROM table_a
+LEFT JOIN table_b USING (_key1)
+WHERE table_b.country = ‘US’
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;p&gt;This is the equivalent of&lt;/p&gt;
+    &lt;pre&gt;&lt;code class=&quot;language-SQL&quot;&gt;SELECT *
+FROM table_a
+JOIN table_b USING (_key1)
+WHERE table_b.country = ‘US’
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;p&gt;Since any NULL from table_b gets deleted by the WHERE. 
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Read documentation&lt;/strong&gt;: For tables I am not familiar with I take 3 minutes and I read the documentation, which first helps me to review the query, but also provide me with better context in the future. 
+&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Known gotchas&lt;/strong&gt;: All tables have their own small gotchas. Typical Shopify example, make sure you filter on shops that are currently customers. You probably don’t care about a shop that left Shopify 10 years ago in your analysis. 
+&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;the-secret-trick&quot;&gt;The secret trick&lt;/h3&gt;
+
+&lt;p&gt;This is what I have learned and that saves me the most time. I do not start reviewing the code until I am 100% aligned with the result. &lt;strong&gt;Too many times, I have invested 1 or 2 hours in the SQL first, to only realize I did not agree with the analysis itself&lt;/strong&gt;, or I thought the way they presented the result was not clear. With the way Mode works, changing the way you want to show the results may require serious redesign of your query. So now, I never review the code unless I am happy with the final result. 
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;All of this is in no way an exhaustive list, but I try to keep those points in mind when I go through some of my colleagues’ work. Over the past years, that helped me to stay consistent with PR reviews and usually when I am OK with most of this list,I have caught most of the serious issues with the query.&lt;/p&gt;
+
+&lt;p&gt;Special thanks to &lt;a href=&quot;https://www.linkedin.com/in/tristanboudreault/&quot;&gt;Tristan Boudreault&lt;/a&gt; for some of the suggestions.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate>
+        <link>https://coffeeanddata.ca/PR-reviews-for-SQL-code</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/PR-reviews-for-SQL-code</guid>
+        
+        <category>data</category>
+        
+        <category>shopify</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Warning systems on data warehouse</title>
+        <description>&lt;p&gt;The story of how and why I built Whistleblower, a system that allows us to set warnings on any table in our environment.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;For the past couple of years, myself and a bunch of others at Shopify were looking for a smart way to set warnings on specific tables. Why warnings? The reason is quite simple, we spend a lot of time building quality front room datasets, as I explain in this &lt;a href=&quot;how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team&quot;&gt;previous blog&lt;/a&gt;. That being said, those datasets, for many reasons, can start to degrade over time. Let me walk you through the problem, what we tried before and how we solved it.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-problem&quot;&gt;The problem&lt;/h2&gt;
+
+&lt;p&gt;Yes at Shopify we care a lot about data set quality, we do peer review of all of them, we document them as much as possible. When we release a dataset, they are perfect. That being said we work in an environment that changes all the time. Then, at some point, the dataset quality will drop. Here are a couple of examples:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Some data is not available anymore&lt;/strong&gt;: Looks easy when you look at it on its own but when it is part of a larger dataset, hidden under 6 JOINs it is not that trivial to identify and fix.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Change in raw data&lt;/strong&gt;: The assumptions you had when you built your dataset may change. It is possible that data points start returning a new type of value, or outside a pre-established range (from 0 to 1, as an example), maybe something that could not be null before, can be null now.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Change in business rules&lt;/strong&gt;: Some of our dataset does model or replicate business logic, commercial contracts, SLAs, etc. When those contracts change, we need to modify the dataset to include the new reality.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When those 3 things happen, there are two major steps. First we need to realize and identify the change, second we have to fix or deprecate the dataset. As the first one deserves a lot of attention, and Shopify as great tools to find, I don’t want to talk about it too much. I really want to focus on the second one here, because as simple as it sounds, it is another story in real life.&lt;/p&gt;
+
+&lt;p&gt;Every single time we had this situation hit the team we had to ask ourselves, “OK we need to fix XYZ, but we don’t have time. Option A) we delete the dataset, Option B) we fix it”. After a rapid brainstorm session, we can’t go with A because it powers some other asset and we can’t go with B because we don’t have time to do it. So we end up leaving the dataset as is, even if we know that it is broken. We cannot prioritize other works and the impact of the error is not huge (for now).&lt;/p&gt;
+
+&lt;p&gt;Conclusion: Let’s warn user of the dataset so they are aware of the mistake and we add the issue in the backlog&lt;/p&gt;
+
+&lt;h2 id=&quot;the-real-problem&quot;&gt;The real problem&lt;/h2&gt;
+&lt;p&gt;The real problem is that one day, someone will query your dataset. This person will not be aware of the issue and will draw the wrong conclusions. When they contact you because they ,and half their boss, are freaking out with the result, you tell them the worst possible answer, ooo yes sorry, we knew it is a bug.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-we-tried-up-to-now&quot;&gt;What we tried up to now&lt;/h2&gt;
+&lt;p&gt;As we said, we faced those issue couples of times, here are a couple of things we tried already:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Broadcast the bug&lt;/strong&gt;: Send a nasty &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@here&lt;/code&gt; on Slack or a widespread email to let everyone know your dataset has a bug. That is great if someone was about to use it. Because other than that, there are very little chances someone will remember in 6 weeks from now and you just annoyed a ton of people with your broadcast.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt;: Like most other places, we have our own documentation repository. You can go there and add a note on this particular dataset, but unless someone goes to read it, nobody will see. Also, all existing dashboards or data scientists that frequently use your dataset won’t go read the doc every time they run a query/report.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Figure out who uses it&lt;/strong&gt;: This is essential to understand how bad the bug is. It will help you understand how much priority you need to give the repair, but first, in the meantime, it does not fix anything, second even if there are not many dependencies, it does not mean anybody will use it in the future.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;So I was looking for a way to solve this problem, especially after a nasty situation like explained above where some people really stressed over the result of a totally valid query. We needed a way to warn the users that this dataset had a specific problem.&lt;/p&gt;
+
+&lt;p&gt;After some digging I realized that some smart data engineers had set the &lt;a href=&quot;https://prestodb.io/&quot;&gt;Presto&lt;/a&gt; &lt;a href=&quot;https://prestodb.io/docs/current/develop/event-listener.html&quot;&gt;event listener&lt;/a&gt; to be sent on a specific kafka topic. In other words, every query on our Presto cluster was generating a Kafka event.&lt;/p&gt;
+
+&lt;p&gt;Note: Presto is the default engine to query our datasets at Shopify.&lt;/p&gt;
+
+&lt;p&gt;“I realized I could build a software that would monitor this Kafka Topic, do some REGEX to identify if the query was about the table would be a bug I could send a Slack message to the user.“&lt;/p&gt;
+
+&lt;p&gt;Why Slack, Slack is the main communication tool at Shopify, people monitor this way more than their email box. So a Slack message would be the best way to warn them. I had a plan&lt;/p&gt;
+
+&lt;h2 id=&quot;implementation&quot;&gt;Implementation&lt;/h2&gt;
+&lt;p&gt;At Shopify we have something called Hackday. 3 days in a row where we stop “normal” work and we work on special projects. Everybody chose its own project. I decided to give it a try. It has been a couple of years since I did professional software development, but I was sure I could hack something up.&lt;/p&gt;
+
+&lt;p&gt;My application was basically those 4 steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Listen the Kafka topic&lt;/li&gt;
+  &lt;li&gt;Do some Smart Regex to figure out if it was my table&lt;/li&gt;
+  &lt;li&gt;Find the Slack handle and send a Slack message to the user.&lt;/li&gt;
+  &lt;li&gt;Have all of this run somewhere.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So 1 was solved by this Presto-Kafka topic, I could simply listen to it. 2 could be solved with a basic webpage where data scientists could add warnings on specific tables and use Regex. For #3 and #4 I was really impressed by the dev culture and environment at Shopify. There was already a web service available to turn a user’s email (which I was getting from the Kafka message) to a Slack handle. I could also easily connect to Slack via their API. For the latest part, it was easier than I could even think of. Basically if I could find a way to do this in Ruby on Rails, I could deploy my application with basically 1 click.&lt;/p&gt;
+
+&lt;h2 id=&quot;result&quot;&gt;Result&lt;/h2&gt;
+&lt;p&gt;To this day, I am still impressed by the result. If you query any dataset with a warning within 3 seconds of the query being completed, you receive a Slack message like this one.
+&lt;img src=&quot;assets/images/posts/20210129/whistleblower.png#center&quot; alt=&quot;whistleblower&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Data scientists can now easily add a warning message on any table:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/20210129/new_rule.png#center&quot; alt=&quot;new rule&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;features&quot;&gt;Features&lt;/h3&gt;
+&lt;p&gt;I kept developing features on the tool. I added:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Snooze option: So your users don’t get worn every time they query the table.&lt;/li&gt;
+  &lt;li&gt;Specific column filtering: If all your dataset is ok, except 1 column, you can only warn users that use this column.&lt;/li&gt;
+  &lt;li&gt;Regex in the table name, maybe there is more than one table affected. You can set a regex-style table name.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;stats&quot;&gt;Stats&lt;/h2&gt;
+&lt;p&gt;After roughly 3 months, Whistleblower has&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Sent over 1300 warnings sent to 148 unique users.&lt;/li&gt;
+  &lt;li&gt;Scanned roughly 43 000 Presto Query/day.&lt;/li&gt;
+  &lt;li&gt;300 warnings sent &lt;strong&gt;Afterhour&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I am super happy about those, especially the 300 warnings afterhour. That means 300 times, someone received a warning with indication when most likely he could not get support because other team members were not there to help.&lt;/p&gt;
+
+&lt;p&gt;That tool is great, I can now sleep better at night knowing if ever someone queries those tables they will get warned and not take any bad decisions with the result.&lt;/p&gt;
+
+&lt;p&gt;Sidenote: It is really impressive how many people contact you when you call an internal project Whistleblower :P&lt;/p&gt;
+</description>
+        <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+        <link>https://coffeeanddata.ca/warning-systems-on-data-warehouse</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/warning-systems-on-data-warehouse</guid>
+        
+        <category>data</category>
+        
+        <category>shopify</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>How to thrive in the face of disruption: Tips from Shopify’s Data Team</title>
+        <description>&lt;p&gt;Learn how the Data Team has helped Shopify make great decisions during COVID-19.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;We currently face a global pandemic. People are in pain around the world. Daily life has been disrupted. Many face monumental financial damage or unemployment. Small businesses are struggling to find creative solutions to adapt and stay afloat — and they need to do so quickly.&lt;/p&gt;
+
+&lt;p&gt;At Shopify, we have a mission to make commerce better for everyone, but we did not expect 2020 to start out with a global pandemic. Shopify is a mini-economy — with merchants, partners, buyers, carriers, payment providers all interacting — and planning helps us build products that positively impact the entire system. When COVID-19 happened, those plans went out the window. We had to go back to the drawing board and ask:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;How can we best help our merchants during this crisis?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;With over one million merchants in over 175 countries around the globe, there is no one-size-fits-all answer. They are each being impacted in different ways. Layer on the complexity of the mini-economy and it feels like we were faced with an impossible question. Regardless, within a few days of going into lockdown, Shopify’s Data Team had launched a COVID-19 task force to address that seemingly impossible question.&lt;/p&gt;
+
+&lt;p&gt;Since then, we’ve played a critical role in helping the company make great decisions in support of our merchants during this unprecedented time. While it pales in comparison to work being done to save lives, I am really impressed by the way the entire team has responded. We’ve provided Shopify with high quality, daily insights as things change rapidly. Here are the factors that enabled us to respond so quickly and effectively in support of Shopify and the merchants who use our platform.&lt;/p&gt;
+
+&lt;h3 id=&quot;1---modelled-data&quot;&gt;1 - Modelled Data&lt;/h3&gt;
+
+&lt;p&gt;One of the first things we do when we onboard (at least when I joined) is get a copy of &lt;a href=&quot;https://www.oreilly.com/library/view/the-data-warehouse/9781118530801/&quot;&gt;The Data Warehouse Toolkit&lt;/a&gt; by Ralph Kimball. If you work in Data at Shopify, it’s required reading! Sadly it’s not about fancy deep neural nets (sarcasm) or technologies and infrastructure. Instead it focuses on data schemas and best practices for dimensional modelling. It answers questions like, “How should you design your tables so they can be easily joined together? Which table makes the most sense to house a given column?” In essence, it explains how to take raw data and put it in a format that is queryable by anyone.&lt;/p&gt;
+
+&lt;p&gt;I am not saying that this is the only good way to structure your data. For what it’s worth, it could be the 10th best strategy. That doesn’t matter. What counts is that we agreed, as a Data Team, to use this modelling philosophy to build Shopify’s data warehouse. Because of this agreed upon rule, I can very easily surf through data models produced by another team. I understand when to switch between dimension and fact tables. I know that I can safely join on dimensions because they handle unresolved rows in a standard way — with no sneaky nulls silently destroying rows after joining.
+This approach has a number of key benefits for working faster and more collaboratively. These are crucial as we continue to provide insights into the rapidly changing environment brought on by COVID-19.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;No need to understand raw data’s structure.&lt;/li&gt;
+  &lt;li&gt;Data is compatible between teams.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;2---data-consistency-and-open-access&quot;&gt;2 - Data consistency and open access&lt;/h3&gt;
+
+&lt;p&gt;We have a single data modelling platform. It is built on top of Spark in a single GitHub repo that everyone at Shopify can access, and everyone uses it. There’s no hippie in accounting with their own magical stack that only works when 3 planets are aligned. With everyone using the same tools as me, I can gather context quickly and independently: I know how to browse Ian’s code, I can find where Ben has put the latest model, etc… I simply need to pick a table name and I can see 100% of the code that built that model.
+What is more, all of our modelled data sits on a Presto Cluster that is available to the whole company, and not just data scientists (except PII information). That’s right! Anyone at the company can query our data. We also have internal tools to discover these data sets that we’ll talk about in an upcoming blog post. That openness and consistency makes things scalable.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Data is easily discoverable&lt;/li&gt;
+  &lt;li&gt;Everyone can take advantage of existing data&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;3---rigorous-etl&quot;&gt;3 - Rigorous ETL&lt;/h3&gt;
+
+&lt;p&gt;As a company focused on software, the skills we’ve developed as a Data Team were influenced by our developer friends. All (that’s right all) of our data pipeline jobs are unit tested. We test every situation that we can think of: errors, edge cases, and so on. This may slow down development a bit, but it also prevents many pitfalls. It is easy to lose track of a JOIN that occasionally doubles the number of rows under a specific scenario. Unit testing catches this kind of thing more often than you’d expect.
+We also ensure that the data pipeline does not let jobs fail in silence. While it may be painful to receive a Slack message at 4 pm on Friday about a five-year-old dataset that just failed, the system ensures you can trust the data you play with to be consistently fresh and accurate.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Better data accuracy and quality&lt;/li&gt;
+  &lt;li&gt;Trust in data across the company&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;4---vetted-dashboards&quot;&gt;4 - Vetted dashboards&lt;/h3&gt;
+
+&lt;p&gt;Like our data pipeline, we have one main visualization engine. All finalized reports are centralized on an internal website. Before blindly jumping into the code like a university student three hours before a huge deadline, we can go see what others have already published. In most cases, a significant portion of the metrics you’re looking for are already accessible to everyone. In other cases, an existing dashboard is pretty close to what we’re looking for. Since the base code for every dashboard is centralized, this is a great starting point.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Better discovery speed&lt;/li&gt;
+  &lt;li&gt;Reuse of work&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;5---vetted-data-points&quot;&gt;5 - Vetted data points&lt;/h3&gt;
+
+&lt;p&gt;All data points that form the basis for major decisions or that need to be published externally are what we call vetted data points. They’re stored together with the context we need to understand them. This includes the original question, its answer, and the code that generated the results. One of the fundamentals in producing vetted data points is that the result should not change over time. For example, if I ask how many merchants were on the platform in Q1 2019, the answer should be the same today and in 4 years from now. Sounds trivial — but it’s harder than it looks! By having it all in a single GitHub repo, it’s discoverable, reproducible, and easy to update each year&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Reproducibility of key metrics&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;6---everything-is-peer-reviewed&quot;&gt;6 - Everything is peer reviewed&lt;/h3&gt;
+
+&lt;p&gt;All of our work is peer reviewed, usually by at least two other data scientists. Even my boss and my boss’s boss go through this. This is another practice we gleaned by working closely with developers. Dashboards, vetted data points, dimensional models, unit tests, data extraction, etc… it’s all reviewed. Knowing several people looked at a query invokes a high level of trust in the data across the company. When we do work that touches more than one team, we make sure to involve reviewers from both teams. When we touch raw data, we add developers as reviewers. These tactics really improve the overall quality of data outputs by ensuring pipeline code and analytics meet a high standard that is upheld across the team.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Better data accuracy and quality&lt;/li&gt;
+  &lt;li&gt;Higher trust in data&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;7---deep-product-understanding&quot;&gt;7 - Deep product understanding&lt;/h3&gt;
+
+&lt;p&gt;Now for my favourite part: All analyses require a deep understanding of the product. At Shopify, we strive to fall in love with the problem, not the tools. Excellence doesn’t come from just looking at the data, but from understanding what it means for our merchants.
+One way we do this is to divide the Data Team into smaller sub-teams, each of which is associated with a product (or product area). A clear benefit is that sub-teams become experts about a specific product and its data. We know it inside and out! We truly understand what &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;enable&lt;/code&gt; means in the column &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;status&lt;/code&gt; of some table.&lt;/p&gt;
+
+&lt;p&gt;Product knowledge allows us to slice and dice quickly at the right angles. During COVID-19, this has allowed us to focus on metrics that are vital for our merchants. Deep product understanding also allows us to guide stakeholders to good questions, identify confounding factors to account for in analyses, and design experiments that will really influence the direction of Shopify’s products.
+Of course, there is a downside, which I call the specialist gap: sub-teams have less visibility into other products and data sources. I’ll explain how we address that soon.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Better quality analysis&lt;/li&gt;
+  &lt;li&gt;Emphasis on substantial problems&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;8---communication&quot;&gt;8 - Communication&lt;/h3&gt;
+
+&lt;p&gt;What is the point of insights if you don’t share them? Our philosophy is that discovering an insight is only half the work. The other half is communicating the result to the right people in a way they can understand.&lt;/p&gt;
+
+&lt;p&gt;We try to avoid throwing a solitary graph or a statistic at anyone. Instead, we write down the findings &lt;strong&gt;along with our opinions and recommendations&lt;/strong&gt;. Many people are uncomfortable with this, but it’s crucial if you want a result to be interpreted correctly and spur the right actions. We can’t expect non-experts to focus on a survival analysis. This may be the data scientist’s tool to understand the data, but don’t mistake it for the result.&lt;/p&gt;
+
+&lt;p&gt;On my team, every time anyone wants to communicate something, the message is peer reviewed — preferably by someone without much background knowledge of the problem. If they cannot understand your message, it’s probably not ready yet. Intuitively, it might seem best to review the work with someone who understands the importance of the message. However, assumptions about the message become clear when you engage someone with limited visibility. We often forget how much context we have on a problem when we’ve just finished working on it, so what we think is obvious might not be so obvious for others.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Stakeholder engagement&lt;/li&gt;
+  &lt;li&gt;Positive influence on decision making&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;9---collaboration-across-data-teams&quot;&gt;9 - Collaboration across data teams&lt;/h3&gt;
+
+&lt;p&gt;For the COVID-19 task force, we created a fully cross-functional team with one champion per data sub-team to close the specialist gap I mentioned. We meet to share findings on a daily basis and collaborate on deep dives that may require or affect multiple products. Over the past weeks, I have worked with many people I’ve never met, and they’ve all been incredible! Because we share the same assumptions about the data and underlying frameworks, we understand each other. Within hours this team was running at full speed. Everyone has been successfully working together towards one goal — making things better for our merchants — without being constrained to their specific product area.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Business-wide impact&lt;/li&gt;
+  &lt;li&gt;Team spirit&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;10---positive-philosophy-about-data&quot;&gt;10 - Positive philosophy about data&lt;/h3&gt;
+
+&lt;p&gt;If you share some game-changing insights with a big decision maker at your company, do they listen? At Shopify, leaders might not action every single recommendation from Data because there are other considerations to weigh, but they definitely listen. They’re keen to consider anything that could help our merchants.&lt;/p&gt;
+
+&lt;p&gt;Shopify has &lt;a href=&quot;https://www.shopify.ca/blog/shopify-reunite-2020&quot;&gt;announced several features&lt;/a&gt; (&lt;a href=&quot;https://www.shopify.ca/covid19&quot;&gt;plus these&lt;/a&gt;) to help merchants during lockdowns like &lt;a href=&quot;https://www.shopify.ca/blog/gift-cards-all-plans&quot;&gt;gift card&lt;/a&gt; features for all merchants and the &lt;a href=&quot;https://www.shopify.ca/blog/local-delivery&quot;&gt;launch of local deliveries&lt;/a&gt;
+. The Data Team provided many insights that influenced these decisions.&lt;/p&gt;
+
+&lt;p&gt;At the end of the day, it is the data scientists job to make sure insights are understood by the key people. That being said, having leaders that listen help a lot. Our company’s attitude towards data transforms our work from interesting to impactful.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Key benefits&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Impactful data science&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Shopify isn’t perfect. However, our emphasis on foundations and building for the long term is paying off during this period of distress when data is more critical than ever.&lt;/p&gt;
+
+&lt;p&gt;When the COVID-19 task force started, no one on the Data Team needed to start from scratch. We leveraged years of data work to uncover valuable insights within days. Some we got from existing dashboards and vetted data points. In other cases, modelled data allowed us to calculate new metrics with fewer than 50 lines of SQL. Shopify’s culture of data sharing, collaboration, and informed decision making ensured these insights turned into action. Foundational work pays off in times of turmoil. I am proud that our investment in foundations is positively impacting the Data Team and our merchants.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; This post was originally posted on &lt;a href=&quot;https://engineering.shopify.com/blogs/engineering/shopifys-data-science-engineering-foundations&quot;&gt;Shopify Data blog&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I would also like to thanks the team of fantastic folks at Shopify who help with the edditing of this blog post.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+        <link>https://coffeeanddata.ca/how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team</guid>
+        
+        <category>data</category>
+        
+        <category>shopify</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Using data science to save money on my next trip to Mexico</title>
+        <description>&lt;p&gt;How am I using basic data work to ensure I am getting a good price on my trip.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;It has been 4 years since my wife and I took some vacation in a sunny place. Last time, for our honeymoon, we spent some quality time in Mexico. We enjoyed 10 days in a very nice all-inclusive resort in Riviera Maya. Since then, a house, two kids, a new job and many other things. After some reflexion we decided that it was time to go back on the beach. So, next December (2019) we (my wife, our 3 years old, our 4 months old and I) will be heading to Riviera Maya once again.&lt;/p&gt;
+
+&lt;p&gt;Don’t worry, I am not turning my Data blog into a travel and lifestyle blog. I want to share with you how I am making sure I am getting the right price for the trip.&lt;/p&gt;
+
+&lt;p&gt;So here is where it is interesting, when we signed the contract this summer (in June) the contract said, if the price go down, I could, once, ask for a price match. Since the trip was +-6 months away, that looked like a very interesting feature. BTW, this is one of the factors that made us pick that travel company. To be upfront with the numbers, we paid &lt;em&gt;4317 CAD$&lt;/em&gt; for the full family.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-no-so-easy-part&quot;&gt;THE NO SO EASY PART&lt;/h2&gt;
+
+&lt;p&gt;After a couple of weeks, I went back to check the price. It was still the same. Then I realize, how can I track the price. There is no way I can take the time to go, click through a series of web interfaces to query the price. That would represent an annoying 2-3 minutes a day and I just don’t have that time.&lt;/p&gt;
+
+&lt;p&gt;Here is what it looks like to get the price update:&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/-P5g_FFkqZQ&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Obviously, the travel company does not feel like it would be a great feature to track the price. After a couple of time searching for it, there is just no way to do this. At least with a tool on the website.&lt;/p&gt;
+
+&lt;p&gt;Then what if it is below my original price, do I take this price or I wait a bit more. Because remember, I can only do a price match once. It would be really useful to have all the historic prices, then if/when it gets below original price, I could look at the trend and take a more informed decision.&lt;/p&gt;
+
+&lt;p&gt;So now I would need to spend couple of minutes daily to fetch the price, and then couple of more to copy the value into some sort of spreadsheet. Anyone that did something like this knows that it works kinda of OK for the first few days, maybe weeks. But at some point you start missing days, do copy paste error, etc.&lt;/p&gt;
+
+&lt;p&gt;Manual process in data is more or less the equivalent of no process.&lt;/p&gt;
+
+&lt;h2 id=&quot;just-script-it&quot;&gt;JUST SCRIPT IT&lt;/h2&gt;
+
+&lt;p&gt;My idea was, I can just get the URL, download the HTML from python or something and do some regex magic to extract the price.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/d8KOpGnzaAEI7JiVUp/source.gif#center&quot; alt=&quot;Dumb&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Of course, it could not be that easy. First thing, the URL does not really change. All of the price things are some sort of modal on top of the other page. So copying the URL basically brings you back to the home page.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/20191028/network.gif#right&quot; alt=&quot;Network tool&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now when I started to look at Chrome Developer tools, I assumed I could see somewhere the data coming in. Data has to come in right… right…
+Here is the network view…&lt;/p&gt;
+
+&lt;p&gt;Not as simple as I would have liked.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;After a couple of times digging in each of these files, I found the golden nugget.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/20191028/json_file.png#center&quot; alt=&quot;Json-File&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Seems like we are on the right track. We have what seems to be a JSON file and the custom URL to get it. OBVIOUSLY, when I use this URL directly in a new page it is not working. I receive the equivalent of a page unavailable. Really it seems like they don’t want us to do this. They have set many roadblocks to prevent us from doing it. &lt;em&gt;Thanks Obama&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then, I found a very neat option in chrome Dev tools.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/20191028/curl.png#center&quot; alt=&quot;Json-File&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Copy as cURL. You end up with a very long command you can paste in your terminal and get the JSON.&lt;/p&gt;
+
+&lt;p&gt;Finally, something is working. I now have a way to extract the price.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;
+import json
+from botocore.vendored import requests
+
+url = &apos;https://voyagesarabais.com/recherche-sud/getpricedetails?search%5Bgateway%5D=YUL&amp;amp;search%5BdateDep%5D=2019-12-15&amp;amp;search%5Bduration%5D=7day%2C8day&amp;amp;search%5BdestDep%5D=o&amp;amp;search%5BnoHotel%5D=p7&amp;amp;search%5Broom1%5D=a%3A4%3A%7Bi%3A0%3Bs%3A2%3A%2240%22%3Bi%3A1%3Bs%3A2%3A%2240%22%3Bi%3A2%3Bs%3A1%3A%223%22%3Bi%3A3%3Bs%3A1%3A%221%22%3B%7D&amp;amp;search%5Broom2%5D=&amp;amp;search%5Broom3%5D=&amp;amp;search%5Broom4%5D=&amp;amp;search%5Broom5%5D=&amp;amp;search%5Broom6%5D=&amp;amp;search%5Bflex%5D=N&amp;amp;search%5Bflexhigh%5D=3&amp;amp;search%5Bflexlow%5D=3&amp;amp;search%5Broomcallgroup%5D=%5B%7B%22_priority%22%3A9%2C%22nb_rooms%22%3A1%2C%22nb_adults%22%3A2%2C%22non_adults%22%3A%5B%223%22%2C%221%22%5D%7D%5D&amp;amp;search%5Bpricemax%5D=9000&amp;amp;search%5Bpricemin%5D=1&amp;amp;search%5Ballinclusive%5D=Y&amp;amp;search%5Bbeach%5D=&amp;amp;search%5Bcasino%5D=&amp;amp;search%5Bfamily%5D=&amp;amp;search%5Bgolf%5D=&amp;amp;search%5Bkitchenette%5D=&amp;amp;search%5Boceanview%5D=&amp;amp;search%5Bminiclub%5D=&amp;amp;search%5Bspa%5D=&amp;amp;search%5Bwedding%5D=&amp;amp;search%5Badultonly%5D=&amp;amp;search%5Bnoextrasingle%5D=&amp;amp;search%5Bvilla%5D=&amp;amp;search%5Bstar%5D=4.5&amp;amp;search%5Bstarmax%5D=4.5&amp;amp;search%5Bdirectflight%5D=&amp;amp;search%5Btourtodisplay%5D=CAH%2CVAT%2CVAC%2CVAX%2CSGN%2CSQV%2CSWG%2CWJV&amp;amp;search%5Buuid%5D=&amp;amp;search%5BnbRoomsMax%5D=&amp;amp;search%5BhotelDistanceMax%5D=&apos;
+
+payload = &apos;data=QXjaDVS1EqNQAPyXaymCS4l7cL1cAQQn8ILD11%2F6ndlZ%2FfMX%2FufEXTaHeV6sCyracChEFTl8XHzw9NfD8TjxcBJOrgXgabDpEkZOeyGaNsfYlfsXoxaj57LBWgZjpB2mpeDKsJ0iUmI5VVjv9eCeA34db0A8ASRklG9DJjZAVk8j%2BK58ctfscX7FxXppW62OhAMznyYwpeGqU9FoU%2F71SDiO7fk5Dz99S3CAd5RDB9lKTvzmSahBld5gdaz9vfedPConEhM4dpuBiIxpZ6fKZK7O1BDnBvU9Ba%2FHZJXiRNuFCNhRlvZh1lH4WrciCbh5GUW8r4vsjq6xDRJzTvsb3EGJM%2BplJMNkBcma09TrMezjOqFNtOCZ3EHBE8rwpbzA%2Bnp43SKN3No4fVcGdg1hSW1er0e8zHKV7qNEleUPVGcJ4YniN6lPWIA%2BfixcisbTUpO8HgR78ue3i0dZlwJXGyhYhxfWoz5wCrQL5JbnZadk2pILWEdT4RKiXbKcxemTi4mF7paMniWP190lJHXy8eZgV7QqaTnvx%2BwQYGNWsd5jPomwNojiNgn3zh%2B1E2XIxO7ri%2FfN7PXIehG2oplT9oHbTGqkNtPKtiQq9UsjliPEktUIbyc0%2Be8RqapxzPExGO%2BP8Qts0dbCnm7UJ3A15plV51xQq1Y6d07xJjZ4BhGiIHKw9uosLjWpHmidnaEsg%2Fle4JjPGvaZT3tgFAS6cjix2u53EIB4JwwyuGLJSxGCYa8HTz7Tm8WL741X0NfeAcIkpt6ssUJHChKkaf96kAMEG0PDxHs%2B7wDQs%2F2FQgVRsDful59Uhdw7UAWKp4yiQU25FNUlpGoG%2F1nlZGD7lDW2fb7RviM%2FQjpny6Hcxmd6JoeYuHtGOa6VdW3dcMVAxir5FXtwqb2fog0PfNydAw9EuBQwiAbzivCMaLJTr2f%2BXt4SMOadF6fZ29rn66FBIYemXUNzpHDqUoX4FlcaXO9ucgZAisAS66Mbh5xeEK7V0r33Z8oMzAnFHUeen8hoDtq2ahi3JY%2FQC5DqhEiB0eRNkC7bGPaGKXIAoq%2F1ToN4sHN8BpgKd56efidkDlK%2FyJtTid7itoGQUcLMrT0feaY455Znrfb28az3t9C8B9k63ya8BRcaX3QMkDIvsQHxciv33ROC4cA3WhqqcuUkPxRSuz9xACrzlEvXLM4QP0qBFEOvB7qeKyBXqppLE1DFLEPhc0zRyiWY30YwlgSpcQhzmmifBd8wXgLAYpouOFpYn%2BTqDEweseIKO3G2c3gbFJC5yOPGgTVLBsG7KYk%2BkCJpEW984kihzE6lTENZ32CHseFA%2FXCTZUG5FZ3M12VmtH2hKXC1IZ2UAQ4foyB1Qdi35QQJv9Ef235UyPN4c%2FeOeKR9eIlGlL9GiWhogoOEpUnE%2BDdTnKQXFWwgRRHGNXaonLog6ZNhoLCluUWOc8j6a%2BZ793ZojmWm39gkBnx0YWPFstDXoQSkIsIlwr4oN%2F8%2BhfU6N%2F%2Bd0J%2F%2Fb5zoDz0%3D&amp;amp;type=packageplus&apos;
+
+headers = {
+&apos;Cookie&apos;: &apos;Cookie: _gcl_au=1.1.596656575.1560126807; _ga=GA1.2.1347033583.1560126807; _fbp=fb.1.1560126807161.1014257493; _gaexp=GAX1.2.NFE8cllqRy-hy2p_zsZ_9A.18143.0; G_ENABLED_IDPS=google; is_all_inclusive_checked=1; PHPSESSID=0odjk0bsqoalhh20ijg3hgcqs2; _hjid=d29cb0cd-017e-4453-a112-b8ae863dbb89; _gid=GA1.2.1378798265.1565464684; _gac_UA-6397631-1=1.1565464692.CjwKCAjw1rnqBRAAEiwAr29II9bpU1twn6ZPzisvGTap3gofl973SwBnRO6CkYdpJF4F3qEYN9FTDBoCPRwQAvD_BwE; _gat_UA-6397631-1=1&apos;,
+&apos;Origin&apos;: &apos;https://voyagesarabais.com&apos;,
+&apos;Accept-Encoding&apos;: &apos;gzip, deflate, br&apos; ,
+&apos;Accept-Language&apos;: &apos;en-US,en;q=0.9,fr;q=0.8&apos; ,
+&apos;User-Agent&apos;: &apos;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36&apos; ,
+&apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded; charset=UTF-8&apos; ,
+&apos;Accept&apos;: &apos;*/*&apos; ,
+&apos;Referer&apos;: &apos;https://voyagesarabais.com/recherche-sud?gateway=YUL&amp;amp;dateDep=2019-12-15&amp;amp;duration=7day,8day&amp;amp;destDep=o&amp;amp;noHotel=p7&amp;amp;allinclusive=Y&amp;amp;beach=&amp;amp;casino=&amp;amp;family=&amp;amp;golf=&amp;amp;kitchenette=&amp;amp;oceanview=&amp;amp;miniclub=&amp;amp;spa=&amp;amp;weeding=&amp;amp;adultonly=&amp;amp;noextrasingle=&amp;amp;villa=&amp;amp;directflight=&amp;amp;tourtodisplay=CAH,VAT,VAC,VAX,SGN,SQV,SWG,WJV&amp;amp;uuid=&amp;amp;nbRoomsMax=&amp;amp;hotelDistanceMax=&amp;amp;star=4.5&amp;amp;starmax=4.5&amp;amp;pricemin=1&amp;amp;pricemax=9000&amp;amp;flex=N&amp;amp;&amp;amp;bedrooms[0][0]=40&amp;amp;bedrooms[0][1]=40&amp;amp;bedrooms[0][2]=3&amp;amp;bedrooms[0][3]=1&apos;,
+&apos;X-Requested-With&apos;: &apos;XMLHttpRequest&apos;,
+&apos;Connection&apos;: &apos;keep-alive&apos;
+}
+
+r = requests.post(url, data=payload, headers=headers)
+parsed_response = json.loads(r.text)
+
+#### you can now access your value in parsed_response as a dict
+totalPrice = parsed_response[&apos;totalprice&apos;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see the query is pretty nasty. Really, it is like if they do not want us to extract the prices automatically. At least, now, we have a pretty nice dictionary to work with.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-to-do-with-this-value-now&quot;&gt;WHAT TO DO WITH THIS VALUE NOW&lt;/h2&gt;
+
+&lt;p&gt;Now that we can access the value, how do we extract it. I have decided to create a AWS Lambda function that run every 6 hours to extract the price. With this price, 4 times a day, we do 3 things:&lt;/p&gt;
+
+&lt;p&gt;We check if price is good. Since I paid a bit more than 4300, if price would go below 4k$, I send myself an email. To make sure I can act quickly if needed.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;I store the value (with the timestamp) in a database. (DynamoDB)&lt;/li&gt;
+  &lt;li&gt;I store the value (with the timestamp) in AWS S3&lt;/li&gt;
+  &lt;li&gt;Why 2 and 3, I was not sure how I would use it, since AWS have some rules about what can access what and because storage is shockingly cheap, I stored it twice.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;the-price&quot;&gt;THE PRICE&lt;/h2&gt;
+
+&lt;p&gt;So sadly, the price did not go below 4300$ yet, and to be fair I doubt it will. The trip is now priced at 4700/5000 depending on the days.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/20191028/prix.png#center&quot; alt=&quot;Json-File&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To build this view, I have used the fantastic tool call &lt;a href=&quot;https://plot.ly/dash/&quot;&gt;Dash&lt;/a&gt; which allows you with fewer than 100 lines of code build this visual. If you are interested, you can go see the app here: &lt;a href=&quot;https://voyage.coffeeanddata.ca&quot;&gt;https://voyage.coffeeanddata.ca&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;discoveries&quot;&gt;DISCOVERIES&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/20191028/no_data.png#right&quot; alt=&quot;Network tool&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For a couple of days I did not collect any new data points. In fact the cURL command was getting back a 404 from the server. Took me a while to realize that I had no new data.&lt;/p&gt;
+
+&lt;p&gt;Because I did not implement any validations in my code. The Lambda script would simply silently fail and I would not collect new data points.&lt;/p&gt;
+
+&lt;p&gt;So I added a validation in my code that sends me an email when the cookie needed to be updated. I assume the cookie has some expiration encrypted in it. So simply getting a new token seems enough.&lt;/p&gt;
+
+&lt;h2 id=&quot;pick-wisely&quot;&gt;Pick wisely&lt;/h2&gt;
+
+&lt;p&gt;The other interesting points I got from the data up to now is this part of the curve:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/20191028/data_jump.png#center&quot; alt=&quot;Json-File&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For a couple of days in a row, the price surged by 200$ at around 7am in the morning. This is something I will be careful with, next time I look to book a trip.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;CONCLUSION&lt;/h2&gt;
+
+&lt;p&gt;Sadly, I did not save any money…yet. I am flying for Mexico in more than 2 months so I will keep tracking the price on my website. Travel companies seems to be making some effort to prevent us to automatically extracting the price.&lt;/p&gt;
+
+&lt;p&gt;The price looks to be very volatile, I would be curious to understand what influence the price on an hourly basis.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;
+If you are interested all the code is available in my Github repo: &lt;a href=&quot;https://github.com/marcolivierarsenault/triptracker&quot;&gt;https://github.com/marcolivierarsenault/triptracker&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can check my web app here: &lt;a href=&quot;https://voyage.coffeeanddata.ca&quot;&gt;https://voyage.coffeeanddata.ca&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+        <link>https://coffeeanddata.ca/using-data-science-to-save-money-on-my-next-trip-to-mexico</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/using-data-science-to-save-money-on-my-next-trip-to-mexico</guid>
+        
+        <category>data</category>
+        
+        <category>perso</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Spark &amp;#038; AI Summit 2019</title>
+        <description>&lt;p&gt;My review of the latest Spark and AI Summit hosted in San Francisco on April 24th and 25th 2019.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Last week was hosted the latest edition of the Spark Conference. It was the first time for me attending the conference. Here is a breakdown of the different aspect of the conference.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-big-news&quot;&gt;The big news&lt;/h2&gt;
+
+&lt;p&gt;Databricks, organizer of the conference and the main contributor of Spark announced couple of items:&lt;/p&gt;
+
+&lt;h3 id=&quot;koalas&quot;&gt;Koalas&lt;/h3&gt;
+
+&lt;p&gt;They announced a new project called Koalas, a native “Pandas” interpreter for Spark. You can now automagically port your Pandas code to the distributed world of Spark. This will be a fantastic bridge from people used to the Pandas environment. Many online classes/Universities teach Data Science using Pandas. Now new data scientists will fill a bit less lost.&lt;/p&gt;
+
+&lt;p&gt;I don’t think this will be useful only for new data scientists. As you probably know, data science is a world full of script sparse around your company. People create script to do various tasks, on various environments using various framework. If your main environment is Spark, you will be to align the execution environment of your Pandas and have one less to care about.&lt;/p&gt;
+
+&lt;p&gt;Koalas is available as a free open-source project &lt;a href=&quot;https://github.com/databricks/koalas&quot;&gt;here&lt;/a&gt;. The project is still in pre-release version (0.1)&lt;/p&gt;
+
+&lt;h3 id=&quot;delta-lake&quot;&gt;Delta Lake&lt;/h3&gt;
+
+&lt;figure&gt;
+    &lt;img src=&quot;assets/images/posts/20190429/delta.png#center&quot; alt=&quot;delta&quot; /&gt;
+    
+        &lt;figcaption class=&quot;caption-text&quot;&gt;delta.io&lt;/figcaption&gt; 
+    
+&lt;/figure&gt;
+
+&lt;p&gt;Delta, one of the main components of Databricks (the paid version of Spark) just got open-sourced. This is a very good news for people using the standard version of Spark.&lt;/p&gt;
+
+&lt;p&gt;All the details of the product is available on &lt;a href=&quot;https://delta.io/&quot;&gt;https://delta.io/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;mlflow&quot;&gt;MLFlow&lt;/h3&gt;
+
+&lt;figure&gt;
+    &lt;img src=&quot;assets/images/posts/20190429/mlflow.jpeg#center&quot; alt=&quot;mlflow&quot; /&gt;
+    
+        &lt;figcaption class=&quot;caption-text&quot;&gt;mlflow.org&lt;/figcaption&gt; 
+    
+&lt;/figure&gt;
+
+&lt;p&gt;MLFlow the end to end lifecycle model management from Databricks will be bumped to version 1.0 in may.&lt;/p&gt;
+
+&lt;p&gt;The following components will be added to the already existing offering:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MLFlow Workflow, allow to package multi step project in one pipeline&lt;/li&gt;
+  &lt;li&gt;MLFlow Model Registery, Registery to publish models, versions, see who is using it&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That seems like an interesting process for anyone that produce model commercially.&lt;/p&gt;
+
+&lt;p&gt;Funny story about that one, a &lt;a href=&quot;https://www.linkedin.com/in/pascalpotvin/&quot;&gt;colleague&lt;/a&gt; worked on a similar, in-house project &amp;gt; 2 years ago. So I could say that, it does fit a real need in the industry.&lt;/p&gt;
+
+&lt;h2 id=&quot;best-talks&quot;&gt;Best talks&lt;/h2&gt;
+
+&lt;p&gt;Here is my personal list of favourite talks I attended to:&lt;/p&gt;
+
+&lt;h3 id=&quot;smart-join-algorithms-for-fighting-skew-at-scale&quot;&gt;Smart Join Algorithms for Fighting Skew at Scale&lt;/h3&gt;
+
+&lt;p&gt;By: Andrew Clegg, Yelp&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://databricks.com/sparkaisummit/north-america/sessions-single-2019?id=30&quot;&gt;This talk&lt;/a&gt; about how to handle skew in large datasets was the talk I was the most looking for, actually one of the reasons I wanted to attend the conference…. and I wasn’t disappointed.&lt;/p&gt;
+
+&lt;p&gt;Andrew proposed a very simple but unbelievably efficient way to handle skew. I can already see where to apply this knowledge in my work. TLDR: he proposed to subdivides your really frequent data into smaller chunks by adding a random integer at the end of the ID, and doing and creating all the possible newID, in the smaller table.&lt;/p&gt;
+
+&lt;p&gt;For more details, you can check their his slide deck &lt;a href=&quot;https://docs.google.com/presentation/d/1AC6yqKjj-hfMYZxGb6mnJ4gn6tv_KscSHG_W7y1Py3A/edit?usp=sharing&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;apache-spark-data-validation&quot;&gt;Apache Spark Data Validation&lt;/h3&gt;
+
+&lt;p&gt;By: Patrick Pisciuneri and Doug Balog (Target)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://databricks.com/sparkaisummit/north-america/sessions-single-2019?id=100&quot;&gt;They shared Target&lt;/a&gt; data validation framework which should be open sourced soon. The framework allows to do data validation after being produced.&lt;/p&gt;
+
+&lt;p&gt;If code has unit tests, data need something like this. We all know that when you process a dataset you have a set of assumptions, they might be true when you create your pipeline, but many months after it is likely the data “truth” may be slightly different and then your pipeline may fail on the data. Even worst it might process it without failing without you being aware of it. Such framework will help keep data sanity.&lt;/p&gt;
+
+&lt;p&gt;Framework is available on &lt;a href=&quot;https://github.com/target/data-validator&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-nice-touch&quot;&gt;The nice touch&lt;/h2&gt;
+
+&lt;p&gt;I really like the spotlight they gave to ML/AI ethics. They allocated a prime spot into Thursday keynote for a talk about ethics. I think this topic is not discussed enough, or at least not with enough priority.&lt;/p&gt;
+
+&lt;p&gt;Kudos to Databricks for that one.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-intangible&quot;&gt;The intangible&lt;/h2&gt;
+
+&lt;p&gt;As you all know, conference is about 2 things, talks and networking. This conference seems to have understood it and made a lot of effort to enable networking. They basically had content/activities from 8 am to 11 pm all day to have people stay on site.&lt;/p&gt;
+
+&lt;p&gt;I had so many interesting discussion with other data scientists from various industries. To me that is the key point of the conference.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I really loved the conference, the sales pitches were balanced. Most of the technical talks were pure Spark talk from the industry without sales intentions. Networking was fantastic. Technical content was high quality. Congrats to the organizer.&lt;/p&gt;
+
+&lt;p&gt;As far as I know they will publish videos from some of the talk on their site: &lt;a href=&quot;https://databricks.com/sparkaisummit/north-america&quot;&gt;https://databricks.com/sparkaisummit/north-america&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
+        <link>https://coffeeanddata.ca/spark-ai-summit-2019</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/spark-ai-summit-2019</guid>
+        
+        <category>data</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Spark JOIN using REGEX</title>
+        <description>&lt;p&gt;A more technical post about how I end up efficiently JOINING 2 datasets with REGEX using a custom UDF in SPARK&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;context&quot;&gt;Context&lt;/h3&gt;
+
+&lt;p&gt;For the past couple of months I have been struggling with this small problem. I have a list of REGEX patterns and I want to know which WIKIPEDIA article contains them.&lt;/p&gt;
+
+&lt;p&gt;What I wanted to end with was a table with the following columns:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Wikipedia Article ID&lt;/li&gt;
+  &lt;li&gt;Wikipedia Article Text&lt;/li&gt;
+  &lt;li&gt;Matching Pattern (or null if no pattern got triggered)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table class=&quot;wp-block-table is-style-regular&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      ID
+    &lt;/td&gt;
+    &lt;td&gt;
+      Text
+    &lt;/td&gt;
+    &lt;td&gt;
+      Pattern
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      1
+    &lt;/td&gt;
+    &lt;td&gt;
+      This Wikipedia:Statistics page measures&amp;#8230;
+    &lt;/td&gt;
+    &lt;td&gt;
+      &amp;#8216;\bbot.*generated\b&amp;#8217;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      1
+    &lt;/td&gt;
+    &lt;td&gt;
+      This Wikipedia:Statistics page measures…
+    &lt;/td&gt;
+    &lt;td&gt;
+      &amp;#8216;\bgompertz\b&amp;#8217;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      2
+    &lt;/td&gt;
+    &lt;td&gt;
+      In the context of network theory,&amp;#8230;
+    &lt;/td&gt;
+    &lt;td&gt;
+      &amp;#8216;\bpower law\b&amp;#8217;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  
+  &lt;tr&gt;
+    &lt;td&gt;
+      3
+    &lt;/td&gt;
+    &lt;td&gt;
+      In probability theory and statistics
+    &lt;/td&gt;
+    &lt;td&gt;
+      null
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;My list of REGEX was roughly 500 pattern long. Some were simple word search, but others were more complex REGEX. I needed a good way to search for these patterns and find a way to get them in the mentioned format. Some sort of &lt;strong&gt;LEFT OUTER JOIN.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;setup&quot;&gt;Setup&lt;/h3&gt;
+
+&lt;p&gt;Since there are a lot of articles on Wiki. Apparently, &lt;a href=&quot;https://en.wikipedia.org/wiki/Wikipedia:Size_of_Wikipedia&quot;&gt;5.8 millions of them&lt;/a&gt;. I decided to use a tool capable of paralleling the research, I have decided to use &lt;a href=&quot;https://spark.apache.org/&quot;&gt;Spark&lt;/a&gt; from the Apache foundation. Now a days, you can select your favourite cloud provider and there is a high chance you can get a cluster with not much more than 1 click, which I did.&lt;/p&gt;
+
+&lt;p&gt;Now that I had my working setup I started to look online on how to do that.&lt;/p&gt;
+
+&lt;p&gt;The first thing I found online was to do a LEFT OUTER JOIN with &lt;strong&gt;rlike&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;wiki.join(regex, expr(&quot;text rlike pattern&quot;) how=&apos;left_outer&apos;)&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That looked promising, on a small set it was doing exactly what I wanted.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/20190417/success.gif#center&quot; alt=&quot;success&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After I naively just launched the join for all the dataset… and I waited for a long time. Actually as long as it took me to realize my cluster went out of memory. From that point, I looked online for many hours, tried many solutions and I could not find anything relevant on how to solve that problem.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/20190417/disapointed.gif#center&quot; alt=&quot;disapointed&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Since that was nothing really important, I did not touch it for a couple of months and one day at work, I was talking about it with one of my colleagues and he figured out the problem.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-issue&quot;&gt;The issue&lt;/h3&gt;
+
+&lt;p&gt;Here is what he said:&lt;/p&gt;
+
+&lt;p&gt;” First, and foremost, non-equijoins perform poorly in Spark because they can only be evaluated using a &lt;strong&gt;broadcast nested loop join&lt;/strong&gt; or a &lt;strong&gt;cross join&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let’s assume that &lt;strong&gt;articles&lt;/strong&gt; contains 1,000,000 rows and &lt;strong&gt;patterns&lt;/strong&gt; contains 500 rows. The smaller dataset (&lt;strong&gt;particle&lt;/strong&gt; in this case) will be broadcast. To evaluate this join, &lt;strong&gt;particle&lt;/strong&gt; will effectively be scanned 1,000,000 times and the join predicate will be evaluated 500,000,000 times. What makes it even worse is that the pattern will be compiled 500,000,000 times.”&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;‘This basically spells disaster.’ &lt;cite&gt;― Michael ―&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;the-solution&quot;&gt;The Solution&lt;/h3&gt;
+
+&lt;p&gt;And then, after finding the issue he came back to me a couple of days later with a custom UDF&lt;/p&gt;
+
+&lt;pre class=&quot;line-numbers&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;def findMatchingPatterns(regexes: ArrayList[String]): UserDefinedFunction = {
+  udf((value: String) =&amp;gt; {
+    for {
+      text &amp;lt;- Option(value)
+      matches = regexes.asScala.filter(r =&amp;gt; Pattern.matches(r, text))
+      if matches.nonEmpty
+    } yield matches
+  }, ArrayType(StringType))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and to use it, simply need to query it like this:&lt;/p&gt;
+
+&lt;pre class=&quot;line-numbers&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;from utils.scala_functions import find_matching_patterns
+from pyspark.sql import functions as F
+
+regexes = regex.agg(F.collect_list(F.col(&quot;pattern&quot;))).collect()[0][0]
+regexes = sc.broadcast(regexes)
+
+articles = articles \
+    .withColumn(&quot;patterns&quot;, find_matching_patterns(F.col(&quot;text&quot;), regexes.value)
+    .withColumn(&quot;patterns&quot;, F.when(F.col(&quot;patterns&quot;).isNull(), F.array(F.lit(None))).otherwise(F.col(&quot;patterns&quot;))) \
+    .withColumn(&quot;pattern&quot;, F.explode(F.col(&quot;patterns&quot;)))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;result&quot;&gt;Result&lt;/h3&gt;
+
+&lt;p&gt;I tried it, and within couple of hours I had exactly what I wanted.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/20190417/mission_accomplished.gif#center&quot; alt=&quot;mission_accomplished&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I decided to do a small benchmark. After both datasets loaded and cached in Spark, I selected only 20 000 articles to try both methods. By using the same exact samples here are the results:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;First technique, &lt;em&gt;rlike&lt;/em&gt;: 3 articles per seconds&lt;/li&gt;
+  &lt;li&gt;Second technique, &lt;em&gt;UDF&lt;/em&gt;: ~5 000 articles per seconds&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I know most of this delay is due to cache, reading and other memory management, but still what a difference.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;I do not usually write this type of blog post, but since I looked for a solution and could not find anything, I thought it worth sharing back.&lt;/p&gt;
+
+&lt;p&gt;I would like to thank &lt;a href=&quot;https://www.linkedin.com/in/mstyles/&quot;&gt;Michael Styles&lt;/a&gt; for his help on this project.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 17 Apr 2019 00:00:00 +0000</pubDate>
+        <link>https://coffeeanddata.ca/spark-join-using-regex</link>
+        <guid isPermaLink="true">https://coffeeanddata.ca/spark-join-using-regex</guid>
+        
+        <category>data</category>
+        
+        <category>shopify</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
