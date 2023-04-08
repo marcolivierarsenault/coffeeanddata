@@ -1,4 +1,4 @@
-[![Build Status](https://app.travis-ci.com/marcolivierarsenault/coffeeanddata.svg?branch=release)](https://app.travis-ci.com/marcolivierarsenault/coffeeanddata)
+[![Build Status](https://github.com/marcolivierarsenault/coffeeanddata/actions/workflows/merge.yml/badge.svg)](https://github.com/marcolivierarsenault/coffeeanddata/actions/workflows/merge.yml)
 # coffeeanddata
 [My personal blog](https://coffeeanddata.ca/)
 
