@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.8.3)
+    addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     colorator (1.1.0)
     concurrent-ruby (1.2.2)
@@ -64,7 +64,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
     mini_portile2 (2.8.1)
-    nokogiri (1.14.2)
+    nokogiri (1.14.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     parallel (1.22.1)
@@ -81,12 +81,12 @@ GEM
     rexml (3.2.5)
     rouge (4.1.0)
     safe_yaml (1.0.5)
-    sass-embedded (1.61.0)
+    sass-embedded (1.62.0)
       google-protobuf (~> 3.21)
       rake (>= 10.0.0)
-    sass-embedded (1.61.0-x64-mingw32)
+    sass-embedded (1.62.0-x64-mingw32)
       google-protobuf (~> 3.21)
-    sass-embedded (1.61.0-x86-mingw32)
+    sass-embedded (1.62.0-x86-mingw32)
       google-protobuf (~> 3.21)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
