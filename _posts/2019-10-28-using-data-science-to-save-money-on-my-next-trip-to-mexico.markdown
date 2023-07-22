@@ -113,7 +113,7 @@ So sadly, the price did not go below 4300$ yet, and to be fair I doubt it will. 
 
 ![Json-File](assets/images/posts/20191028/prix.png#center)
 
-To build this view, I have used the fantastic tool call [Dash](https://plot.ly/dash/) which allows you with fewer than 100 lines of code build this visual. If you are interested, you can go see the app here: [https://voyage.coffeeanddata.ca](https://voyage.coffeeanddata.ca).
+To build this view, I have used the fantastic tool call [Dash](https://plot.ly/dash/) which allows you with fewer than 100 lines of code build this visual. If you are interested, you can go see the app here: [https://trip.coffeeanddata.ca](https://trip.coffeeanddata.ca).
 
 ## DISCOVERIES
 
