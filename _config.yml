@@ -6,7 +6,7 @@ tagline: 'Data Blog by Marc-Olivier Arsenault'
 meta_description: 'Data Blog by Marc-Olivier Arsenault'
 logo: 'assets/images/square_logo.png'
 favicon: 'assets/images/favicon.ico'
-baseurl: 
+baseurl:
 url: https://coffeeanddata.ca
 production_url: https://coffeeanddata.ca
 feed_url: https://coffeeanddata.ca
@@ -24,7 +24,7 @@ author:
   greetings: 'Coffee and Data'
   description: "Data Blog by Marc-Olivier Arsenault"
   quote: "Data Blog by Marc-Olivier Arsenault"
-  bio: "Senior Data Development Manager @ Shopify"
+  bio: "Senior Data Engineering Manager @ Shopify"
 
 # Contact form setings
 email: marcolivier.arsenault@gmail.com
@@ -33,15 +33,15 @@ thankyou_page_description: "Your message has been successfully sent. Thanks!"
 
 # Social links
 twitter: 'MarcOlivierA'
-facebook: 
+facebook:
 github: 'marcolivierarsenault'
-codepen: 
-dribbble: 
+codepen:
+dribbble:
 medium: '@marcolivier.arsenault'
 instagram:
 pinterest:
 linkedin: 'marcolivierarsenault'
-producthunt: 
+producthunt:
 mastodon: '@marcolivier@mstdn.social'
 
 # Navigation
