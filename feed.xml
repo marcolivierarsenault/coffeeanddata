@@ -5,8 +5,8 @@
     <description>Data Blog by Marc-Olivier Arsenault</description>
     <link>https://coffeeanddata.ca/</link>
     <atom:link href="https://coffeeanddata.ca/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 22 Jul 2023 13:25:56 +0000</pubDate>
-    <lastBuildDate>Sat, 22 Jul 2023 13:25:56 +0000</lastBuildDate>
+    <pubDate>Sat, 22 Jul 2023 13:37:12 +0000</pubDate>
+    <lastBuildDate>Sat, 22 Jul 2023 13:37:12 +0000</lastBuildDate>
     <generator>Jekyll v4.3.2</generator>
     
       <item>
@@ -815,8 +815,8 @@ Here is the network view…&lt;/p&gt;
 
 &lt;p&gt;Not as simple as I would have liked.&lt;/p&gt;
 
-&lt;p&gt;&lt;br /&gt;&lt;br /&gt;
-&lt;br /&gt;&lt;br /&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;After a couple of times digging in each of these files, I found the golden nugget.&lt;/p&gt;
@@ -912,7 +912,7 @@ totalPrice = parsed_response[&apos;totalprice&apos;]
 &lt;p&gt;&lt;br /&gt;
 If you are interested all the code is available in my Github repo: &lt;a href=&quot;https://github.com/marcolivierarsenault/triptracker&quot;&gt;https://github.com/marcolivierarsenault/triptracker&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;You can check my web app here: &lt;a href=&quot;https://voyage.coffeeanddata.ca&quot;&gt;https://voyage.coffeeanddata.ca&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You can check my web app here: &lt;a href=&quot;https://trip.coffeeanddata.ca&quot;&gt;https://trip.coffeeanddata.ca&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
         <link>https://coffeeanddata.ca/using-data-science-to-save-money-on-my-next-trip-to-mexico</link>
