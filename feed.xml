@@ -5,8 +5,8 @@
     <description>Data Blog by Marc-Olivier Arsenault</description>
     <link>https://coffeeanddata.ca/</link>
     <atom:link href="https://coffeeanddata.ca/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 22 Jul 2023 13:37:12 +0000</pubDate>
-    <lastBuildDate>Sat, 22 Jul 2023 13:37:12 +0000</lastBuildDate>
+    <pubDate>Sat, 22 Jul 2023 13:38:56 +0000</pubDate>
+    <lastBuildDate>Sat, 22 Jul 2023 13:38:56 +0000</lastBuildDate>
     <generator>Jekyll v4.3.2</generator>
     
       <item>
@@ -881,7 +881,7 @@ totalPrice = parsed_response[&apos;totalprice&apos;]
 
 &lt;p&gt;&lt;img src=&quot;assets/images/posts/20191028/prix.png#center&quot; alt=&quot;Json-File&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;To build this view, I have used the fantastic tool call &lt;a href=&quot;https://plot.ly/dash/&quot;&gt;Dash&lt;/a&gt; which allows you with fewer than 100 lines of code build this visual. If you are interested, you can go see the app here: &lt;a href=&quot;https://voyage.coffeeanddata.ca&quot;&gt;https://voyage.coffeeanddata.ca&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To build this view, I have used the fantastic tool call &lt;a href=&quot;https://plot.ly/dash/&quot;&gt;Dash&lt;/a&gt; which allows you with fewer than 100 lines of code build this visual. If you are interested, you can go see the app here: &lt;a href=&quot;https://trip.coffeeanddata.ca&quot;&gt;https://trip.coffeeanddata.ca&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;discoveries&quot;&gt;DISCOVERIES&lt;/h2&gt;
 
