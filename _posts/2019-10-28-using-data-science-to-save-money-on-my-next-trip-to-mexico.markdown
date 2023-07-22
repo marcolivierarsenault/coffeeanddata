@@ -45,15 +45,15 @@ Of course, it could not be that easy. First thing, the URL does not really chang
 ![Network tool](assets/images/posts/20191028/network.gif#right)
 
 Now when I started to look at Chrome Developer tools, I assumed I could see somewhere the data coming in. Data has to come in right... right...
-Here is the network view...  
+Here is the network view...
 
-Not as simple as I would have liked.  
+Not as simple as I would have liked.
 
-<br>  
-<br>  
-<br>  
+<br>
+<br>
+<br>
 
-After a couple of times digging in each of these files, I found the golden nugget.  
+After a couple of times digging in each of these files, I found the golden nugget.
 
 ![Json-File](assets/images/posts/20191028/json_file.png#center)
 
@@ -139,9 +139,9 @@ Sadly, I did not save any money…yet. I am flying for Mexico in more than 2 mon
 
 The price looks to be very volatile, I would be curious to understand what influence the price on an hourly basis.
 
----  
+---
 
 <br/>
 If you are interested all the code is available in my Github repo: [https://github.com/marcolivierarsenault/triptracker](https://github.com/marcolivierarsenault/triptracker)
 
-You can check my web app here: [https://voyage.coffeeanddata.ca](https://voyage.coffeeanddata.ca)
+You can check my web app here: [https://trip.coffeeanddata.ca](https://trip.coffeeanddata.ca)
