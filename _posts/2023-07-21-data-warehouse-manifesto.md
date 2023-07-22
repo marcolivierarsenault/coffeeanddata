@@ -38,7 +38,7 @@ What I create as a Shopify Payments data modeler is this API for others to under
 
 ### What are the assets of the Data Warehouse?
 
-Like APIs, the ability to query is only part of the equation. Everything surrounding the actual API is even more important:
+Like APIs, the ability to query it, is only a part of the equation. Everything surrounding the actual API is even more important:
 
 - Data tables (what people actually use)
 - The code that generates the table (DBT, Spark, etc.)
@@ -63,6 +63,8 @@ This is because all Lego bricks must fit together. They all have the same connec
 There might be many ways a specific block could have been optimized if it were built slightly differently, but Lego chose to optimize for the overall experience rather than each individual block. This makes them easy to work with. Lego prioritized global optimization over local optimization. This global optimization, combined with high quality standards, has allowed Lego to dominate their industry.
 
 Designing a Data Warehouse is similar. When you start designing a table, you need to optimize for the overall good of the entire warehouse, rather than focusing on the micro-optimization of one specific dataset.
+
+>no single table is more <br> important than the warehouse itself
 
 Standardization of the Data Warehouse is one of its key requirements. Without this, we won't have a cohesive Data Warehouse, but rather a collection of tables that barely interact with each other, much like Lego blocks that don't connect.
 
