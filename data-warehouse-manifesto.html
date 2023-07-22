@@ -8,26 +8,26 @@
 
     
         <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>The real challenge in IoT security | Coffee and Data</title>
+<title>Data Warehouse Manifesto | Coffee and Data</title>
 <meta name="generator" content="Jekyll v4.3.2" />
-<meta property="og:title" content="The real challenge in IoT security" />
+<meta property="og:title" content="Data Warehouse Manifesto" />
 <meta name="author" content="Marc-Olivier Arsenault" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="About Me" />
-<meta property="og:description" content="About Me" />
-<link rel="canonical" href="https://coffeeanddata.ca/real-challenge-iot-security" />
-<meta property="og:url" content="https://coffeeanddata.ca/real-challenge-iot-security" />
+<meta name="description" content="My approach to the Data Warehouse and how company like Shopify should think about them." />
+<meta property="og:description" content="My approach to the Data Warehouse and how company like Shopify should think about them." />
+<link rel="canonical" href="https://coffeeanddata.ca/data-warehouse-manifesto" />
+<meta property="og:url" content="https://coffeeanddata.ca/data-warehouse-manifesto" />
 <meta property="og:site_name" content="Coffee and Data" />
-<meta property="og:image" content="https://coffeeanddata.ca/assets/images/posts/20170501/iot_cmcs.png" />
+<meta property="og:image" content="https://coffeeanddata.ca/assets/images/posts/20230721/datawarehouse.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-05-01T00:00:00+00:00" />
+<meta property="article:published_time" content="2023-07-21T00:00:00+00:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="https://coffeeanddata.ca/assets/images/posts/20170501/iot_cmcs.png" />
-<meta property="twitter:title" content="The real challenge in IoT security" />
+<meta property="twitter:image" content="https://coffeeanddata.ca/assets/images/posts/20230721/datawarehouse.png" />
+<meta property="twitter:title" content="Data Warehouse Manifesto" />
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@Marc-Olivier Arsenault" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Marc-Olivier Arsenault"},"dateModified":"2017-05-01T00:00:00+00:00","datePublished":"2017-05-01T00:00:00+00:00","description":"About Me","headline":"The real challenge in IoT security","image":"https://coffeeanddata.ca/assets/images/posts/20170501/iot_cmcs.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://coffeeanddata.ca/real-challenge-iot-security"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://coffeeanddata.ca/assets/images/square_logo.png"},"name":"Marc-Olivier Arsenault"},"url":"https://coffeeanddata.ca/real-challenge-iot-security"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Marc-Olivier Arsenault"},"dateModified":"2023-07-21T00:00:00+00:00","datePublished":"2023-07-21T00:00:00+00:00","description":"My approach to the Data Warehouse and how company like Shopify should think about them.","headline":"Data Warehouse Manifesto","image":"https://coffeeanddata.ca/assets/images/posts/20230721/datawarehouse.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://coffeeanddata.ca/data-warehouse-manifesto"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://coffeeanddata.ca/assets/images/square_logo.png"},"name":"Marc-Olivier Arsenault"},"url":"https://coffeeanddata.ca/data-warehouse-manifesto"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -81,92 +81,132 @@
                     
                 </div><!-- .post-meta -->
                 
-                    <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/20170501/iot_cmcs.png"
-                    alt="The real challenge in IoT security"></div>
+                    <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/20230721/datawarehouse.png"
+                    alt="Data Warehouse Manifesto"></div>
             
-            <time class="post-date" datetime="2017-05-01">May 1,
-                2017</time>  <div class="readtime">
+            <time class="post-date" datetime="2023-07-21">July 21,
+                2023</time>  <div class="readtime">
 
-5 minutes to read
+7 minutes to read
 </div>
-                <h1 class="posttitle">The real challenge in IoT security</h1>
+                <h1 class="posttitle">Data Warehouse Manifesto</h1>
             </header><!-- .post-header -->
             
             <div class="post-content">
-                <h2 id="about-me">About Me</h2>
-
-<p>Before writing about my main topic. I want to take a couple of lines to introduce myself. I am an IT Engineer working since I got my bachelor’s degree (4 years ago) for the same company, Ericsson Canada, I have worked, up to now, in two different teams. In the first one, I was in a hands-on research team in the telecom world. For the past 6 months, I am now working in a data science team as a data scientist (Interesting and exciting career move).</p>
+                <p>My approach to the Data Warehouse and how company like Shopify should think about them.</p>
 
 <!--more-->
 
-<p>During these years I had the chance to work with one guy that with time became my friend. That friend started a technological blog, <a href="https://thelonenutblog.wordpress.com/" target="_blank" rel="nofollow noopener">The Lone Nut</a>, way before I even start my degree (that is a good clue to understand that he is an experienced colleague). I always like that blog and wanted to do the same. We work in a very “advance” word (The telecom space) and sometimes I feel that it can bring something to the community to share some experience and understand some reality of this very specific world.</p>
+<h2 id="what-is-the-data-warehouse">What is the Data Warehouse?</h2>
 
-<p>So, that being said, I will, with a similar objective, try to start my own blog. I don’t know if I will be able to keep up with his posting pace but I will try to post once every couple of weeks.</p>
+<p>The Data Warehouse (“DW”) is a data product that consolidates key data assets to help you understand your business and product. It forms the basis for all analyses, dashboards, and data products, providing a consistent narrative.</p>
 
-<h3 id="iot">IoT</h3>
+<p>Data assets in the Data Warehouse come with data contracts that clearly define SLOs, ownership, and appropriate use. These assets adhere to Shopify’s data modeling standards, making them easy to work with. Data Engineers aim to deliver impactful, long-lasting, reusable, official data assets to the DW.</p>
 
-<p>What a crazy buzzword. I am not planning to explain and try to prove how big and cool Internet of Things (IoT) is or will be. Every manufacturer now pretends to build IoT type of devices. They all want to jump aboard this massive trend that, they hope, will help them generate <em>gazillions</em> of dollars. IoT being a relatively young area, in comparison with M2M, there is still a lot of issues and things to solve about it. One of them is <strong>security</strong>.</p>
+<p>However, not everything belongs in the Data Warehouse.</p>
 
-<h3 id="security">Security</h3>
+<ul>
+  <li>The Data Warehouse is not a collection of all data tables ever created at Shopify.</li>
+  <li>The Data Warehouse does not contain all the modeled data.</li>
+  <li>The Data Warehouse does not include all data reviewed or used by a specific tool.</li>
+</ul>
 
-<p>I hope you are not discovering that security in the IoT world is an issue. There are already millions of devices “on the field” and security is a big issue. Most of these devices are done by manufacturers that only want to keep up with competitors. There are tons of examples of security issues in the IoT world. I will include some example in the reference section.</p>
+<h2 id="the-main-story">The Main Story</h2>
 
-<p>Security is a major concern and needs a real solution and we can’t expect device manufacturers to take care of it because, no offence, they are not expert in security, they are expert in cars or water meter or smart locks but not in security.</p>
+<p>A well-executed Data Warehouse narrates the stories of our businesses and products. It compiles all crucial information, enabling us to make informed decisions and build superior data products.</p>
 
-<h3 id="a-solution">A solution</h3>
+<p>To do this, you must consider the story that is relevant to your team or area. For instance, if I work in the Shopify Payments team, my colleagues and I have a deep understanding of the data from that area. We should consider what information other teams might find useful. What are the elements that we want to present in a format that others can easily consume?</p>
 
-<p>First, I am not pretending to be a security expert or anything close. But I am actually not so bad at telecom and IoT devices needs connectivity to send there so valuable ones and zeros. One of the projects I worked on (<a href="https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2016020726" target="_blank" rel="nofollow noopener">CMCS</a>) in the past is an advance connectivity service for IoT devices. I don’t want to enter in detail about that service, but one of the main characteristics was all the security benefits.</p>
+<p>This is what you aim to reveal in the Data Warehouse. You should view these tables as a product you are creating for others to use. At this stage, you should not be thinking about a specific dashboard or question you want to answer. Your table should serve as a foundation for others to build upon.</p>
 
-<p>That services brings a very high security pipe between your devices and some application server or cloud application. If the device is completely secure from a network perspective, we are convinced that device security would be way better. It would bring the same level of security as a cellular call.</p>
+<p>Engineers excel at this, they have APIs. APIs provide a clear interface where you offer a specific service for others to use. It comes with a specific guarantee (SLA/SLO, etc).</p>
 
-<h2 id="the-real-issue">The Real Issue</h2>
+<p>What I create as a Shopify Payments data modeler is this API for others to understand my world of Shopify Payments. Our data itself is a product, and I can make an impact with it when I model it effectively for others to use and build things with.</p>
 
-<p>After talks with many different players in the industry going from device manufacturers, telecom operators, IoT service providers, Academics, Consumer, etc. I realized that solutions exist. Yes there is our solution, but there are tons of solutions. Some very specialized that covers a small piece of the puzzle, some more generic that covers, or try to cover all the puzzle.</p>
+<h3 id="what-are-the-assets-of-the-data-warehouse">What are the assets of the Data Warehouse?</h3>
 
-<p>So if there is known solutions currently available why don’t they are in use today. It’s simple. <strong>It’s not a priority</strong>. Even if technology geeks like us care a lot about it, the average consumer doesn’t. The goal of the device manufacturer is to sell devices. They will do whatever makes their customer happy on a budget and features point of view. The current reality is the consumer doesn’t care enough. They care if you ask them in a survey or on the street, but when it comes to paying more for the same device to be secure it is another game.</p>
+<p>Like APIs, the ability to query is only part of the equation. Everything surrounding the actual API is even more important:</p>
 
-<p>Sadly security is not seen as a feature. People assume things are secure, the same way they assume they are reliable (which is another interesting subject). They assume everything they buy is secure and safe until something happens and only then they realize the importance of security.</p>
+<ul>
+  <li>Data tables (what people actually use)</li>
+  <li>The code that generates the table (DBT, Spark, etc.)</li>
+  <li>Documentation (often overlooked, but crucial. If people can’t find your data or understand it, it’s useless. This includes usage instructions, data representation, caveats, etc.)</li>
+  <li>Metadata</li>
+  <li>Service level agreement/objectives (SLA/SLOs)</li>
+  <li>Maintenance</li>
+</ul>
 
-<h2 id="final-toughs">Final toughs</h2>
+<p>Good APIs (like Stripe’s) are known for their simplicity and cohesion. When you query Stripe’s API, you get a consistent experience across products, and standardized documentation that makes understanding multiple features easy.</p>
 
-<p>As much as I think security is a key issue, for the security to be implemented for real in IoT one of the two following things needs to happen:</p>
+<p><strong>Organizing the data team’s work around the org chart is a major risk when building a Data Warehouse</strong>. It might seem easy to organize data into buckets that match your org chart, but what happens when the org chart changes? What if a data product needs to cross org chart lines, and different buckets have different standards? This is why we prioritize company-wide standardization over individual team goals, and we do not organize the Data Warehouse by org chart. Instead, we organize into data domains, which exist regardless of the org chart’s state.</p>
 
-<ol>
-  <li>Consumer ready to drop some bucks and to give up on some features. That will require a key thing called, <strong>Education</strong>. When people are educated about the risks like they are with other concepts like drinking and driving, most of them will be more careful when they will select their brand-new connected whatever.</li>
-  <li>Government to impose rules like they did in telecom industry. But the massive issue with this one is the Internet in Internet of things. By conception the Internet is made to do whatever you want, with no “legal rules” whatsoever. You can design your own protocols as long as you play with the rest of the stack under you, you are fine. This also means that the market decide what service and protocol to use and usually without really knowing the consequences.</li>
-</ol>
+<h3 id="its-not-only-about-the-inside">It’s not only about the inside</h3>
 
-<p>In the meantime, I will keep on using and developing IoT related services and I will try to be as secure as possible.</p>
+<p>In the context of the Data Warehouse, no single table is more important than the warehouse itself. It’s like Lego bricks.
+​<img src="assets/images/posts/20230721/lego.png#center" alt="lego" /></p>
 
-<h2 id="references">References</h2>
+<p>One of Lego’s strengths, and the reason it has outperformed its competition, is the quality and ease of stacking bricks. They fit together well, but are also easy to take apart. Any Lego brick can be used instantly, and you never doubt that it will connect with any other Lego bricks.</p>
 
-<ol>
-  <li><a href="https://thelonenutblog.wordpress.com/" target="_blank" rel="nofollow noopener">The Lone Nut (My colleague Blog):</a></li>
-  <li>IoT Security issues: <a href="http://money.cnn.com/gallery/technology/security/2013/05/01/shodan-most-dangerous-internet-searches/index.html" target="_blank" rel="nofollow noopener">1</a> – <a href="http://gizmodo.com/a-creepy-website-is-streaming-from-73-000-private-secur-1655653510" target="_blank" rel="nofollow noopener">2</a></li>
-  <li>CMCS: <a href="https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2016051237" target="_blank" rel="nofollow noopener">Patent 1</a> – <a href="https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2016020726" target="_blank" rel="nofollow noopener">Patent 2</a> – <a href="https://arxiv.org/abs/1507.08233" target="_blank" rel="nofollow noopener">Publication</a></li>
-</ol>
+<p>This is because all Lego bricks must fit together. They all have the same connection format, which has been consistent for all blocks ever made. The quality of that connection is also guaranteed. Lego bricks always fit together.</p>
 
+<p>There might be many ways a specific block could have been optimized if it were built slightly differently, but Lego chose to optimize for the overall experience rather than each individual block. This makes them easy to work with. Lego prioritized global optimization over local optimization. This global optimization, combined with high quality standards, has allowed Lego to dominate their industry.</p>
+
+<p>Designing a Data Warehouse is similar. When you start designing a table, you need to optimize for the overall good of the entire warehouse, rather than focusing on the micro-optimization of one specific dataset.</p>
+
+<p>Standardization of the Data Warehouse is one of its key requirements. Without this, we won’t have a cohesive Data Warehouse, but rather a collection of tables that barely interact with each other, much like Lego blocks that don’t connect.</p>
+
+<h2 id="the-data-warehouse-treaty">The Data Warehouse Treaty</h2>
+
+<h3 id="roles">Roles</h3>
+
+<p>The Data Warehouse contains primitives, which you publish for others to use. This is typically where ownership between teams diverges.</p>
+
+<p>​<img src="assets/images/posts/20230721/datawarehouse_dia.png#center" alt="data_warehouse" />​</p>
+
+<h4 id="product-data-team">Product data team</h4>
+
+<p>The product data team’s role is to produce the Primitives Datasets (also called Intermediate Datasets) that anyone can use to understand what’s happening in that domain. They are also responsible for documenting and maintaining these datasets, ensuring they are accurate and represent reality without unnecessary team-specific interpretation or filtering.
+​
+However, it’s not this team’s responsibility to create all potential marts/dashboards/analyses that pertain to the domain. Some critical dashboards may be part of the Data Warehouse, but not all. Dashboards with a smaller scope or those not expected to last for a long time, for example, will not be included in the Data Warehouse.</p>
+
+<h4 id="consumer-data-team">Consumer data team</h4>
+
+<p>As a consumer, I can’t expect the owners of these tables to build everything I need. I likely have my own stakeholders who want to measure KPIs across multiple domains. It’s my role to assemble the story I need from the available primitives produced by all data teams, including my own.</p>
+
+<p>For instance, if I work in the Finance team, I would like to calculate the profit and loss across Shopify. It’s my role to build my calculations using available data from all revenue-generating products, including Shopify Payments.</p>
+
+<p>The role of the Shopify Payments team in this treaty is to ensure all necessary primitives exist, so the Finance team can calculate the KPIs they’re interested in. Since Shopify Payments is already treating their data as a product and shipping it to the Data Warehouse for broad, use-case independent consumption, it’s expected that I can use their data even for my Finance use case.</p>
+
+<p>If Shopify Payments hasn’t yet exposed the needed data in the Data Warehouse (i.e., there are missing primitives in the dataset needed for Finance to produce what’s expected), it’s important to communicate between teams to explain requirements and the rationale for the needs.</p>
+
+<p>Note that each team usually plays two roles: one as a data producer that needs to build Primitives for the rest of the company, and another as a consumer data team doing analysis, dashboards, and more. Ideally, they consume from the same datasets they offer in their slice of the data warehouse.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The Data Warehouse is not just a collection of tables; it’s a carefully crafted series of cohesive tables that tell the stories of Shopify, its products, and its merchants. It’s built for other internal teams or merchants to consume.</p>
+
+<p>Building a world-class Data Warehouse requires treating it as a top-tier product, with high data and engineering standards.</p>
+
+<p>A well-crafted Data Warehouse is greater than the sum of its parts, much like a LEGO masterpiece is far greater than the sum of the individual LEGO blocks that compose it.</p>
+
+<h3 id="special-thanks">Special thanks</h3>
+
+<p>Special thank you to some of my colleagues that helped me edit this post.</p>
 
             </div>
             <footer class="post-footer">
                 
                 <p class="post-tags">
                      
-                    <a href='tag/misc/'>misc</a>
-                    
-                     
-                    <a href='tag/ericsson/'>ericsson</a>
-                    
-                     
-                    <a href='tag/iot/'>iot</a>
+                    <a href='tag/data_eng/'>data_eng</a>
                     
                     
                 </p>
                 
                 <div class="post-share">
                     <span class="post-share-title">Share:</span>
-                    <a target="_blank" href="https://twitter.com/share?text=The+real+challenge+in+IoT+security&amp;url=https://coffeeanddata.careal-challenge-iot-security">Twitter</a>
-                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://coffeeanddata.careal-challenge-iot-security">Facebook</a>
+                    <a target="_blank" href="https://twitter.com/share?text=Data+Warehouse+Manifesto&amp;url=https://coffeeanddata.cadata-warehouse-manifesto">Twitter</a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://coffeeanddata.cadata-warehouse-manifesto">Facebook</a>
                 </div><!-- .share-post -->
             </footer>
             <div class="author-box">
@@ -200,33 +240,33 @@
         <section class="read-next inner">
             <h2 class="read-next-title">Read Next</h2>
             
-            
             <article class="post">
                 <header class="post-header">
                     <div class="post-meta">
-                        <time class="published" datetime="May 15, 2017">May 15, 2017</time>
+                        <time class="published" datetime="December 20, 2022">December 20, 2022</time>
                     </div>
-                    <h3 class="post-title"><a href="/memories-should-stay-forever">Memories should stay forever</a></h3>
+                    <h3 class="post-title"><a href="/no-longer-ds">I am no longer a Data Scientist</a></h3>
                     <p class="post-tags">
                         
                         
                         
-                        <a href='/tag/misc/'>Misc</a>
+                        <a href='/tag/data_eng/'>Data_eng</a>
                         
                         
                         
-                        <a href='/tag/perso/'>Perso</a>
+                        <a href='/tag/shopify/'>Shopify</a>
                         
                         
                         
                     </p>
                 </header>
                 
-                <a href="/memories-should-stay-forever" class="post-thumbnail">
-                    <img src="assets/images/posts/20170515/hard_drive.jpg" alt="Memories should stay forever" />
+                <a href="/no-longer-ds" class="post-thumbnail">
+                    <img src="assets/images/posts/20221220/dashboard_laptop.jpg" alt="I am no longer a Data Scientist" />
                 </a>
                 
             </article>
+            
             
         </section><!-- .read-next -->
     </main><!-- .site-main -->
