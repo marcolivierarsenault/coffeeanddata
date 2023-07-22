@@ -5,8 +5,8 @@
     <description>Data Blog by Marc-Olivier Arsenault</description>
     <link>https://coffeeanddata.ca/</link>
     <atom:link href="https://coffeeanddata.ca/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 22 Jul 2023 13:38:56 +0000</pubDate>
-    <lastBuildDate>Sat, 22 Jul 2023 13:38:56 +0000</lastBuildDate>
+    <pubDate>Sat, 22 Jul 2023 13:44:23 +0000</pubDate>
+    <lastBuildDate>Sat, 22 Jul 2023 13:44:23 +0000</lastBuildDate>
     <generator>Jekyll v4.3.2</generator>
     
       <item>
@@ -43,7 +43,7 @@
 
 &lt;h3 id=&quot;what-are-the-assets-of-the-data-warehouse&quot;&gt;What are the assets of the Data Warehouse?&lt;/h3&gt;
 
-&lt;p&gt;Like APIs, the ability to query is only part of the equation. Everything surrounding the actual API is even more important:&lt;/p&gt;
+&lt;p&gt;Like APIs, the ability to query it, is only a part of the equation. Everything surrounding the actual API is even more important:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Data tables (what people actually use)&lt;/li&gt;
@@ -70,6 +70,10 @@
 &lt;p&gt;There might be many ways a specific block could have been optimized if it were built slightly differently, but Lego chose to optimize for the overall experience rather than each individual block. This makes them easy to work with. Lego prioritized global optimization over local optimization. This global optimization, combined with high quality standards, has allowed Lego to dominate their industry.&lt;/p&gt;
 
 &lt;p&gt;Designing a Data Warehouse is similar. When you start designing a table, you need to optimize for the overall good of the entire warehouse, rather than focusing on the micro-optimization of one specific dataset.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;no single table is more &lt;br /&gt; important than the warehouse itself&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;Standardization of the Data Warehouse is one of its key requirements. Without this, we won’t have a cohesive Data Warehouse, but rather a collection of tables that barely interact with each other, much like Lego blocks that don’t connect.&lt;/p&gt;
 
