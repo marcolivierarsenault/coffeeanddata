@@ -15,6 +15,7 @@ mailchimp_url: '//coffeeanddata.us18.list-manage.com/subscribe/post?u=0d3439b286
 cover_image: bg5.jpg
 # Add your GA Tracking Id
 ga_analytics: G-PZTRVPSWT5
+ga_analytics_integrity: sha256-xKbTDBVolaS8AtX1G6e0q1CC8OrSJVDXQD6xCMvQrbg=
 
 
 # Author
