@@ -5,8 +5,8 @@
     <description>Data Blog by Marc-Olivier Arsenault</description>
     <link>https://coffeeanddata.ca/</link>
     <atom:link href="https://coffeeanddata.ca/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 26 Jul 2023 23:04:41 +0000</pubDate>
-    <lastBuildDate>Wed, 26 Jul 2023 23:04:41 +0000</lastBuildDate>
+    <pubDate>Sat, 29 Jul 2023 12:41:23 +0000</pubDate>
+    <lastBuildDate>Sat, 29 Jul 2023 12:41:23 +0000</lastBuildDate>
     <generator>Jekyll v4.3.2</generator>
     
       <item>
@@ -190,7 +190,7 @@ PM Product Manager&lt;/li&gt;
 &lt;p&gt;Here you go:&lt;/p&gt;
 
 &lt;div class=&quot;embed-container&quot;&gt;
-    &lt;iframe src=&quot;https://player.vimeo.com/video/718913702&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;
+    &lt;iframe src=&quot;https://player.vimeo.com/video/718913702&quot; width=&quot;500&quot; height=&quot;281&quot; title=&quot;Vimeo Video&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;
     &lt;/iframe&gt;
   &lt;/div&gt;
 
