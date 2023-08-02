@@ -13,4 +13,4 @@ group :jekyll_plugins do
   gem 'jekyll-sitemap'
 end
 
-gem "html-proofer", "~> 3.2"
+gem "html-proofer", "~> 5.0"
