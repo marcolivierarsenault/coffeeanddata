@@ -15,7 +15,7 @@
     {% endif %}
 
     <!-- Site Favicon -->
-    <link rel="shortcut icon" href="{{ site.url }}/{{ site.baseurl }}{{ site.favicon }}" type="image/png" />
+    <link rel="shortcut icon" href="{{ site.url }}/{{ site.baseurl }}/{{ site.favicon }}" type="image/png" />
 
     <!-- Font Embed Code -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap" rel="stylesheet">
 
     <!-- CSS Styles -->
-    <link href="{{ site.baseurl }}/assets/css/style.css" rel="stylesheet">
+    <link href="{{ site.url }}/{{ site.baseurl }}/assets/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -36,7 +36,7 @@
 
         <div class="hero-wrap">
             {% if site.cover_image %}
-            <div class="hero-wrap-bg" style="background-image: url({{site.baseurl}}/assets/images/{{site.cover_image}})"></div>
+            <div class="hero-wrap-bg" style="background-image: url({{ site.url }}/{{ site.baseurl }}/assets/images/{{site.cover_image}})"></div>
             {% endif %}
             {% include header.html %}
             <section class="hero outer fadeInDown delay_075s">
@@ -84,9 +84,9 @@
     {% include analytics.html %}
     {% endif %}
     <!-- Javascript Assets -->
-    <script src="{{ site.baseurl }}/assets/js/jquery.min.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/plugins.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/custom.js"></script>
+    <script src="{{ site.url }}/{{ site.baseurl }}/assets/js/jquery.min.js"></script>
+    <script src="{{ site.url }}/{{ site.baseurl }}/assets/js/plugins.js"></script>
+    <script src="{{ site.url }}/{{ site.baseurl }}/assets/js/custom.js"></script>
 
 </body>
 
