@@ -40,7 +40,7 @@ jobs:
           ruby-version: "3.2" # Not needed with a .ruby-version file
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: build
-        run: JEKYLL_ENV=staging bundle exec jekyll build --verbose -b ${{ steps.branch-name.outputs.current_branch }} --config _config.yml,staging.yml --future --destination site
+        run: JEKYLL_ENV=staging bundle exec jekyll build --verbose --config _config.yml,staging.yml --future --destination site
       - uses: AbleLincoln/push-to-sftp@v1.0
         with:
             host: ${{ secrets.SERVER_IP }}
