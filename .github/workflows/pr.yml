@@ -47,4 +47,4 @@ jobs:
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
             sourceDir: ./site
-            targetDir: ./upload/
+            targetDir: ./upload/${GITHUB_REF##*/}
