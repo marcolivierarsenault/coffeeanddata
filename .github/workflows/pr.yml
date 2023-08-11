@@ -26,3 +26,25 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    environment:
+      name: staging
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2" # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: build
+        run: JEKYLL_ENV=staging bundle exec jekyll build --verbose --future --destination site
+      - run: echo "staging.coffeeanddata.ca" > ./site/CNAME
+      - uses: AbleLincoln/push-to-sftp@v1.0
+        with:
+            host: ${{ secrets.SERVER_IP }}
+            port: ${{ secrets.SERVER_PORT }}
+            username: ${{ secrets.USERNAME }}
+            password: ${{ secrets.PASSWORD }}
+            sourceDir: ./site
+            targetDir: ./upload/
