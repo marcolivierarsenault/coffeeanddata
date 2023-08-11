@@ -33,6 +33,9 @@ jobs:
       name: staging
     steps:
       - uses: actions/checkout@v3
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v7
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.2" # Not needed with a .ruby-version file
@@ -47,4 +50,4 @@ jobs:
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
             sourceDir: ./site
-            targetDir: ./upload/${GITHUB_REF##*/}
+            targetDir: ./upload/${{ steps.branch-name.outputs.current_branch }}
