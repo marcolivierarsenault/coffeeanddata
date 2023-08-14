@@ -39,11 +39,11 @@ jobs:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: build
         run: JEKYLL_ENV=staging bundle exec jekyll build --verbose --config _config.yml,staging.yml --future --destination site
-      - uses: AbleLincoln/push-to-sftp@v1.0
+      - uses: AbleLincoln/push-to-sftp@v2.1
         with:
             host: ${{ secrets.SERVER_IP }}
             port: ${{ secrets.SERVER_PORT }}
             username: ${{ secrets.USERNAME }}
-            password: ${{ secrets.PASSWORD }}
+            privateKey: ${{ secrets.KEY }}
             sourceDir: ./site
             targetDir: ./upload/
