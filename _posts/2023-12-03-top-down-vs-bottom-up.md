@@ -2,9 +2,9 @@
 layout: post
 title: 'Top Down vs Bottom Up'
 tags: [misc]
-featured_image_thumbnail: assets/images/posts/20230827/topbottom.png
-featured_image: assets/images/posts/20230827/topbottom.png
-image: assets/images/posts/20230827/topbottom.png
+featured_image_thumbnail: assets/images/posts/20231203/topbottom.png
+featured_image: assets/images/posts/20231203/topbottom.png
+image: assets/images/posts/20231203/topbottom.png
 featured: true
 hidden: true
 ---
@@ -25,7 +25,7 @@ In the diverse and intricate world of software engineering, there are countless 
 
 In engineering, the Bottom-Up approach often starts with an engineer, fueled by a genuine desire to create the most efficient system, taking a deep dive into the potential capabilities of the underlying system. The goal? To hand over the reins to the user, giving them full control over every aspect of the system.
 
-​![submarine](assets/images/posts/20230827/submarine.jpeg#center)
+​![submarine](assets/images/posts/20231203/submarine.jpeg#center)
 
 Imagine this as handing over a box of Lego bricks along with a manual. But here's the catch - this manual doesn't guide you on how to build a specific toy. Instead, it offers insights into the different ways to assemble the bricks and the limits of heights and weights that the Lego structure can withstand.
 
@@ -39,7 +39,7 @@ It's akin to trying to build a castle with a box of Lego bricks and a manual tha
 
 In contrast to the Bottom-Up approach, the Top-Down approach resembles presenting someone with a fully built Lego toy. The user doesn't even need to know it's made of Lego bricks. They're interested in the toy itself, and how it's constructed is irrelevant to them. This approach zeroes in on a clear use case and has strong opinions on usage. It strategically cherry-picks parts of the underlying system to deliver a clear, concise solution to the end-user.
 
-​![lego](assets/images/posts/20230827/lego.png#center)
+​![lego](assets/images/posts/20231203/lego.png#center)
 
 Engineers who embrace this approach are champions of simplicity and usability. They dive deep into understanding the user's problem and are committed to delivering a solution that directly addresses it. This might mean making compromises and occasionally restricting advanced usage. However, the endgame is a product that is not just easy to use, but also serves its intended purpose effectively.
 
