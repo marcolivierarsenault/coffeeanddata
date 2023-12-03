@@ -19,7 +19,7 @@ _Important note_: This is my first attempt at using ChatGPT to generate the arti
 
 ## Top Down vs Bottom Up
 
-In the diverse and intricate world of engineering, there are countless ways to tackle a problem. However, two strategies often rise to the surface due to their contrasting philosophies: the Bottom-Up and the Top-Down approach. While both have their merits, and each has proven successful in various scenarios, the choice between them is not equal.
+In the diverse and intricate world of software engineering, there are countless ways to tackle a problem. However, two strategies often rise to the surface due to their contrasting philosophies: the Bottom-Up and the Top-Down approach. While both have their merits, and each has proven successful in various scenarios, the choice between them is not equal.
 
 ### The Bottom-Up Approach: An In-Depth Look
 
@@ -29,7 +29,7 @@ In engineering, the Bottom-Up approach often starts with an engineer, fueled by 
 
 Imagine this as handing over a box of Lego bricks along with a manual. But here's the catch - this manual doesn't guide you on how to build a specific toy. Instead, it offers insights into the different ways to assemble the bricks and the limits of heights and weights that the Lego structure can withstand.
 
-Engineers who favor this approach are firm believers in offering complete flexibility and control to the users. They steer clear of making assumptions about how the system should be used, choosing instead to expose all options and controls to downstream systems, APIs, or users. This approach empowers users to tailor the system to their specific requirements.
+Engineers who favor this approach are firm believers in offering complete flexibility and control to the users. They steer clear of making assumptions about how the system should be used, choosing instead to expose all options and controls to downstream systems, APIs, or users. This approach empowers users to tailor the system to their specific requirements. They frequently do this, because they like systems that offers the this flexibility.
 
 However, like all things in life, the Bottom-Up approach comes with its own set of challenges. By putting all the system's capabilities on display, it can lead to a complex and difficult-to-navigate interface for the user. Users are presented with a plethora of options but without clear guidance on how to achieve their specific goal.
 
@@ -55,7 +55,7 @@ The reality is, many engineers, by default, lean towards the Bottom-Up approach.
 
 On the other hand, there's the Top-Down approach. This strategy, which focuses on simplifying the user experience, may initially seem restrictive to some engineers. It might feel like it limits advanced usage. However, it's an approach that ensures the end product is user-friendly and serves its purpose effectively.
 
-> The Top-Down, it is about solving a real problem for the user, and it’s not about exposing the underlying system.
+> The Top-Down, it is about solving a real problem for the user, and it’s not about exposing the underlying system and tools.
 
 As engineers, we need to shift our perspective. It's not just about building powerful systems; it's about creating solutions that meet our users' needs. And often, that means embracing the Top-Down approach. By putting the user at the heart of our decision-making process, we can create products that are not only powerful but also simple, elegant, and effective.
 
