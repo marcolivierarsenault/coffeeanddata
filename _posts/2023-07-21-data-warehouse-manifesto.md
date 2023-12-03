@@ -2,11 +2,8 @@
 layout: post
 title: 'Data Warehouse Manifesto'
 tags: [data_eng]
-featured_image_thumbnail: assets/images/posts/20230721/datawarehouse.png
 featured_image: assets/images/posts/20230721/datawarehouse.png
 image: assets/images/posts/20230721/datawarehouse.png
-featured: true
-hidden: true
 ---
 My approach to the Data Warehouse and how company like Shopify should think about them.
 
