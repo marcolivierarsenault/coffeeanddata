@@ -70,3 +70,5 @@ So, as we stand at the crossroads of the Bottom-Up and Top-Down approaches, the 
 ### Thought on ChatGPT
 
 While this post is not perfect and slightly too repetitive, I am really impress by it, I am surprised by the quality of the analogies it picked.
+
+_This article was written in collaboration with ChatGPT_
