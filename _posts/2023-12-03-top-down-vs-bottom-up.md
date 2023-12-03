@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Top Down vs Bottom Up'
-tags: [misc]
+tags: [misc,chatgpt]
 featured_image_thumbnail: assets/images/posts/20231203/topbottom.png
 featured_image: assets/images/posts/20231203/topbottom.png
 image: assets/images/posts/20231203/topbottom.png
