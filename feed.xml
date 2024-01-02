@@ -5,9 +5,9 @@
     <description>Data Blog by Marc-Olivier Arsenault</description>
     <link>https://coffeeanddata.ca/</link>
     <atom:link href="https://coffeeanddata.ca/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 12 Dec 2023 18:22:16 +0000</pubDate>
-    <lastBuildDate>Tue, 12 Dec 2023 18:22:16 +0000</lastBuildDate>
-    <generator>Jekyll v4.3.2</generator>
+    <pubDate>Tue, 02 Jan 2024 00:25:15 +0000</pubDate>
+    <lastBuildDate>Tue, 02 Jan 2024 00:25:15 +0000</lastBuildDate>
+    <generator>Jekyll v4.3.3</generator>
     
       <item>
         <title>Top Down vs Bottom Up</title>
@@ -153,7 +153,7 @@
 &lt;p&gt;Designing a Data Warehouse is similar. When you start designing a table, you need to optimize for the overall good of the entire warehouse, rather than focusing on the micro-optimization of one specific dataset.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;no single table is more &lt;br /&gt; important than the warehouse itself&lt;/p&gt;
+  &lt;p&gt;no single table is more &lt;br /&gt; important than the warehouse itself.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Standardization of the Data Warehouse is one of its key requirements. Without this, we won’t have a cohesive Data Warehouse, but rather a collection of tables that barely interact with each other, much like Lego blocks that don’t connect.&lt;/p&gt;
