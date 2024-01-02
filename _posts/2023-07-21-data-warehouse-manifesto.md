@@ -61,7 +61,7 @@ There might be many ways a specific block could have been optimized if it were b
 
 Designing a Data Warehouse is similar. When you start designing a table, you need to optimize for the overall good of the entire warehouse, rather than focusing on the micro-optimization of one specific dataset.
 
->no single table is more <br> important than the warehouse itself
+>no single table is more <br> important than the warehouse itself.
 
 Standardization of the Data Warehouse is one of its key requirements. Without this, we won't have a cohesive Data Warehouse, but rather a collection of tables that barely interact with each other, much like Lego blocks that don't connect.
 
