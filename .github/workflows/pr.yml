@@ -43,6 +43,7 @@ jobs:
         with:
             host: ${{ secrets.SERVER_IP }}
             port: ${{ secrets.SERVER_PORT }}
+            username: ${{ secrets.USERNAME }}
             privateKey: ${{ secrets.KEY }}
             sourceDir: ./site
             targetDir: ./upload/
