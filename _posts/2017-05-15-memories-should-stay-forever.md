@@ -39,7 +39,7 @@ Let’s say that I am a bit lazy and there is no way I will do this every year. 
 
 ### Flash Drive (SSD, USB Key)
 
- At this point I had high hope for this one … but it is only good for 10 years. After this I wonder if a good, consumer ready, solution existed. There is no way I am going to buy one of these old tape drive machine, and to be fair I don’t even know if they last for long.  
+ At this point I had high hope for this one … but it is only good for 10 years. After this I wonder if a good, consumer ready, solution existed. There is no way I am going to buy one of these old tape drive machine, and to be fair I don’t even know if they last for long.
 
 ### M-DISC
 
@@ -70,7 +70,7 @@ Here is a quick video from their website that explains the solution.
 
 #### Security
 
-Obviously everything is encrypted. I am no security expert and you can get more details <a href="http://blog.storj.io/post/145305561698/how-storj-increases-object-storage-security" target="_blank" rel="noopener nofollow">here</a> about the underling details of their encryption mechanism. You are responsible for your own keys, if you lose them it’s too bad, no recovery possible. Their is no central management, it&#8217;s a real distributed solution.
+Obviously everything is encrypted. I am no security expert and you can get more details <a href="https://www.storj.io/blog/how-storj-increases-object-storage-security-exponentially" target="_blank" rel="noopener nofollow">here</a> about the underling details of their encryption mechanism. You are responsible for your own keys, if you lose them it’s too bad, no recovery possible. Their is no central management, it&#8217;s a real distributed solution.
 
 #### Farming
 
