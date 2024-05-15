@@ -17,7 +17,6 @@ At the end of the day, nothing we build is about data and/or technology. It is a
 ### Other interesting blogs
 
 [The Lone Nut](https://thelonenutblog.wordpress.com/) – Former Colleague doing a very interesting technological blog.
-[Beyond the tech hype](https://beyondthetechhype.blog/)  – Also a Former colleague, also doing a cool blog.
 [Ian Whitestone](https://ianwhitestone.work/)  – You guessed it... a cool data science blog
 
 #### Disclaimer
