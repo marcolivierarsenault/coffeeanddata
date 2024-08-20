@@ -9,7 +9,7 @@ featured: true
 hidden: true
 ---
 
-Early in my career, I was lucky enough to have a [mentor](https://www.linkedin.com/in/stevenrochefort/) who had a unique way of simplifying complex ideas. One of the most crucial lessons he imparted was an understanding of two distinct engineering approaches: the Bottom-Up and the Top-Down approach. This insight has significantly shaped my perspective on problem-solving and continues to influence my decisions as an data engineer.
+DADAEarly in my career, I was lucky enough to have a [mentor](https://www.linkedin.com/in/stevenrochefort/) who had a unique way of simplifying complex ideas. One of the most crucial lessons he imparted was an understanding of two distinct engineering approaches: the Bottom-Up and the Top-Down approach. This insight has significantly shaped my perspective on problem-solving and continues to influence my decisions as an data engineer.
 
 <!--more-->
 
