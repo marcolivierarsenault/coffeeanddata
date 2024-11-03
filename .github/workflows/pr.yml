@@ -14,7 +14,7 @@ jobs:
         run: JEKYLL_ENV=production bundle exec jekyll build --verbose --future --destination site
       - run: echo "coffeeanddata.ca" > ./site/CNAME
       - name: test
-        run: bundle exec htmlproofer --assume-extension .html --allow-hash-href --no-enforce_https --typhoeus '{"ssl_verifypeer": false}' --no-check-external-hash --ignore-status-code 999,403,500 --ignore-urls "/twitter*/,/gstatic*/,/google*/,/tag*/"  ./site
+        run: bundle exec htmlproofer --assume-extension .html --allow-hash-href --no-enforce_https --no-check-external-hash --ignore-status-code 999,403,500 --ignore-urls "/twitter*/,/gstatic*/,/google*/,/tag*/"  ./site
   sonarQube:
     name: SonarQube
     runs-on: ubuntu-latest
