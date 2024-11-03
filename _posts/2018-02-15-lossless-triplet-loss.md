@@ -51,7 +51,7 @@ def triplet_loss(y_true, y_pred, alpha = 0.4):
     loss = K.maximum(basic_loss,0.0)
 
     return loss
-  
+
 def create_base_network(in_dims, out_dims):
     """
     Base network to be shared.
@@ -67,7 +67,7 @@ def create_base_network(in_dims, out_dims):
     model.add(BatchNormalization())
 
     return model
-  
+
 in_dims = (N_MINS, n_feat)
 out_dims = N_FACTORS
 
@@ -140,7 +140,7 @@ In other words, you cannot trust the loss function result, as an example here is
 
 ## OTHER LOSSES
 
-Another famous loss function the contrastive loss describe by Yan LeCun and his team in their paper [Dimensionality Reduction by Learning an Invariant Mapping](http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf) is also maxing the negative result, which creates the same issue.
+Another famous loss function the contrastive loss describe by Yan LeCun and his team in their paper [Dimensionality Reduction by Learning an Invariant Mapping](https://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf) is also maxing the negative result, which creates the same issue.
 
 {% include image-caption.html imageurl="assets/images/posts/20180215/lecunFormula.png#center"
 title="The Contrastive Loss Function, (LeCun)" caption="The Contrastive Loss Function, (LeCun)" %}
@@ -211,7 +211,7 @@ def lossless_triplet_loss(y_true, y_pred, N = 3, beta=N, epsilon=1e-8):
     # distance between the anchor and the negative
     neg_dist = tf.reduce_sum(tf.square(tf.subtract(anchor,negative)),1)
 
-    #Non Linear Values  
+    #Non Linear Values
 
     # -ln(-x/N+1)
     pos_dist = -tf.log(-tf.divide((pos_dist),beta)+1+epsilon)

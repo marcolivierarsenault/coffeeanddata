@@ -14,7 +14,7 @@
         {
             "label": "Test",
             "type": "shell",
-            "command": "bundle exec htmlproofer --assume-extension .html --allow-hash-href --no-enforce_https --no-check-external-hash --ignore-status-code 999,403,500 --ignore-urls \"/twitter*/,/gstatic*/,/google*/,/tag*/\"  ./_site",
+            "command": "bundle exec htmlproofer --assume-extension .html --allow-hash-href --typhoeus '{ \"ssl_verifypeer\": false }' --no-enforce_https --no-check-external-hash --ignore-status-code 999,403,500 --ignore-urls \"/twitter*/,/gstatic*/,/google*/,/tag*/\"  ./_site",
         }
     ]
 }
