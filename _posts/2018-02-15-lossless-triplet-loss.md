@@ -140,7 +140,7 @@ In other words, you cannot trust the loss function result, as an example here is
 
 ## OTHER LOSSES
 
-Another famous loss function the contrastive loss describe by Yan LeCun and his team in their paper [Dimensionality Reduction by Learning an Invariant Mapping](https://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf) is also maxing the negative result, which creates the same issue.
+Another famous loss function the contrastive loss describe by Yan LeCun and his team in their paper *Dimensionality Reduction by Learning an Invariant Mapping* is also maxing the negative result, which creates the same issue.
 
 {% include image-caption.html imageurl="assets/images/posts/20180215/lecunFormula.png#center"
 title="The Contrastive Loss Function, (LeCun)" caption="The Contrastive Loss Function, (LeCun)" %}
