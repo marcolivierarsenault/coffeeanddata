@@ -24,19 +24,21 @@
  * 9. Media Queries
 */
 
-// Import variables
-@import "variables";
-@import "reset";
-@import "general";
-@import "structure";
-@import "header";
-@import "posts-pages";
-@import "comments";
-@import "pagination";
-@import "sidebar";
-@import "widgets";
-@import "footer";
-@import "media-queries";
+// Import variables first since other files will need them
+@use 'variables' as *;
+
+// Forward all other partials
+@use 'reset';
+@use 'general';
+@use 'structure';
+@use 'header';
+@use 'posts-pages';
+@use 'comments';
+@use 'pagination';
+@use 'sidebar';
+@use 'widgets';
+@use 'footer';
+@use 'media-queries';
 
 
 p.hero-description {
