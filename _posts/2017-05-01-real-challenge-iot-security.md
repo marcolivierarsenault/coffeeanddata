@@ -51,6 +51,6 @@ In the meantime, I will keep on using and developing IoT related services and I 
 ## References
 
   1. <a href="https://thelonenutblog.wordpress.com/" target="_blank" rel="nofollow noopener">The Lone Nut (My colleague Blog):</a>
-  2. IoT Security issues: <a href="http://money.cnn.com/gallery/technology/security/2013/05/01/shodan-most-dangerous-internet-searches/index.html" target="_blank" rel="nofollow noopener">1</a> &#8211; <a href="http://gizmodo.com/a-creepy-website-is-streaming-from-73-000-private-secur-1655653510" target="_blank" rel="nofollow noopener">2</a>
+  2. IoT Security issues: <a href="http://gizmodo.com/a-creepy-website-is-streaming-from-73-000-private-secur-1655653510" target="_blank" rel="nofollow noopener">1</a>
   3. CMCS: <a href="https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2016051237" target="_blank" rel="nofollow noopener">Patent 1</a> &#8211; <a href="https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2016020726" target="_blank" rel="nofollow noopener">Patent 2</a> &#8211; <a href="https://arxiv.org/abs/1507.08233" target="_blank" rel="nofollow noopener">Publication</a>
   
