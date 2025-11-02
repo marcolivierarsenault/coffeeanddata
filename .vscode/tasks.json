@@ -12,6 +12,13 @@
             "command": "JEKYLL_ENV=production bundle exec jekyll build --destination ./_site",
         },
         {
+            "label": "Upload to Staging",
+            "type": "shell",
+            "dependsOn": "Build",
+            "dependsOrder": "sequence",
+            "command": "rsync -avz --delete ./_site/ marco@192.168.2.100:~/docker-config/local_config/ftp/data/"
+        },
+        {
             "label": "Test",
             "type": "shell",
             "command": "bundle exec htmlproofer --assume-extension .html --allow-hash-href --typhoeus '{ \"ssl_verifypeer\": false }' --no-enforce_https --no-check-external-hash --ignore-status-code 999,403,500 --ignore-urls \"/twitter*/,/gstatic*/,/google*/,/tag*/\"  ./_site",
