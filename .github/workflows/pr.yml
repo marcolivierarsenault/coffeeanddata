@@ -7,24 +7,23 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.2" # Not needed with a .ruby-version file
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: build
         run: JEKYLL_ENV=production bundle exec jekyll build --verbose --future --destination site
       - run: echo "coffeeanddata.ca" > ./site/CNAME
       - name: test
-        run: bundle exec htmlproofer --assume-extension .html --allow-hash-href --typhoeus '{"ssl_verifypeer":false}' --no-enforce_https --no-check-external-hash --ignore-status-code 999,403,500 --ignore-urls "/twitter*/,/gstatic*/,/google*/,/tag*/"  ./site
+        run: bundle exec htmlproofer --assume-extension .html --allow-hash-href --typhoeus '{"ssl_verifypeer":false}' --no-enforce_https --no-check-external-hash --ignore-status-code 999,403,429,500 --ignore-urls "/twitter*/,/gstatic*/,/google*/,/tag*/"  ./site
   sonarQube:
     name: SonarQube
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - uses: sonarsource/sonarqube-scan-action@master
+      - uses: sonarsource/sonarqube-scan-action@v8.1.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
@@ -34,10 +33,9 @@ jobs:
     environment:
       name: staging
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.2" # Not needed with a .ruby-version file
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: build
         run: JEKYLL_ENV=staging bundle exec jekyll build --verbose --config _config.yml,staging.yml --future --destination site
