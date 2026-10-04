@@ -185,3 +185,13 @@ test('every image URL the Jekyll site published still serves the original bytes'
   }
 });
 
+test('every page shares the 1200x630 logo card as its social image', async () => {
+  const card = await readFile(resolve(dist, 'og-image.png'));
+  assert.equal(card.subarray(1, 4).toString(), 'PNG');
+  assert.deepEqual([card.readUInt32BE(16), card.readUInt32BE(20)], [1200, 630]);
+  for (const [path, { $ }] of pages) {
+    if (isRedirect($)) continue;
+    assert.equal($('meta[property="og:image"]').attr('content'), site + '/og-image.png', path);
+    assert.equal($('meta[name="twitter:card"]').attr('content'), 'summary_large_image', path);
+  }
+});
