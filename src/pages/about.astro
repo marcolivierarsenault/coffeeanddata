@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { site } from '../lib/site';
+---
+<Base title="About" description="Meet Marc-Olivier Arsenault, the author of Coffee and Data.">
+  <div class="narrow">
+    <header class="page-heading"><p class="eyebrow">The person behind the notebook</p><h1>Hi, I’m Marc-Olivier.</h1></header>
+    <div class="prose">
+      <p class="about-intro">I build data teams.</p>
+      <p>Coffee and Data is where I share what I learn about data, engineering, and the people doing the work.</p>
+      <p>My background spans data science and data engineering. I care about building useful data assets, helping teams do better work, and solving real problems.</p>
+      <p>At the end of the day, what we build is about people. Technology is how we get there.</p>
+      <p>You can find my projects on <a href={site.github}>GitHub</a> or connect with me on <a href={site.linkedin}>LinkedIn</a>.</p>
+      <h2>Other notebooks to explore</h2>
+      <ul><li><a href="https://thelonenutblog.wordpress.com/">The Lone Nut</a> — a former colleague’s technology blog.</li><li><a href="https://ianwhitestone.work/">Ian Whitestone</a> — writing about data and engineering.</li></ul>
+      <h2>A small disclaimer</h2>
+      <p>The views on this site are my own and don’t necessarily represent my employer’s positions, strategies, or opinions.</p>
+    </div>
+    <Newsletter compact id="about-newsletter" />
+  </div>
+</Base>

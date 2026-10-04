@@ -1,0 +1,19 @@
+---
+import { formatDate, postUrl, readingTime, tagName, type Post } from '../lib/posts';
+interface Props { posts: Post[]; }
+const { posts } = Astro.props;
+---
+<ol class="post-list">
+  {posts.map((post) => (
+    <li data-post data-search={`${post.data.title} ${post.data.description} ${post.data.tags.map(tagName).join(' ')}`.toLowerCase()}>
+      <article>
+        <div class="post-date"><time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time></div>
+        <div class="post-list-body">
+          <p class="eyebrow">{tagName(post.data.tags[0] ?? 'misc')} <span aria-hidden="true">/</span> {readingTime(post)} min read</p>
+          <h3><a href={postUrl(post)}>{post.data.title}<span aria-hidden="true"> ↗</span></a></h3>
+          <p>{post.data.description}</p>
+        </div>
+      </article>
+    </li>
+  ))}
+</ol>

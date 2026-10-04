@@ -1,0 +1,30 @@
+# External link check for the built site (dist/). Internal links, images and
+# heading fragments are already verified by `npm test`. This file only adds
+# third-party URLs, following the old HTMLProofer rules.
+#
+# Local: npm run build && npm run check:links   (requires `lychee`, e.g. `brew install lychee`)
+
+no_progress = true
+max_concurrency = 16
+timeout = 20
+max_retries = 2
+retry_wait_time = 2
+index_files = ["index.html"]
+
+# Same as the old HTMLProofer --ignore-status-code 999,403,429,500. Those
+# codes usually mean bot protection or rate limiting, not a dead page.
+accept = ["100..=103", "200..=299", "403", "429", "500", "999"]
+
+exclude = [
+  # Our own pages are verified offline by npm test. New URLs (e.g. /subscribe/)
+  # do not exist on production until this build is deployed.
+  '^https?://(www\.)?coffeeanddata\.ca',
+  # Same as HTMLProofer --ignore-urls: these services block automated checks.
+  'twitter\.com',
+  '//(www\.)?x\.com',
+  'gstatic',
+  'google',
+  # The Vimeo player returns 401 to automated requests (from GitHub runners and
+  # locally); both embedded videos were confirmed public via Vimeo oEmbed on 2026-10-04.
+  '^https://player\.vimeo\.com/video/',
+]

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://coffeeanddata.ca/sitemap-index.xml

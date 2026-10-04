@@ -1,0 +1,36 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Newsletter from '../components/Newsletter.astro';
+import PostList from '../components/PostList.astro';
+import { getPosts, tagName, tagUrl, formatDate, readingTime, type Post } from '../lib/posts';
+import { site } from '../lib/site';
+
+export async function getStaticPaths() {
+  return (await getPosts()).map(post => ({ params: { slug: post.id }, props: { post } }));
+}
+interface Props { post: Post; }
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const contents = headings.filter(heading => heading.depth === 2);
+const otherPosts = (await getPosts()).filter(other => other.id !== post.id);
+const related = otherPosts.map(other => ({
+  post: other, score: other.data.tags.filter(tag => post.data.tags.includes(tag)).length,
+})).sort((a, b) => b.score - a.score).slice(0, 2).map(({ post }) => post);
+---
+<Base title={post.data.title} description={post.data.description} article={{ title: post.data.title, date: post.data.pubDate, updated: post.data.updatedDate }}>
+  <article class="narrow">
+    <header class="article-heading">
+      <p class="eyebrow"><a href="/">Back to the notebook</a></p>
+      <h1>{post.data.title}</h1>
+      <div class="post-meta"><span>{site.author}</span><span aria-hidden="true">·</span><time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time><span aria-hidden="true">·</span><span>{readingTime(post)} min read</span></div>
+      {post.data.updatedDate && <p class="post-meta">Updated {formatDate(post.data.updatedDate)}</p>}
+      <ul class="tag-list" aria-label="Article topics">{post.data.tags.map(tag => <li><a href={tagUrl(tag)}>{tagName(tag)}</a></li>)}</ul>
+    </header>
+    {contents.length > 2 && <details class="contents"><summary>In this article</summary><ol>{contents.map(heading => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol></details>}
+    <div class="prose"><Content /></div>
+    <footer class="article-end"><p>Written by <a href="/about/">{site.author}</a>.</p><p>Thanks for reading. <a href="/">Explore the archive ↗</a></p></footer>
+    <Newsletter compact id="article-newsletter" />
+    {related.length > 0 && <section class="read-next" aria-labelledby="read-next-title"><h2 id="read-next-title">Keep reading</h2><PostList posts={related} /></section>}
+  </article>
+</Base>
