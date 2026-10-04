@@ -49,6 +49,57 @@ jobs:
           args: --config lychee.toml --root-dir ${{ github.workspace }}/dist 'dist/**/*.html'
           fail: true
 
+  staging:
+    name: Deploy to staging
+    needs: verify
+    # Off until the TS_OAUTH_CLIENT_ID repository variable is set. Only for PRs from this
+    # repository: fork and Dependabot PRs can't get a GitHub OIDC token.
+    if: >-
+      vars.TS_OAUTH_CLIENT_ID != '' &&
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # GitHub OIDC token, exchanged with Tailscale for a short-lived key (no stored secret)
+    environment:
+      name: staging
+      url: https://staging.coffeeanddata.ca/
+    # One staging site: the most recently pushed PR wins.
+    concurrency:
+      group: staging
+      cancel-in-progress: true
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: coffeeanddata-preview
+          path: dist
+      - name: Join the tailnet as tag:blog-ci
+        uses: tailscale/github-action@v4.2.0
+        with:
+          oauth-client-id: ${{ vars.TS_OAUTH_CLIENT_ID }}
+          audience: ${{ vars.TS_AUDIENCE }}
+          tags: tag:blog-ci
+          ping: blog-staging # wait until the staging container is reachable
+      - name: Upload to the staging container
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          # Unpack beside the live site, then swap, so a failed upload never leaves staging half-written.
+          tar -C dist -czf - . | sudo tailscale ssh root@blog-staging '
+            set -e
+            rm -rf /site/.incoming && mkdir /site/.incoming
+            tar -xzf - -C /site/.incoming
+            test -f /site/.incoming/index.html
+            find /site -mindepth 1 -maxdepth 1 ! -name .incoming -exec rm -rf {} \;
+            find /site/.incoming -mindepth 1 -maxdepth 1 -exec mv {} /site/ \;
+            rmdir /site/.incoming
+            chown -R 1000:1000 /site
+          '
+          echo "Staging now shows PR #${PR_NUMBER} at ${HEAD_SHA::7}: https://staging.coffeeanddata.ca/" >> "$GITHUB_STEP_SUMMARY"
+
   sonarqube:
     name: SonarQube
     runs-on: ubuntu-latest
