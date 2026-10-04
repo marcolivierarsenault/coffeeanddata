@@ -13,7 +13,6 @@
     "check": "astro check",
     "test": "node --test scripts/site.test.mjs",
     "verify": "npm run check && npm run build && npm test",
-    "import:images": "node migration/import-images.mjs",
     "check:links": "lychee --config lychee.toml --root-dir \"$PWD/dist\" \"dist/**/*.html\""
   },
   "dependencies": {

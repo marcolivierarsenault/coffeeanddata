@@ -9,11 +9,11 @@ The new site uses Astro static output, native Markdown content collections, Type
 - RSS: https://docs.astro.build/en/recipes/rss/
 - Sitemap: https://docs.astro.build/en/guides/integrations-guide/sitemap/
 
-The articles themselves are rewritten into the new format. There is no old-site renderer, Liquid parser, schema adapter or custom Markdown pipeline. The only migration helper copies missing binary images into local src/assets paths, verifying their original Git checksums. It is not imported by the website.
+The articles themselves are rewritten into the new format. There is no old-site renderer, Liquid parser, schema adapter or custom Markdown pipeline. Original images live in src/assets. The build also copies post images to their old /assets/images/posts/ URLs, so existing links keep working. A test checks those copies against the original Git checksums.
 
 ## Visual direction
 
-Warm paper, dark ink and forest green. Large serif headings, a system sans-serif body font, small monospace metadata, thin rules and generous spacing. The site ships one chosen theme. Earlier alternatives remain as archived HTML prototypes outside production output.
+Warm paper, dark ink and forest green. Large serif headings, a system sans-serif body font, small monospace metadata, thin rules and generous spacing. The site ships one chosen theme. The rejected alternatives are in Git history, not the repository.
 
 Article prose stays narrow enough to read comfortably; tables and code scroll horizontally when needed. The table of contents uses native details/summary. Markdown images use Astro’s built-in processing. Animated source images pass through its standard image service.
 
@@ -29,4 +29,4 @@ No CMS, database or application server is needed. Interactive components can be 
 
 Mailchimp is retained as an ordinary HTML form that posts to the existing audience. The provider handles subscription completion. The copy says 3–6 posts per year and explains the next step. Publishing an article does not automatically send a campaign.
 
-The site builds to static dist output and can remain on GitHub Pages. The LAN preview serves that same output with Nginx. Node is needed to build, not to serve pages.
+The site builds to static dist output and can remain on GitHub Pages. Node is needed to build, not to serve pages. Deployment uses the official GitHub Pages Actions.

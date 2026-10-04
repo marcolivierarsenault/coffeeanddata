@@ -1,39 +1,36 @@
 # Coffee and Data
 
-A new Astro site for [coffeeanddata.ca](https://coffeeanddata.ca), with the selected warm editorial design, 22 native Markdown articles, a complete archive, topic pages, About, Subscribe and the existing Mailchimp list.
+Source for [coffeeanddata.ca](https://coffeeanddata.ca): an Astro static site with native Markdown posts, a complete archive on the homepage, topic pages, About, Subscribe, and the existing Mailchimp list.
 
-## View the full blog over the LAN
+## Local development
 
-The preparation container uses Node 24 to ensure original illustrations are present, install dependencies, check types, build Astro and run the generated-site tests. It writes build output into this workspace; the Nginx container serves that static output. All 67 original referenced images and the dependency lockfile are included.
-
-Run on the server:
-
-```sh
-cd /home/marco/src/coffeeanddata
-docker compose -f preview/compose.yaml down
-BLOG_UID=$(id -u) BLOG_GID=$(id -g) docker compose run --rm prepare
-docker compose up -d blog
-```
-
-Then open **http://192.168.2.100:8765/**. This serves the complete Astro build, not the earlier three-style prototype. The preparation step must succeed before starting the web container. If it fails, its output identifies the import, dependency, type-check, build or site-check failure.
-
-After changing a post, run the preparation command again to rebuild. Stop/remove the preview service with `docker compose down`.
-
-## Native local development
-
-Use Node 24 (or another supported even-numbered version >=22.12):
+Use Node 24 (`.nvmrc`):
 
 ```sh
 nvm use
 npm ci
-npm run dev
+npm run dev                       # http://localhost:4321
+npm run dev -- --host 0.0.0.0     # reachable from other machines on the LAN
 ```
 
-All articles are native Markdown and all 67 referenced images are committed under `src/assets/images/`. `npm run import:images` is an optional recovery helper and is not needed.
+Before opening a PR:
 
-Run `npm run verify` to check Astro/TypeScript, build static pages and run Node tests for original URLs/titles/dates, internal links, optimized images, code blocks, Mailchimp forms, RSS, sitemap and redirects. No Python is needed.
+```sh
+npm run verify        # astro check + astro build + generated-site tests
+npm run check:links   # external links in dist/, needs lychee (brew install lychee)
+npm run preview       # serve the production build from dist/
+```
 
-`npm run check:links` checks external URLs in the built `dist/` with [lychee](https://lychee.cli.rs/) (`brew install lychee`), using the same `lychee.toml` as CI. Keep `package-lock.json` committed; CI installs with `npm ci`.
+`npm run verify` type-checks the site, builds it, and runs `scripts/site.test.mjs` against `dist/`. The tests cover:
+
+- original URLs, titles and dates
+- internal links and heading anchors
+- optimized images
+- legacy image URLs
+- code blocks and Mailchimp forms
+- RSS, the sitemap and redirects
+
+`npm run check:links` uses the same `lychee.toml` as CI.
 
 ## Writing
 
@@ -49,62 +46,68 @@ draft: true
 ---
 ```
 
-Write normal Markdown below the frontmatter, and remove `draft: true` when publishing. Future-dated posts and drafts are excluded from the public site. Filenames define article URLs exactly, including case (`PR-reviews-for-SQL-code.md` → `/PR-reviews-for-SQL-code/`). Do not rename published files.
+Write normal Markdown below the frontmatter, and remove `draft: true` when publishing. Drafts and future-dated posts are excluded from the public site.
 
-Optional fields: `updatedDate` and `featured: true`. A featured article (or the latest article) leads the homepage; the complete archive follows below, without pagination.
+Filenames define article URLs exactly, including case (`PR-reviews-for-SQL-code.md` → `/PR-reviews-for-SQL-code/`). Do not rename published files.
 
-Put illustrations under `src/assets/images/posts/your-post/`, then reference them using Markdown:
+Optional fields:
+
+- `updatedDate`
+- `featured: true`: the post leads the homepage. Without it, the newest post does.
+
+Put illustrations under `src/assets/images/posts/<yyyymmdd>/` and reference them with Markdown:
 
 ```md
-![A useful description](../../assets/images/posts/your-post/diagram.png)
+![A useful description](../../assets/images/posts/20261004/diagram.png)
 
 *Optional caption.*
 ```
 
-Astro processes local Markdown images, derives dimensions and emits optimized assets. Tables and fenced code use Astro’s normal Markdown renderer and syntax highlighting. Video embeds use ordinary lazy-loaded HTML iframes. No Liquid parsing, old theme includes, custom Markdown processor or Jekyll compatibility adapter exists.
+Astro optimizes local images and emits them under `/_astro/`. Tables and fenced code use Astro's Markdown renderer and syntax highlighting. Video embeds are plain lazy-loaded `<iframe>`s.
 
 ## Structure
 
-- `src/content.config.ts`: Astro content collection and frontmatter schema.
-- `src/content/posts/`: the 22 migrated articles and future posts.
-- `src/assets/images/`: local article illustrations.
-- `src/pages/`: native Astro pages, static article routes and RSS endpoint.
-- `src/layouts/`, `src/components/`: new layouts and components.
-- `src/styles/global.css`: warm editorial design.
-- `src/lib/site.ts`: author, social links and Mailchimp audience.
-- `migration/`: optional one-time binary image import, never used by article rendering.
-- `scripts/`: build verification and original-content audit.
-- `preview/`: archived style studies, excluded from the Docker image and production site.
+- `src/content.config.ts`: content collection and frontmatter schema.
+- `src/content/posts/`: articles.
+- `src/assets/images/posts/`: article illustrations.
+- `src/pages/`: pages, article routes, RSS, the legacy `/sitemap.xml`, and redirects.
+- `src/layouts/`, `src/components/`, `src/styles/global.css`: layout and design.
+- `src/lib/site.ts`: author, social links and the Mailchimp audience.
+- `public/`: logo, favicon, `robots.txt`.
+- `scripts/`: generated-site tests, plus fixtures recording the original articles (`content-manifest.json`) and the original image URLs (`legacy-image-urls.json`).
 
-## Features
+## URLs kept from the Jekyll site
 
-The homepage opens with a compact editorial introduction and a featured article, then includes the complete archive: every published post grouped by year, with topic links and progressively enhanced text search. All posts are included in the initial HTML, without pagination or load-more buttons. `/writing/` redirects to `/`. Reading, navigation, the table of contents and Mailchimp form work without client-side JavaScript. Fonts are system fonts. No frontend framework is hydrated.
-
-RSS remains at `/feed.xml` and is generated by `@astrojs/rss`. The sitemap is generated by `@astrojs/sitemap` at `/sitemap-index.xml`; retired routes and the 404 page are excluded. The Jekyll-era `/sitemap.xml` is still served and points to the same sitemap.
-
-Original article URLs, dates, titles, tags and content are retained. Only source formatting was rewritten: HTML code wrappers to language-labelled fences, the table to Markdown, image captions to Markdown and illustrations to local asset references. Contact, thank-you, `/writing/`, and the old home and topic pagination routes (`/page2/`–`/page5/`, `/tag/data/page2/`, …) redirect using Astro’s native redirect support. Old `/assets/images/...` URLs are not kept, because images are now optimized by Astro and served from `/_astro/`.
+- **Articles:** original article URLs are unchanged.
+- **Feeds:** RSS is at `/feed.xml`. The sitemap is at `/sitemap-index.xml`, and the old `/sitemap.xml` points to the same file.
+- **Images:** every article image the old site served at `/assets/images/posts/...` (67 files) is still served there with the original bytes. The build copies them from `src/assets/images/posts/`, and a test checks each one against its original git checksum. Pages use the optimized `/_astro/` versions.
+- **Redirects:** `/writing/`, `/contact/`, `/thank-you/`, `/page2/`–`/page5/`, and the paginated topic pages (`/tag/data/page2/`, …) redirect with HTML refresh pages. GitHub Pages can't send HTTP 301s.
+- **Dropped:** the old theme files (`/assets/css/`, `/assets/js/`, background images, the old logo and favicon) and the 21 per-post cover images. The covers were only used as social-share pictures, so posts no longer set `og:image`.
 
 ## Email
 
-Mailchimp stays. Signup has its own static `/subscribe/` page, linked beside About in the navigation; the homepage has no signup form. Article-end signup remains available. The site’s styled HTML form posts to the original audience with an email label, native validation and a bot-trap field. No subscription API key, embed script or server is required. No test subscription has been sent. Campaigns are managed in Mailchimp.
+Mailchimp is unchanged. Signup lives on `/subscribe/` (linked in the navigation) and at the end of each article; the homepage has no form. The form is a plain HTML POST to the existing audience, with native validation and Mailchimp's bot-trap field. No API key, embed script or server is involved. Campaigns are managed in Mailchimp.
 
 ## CI and deployment
 
 GitHub Actions (`.github/workflows/`):
 
-- **`check.yml`** (pull requests): `npm ci` and `npm run verify` (type-check, build, generated-site tests including every internal link), then an external link check with lychee, plus SonarQube. The built site is saved as the `coffeeanddata-preview` artifact for review.
-- **`merge.yml`** (push to `main`): the same verify and external-link jobs, then deploys `dist/` with the official `actions/upload-pages-artifact` and `actions/deploy-pages`. Deployment runs only if both checks pass. SonarQube runs alongside.
+- **`check.yml`** (pull requests):
+  - `npm ci` and `npm run verify`
+  - then an external link check with lychee
+  - plus SonarQube
+  - The built site is saved as the `coffeeanddata-preview` artifact.
+- **`merge.yml`** (push to `main`):
+  - the same verify and external-link jobs
+  - then deploys `dist/` with the official `actions/upload-pages-artifact` and `actions/deploy-pages`. Deployment runs only if both checks pass.
+  - SonarQube runs alongside.
 
-External links follow the old HTMLProofer rules: 403/429/500/999 responses are tolerated, and Twitter/X and Google URLs are skipped (`lychee.toml`). Known-dead links that haven't been fixed in an article yet go in `.lycheeignore`.
+External links follow the old HTMLProofer rules: 403/429/500/999 responses are tolerated. Twitter/X, Google and the Vimeo player block automated checks, so they are skipped (`lychee.toml`). When a third-party page dies, fix the article rather than ignoring the URL.
 
 One-time repository setup for Actions-based Pages deployment:
 
-1. **Settings → Pages → Build and deployment → Source: GitHub Actions** (it currently publishes from the `gh-pages` branch). The custom domain `coffeeanddata.ca` and HTTPS setting stay as they are.
+1. **Settings → Pages → Build and deployment → Source: GitHub Actions** (it currently publishes from the `gh-pages` branch). The custom domain `coffeeanddata.ca` and HTTPS setting stay as they are; Actions deployments don't use a `CNAME` file.
 2. **Settings → Environments → github-pages → Deployment branches**: add `main`. It currently allows only `gh-pages`, `master` and `release`, so a deploy from `main` would be rejected.
 3. Optional: protect `main` and require the *Verify site*, *External links* and *SonarQube* checks.
 
-Commits pushed with `GITHUB_TOKEN` don't trigger Pages builds, so the workflow deploys the artifact directly instead of pushing to `gh-pages`. Once Actions deployment works, the `gh-pages` branch is no longer used.
-
-GitHub Pages static redirects are HTML refresh pages, not HTTP 301 responses. The Docker preview has the same static-site model. No Astro server adapter is needed.
-
-An optional multistage Dockerfile packages the same build with Nginx. The LAN compose setup uses a disposable Node preparation container and a small Nginx container, serving only the compiled site.
+Once Actions deployment works, the `gh-pages` branch is no longer used.
