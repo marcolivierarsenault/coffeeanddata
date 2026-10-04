@@ -24,4 +24,7 @@ exclude = [
   '//(www\.)?x\.com',
   'gstatic',
   'google',
+  # The Vimeo player returns 401 to automated requests (from GitHub runners and
+  # locally); both embedded videos were confirmed public via Vimeo oEmbed on 2026-10-04.
+  '^https://player\.vimeo\.com/video/',
 ]

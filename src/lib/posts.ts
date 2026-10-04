@@ -24,8 +24,11 @@ const tagLabels: Record<string, string> = {
 export const tagName = (tag: string) => tagLabels[tag] ?? tag;
 
 export function readingTime(post: Post): number {
-  const text = (post.body ?? '').replace(/<[^>]*>/g, '').replace(/!?\[([^\]]*)\]\([^)]+\)/g, '$1');
-  return Math.max(1, Math.ceil(text.trim().split(/\s+/).length / 220));
+  // Count words only; HTML tags and Markdown link targets aren't words. This output is
+  // never rendered as HTML, so tags are split out rather than "sanitized".
+  const text = (post.body ?? '').replace(/!?\[([^\]]*)\]\([^)]+\)/g, '$1');
+  const words = text.split(/<[^>]*>|\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 220));
 }
 
 export const formatDate = (date: Date) =>

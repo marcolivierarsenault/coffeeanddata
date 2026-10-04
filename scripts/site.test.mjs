@@ -64,7 +64,8 @@ test('pages have one heading, canonical metadata and unique IDs', () => {
   for (const [path, { $ }] of pages) {
     if (isRedirect($)) continue;
     assert.equal($('h1').length, 1, path);
-    assert.ok($('link[rel="canonical"]').attr('href')?.startsWith(site), path);
+    const canonical = $('link[rel="canonical"]').attr('href');
+    assert.ok(canonical && new URL(canonical).origin === site, path);
     assert.ok($('meta[name="description"]').attr('content'), path);
     const ids = $('[id]').toArray().map(element => $(element).attr('id'));
     assert.equal(new Set(ids).size, ids.length, 'Duplicate IDs: ' + path);
