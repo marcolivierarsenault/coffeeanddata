@@ -1,6 +1,0 @@
-# Known-dead external links, checked by hand. Keep this list short. Prefer
-# fixing the article link (for example, to a web.archive.org snapshot).
-
-# Domain no longer resolves (no DNS records, checked 2026-10-04). A Wayback
-# snapshot exists: http://web.archive.org/web/20230611005946/https://beyondthetechhype.blog/2017/10/20/data-examination-and-home-made-classifiers/
-^https://beyondthetechhype\.blog/2017/10/20/data-examination-and-home-made-classifiers/$

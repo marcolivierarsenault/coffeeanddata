@@ -42,4 +42,4 @@ Two of my colleagues tried to answer the same question using different approach.
 You can read their experience here:
 
 * [Pascal’s Article](https://thelonenutblog.wordpress.com/2017/09/29/a-battle-between-man-and-machine/)
-* [Steven’s Article](https://beyondthetechhype.blog/2017/10/20/data-examination-and-home-made-classifiers/)
+* Steven’s Article (no longer available, his blog is down)
