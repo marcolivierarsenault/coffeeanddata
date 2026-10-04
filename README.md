@@ -1,3 +1,4 @@
+a
 [![Build Status](https://github.com/marcolivierarsenault/coffeeanddata/actions/workflows/merge.yml/badge.svg)](https://github.com/marcolivierarsenault/coffeeanddata/actions/workflows/merge.yml)
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 # coffeeanddata
