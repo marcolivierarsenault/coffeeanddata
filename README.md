@@ -73,7 +73,8 @@ Astro optimizes local images and emits them under `/_astro/`. Tables and fenced 
 - `src/pages/`: pages, article routes, RSS, the legacy `/sitemap.xml`, and redirects.
 - `src/layouts/`, `src/components/`, `src/styles/global.css`: layout and design.
 - `src/lib/site.ts`: author, social links and the Mailchimp audience.
-- `public/`: logo, favicon, `robots.txt`, and `og-image.png` (the 1200×630 share picture used by LinkedIn, X, Slack, etc.).
+- `src/assets/brand/logo-mark.png`: the header logo (Astro optimizes it).
+- `public/`: favicons (`favicon.ico`, `favicon-192.png`, `apple-touch-icon.png`), `robots.txt`, and `og-image.png` (the 1200×630 share picture used by LinkedIn, X, Slack, etc.).
 - `scripts/`: generated-site tests, plus fixtures recording the original articles (`content-manifest.json`) and the original image URLs (`legacy-image-urls.json`).
 
 ## URLs kept from the Jekyll site
@@ -82,7 +83,7 @@ Astro optimizes local images and emits them under `/_astro/`. Tables and fenced 
 - **Feeds:** RSS is at `/feed.xml`. The sitemap is at `/sitemap-index.xml`, and the old `/sitemap.xml` points to the same file.
 - **Images:** every article image the old site served at `/assets/images/posts/...` (67 files) is still served there with the original bytes. The build copies them from `src/assets/images/posts/`, and a test checks each one against its original git checksum. Pages use the optimized `/_astro/` versions.
 - **Redirects:** `/writing/`, `/contact/`, `/thank-you/`, `/page2/`–`/page5/`, and the paginated topic pages (`/tag/data/page2/`, …) redirect with HTML refresh pages. GitHub Pages can't send HTTP 301s.
-- **Dropped:** the old theme files (`/assets/css/`, `/assets/js/`, background images, the old logo and favicon) and the 21 per-post cover images. Every page now uses the logo card `public/og-image.png` as its share picture.
+- **Dropped:** the old theme files (`/assets/css/`, `/assets/js/`, background images, the old logo and favicon) and the 21 per-post cover images. Every page now uses the logo-with-text card `public/og-image.png` as its share picture.
 
 ## Email
 

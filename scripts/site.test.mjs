@@ -195,3 +195,16 @@ test('every page shares the 1200x630 logo card as its social image', async () =>
     assert.equal($('meta[name="twitter:card"]').attr('content'), 'summary_large_image', path);
   }
 });
+
+test('every page links the favicon set and the header logo is an optimized image', async () => {
+  const ico = await readFile(resolve(dist, 'favicon.ico'));
+  assert.equal(ico.readUInt16LE(2), 1, 'favicon.ico is not an icon file');
+  const sizes = Array.from({ length: ico.readUInt16LE(4) }, (_, i) => ico.readUInt8(6 + 16 * i));
+  assert.deepEqual(sizes, [16, 32, 48]);
+  for (const [path, { $ }] of pages) {
+    if (isRedirect($)) continue;
+    for (const href of ['/favicon.ico', '/favicon-192.png']) assert.ok($(`link[rel="icon"][href="${href}"]`).length, href + ' ' + path);
+    assert.equal($('link[rel="apple-touch-icon"]').attr('href'), '/apple-touch-icon.png', path);
+    assert.match($('.brand-mark').attr('src') ?? '', /^\/_astro\/.+\.webp$/, path);
+  }
+});
