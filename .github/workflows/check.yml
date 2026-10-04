@@ -1,30 +1,62 @@
 name: Build and check
+
 on:
   pull_request:
-  push:
-    branches-ignore:
-      - main
-      - gh-pages
+  workflow_dispatch:
+
 permissions:
   contents: read
+
+concurrency:
+  group: check-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build:
+  verify:
+    name: Verify site
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version-file: .nvmrc
+          cache: npm
       - name: Install dependencies
-        run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
-      - name: Validate, build and check links
+        run: npm ci
+      - name: Type-check, build and test the generated site
         run: npm run verify
-      - name: Save the review build and dependency lock
-        uses: actions/upload-artifact@v4
+      - name: Save the review build
+        uses: actions/upload-artifact@v7
         with:
           name: coffeeanddata-preview
-          path: |
-            dist/
-            package-lock.json
+          path: dist/
+          include-hidden-files: true
           retention-days: 14
+
+  links:
+    name: External links
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: coffeeanddata-preview
+          path: dist
+      - name: Check external links
+        uses: lycheeverse/lychee-action@v2.9.0
+        with:
+          args: --config lychee.toml --root-dir ${{ github.workspace }}/dist 'dist/**/*.html'
+          fail: true
+
+  sonarqube:
+    name: SonarQube
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # Full history improves SonarQube analysis.
+      - uses: sonarsource/sonarqube-scan-action@v8.3.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}

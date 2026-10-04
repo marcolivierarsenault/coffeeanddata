@@ -29,4 +29,4 @@ No CMS, database or application server is needed. Interactive components can be 
 
 Mailchimp is retained as an ordinary HTML form that posts to the existing audience. The provider handles subscription completion. The copy says 3–6 posts per year and explains the next step. Publishing an article does not automatically send a campaign.
 
-The site builds to static dist output and can remain on GitHub Pages. The LAN preview serves that same output with Nginx. Node is needed to build, not to serve pages. Full compilation and browser review remain pending execution in a network-enabled environment.
+The site builds to static dist output and can remain on GitHub Pages. The LAN preview serves that same output with Nginx. Node is needed to build, not to serve pages.
