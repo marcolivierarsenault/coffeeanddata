@@ -4,11 +4,14 @@ import { readFile, readdir, access } from 'node:fs/promises';
 import { resolve, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { load } from 'cheerio';
+import { createHash } from 'node:crypto';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = resolve(root, 'dist');
 const site = 'https://coffeeanddata.ca';
 const retained = JSON.parse(await readFile(new URL('./content-manifest.json', import.meta.url), 'utf8'));
+const legacyImages = JSON.parse(await readFile(new URL('./legacy-image-urls.json', import.meta.url), 'utf8')).urls;
+const gitBlobSha = bytes => createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
 
 async function filesIn(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -173,3 +176,12 @@ test('technical posts render native code blocks and optimized local images', () 
   }
   assert.ok(images >= 67);
 });
+
+test('every image URL the Jekyll site published still serves the original bytes', async () => {
+  assert.equal(legacyImages.length, 67);
+  for (const { url, sha } of legacyImages) {
+    const bytes = await readFile(resolve(dist, '.' + url)).catch(() => assert.fail('Missing legacy image: ' + url));
+    assert.equal(gitBlobSha(bytes), sha, 'Changed legacy image: ' + url);
+  }
+});
+
