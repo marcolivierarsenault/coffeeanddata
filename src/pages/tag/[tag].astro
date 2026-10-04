@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts, tagName } from '../../lib/posts';
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return [...new Set(posts.flatMap(post => post.data.tags))]
+    .map(tag => ({ params: { tag }, props: { tag, posts: posts.filter(post => post.data.tags.includes(tag)) } }));
+}
+const { tag, posts } = Astro.props;
+---
+<Base title={tagName(tag)} description={`Articles about ${tagName(tag).toLowerCase()} from Coffee and Data.`}>
+  <div class="wrap"><header class="page-heading"><p class="eyebrow"><a href="/">All writing</a> / Topic</p><h1>{tagName(tag)}</h1><p>{posts.length} {posts.length === 1 ? 'article' : 'articles'} from the notebook.</p></header><PostList posts={posts} /></div>
+</Base>

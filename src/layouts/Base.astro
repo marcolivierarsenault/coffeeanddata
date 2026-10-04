@@ -1,0 +1,73 @@
+---
+import '../styles/global.css';
+import { site } from '../lib/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  article?: { title: string; date: Date; updated?: Date; };
+  noindex?: boolean;
+  canonicalPath?: string;
+}
+const { title, description = site.description, article, noindex = false, canonicalPath = Astro.url.pathname } = Astro.props;
+const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — Software, data & everything in between`;
+const canonical = new URL(canonicalPath, site.url).href;
+const active = (path: string) => Astro.url.pathname === path;
+const schema = article ? {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: article.title,
+  description,
+  datePublished: article.date.toISOString(),
+  dateModified: (article.updated ?? article.date).toISOString(),
+  mainEntityOfPage: canonical,
+  author: { '@type': 'Person', name: site.author, url: `${site.url}/about/` },
+  publisher: { '@type': 'Person', name: site.author },
+} : {
+  '@context': 'https://schema.org', '@type': 'WebSite',
+  name: site.name, url: site.url, description,
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={site.author} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="Coffee and Data" href="/feed.xml" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <meta name="twitter:card" content="summary" />
+    {article && <meta property="article:published_time" content={article.date.toISOString()} />}
+    <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="brand" href="/" aria-label="Coffee and Data home"><img class="brand-mark" src="/logo.svg" alt="" width="44" height="44" /><span>Coffee and Data<span class="brand-caption">By Marc-Olivier Arsenault</span></span></a>
+      <nav aria-label="Main navigation">
+        <a href="/" aria-current={active('/') ? 'page' : undefined}>Writing</a>
+        <a href="/about/" aria-current={active('/about/') ? 'page' : undefined}>About</a>
+        <a class="nav-subscribe" href="/subscribe/" aria-current={active('/subscribe/') ? 'page' : undefined}>Subscribe <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1"><slot /></main>
+    <footer class="site-footer wrap">
+      <div><a class="footer-brand" href="/">Coffee and Data<span aria-hidden="true">.</span></a><p>Independent writing by {site.author}.</p></div>
+      <nav aria-label="Footer navigation">
+        <a href={site.github}>GitHub ↗</a>
+        <a href={site.linkedin}>LinkedIn ↗</a>
+        <a href="/feed.xml">RSS ↗</a>
+      </nav>
+      <p class="copyright">© {new Date().getUTCFullYear()} {site.author}</p>
+    </footer>
+  </body>
+</html>

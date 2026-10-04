@@ -1,19 +1,106 @@
-[![Build Status](https://github.com/marcolivierarsenault/coffeeanddata/actions/workflows/merge.yml/badge.svg)](https://github.com/marcolivierarsenault/coffeeanddata/actions/workflows/merge.yml)
-[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
-# coffeeanddata
-[My personal blog](https://coffeeanddata.ca/)
+# Coffee and Data
 
+A new Astro site for [coffeeanddata.ca](https://coffeeanddata.ca), with the selected warm editorial design, 22 native Markdown articles, a complete archive, topic pages, About, Subscribe and the existing Mailchimp list.
 
-[<img src="https://coffeeanddata.ca/assets/images/square_logo.png" width="128">](https://coffeeanddata.ca)
+## View the full blog over the LAN
 
+The preparation container uses Node 24 to ensure original illustrations are present, install dependencies, check types, build Astro and run the generated-site tests. It writes build output into this workspace; the Nginx container serves that static output. All 67 original referenced images and the dependency lockfile are included.
 
-## To run localy
+Run on the server:
 
-Install dependecies
-`bundle install`
+```sh
+cd /home/marco/src/coffeeanddata
+docker compose -f preview/compose.yaml down
+BLOG_UID=$(id -u) BLOG_GID=$(id -g) docker compose run --rm prepare
+docker compose up -d blog
+```
 
-Serve locally (developement)
-`bundle exec jekyll serve`
+Then open **http://192.168.2.100:8765/**. This serves the complete Astro build, not the earlier three-style prototype. The preparation step must succeed before starting the web container. If it fails, its output identifies the import, dependency, type-check, build or site-check failure.
 
-Generate static website
-`JEKYLL_ENV=production bundle exec jekyll build --destination site`
+After changing a post, run the preparation command again to rebuild. Stop/remove the preview service with `docker compose down`.
+
+## Native local development
+
+Use Node 24 (or another supported even-numbered version >=22.12):
+
+```sh
+nvm use
+npm run import:images
+npm install
+npm run dev
+```
+
+The image import is an optional one-time migration step; it leaves existing local files alone. All articles are already native Markdown and all 67 referenced images are present. No download is needed for the included images.
+
+Run `npm run verify` to check Astro/TypeScript, build static pages and run Node tests for original URLs/titles/dates, internal links, optimized images, code blocks, Mailchimp forms, RSS, sitemap and redirects. No Python is needed.
+
+Commit the included `package-lock.json` with the rewrite. Workflows use `npm ci` when that lock exists, otherwise `npm install` for the first bootstrap.
+
+## Writing
+
+Copy [docs/post-template.md](docs/post-template.md) to `src/content/posts/your-url-slug.md`:
+
+```yaml
+---
+title: "Your article title"
+description: "A short summary."
+pubDate: 2026-10-04
+tags: [data_eng]
+draft: true
+---
+```
+
+Write normal Markdown below the frontmatter, and remove `draft: true` when publishing. Future-dated posts and drafts are excluded from the public site. Filenames define article URLs; preserve published filenames.
+
+Optional fields: `updatedDate` and `featured: true`. A featured article (or the latest article) leads the homepage; the complete archive follows below, without pagination.
+
+Put illustrations under `src/assets/images/posts/your-post/`, then reference them using Markdown:
+
+```md
+![A useful description](../../assets/images/posts/your-post/diagram.png)
+
+*Optional caption.*
+```
+
+Astro processes local Markdown images, derives dimensions and emits optimized assets. Tables and fenced code use Astro’s normal Markdown renderer and syntax highlighting. Video embeds use ordinary lazy-loaded HTML iframes. No Liquid parsing, old theme includes, custom Markdown processor or Jekyll compatibility adapter exists.
+
+## Structure
+
+- `src/content.config.ts`: Astro content collection and frontmatter schema.
+- `src/content/posts/`: the 22 migrated articles and future posts.
+- `src/assets/images/`: local article illustrations.
+- `src/pages/`: native Astro pages, static article routes and RSS endpoint.
+- `src/layouts/`, `src/components/`: new layouts and components.
+- `src/styles/global.css`: warm editorial design.
+- `src/lib/site.ts`: author, social links and Mailchimp audience.
+- `migration/`: optional one-time binary image import, never used by article rendering.
+- `scripts/`: build verification and original-content audit.
+- `preview/`: archived style studies, excluded from the Docker image and production site.
+
+## Features
+
+The homepage opens with a compact editorial introduction and a featured article, then includes the complete archive: every published post grouped by year, with topic links and progressively enhanced text search. All posts are included in the initial HTML, without pagination or load-more buttons. `/writing/` redirects to `/`. Reading, navigation, the table of contents and Mailchimp form work without client-side JavaScript. Fonts are system fonts. No frontend framework is hydrated.
+
+RSS remains at `/feed.xml` and is generated by `@astrojs/rss`. The sitemap is generated by `@astrojs/sitemap` at `/sitemap-index.xml`; retired routes and the 404 page are excluded.
+
+Original article URLs, dates, titles, tags and content are retained. Only source formatting was rewritten: HTML code wrappers to language-labelled fences, the table to Markdown, image captions to Markdown and illustrations to local asset references. Contact and old archive pagination routes redirect using Astro’s native redirect support.
+
+## Email
+
+Mailchimp stays. Signup has its own static `/subscribe/` page, linked beside About in the navigation; the homepage has no signup form. Article-end signup remains available. The site’s styled HTML form posts to the original audience with an email label, native validation and a bot-trap field. No subscription API key, embed script or server is required. No test subscription has been sent. Campaigns are managed in Mailchimp.
+
+## Deployment
+
+The supplied main-branch workflow builds and checks the Astro site, then publishes `dist/` to the existing `gh-pages` branch. The existing custom domain and `.nojekyll` marker are included. Pull requests and draft branches only build review artifacts.
+
+GitHub Pages static redirects are HTML refresh pages, not HTTP 301 responses. The Docker preview has the same static-site model. Hosting can continue on GitHub Pages without an Astro server adapter.
+
+An optional multistage Dockerfile packages the same build with Nginx. The LAN compose setup uses a disposable Node preparation container and a small Nginx container, serving only the compiled site.
+
+## Verification status
+
+Source checks passed for all 22 article identities, native frontmatter, relative image references, conversion of code/table/caption syntax, all 67 original image checksums, JavaScript syntax and Compose configuration.
+
+The owner ran the container build and reviewed the site. A 404 canonical-URL test failure was fixed; homepage and logo revisions followed. The latest source has not been fully rebuilt and verified by this agent. Host-side Astro execution fails because installed dependencies have container-specific native bindings; use a fresh Node 24 install on the target machine, or the preparation container, then run `npm run verify`.
+
+GitHub rejected the earlier draft write with HTTP 403. This is a local rewrite; no branch, PR, deployment or change to the live site has been made.

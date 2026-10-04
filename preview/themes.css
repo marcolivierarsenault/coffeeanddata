@@ -1,0 +1,57 @@
+/* Design variants share the same content and semantic layouts. */
+.preview-note { color: var(--muted); font-size: .85rem; border-left: 2px solid var(--line); padding-left: 18px; }
+.article-signup { margin-top: 48px; }
+.article-signup .newsletter { display: block; padding: 30px; }
+.article-signup form { margin-top: 24px; }
+.article-signup .newsletter p { max-width: none; }
+.prose .preview-code { background: #18231d; color: #e5eae3; }
+.token-keyword { color: #a6dcba; }
+html[data-theme="minimal"] {
+  --paper: #f8fafc; --ink: #172231; --muted: #556273;
+  --green: #244bb4; --wash: #edf2f8; --line: #d5dfe9;
+  --serif: var(--sans);
+}
+[data-theme="minimal"] h1, [data-theme="minimal"] h2 { font-weight: 650; letter-spacing: -.055em; }
+[data-theme="minimal"] .brand-mark { border-radius: 5px; font: 1.2rem var(--mono); }
+[data-theme="minimal"] .hero h1 { font-size: clamp(4rem, 7.8vw, 6.5rem); line-height: 1.03; }
+[data-theme="minimal"] .hero h1 em { font-style: normal; }
+[data-theme="minimal"] .hero { padding-block: 60px 50px; gap: 60px; }
+[data-theme="minimal"] .feature h2 { font-size: clamp(2rem, 3.5vw, 2.7rem); }
+[data-theme="minimal"] .home-feature { padding-block: 30px; }
+[data-theme="minimal"] .writing-section { padding-block: 48px; }
+[data-theme="minimal"] .post-list li { padding-block: 22px; }
+[data-theme="minimal"] .newsletter { border-radius: 3px; padding: 32px; }
+[data-theme="minimal"] .newsletter h2 { font-size: 1.85rem; }
+[data-theme="minimal"] .prose { font-size: 1rem; line-height: 1.8; }
+[data-theme="minimal"] .prose .preview-code { background: #172231; color: #e7edf5; }
+[data-theme="minimal"] .token-keyword { color: #9ec1ff; }
+[data-theme="minimal"] .signup-row button:hover { background: #183885; }
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #121a23; --ink: #e3eaf0; --muted: #a9b7c4;
+  --green: #9be7bd; --wash: #1b2934; --line: #354652;
+  --serif: var(--sans);
+}
+[data-theme="dark"] h1, [data-theme="dark"] h2 { font-weight: 600; letter-spacing: -.045em; }
+[data-theme="dark"] .brand-mark { border-radius: 8px; background: transparent; border: 1px solid var(--green); color: var(--green); font: 1.2rem var(--mono); }
+[data-theme="dark"] .hero { padding-block: 74px 58px; }
+[data-theme="dark"] .hero h1 { font-size: clamp(4.5rem, 8vw, 7rem); }
+[data-theme="dark"] .hero h1 em { font-style: normal; }
+[data-theme="dark"] .eyebrow { letter-spacing: .08em; }
+[data-theme="dark"] .feature h2 { font-size: clamp(2.2rem, 4.2vw, 3.3rem); }
+[data-theme="dark"] .nav-subscribe { border-color: #577d69; color: var(--green); }
+[data-theme="dark"] .newsletter { background: linear-gradient(120deg, #1b2d2c, #1b2631); border-color: #3e5d50; }
+[data-theme="dark"] .signup-row button { color: #121a23; }
+[data-theme="dark"] .signup-row button:hover { background: #b7f3d0; }
+[data-theme="dark"] input[type="email"] { border-color: #738b96; }
+[data-theme="dark"] ::selection { background: #3a6953; color: #fff; }
+[data-theme="dark"] .prose .preview-code { background: #0a1119; color: #e3eaf0; border: 1px solid var(--line); }
+[data-theme="dark"] .token-keyword { color: #b5cbff; }
+[data-theme="dark"] .skip-link { color: #121a23; }
+[data-theme="dark"] .prose blockquote { color: #b9c6d0; }
+@media (max-width: 760px) {
+  [data-theme="minimal"] .hero, [data-theme="dark"] .hero { gap: 30px; padding-block: 44px; }
+  [data-theme="minimal"] .hero h1 { font-size: clamp(4rem, 14vw, 6rem); }
+  [data-theme="dark"] .hero h1 { font-size: clamp(4.5rem, 15vw, 6.5rem); }
+  [data-theme="minimal"] .newsletter { padding: 26px; }
+}

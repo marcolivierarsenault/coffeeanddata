@@ -1,0 +1,6 @@
+---
+export function getStaticPaths() {
+  return [2, 3, 4, 5].map(num => ({ params: { num: String(num) } }));
+}
+return Astro.redirect('/', 301);
+---

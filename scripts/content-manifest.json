@@ -1,0 +1,239 @@
+[
+  {
+    "slug": "real-challenge-iot-security",
+    "date": "2017-05-01",
+    "title": "The real challenge in IoT security",
+    "tags": [
+      "misc",
+      "ericsson",
+      "iot"
+    ],
+    "description": "About Me Before writing about my main topic. I want to take a couple of lines to introduce myself. I am an IT Engineer working since I got my bachelor’s degree (4 years ago)…",
+    "source": "_posts/2017-05-01-real-challenge-iot-security.md"
+  },
+  {
+    "slug": "memories-should-stay-forever",
+    "date": "2017-05-15",
+    "title": "Memories should stay forever",
+    "tags": [
+      "misc",
+      "perso"
+    ],
+    "description": "Not so long ago, I had the chance to become a father. And one of the … \"privilege\" of having a baby is the time you have to think during all these nights when he won’t let us…",
+    "source": "_posts/2017-05-15-memories-should-stay-forever.md"
+  },
+  {
+    "slug": "home-made-alarm-system-central",
+    "date": "2017-06-02",
+    "title": "Home made alarm system central",
+    "tags": [
+      "misc",
+      "perso",
+      "iot"
+    ],
+    "description": "Last year, my wife and I purchased our first house. The house came with a very standard alarm system installed by one of the main distributors in Montreal. As soon as I moved…",
+    "source": "_posts/2017-06-02-home-made-alarm-system-central.md"
+  },
+  {
+    "slug": "kolmogorov-smirnov-test",
+    "date": "2017-07-06",
+    "title": "Kolmogorov–Smirnov test",
+    "tags": [
+      "data"
+    ],
+    "description": "Lately, at work, we had to do a lot of unsupervised classification. We basically had to distinguish N classes from a sample population. We had a rough idea of how many classes…",
+    "source": "_posts/2017-07-06-kolmogorov-smirnov-test.md"
+  },
+  {
+    "slug": "data-science-development-evironement",
+    "date": "2017-07-31",
+    "title": "Data Science Development Environment (Part 1)",
+    "tags": [
+      "data",
+      "misc"
+    ],
+    "description": "Part of my task in the Data Science Team is to participate in the deployment of our development environment. This will be the first, of a series of articles about the…",
+    "source": "_posts/2017-07-31-data-science-development-evironement.md"
+  },
+  {
+    "slug": "machine-vs-human",
+    "date": "2017-09-29",
+    "title": "Machine VS Human",
+    "tags": [
+      "ericsson",
+      "iot"
+    ],
+    "description": "Lately at work we had the opportunity to propose new Uses Cases to develop around Ericsson Expert Analytic and data science in the operator's network. We propose to work on an…",
+    "source": "_posts/2017-09-29-machine-vs-human.md"
+  },
+  {
+    "slug": "distributions-5th-symphony",
+    "date": "2018-02-08",
+    "title": "Distribution’s 5th Symphony",
+    "tags": [
+      "data"
+    ],
+    "description": "I would like to share with you a small tool I have discovered this year which is very useful; Violin Plot!",
+    "source": "_posts/2018-02-08-distributions-5th-symphony.md"
+  },
+  {
+    "slug": "lossless-triplet-loss",
+    "date": "2018-02-15",
+    "title": "Lossless Triplet loss",
+    "tags": [
+      "data"
+    ],
+    "description": "A more efficient loss function for Siamese",
+    "source": "_posts/2018-02-15-lossless-triplet-loss.md"
+  },
+  {
+    "slug": "this-is-what-i-really-do-as-a-data-scientist",
+    "date": "2018-04-27",
+    "title": "This is what I really do as a Data Scientist",
+    "tags": [
+      "data",
+      "ericsson"
+    ],
+    "description": "Data Science is getting very popular and many people are trying to jump into the bandwagon, and this is GREAT. But many assume that data science, machine learning, plug any…",
+    "source": "_posts/2018-04-27-this-is-what-i-really-do-as-a-data-scientist.md"
+  },
+  {
+    "slug": "the-data-science-pyramid",
+    "date": "2018-09-26",
+    "title": "The data science pyramid",
+    "tags": [
+      "data"
+    ],
+    "description": "Let&8217;s not start with data science this time. Let&8217;s start with psychology. I am far from having any competence in this domain, but I remember in high school being…",
+    "source": "_posts/2018-09-26-the-data-science-pyramid.md"
+  },
+  {
+    "slug": "spark-join-using-regex",
+    "date": "2019-04-17",
+    "title": "Spark JOIN using REGEX",
+    "tags": [
+      "data",
+      "shopify"
+    ],
+    "description": "A more technical post about how I end up efficiently JOINING 2 datasets with REGEX using a custom UDF in SPARK",
+    "source": "_posts/2019-04-17-spark-join-using-regex.md"
+  },
+  {
+    "slug": "spark-ai-summit-2019",
+    "date": "2019-04-29",
+    "title": "Spark & AI Summit 2019",
+    "tags": [
+      "data"
+    ],
+    "description": "My review of the latest Spark and AI Summit hosted in San Francisco on April 24th and 25th 2019.",
+    "source": "_posts/2019-04-29-spark-ai-summit-2019.md"
+  },
+  {
+    "slug": "using-data-science-to-save-money-on-my-next-trip-to-mexico",
+    "date": "2019-10-28",
+    "title": "Using data science to save money on my next trip to Mexico",
+    "tags": [
+      "data",
+      "perso"
+    ],
+    "description": "How am I using basic data work to ensure I am getting a good price on my trip.",
+    "source": "_posts/2019-10-28-using-data-science-to-save-money-on-my-next-trip-to-mexico.markdown"
+  },
+  {
+    "slug": "how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team",
+    "date": "2020-06-18",
+    "title": "How to thrive in the face of disruption: Tips from Shopify’s Data Team",
+    "tags": [
+      "data",
+      "shopify"
+    ],
+    "description": "Learn how the Data Team has helped Shopify make great decisions during COVID-19.",
+    "source": "_posts/2020-06-18-how-to-thrive-in-the-face-of-disruption-tips-from-shopify-data-team.md"
+  },
+  {
+    "slug": "warning-systems-on-data-warehouse",
+    "date": "2021-01-29",
+    "title": "Warning systems on data warehouse",
+    "tags": [
+      "data",
+      "shopify"
+    ],
+    "description": "The story of how and why I built Whistleblower, a system that allows us to set warnings on any table in our environment.",
+    "source": "_posts/2021-01-29-warning-systems-on-data-warehouse.md"
+  },
+  {
+    "slug": "pr-reviews-for-sql-code",
+    "date": "2021-04-23",
+    "title": "PR Reviews for SQL code",
+    "tags": [
+      "data",
+      "shopify"
+    ],
+    "description": "This is my personal guide on how I review my peer SQL code.",
+    "source": "_posts/2021-04-23-PR-reviews-for-SQL-code.md"
+  },
+  {
+    "slug": "update-on-whistleblower",
+    "date": "2022-03-16",
+    "title": "Update on Whistleblower",
+    "tags": [
+      "data",
+      "shopify"
+    ],
+    "description": "Update on “Warning systems on data warehouse”",
+    "source": "_posts/2022-03-16-update-on-whistleblower.md"
+  },
+  {
+    "slug": "dear-dm",
+    "date": "2022-04-30",
+    "title": "Dear DM",
+    "tags": [
+      "data"
+    ],
+    "description": "A message for all the Decision Makers (DM) using data to make decisions.",
+    "source": "_posts/2022-04-30-dear-dm.md"
+  },
+  {
+    "slug": "impact",
+    "date": "2022-06-14",
+    "title": "Be Impactful",
+    "tags": [
+      "talk",
+      "shopify"
+    ],
+    "description": "When and How to say no Internal presentation I made at Shopify earlier this year.",
+    "source": "_posts/2022-06-14-impact.md"
+  },
+  {
+    "slug": "no-longer-ds",
+    "date": "2022-12-20",
+    "title": "I am no longer a Data Scientist",
+    "tags": [
+      "data_eng",
+      "shopify"
+    ],
+    "description": "For the past 4.5 years I have been somewhat a data scientist at Shopify. From IC roles to different management roles, the bulk of the work was in data science. Prior to this,…",
+    "source": "_posts/2022-12-20-no-longer-ds.md"
+  },
+  {
+    "slug": "data-warehouse-manifesto",
+    "date": "2023-07-21",
+    "title": "Data Warehouse Manifesto",
+    "tags": [
+      "data_eng"
+    ],
+    "description": "My approach to the Data Warehouse and how company like Shopify should think about them.",
+    "source": "_posts/2023-07-21-data-warehouse-manifesto.md"
+  },
+  {
+    "slug": "top-down-vs-bottom-up",
+    "date": "2023-12-03",
+    "title": "Top Down vs Bottom Up",
+    "tags": [
+      "misc",
+      "chatgpt"
+    ],
+    "description": "Early in my career, I was lucky enough to have a mentor who had a unique way of simplifying complex ideas. One of the most crucial lessons he imparted was an understanding of…",
+    "source": "_posts/2023-12-03-top-down-vs-bottom-up.md"
+  }
+]

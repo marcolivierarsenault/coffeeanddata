@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coffee and Data — Three design directions</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="viewer.css">
+  <script src="viewer.js" defer></script>
+</head>
+<body>
+  <header class="review-header">
+    <div><h1>Coffee and Data</h1><p>Three directions. Your writing. One lightweight Astro site.</p></div>
+    <a id="open-page" href="home.html?theme=editorial" target="_blank" rel="noopener">Open preview in a new tab ↗</a>
+  </header>
+  <form class="controls" aria-label="Design preview controls">
+    <fieldset>
+      <legend>Style</legend>
+      <div class="styles">
+        <label><input type="radio" name="theme" value="editorial" checked><span class="swatch warm"></span>Warm editorial</label>
+        <label><input type="radio" name="theme" value="minimal"><span class="swatch minimal"></span>Minimal technical</label>
+        <label><input type="radio" name="theme" value="dark"><span class="swatch dark"></span>Dark technical</label>
+      </div>
+    </fieldset>
+    <label class="select-label">Page<select name="page"><option value="home">Homepage</option><option value="article">Technical article</option></select></label>
+    <label class="select-label">Width<select name="viewport"><option value="desktop">Desktop</option><option value="mobile">Mobile · 390px</option></select></label>
+  </form>
+  <p class="direction" id="direction" role="status">Warm paper, forest green, generous spacing and serif headings. A personal engineering notebook.</p>
+  <main class="stage">
+    <iframe id="preview" title="Warm editorial homepage preview" src="home.html?theme=editorial"></iframe>
+  </main>
+  <footer class="review-footer">Design prototypes, not a compiled Astro build. The final site keeps Mailchimp. Read the <a href="../docs/decisions.md">stack and design decisions</a>.</footer>
+</body>
+</html>

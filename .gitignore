@@ -1,8 +1,8 @@
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
 .DS_Store
-*.swp
-*.code-workspace
-dev.yml
+__pycache__/

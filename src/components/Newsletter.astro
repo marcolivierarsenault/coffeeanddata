@@ -1,0 +1,23 @@
+---
+import { site } from '../lib/site';
+interface Props { id?: string; compact?: boolean; }
+const { id = 'newsletter', compact = false } = Astro.props;
+---
+<section class:list={['newsletter', { compact }]} aria-labelledby={`${id}-title`}>
+  <div>
+    <p class="eyebrow">The occasional email</p>
+    <h2 id={`${id}-title`}>Good things take time.</h2>
+    <p>New posts on software and data, straight to your inbox. Around 3–6 a year.</p>
+  </div>
+  <form action={site.newsletter.action} method="post">
+    <label for={`${id}-email`}>Email address</label>
+    <div class="signup-row">
+      <input id={`${id}-email`} type="email" name="EMAIL" placeholder="you@example.com" autocomplete="email" required />
+      <button type="submit" name="subscribe">Subscribe <span aria-hidden="true">↗</span></button>
+    </div>
+    <div class="form-trap" aria-hidden="true">
+      <input type="text" name={site.newsletter.honeypot} tabindex="-1" autocomplete="off" />
+    </div>
+    <p class="small">You’ll continue to Mailchimp to finish signing up. Unsubscribe anytime.</p>
+  </form>
+</section>

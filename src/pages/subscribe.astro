@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import Newsletter from '../components/Newsletter.astro';
+---
+<Base title="Subscribe" description="Get occasional new Coffee and Data articles by email. Around 3–6 posts a year.">
+  <div class="narrow subscription-page">
+    <header class="page-heading"><p class="eyebrow">Stay in the loop</p><h1>A note when there’s<br />something worth sharing.</h1><p>Thoughtful articles on software and data. A small mailing list for a small, independent blog.</p></header>
+    <Newsletter compact id="subscribe-newsletter" />
+    <p class="small">Prefer your own feed reader? <a href="/feed.xml">Subscribe via RSS ↗</a></p>
+  </div>
+</Base>
