@@ -1,0 +1,11 @@
+---
+// Jekyll paginated these topic archives. Keep the published URLs working.
+export function getStaticPaths() {
+  return [
+    { tag: 'data', num: '2' },
+    { tag: 'data', num: '3' },
+    { tag: 'shopify', num: '2' },
+  ].map(params => ({ params }));
+}
+return Astro.redirect(`/tag/${Astro.params.tag}/`, 301);
+---

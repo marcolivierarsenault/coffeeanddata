@@ -8,7 +8,7 @@ export default defineConfig({
   compressHTML: true,
   integrations: [
     sitemap({
-      filter: (page) => !/^\/(?:404(?:\.html)?|writing|contact|thank-you|page\d+)\/?$/.test(new URL(page).pathname),
+      filter: (page) => !/^\/(?:404(?:\.html)?|writing|contact|thank-you|(?:tag\/[^/]+\/)?page\d+)\/?$/.test(new URL(page).pathname),
     }),
   ],
   markdown: {

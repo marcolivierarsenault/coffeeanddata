@@ -42,6 +42,13 @@ async function targetFor(url) {
   throw new Error('Missing internal target: ' + url.pathname);
 }
 
+test('article slugs match the original case-sensitive Jekyll /:title permalinks', () => {
+  for (const original of retained) {
+    const jekyllTitle = original.source.replace(/^_posts\/\d{4}-\d{2}-\d{2}-/, '').replace(/\.(?:md|markdown|html)$/, '');
+    assert.equal(original.slug, jekyllTitle, original.source);
+  }
+});
+
 test('all 22 original article URLs remain available with Mailchimp signup', () => {
   for (const original of retained) {
     const page = pages.get(resolve(dist, original.slug, 'index.html'));
@@ -128,18 +135,28 @@ test('Astro sitemap lists public pages and excludes retired routes', async () =>
   for (const route of ['/', '/about/', '/subscribe/', ...retained.map(post => '/' + post.slug + '/')]) {
     assert.ok(entries.includes(site + route), route);
   }
-  assert.ok(entries.every(url => !/^\/(?:404(?:\.html)?|writing|contact|thank-you|page\d+)\/?$/.test(new URL(url).pathname)));
+  assert.ok(entries.every(url => !/^\/(?:404(?:\.html)?|writing|contact|thank-you|(?:tag\/[^/]+\/)?page\d+)\/?$/.test(new URL(url).pathname)));
 });
 
 test('retired archive, contact and pagination routes use Astro redirects', () => {
-  for (const route of ['writing', 'contact', 'thank-you', 'page2', 'page3', 'page4', 'page5']) {
+  for (const route of ['writing', 'contact', 'thank-you', 'page2', 'page3', 'page4', 'page5', 'tag/data/page2', 'tag/data/page3', 'tag/shopify/page2']) {
     const page = pages.get(resolve(dist, route, 'index.html'));
     assert.ok(page && isRedirect(page.$), route);
   }
 });
 
+test('legacy /sitemap.xml points to the same sitemaps as the Astro sitemap index', async () => {
+  const locs = async file => {
+    const $ = load(await readFile(resolve(dist, file), 'utf8'), { xmlMode: true });
+    return $('sitemap > loc').toArray().map(element => $(element).text()).sort();
+  };
+  const legacy = await locs('sitemap.xml');
+  assert.ok(legacy.length > 0);
+  assert.deepEqual(legacy, await locs('sitemap-index.xml'));
+});
+
 test('technical posts render native code blocks and optimized local images', () => {
-  const sql = pages.get(resolve(dist, 'pr-reviews-for-sql-code', 'index.html')).$;
+  const sql = pages.get(resolve(dist, 'PR-reviews-for-SQL-code', 'index.html')).$;
   assert.ok(sql('pre.astro-code').length >= 6);
   const spark = pages.get(resolve(dist, 'spark-join-using-regex', 'index.html')).$;
   assert.ok(spark('table thead th').length >= 3);
