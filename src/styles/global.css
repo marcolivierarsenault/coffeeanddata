@@ -183,3 +183,34 @@
   .prose .about-intro { font-size: 1.75rem; line-height: 1.4; }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; } }
 }
+
+/* ── EXPERIMENT: sticky top bar ───────────────────────────────────────────────
+   Keeps the site header (logo + Writing / About / Subscribe) visible while scrolling.
+   Desktop and tablet only (≥ 761px); on phones the header is tall and would eat the screen.
+   To revert: delete this whole block. Nothing else in the site depends on it. */
+@layer sticky-header {
+  @media (min-width: 761px) {
+    :root { --sticky-header-height: 104px; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      background: var(--paper);
+      /* paint the paper colour edge to edge, behind the centred header */
+      box-shadow: 0 0 0 100vmax var(--paper); clip-path: inset(0 -100vmax);
+    }
+    /* jump links and the archive sidebar must clear the bar */
+    html { scroll-padding-top: calc(var(--sticky-header-height) + 1rem); }
+    .archive-sidebar { top: calc(var(--sticky-header-height) + 24px); transition: top .2s ease; }
+
+    /* Compact bar once the page is scrolled (class set by the small script in Base.astro). */
+    .site-header, .site-header .brand-mark { transition: padding .2s ease, height .2s ease; }
+    html.header-compact { --sticky-header-height: 58px; }
+    html.header-compact .site-header { padding-block: 10px; }
+    html.header-compact .site-header .brand-mark { height: 36px; }
+    html.header-compact .site-header .brand-caption { display: none; }
+    html.header-compact .site-header .nav-subscribe { padding-block: 6px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .site-header, .site-header .brand-mark, .archive-sidebar { transition: none; }
+  }
+}
+/* ── end EXPERIMENT: sticky top bar ─────────────────────────────────────────── */

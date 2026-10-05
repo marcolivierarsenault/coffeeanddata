@@ -71,6 +71,20 @@ const schema = article ? {
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
+    <!-- EXPERIMENT: sticky top bar. Compacts the bar once scrolled; remove with the CSS block in global.css. -->
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        const update = () => {
+          const y = window.scrollY;
+          // hysteresis: compact after 120px, expand only near the top, so it never flickers
+          if (y > 120) root.classList.add('header-compact');
+          else if (y < 20) root.classList.remove('header-compact');
+        };
+        update();
+        window.addEventListener('scroll', update, { passive: true });
+      })();
+    </script>
     <header class="site-header wrap">
       <a class="brand" href="/" aria-label="Coffee and Data home"><Image class="brand-mark" src={logoMark} alt="" height={56} densities={[1, 2]} loading="eager" /><span>Coffee and Data<span class="brand-caption">By Marc-Olivier Arsenault</span></span></a>
       <nav aria-label="Main navigation">
