@@ -12,7 +12,7 @@ interface Props {
   canonicalPath?: string;
 }
 const { title, description = site.description, article, noindex = false, canonicalPath = Astro.url.pathname } = Astro.props;
-const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — Software, data & everything in between`;
+const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — Data systems at scale, and the people behind them`;
 const canonical = new URL(canonicalPath, site.url).href;
 // Share picture for every page: the logo-with-text card in public/og-image.png.
 const socialImage = new URL('/og-image.png', site.url).href;
