@@ -92,7 +92,31 @@ const schema = article ? {
         <a href="/about/" aria-current={active('/about/') ? 'page' : undefined}>About</a>
         <a class="nav-subscribe" href="/subscribe/" aria-current={active('/subscribe/') ? 'page' : undefined}>Subscribe <span aria-hidden="true">↗</span></a>
       </nav>
+      {article && <div class="reading-progress" aria-hidden="true"><span></span></div>}
     </header>
+    {article && (
+      <script is:inline>
+        // Reading progress: fills the green line under the top bar as the article body is read.
+        // Runs once the article body exists (this script sits above it in the page).
+        document.addEventListener('DOMContentLoaded', () => {
+          const bar = document.querySelector('.reading-progress span');
+          const body = document.querySelector('.prose');
+          if (!bar || !body) return;
+          let queued = false;
+          const update = () => {
+            queued = false;
+            const box = body.getBoundingClientRect();
+            const distance = box.height - window.innerHeight;
+            const progress = distance > 0 ? Math.min(1, Math.max(0, -box.top / distance)) : 1;
+            bar.style.transform = `scaleX(${progress})`;
+          };
+          const schedule = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+          update();
+          window.addEventListener('scroll', schedule, { passive: true });
+          window.addEventListener('resize', schedule);
+        });
+      </script>
+    )}
     <main id="main" tabindex="-1"><slot /></main>
     <footer class="site-footer wrap">
       <div><a class="footer-brand" href="/">Coffee and Data<span aria-hidden="true">.</span></a><p>Independent writing by {site.author}.</p></div>

@@ -184,6 +184,13 @@
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; } }
 }
 
+/* Reading progress line on article pages. On its own it sits at the very top of the window;
+   with the sticky top bar it moves to the bar's bottom edge (see the experiment block below). */
+@layer reading-progress {
+  .reading-progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 30; pointer-events: none; }
+  .reading-progress span { display: block; height: 100%; background: var(--green); transform: scaleX(0); transform-origin: 0 50%; }
+}
+
 /* ── EXPERIMENT: sticky top bar ───────────────────────────────────────────────
    Keeps the site header (logo + Writing / About / Subscribe) visible while scrolling.
    Desktop and tablet only (≥ 761px); on phones the header is tall and would eat the screen.
@@ -208,6 +215,8 @@
     html.header-compact .site-header .brand-mark { height: 36px; }
     html.header-compact .site-header .brand-caption { display: none; }
     html.header-compact .site-header .nav-subscribe { padding-block: 6px; }
+    /* reading progress rides on the bar's bottom edge, full window width */
+    .site-header .reading-progress { position: absolute; top: auto; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); }
   }
   @media (prefers-reduced-motion: reduce) {
     .site-header, .site-header .brand-mark, .archive-sidebar { transition: none; }
