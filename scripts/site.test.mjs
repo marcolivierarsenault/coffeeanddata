@@ -106,7 +106,6 @@ test('404 metadata points to the emitted static error page', () => {
 test('homepage lists every published article without a signup form', () => {
   const page = pages.get(resolve(dist, 'index.html'));
   assert.equal(page.$('.home-spotlight article').length, 1);
-  assert.equal(page.$('a[href="#all-writing"]').length, 1);
   assert.equal(page.$('.home-archive #all-writing').length, 1);
   const links = page.$('[data-post] h3 a').toArray().map(element => page.$(element).attr('href'));
   assert.equal(links.length, articlePages.length);

@@ -10,21 +10,24 @@ const years = [...new Set(posts.map(post => post.data.pubDate.getUTCFullYear()))
 ---
 <Base>
   <div class="wrap">
-    <header class="home-heading"><p class="eyebrow">An independent engineering notebook</p><h1>Coffee &amp; <em>Data.</em></h1><p>{site.description}</p><a class="text-link home-browse" href="#all-writing">Explore the notebook <span aria-hidden="true">↓</span></a></header>
+    <header class="home-heading"><p class="eyebrow">An independent engineering notebook</p><h1>Coffee &amp; <em>Data.</em></h1><p>{site.description}</p></header>
     {featured && <section class="home-spotlight" aria-label="Featured writing">
       <div class="spotlight-meta"><p class="eyebrow">On the reading table</p><p><time datetime={featured.data.pubDate.toISOString()}>{formatDate(featured.data.pubDate)}</time><br />{readingTime(featured)} min read</p></div>
       <article><h2><a href={postUrl(featured)}>{featured.data.title}</a></h2><p>{featured.data.description}</p><a class="text-link" href={postUrl(featured)}>Read the article <span aria-hidden="true">↗</span></a></article>
     </section>}
     <section class="home-archive" aria-labelledby="all-writing">
     <div class="section-heading"><h2 id="all-writing">All the field notes.</h2><p class="eyebrow">{posts.length} articles / Newest first</p></div>
+    <aside class="archive-sidebar" aria-labelledby="archive-tools-title">
+    <h2 class="sidebar-title" id="archive-tools-title">Looking for something?</h2>
     <div class="archive-tools">
       <form class="archive-search" role="search" hidden>
         <label for="post-search">Find an article</label>
-        <input id="post-search" type="search" placeholder="Try SQL, warehouse, or data science" autocomplete="off" />
+        <input id="post-search" type="search" placeholder="Try SQL or warehouse" autocomplete="off" />
       </form>
       <ul class="tag-list" aria-label="Browse by topic">{tags.map(tag => <li><a href={tagUrl(tag)}>{tagName(tag)}</a></li>)}</ul>
     </div>
     <p class="search-status" role="status" hidden></p>
+    </aside>
     <div class="archive">{years.map(year => <section data-year aria-labelledby={`year-${year}`}><h2 id={`year-${year}`}>{year}</h2><PostList posts={posts.filter(post => post.data.pubDate.getUTCFullYear() === year)} /></section>)}</div>
     </section>
   </div>
