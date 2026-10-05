@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
 import { getPosts, postUrl, formatDate, readingTime, tagName, tagUrl } from '../lib/posts';
+import { site } from '../lib/site';
 const posts = await getPosts();
 const featured = posts.find(post => post.data.featured) ?? posts[0];
 const tags = [...new Set(posts.flatMap(post => post.data.tags))].sort((a, b) => tagName(a).localeCompare(tagName(b)));
@@ -9,7 +10,7 @@ const years = [...new Set(posts.map(post => post.data.pubDate.getUTCFullYear()))
 ---
 <Base>
   <div class="wrap">
-    <header class="home-heading"><p class="eyebrow">An independent engineering notebook</p><h1>Coffee &amp; <em>Data.</em></h1><p>Notes on building software, making sense of data, and the people behind the systems.</p><a class="text-link home-browse" href="#all-writing">Explore the notebook <span aria-hidden="true">↓</span></a></header>
+    <header class="home-heading"><p class="eyebrow">An independent engineering notebook</p><h1>Coffee &amp; <em>Data.</em></h1><p>{site.description}</p><a class="text-link home-browse" href="#all-writing">Explore the notebook <span aria-hidden="true">↓</span></a></header>
     {featured && <section class="home-spotlight" aria-label="Featured writing">
       <div class="spotlight-meta"><p class="eyebrow">On the reading table</p><p><time datetime={featured.data.pubDate.toISOString()}>{formatDate(featured.data.pubDate)}</time><br />{readingTime(featured)} min read</p></div>
       <article><h2><a href={postUrl(featured)}>{featured.data.title}</a></h2><p>{featured.data.description}</p><a class="text-link" href={postUrl(featured)}>Read the article <span aria-hidden="true">↗</span></a></article>

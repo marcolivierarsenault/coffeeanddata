@@ -12,7 +12,7 @@ interface Props {
   canonicalPath?: string;
 }
 const { title, description = site.description, article, noindex = false, canonicalPath = Astro.url.pathname } = Astro.props;
-const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — Software, data & everything in between`;
+const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — Data systems at scale, and the people behind them`;
 const canonical = new URL(canonicalPath, site.url).href;
 // Share picture for every page: the logo-with-text card in public/og-image.png.
 const socialImage = new URL('/og-image.png', site.url).href;
@@ -38,6 +38,15 @@ const schema = article ? {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Google tag (gtag.js). The standard snippet, plus Google's official opt-out flag off production. -->
+    <script is:inline define:vars={{ gaId: site.analytics.googleId, gaHost: site.analytics.productionHost }}>
+      if (location.hostname !== gaHost) window['ga-disable-' + gaId] = true;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', gaId, { anonymize_ip: true });
+    </script>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${site.analytics.googleId}`}></script>
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <meta name="author" content={site.author} />

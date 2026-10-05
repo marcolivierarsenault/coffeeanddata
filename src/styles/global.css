@@ -41,7 +41,7 @@
   .home-heading { padding-block: 28px 24px; }
   .home-heading h1 { font-size: clamp(2.2rem, 4.6vw, 3.2rem); margin-block: 8px 10px; }
   .home-heading h1 em { color: var(--green); font-weight: 400; }
-  .home-heading > p:not(.eyebrow) { color: var(--muted); font-size: 1rem; max-width: 620px; }
+  .home-heading > p:not(.eyebrow) { color: var(--muted); font-size: 1rem; }
   .home-browse { display: inline-block; margin-top: 12px; color: var(--green); }
   .home-spotlight { display: grid; grid-template-columns: 180px 1fr; gap: 32px; background: var(--wash); border-block: 1px solid var(--line); padding: 28px 32px; }
   .spotlight-meta > p + p { margin-top: 14px; color: var(--muted); font: .75rem/1.8 var(--mono); }
