@@ -208,3 +208,15 @@ test('every page links the favicon set and the header logo is an optimized image
     assert.match($('.brand-mark').attr('src') ?? '', /^\/_astro\/.+\.webp$/, path);
   }
 });
+
+test('every page loads Google Analytics G-PZTRVPSWT5, disabled off the production host', () => {
+  for (const [path, { $ }] of pages) {
+    if (isRedirect($)) continue;
+    assert.equal($('script[src="https://www.googletagmanager.com/gtag/js?id=G-PZTRVPSWT5"][async]').length, 1, path);
+    const inline = $('head script:not([src])').toArray().map(element => $(element).html() ?? '').join('\n');
+    assert.match(inline, /G-PZTRVPSWT5/, 'gtag config missing: ' + path);
+    assert.match(inline, /coffeeanddata\.ca/, 'production-host guard missing: ' + path);
+    assert.match(inline, /ga-disable-/, 'opt-out flag missing: ' + path);
+  }
+});
+
