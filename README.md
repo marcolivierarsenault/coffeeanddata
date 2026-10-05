@@ -97,11 +97,42 @@ GitHub Actions (`.github/workflows/`):
   - `npm ci` and `npm run verify`
   - then an external link check with lychee
   - plus SonarQube
-  - The built site is saved as the `coffeeanddata-preview` artifact.
+  - The built site is saved as the `coffeeanddata-preview` artifact and uploaded to staging (see below).
 - **`merge.yml`** (push to `main`):
   - the same verify and external-link jobs
   - then deploys `dist/` with the official `actions/upload-pages-artifact` and `actions/deploy-pages`. Deployment runs only if both checks pass.
   - SonarQube runs alongside.
+
+### Staging (PR previews)
+
+Every PR from this repository is also uploaded to **https://staging.coffeeanddata.ca/**, the password-protected nginx container on the home server. The PR shows a *View deployment* button. There's one staging site, so the most recently pushed PR wins. Fork and Dependabot PRs are skipped.
+
+How it works: the `staging` job joins the owner's Tailscale tailnet for the length of the job, as tag `tag:blog-ci`, using GitHub's OIDC token. Tailscale *workload identity federation* means no Tailscale secret is stored in GitHub. The job then pipes the built site with `tar` over Tailscale SSH into the `blog-staging` container. That container is the stock `tailscale/tailscale` image, and the only host folder it can see is the staging web root. Nothing is exposed to the internet, and the tailnet policy lets `tag:blog-ci` reach only that container, on SSH.
+
+What lives where:
+
+- **GitHub repository variables:** `TS_OAUTH_CLIENT_ID` and `TS_AUDIENCE`, from the Tailscale trust credential. They aren't secrets. The job is skipped until `TS_OAUTH_CLIENT_ID` is set.
+- **Tailscale trust credential:** OpenID Connect, issuer GitHub Actions, subject `repo:marcolivierarsenault/coffeeanddata:environment:staging`, claim `repository_id=225268035`, scope Auth Keys (write), tag `tag:blog-ci`.
+- **Tailnet policy:** grant `tag:blog-ci → tag:blog-staging tcp:22`, an SSH `accept` rule for user `root`, and tests that keep it that narrow.
+- **Server (`~/docker-config/red/docker-compose.yml`):**
+  ```yaml
+  blog-staging:
+    image: tailscale/tailscale:stable
+    container_name: blog-staging
+    restart: unless-stopped
+    env_file: [../local_config/blog-staging/tailscale.env]   # one-time TS_AUTHKEY; empty after first start
+    environment:
+      TS_HOSTNAME: blog-staging
+      TS_STATE_DIR: /var/lib/tailscale
+      TS_AUTH_ONCE: "true"
+      TS_USERSPACE: "true"
+      TS_EXTRA_ARGS: --ssh --advertise-tags=tag:blog-staging
+    volumes:
+      - ../local_config/blog-staging/state:/var/lib/tailscale
+      - ../local_config/ftp/data:/site
+  ```
+
+Manual upload without CI, from the LAN: `npm run build && rsync -avz --delete dist/ marco@192.168.2.100:~/docker-config/local_config/ftp/data/`
 
 External links follow the old HTMLProofer rules: 403/429/500/999 responses are tolerated. Twitter/X, Google and the Vimeo player block automated checks, so they are skipped (`lychee.toml`). When a third-party page dies, fix the article rather than ignoring the URL.
 
