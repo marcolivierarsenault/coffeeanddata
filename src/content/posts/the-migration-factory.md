@@ -3,6 +3,7 @@ title: "The migration factory"
 pubDate: 2026-11-01
 description: "I got tired of data migrations that drag on for a year. So I built a small factory where AI agents do the work, other agents check it, and a human only shows up to decide."
 tags: ["data_eng","chatgpt","shopify"]
+featured: true
 draft: false
 ---
 
