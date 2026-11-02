@@ -90,6 +90,6 @@ Nothing about a specific migration lives in the factory. That comes from the bri
 
 Agents writing SQL is table stakes now. The interesting part is the shape around them, and if you run a platform team with a migration backlog, that is what I would copy first. Not the agents. The gates.
 
-I don't want to steal any credit here. This work is heavily inspired by several other projects I had the chance to witness at Shopify; I simply reshuffled them and assembled them in a way that made sense for data engineering.
+I don't want to steal any credit here. This work is heavily inspired by several other projects I had the chance to witness at Shopify; I simply reshuffled them and assembled them in a way that made sense for data engineering. [Helix](https://shopify.engineering/helix), the tool behind the Shopify app's native rewrite, is one of them: small checkpoints and strict quality gates, which is the same idea with a different kind of code at the end.
 
 Special thanks to the colleagues who reviewed the first PRs and told me, politely, that they could not read them.
