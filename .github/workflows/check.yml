@@ -76,7 +76,7 @@ jobs:
           name: coffeeanddata-preview
           path: dist
       - name: Join the tailnet as tag:blog-ci
-        uses: tailscale/github-action@v4.2.0
+        uses: tailscale/github-action@v4.4.0
         with:
           oauth-client-id: ${{ vars.TS_OAUTH_CLIENT_ID }}
           audience: ${{ vars.TS_AUDIENCE }}
