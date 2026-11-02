@@ -87,6 +87,6 @@ What did not go well: the first wave of PRs had to be closed and redone after th
 
 Nothing about a specific migration lives in the factory. That comes from the brief and from the repo's own documentation. The second migration (a storage move across three repositories) ran on the same code with a different brief, and a third team is now trying it on their own backlog.
 
-I don't think the interesting part is the agents. Agents writing SQL is table stakes now. The interesting part is the shape around them, and if you are running a platform team with a migration backlog, that is the thing I would copy first. Not the agents. The gates.
+Agents writing SQL is table stakes now. The interesting part is the shape around them, and if you run a platform team with a migration backlog, that is what I would copy first. Not the agents. The gates.
 
 Special thanks to the colleagues who reviewed the first PRs and told me, politely, that they could not read them.
