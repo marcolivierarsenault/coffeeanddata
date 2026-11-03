@@ -13,7 +13,7 @@ I got tired of data migrations that drag on for a year. So I built a small facto
 
 ## The problem
 
-Every data platform I have worked on carries a backlog of migrations: move these tables to the new storage format, rename those metrics, repoint the last readers of a deprecated view. None of it is hard, all of it is tedious, and it always has the same shape: find everything that depends on the thing, change it, prove nothing moved for the people reading it, get the owner to merge, clean up.
+Every data platform I have worked on carries a backlog of migrations: move these tables to the new storage format, rename those metrics, repoint the last readers of a deprecated view. It is tedious rather than hard, and it always has the same shape: find everything that depends on the thing, change it, prove nothing moved for the people reading it, get the owner to merge, clean up.
 
 What usually happens is that a platform team writes a very good document, sends a thousand-row to-do list to a hundred data engineers, and waits. A year later, 60% is done and the rest is "in progress".
 
@@ -23,12 +23,12 @@ The part that made me think a factory was possible is that the work is repetitiv
 
 The migration factory is a small program, a few thousand lines of Python and a SQLite file. You give it a **brief**: what moves where, why, and the rules of the house (what counts as a difference, who owns what, what a PR must say). It plans the work into **specs**, one per future pull request, and then it runs agents, several of them with different jobs, which is the whole point:
 
-- A **worker** takes one spec, gets its own branch and checkout of the repo, and does the work with the tools you would use: dbt, staging, queries against the warehouse. It ends by writing the PR description and the evidence.
-- Five **gates** then read that work. Each one is a separate agent with a narrow question, and none of them sees the others' opinions:
+- A **worker** takes one spec, gets its own branch and checkout of the repo, and does the work with the tools you would use: dbt, staging, queries against the warehouse. It ends by writing the PR description and the evidence: the queries it ran, the numbers it got, the staging run.
+- Five **gates** then read that work. Each is a separate agent with one narrow question, and each works **blind**: it gets the spec and the branch, never the worker's conclusions.
   - **Code**: does the diff do what the description says?
   - **Reconciliation**: re-derive the numbers yourself and compare.
   - **Runtime**: did this actually run on staging? Show me.
-  - **Leaf coverage**: go find every dashboard, metric and export that reads this table, and compare your list with the worker's.
+  - **Leaf coverage**: find every **leaf**, every dashboard, metric and export that reads this table, and compare your list with the worker's.
   - **Decision readiness**: could the owner decide from the first screen of this PR alone?
 - Only when **all five approve the same revision** does the factory open a pull request.
 
@@ -38,21 +38,21 @@ If a gate says no, the spec goes back to the worker with the gate's words and a 
 
 ![one spec's life through the gates](../../assets/images/posts/20261110/gates.gif)
 
-## Why the gates are blind
+## Why blind
 
 Because one agent reviewing its own work is worth nothing, and I learned that the expensive way. The first factory had the worker produce the evidence and a single reviewer agent read it. The reviews were glowing, until I opened the PRs myself and found claims like "byte-identical" above a comparison that was not. The reviewer had read the worker's summary of the comparison, not the comparison. <!-- MARC: a line on what that felt like, e.g. "I had been about to forward one of those to a very senior reviewer", or whatever actually happened -->
 
-The gates are **blind**. The reconciliation gate gets the spec and the branch, not the worker's numbers, and runs the old and the new query itself. The leaf-coverage gate hunts for the downstream consumers on its own and then diffs its list with the worker's. A missed leaf or a phantom leaf is a fail. It costs more, and it catches things the cheap version did not.
+So the reconciliation gate runs the old and the new query itself and only then looks at what the worker claimed. The leaf-coverage gate hunts for the downstream consumers on its own and then diffs its list with the worker's. A missed leaf or a phantom leaf is a fail. It costs more, and it catches things the cheap version did not.
 
 ## Prove it where someone reads it
 
-What took the longest to get right is **where** the proof happens. A table diff tells you what changed, not whether it matters, because aggregation does not preserve small differences linearly: a row-level diff can be noisy while the metric is identical, or perfectly clean while the metric moves. The factory walks down to the **leaves** (the metric in the catalog, the dashboard tile, the export that leaves the warehouse), recomputes those both ways and reports in the reader's units: "2 of 7 tiles move by 0.4% on 3 days, here is why, here is who notices."
+What took the longest to get right is **where** the proof happens. A table diff tells you what changed. It cannot tell you whether anyone noticed, because aggregation does not preserve small differences linearly. A row-level diff can be noisy while the metric is identical, or perfectly clean while the metric moves. The factory walks down to the **leaves** (the metric in the catalog, the dashboard tile, the export that leaves the warehouse), recomputes those both ways and reports in the reader's units: "2 of 7 tiles move by 0.4% on 3 days, here is why, here is who notices."
 
 This is the same thing I wrote about in [PR reviews for SQL code](/PR-reviews-for-SQL-code) five years ago: review the result before the code. AI made it a lot easier to produce code that needs a review, and changed nothing about what a good review looks like.
 
 ## The PR nobody could read
 
-The first PRs were enormous, 4,000 to 6,000 words, every comparison inline, no folds. Complete, and useless. I asked for a small mandatory read with everything else folded one click away, and the descriptions came down to about 1,300 words. Then a colleague who had no context opened one and told me the beginning "reads like it's answering in the middle of something. Why what? Internally yes to what?" <!-- clearance pending for this quote --> He was right. The description opened with labels that answered questions nobody had seen (**Why**, **Internally, yes:**, **Externally, no:**). Every gate had read that opening with the spec and the brief in context, so they filled in the gaps without noticing.
+The worker writes the PR description, and the first ones were enormous, 4,000 to 6,000 words, every comparison inline, no folds. Complete, and useless. I asked for a small mandatory read with everything else folded one click away, and the descriptions came down to about 1,300 words. Then a colleague who had no context opened one and told me the beginning "reads like it's answering in the middle of something. Why what? Internally yes to what?" <!-- clearance pending for this quote --> He was right. The description opened with labels that answered questions nobody had seen (**Why**, **Internally, yes:**, **Externally, no:**). Every gate had read that opening with the spec and the brief in context, so they filled in the gaps without noticing.
 
 ![the first screen, before and after](../../assets/images/posts/20261110/firstscreen.png)
 
@@ -62,11 +62,11 @@ The first cold reader failed the PR on any phrase it could not interpret, and mo
 
 ## Decide, don't ask
 
-I also had to beat the question habit out of the agents. An early PR had seven items of the form "Owner's call on X?" and "Do you accept Y?". A reviewer who gets seven questions does not review. They schedule a meeting.
+I also had to beat the question habit out of the agents. An early PR had seven items of the form "Owner's call on X?" and "Do you accept Y?". A reviewer who gets seven questions does not review.
 
-So the rule is: make the call a careful engineer would make, write it down under "Decisions I made" with the alternative you rejected and how to overturn it, and move on. The only things that may become a question for a human are a published number with no policy in the brief, a change outside the repo, or production access. Even those are phrased as a decision with an opt-out ("I set X. Reply 'use Y' to change it."). A PR proceeds with those and only holds on something that would break a reader or lose data.
+So the rule is: make the call a careful engineer would make, write it down under "Decisions I made" with the alternative you rejected and how to overturn it, and move on. The only things that may become a question for a human are a published number with no policy in the brief, a change outside the repo, or production access. Even those are phrased as a decision with an opt-out ("I set X. Reply 'use Y' to change it."). A PR proceeds with those and only holds on something that would break a reader or lose data. The gates cannot tell whether a change is acceptable to the people who read the number; only its owner can. So the owner still clicks merge, and for a pure rename that is a thirty-second read of the first screen.
 
-The other half of that rule is that the next steps go to the **asset owner**, not back to the migration team. If the agent cannot do a step from where it sits, it writes the owner a runbook line with the command instead of "migration owner, please handle".
+The other half of that rule is that the next steps go to the **asset owner** instead of coming back to the migration team. If the agent cannot do a step from where it sits, it writes the owner a runbook line with the command instead of "migration owner, please handle".
 
 ## After the merge
 
